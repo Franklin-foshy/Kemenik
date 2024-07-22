@@ -22,5 +22,13 @@ Route::post('/register', [UserController::class, 'postUser'])->name('user-regist
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/Usuarios', [UserController::class, 'getUsers'])->name('users');
+    Route::post('/Usuarios/Nuevo', [UserController::class, 'postUser'])->name('user-post');
+    Route::post('/Usuarios/Editar/Usuario/{id}', [UserController::class, 'postEditUser'])->name('user-edit-post');
+    Route::post('/Usuarios/Eliminar/Usuario/{id}', [UserController::class, 'deleteUser'])->name('user-delete');
+    Route::post('/Usuarios/Permisos/Usuario/{id}', [UserController::class, 'permissionsUser'])->name('user-permissions-post');
+    Route::post('/Recuperar/Contraseña/{email}', [UserController::class, 'sendRecoverPassword'])->name('recover-password');
+
     Route::get('/Roles', [RolController::class, 'getRoles'])->name('roles');
+    Route::post('/Roles/Nuevo', [RolController::class, 'postRol'])->name('rol-post');
+    Route::post('/Roles/Editar/Rol/{id}', [RolController::class, 'postEditRol'])->name('rol-edit-post');
 });

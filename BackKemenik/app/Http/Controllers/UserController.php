@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Rol;
-use App\Models\Agencia;
 use App\Mail\UserSendNewPassword;
 use App\Mail\UserSendWelcome;
-use Hash, Auth, Config, Str, Mail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+
 
 class UserController extends Controller
 {
@@ -17,8 +20,7 @@ class UserController extends Controller
         if (kvfj(Auth::user()->rol->permissions, 'get_users')) {
             $users = User::with(['rol'])->orderBy('id', 'desc')->get();
             $roles = Rol::orderBy('name', 'asc')->get();
-            $agencias = Agencia::orderBy('name', 'asc')->get();
-            return view('registrados.users.index', compact('users', 'roles', 'agencias'));
+            return view('registrados.users.index', compact('users', 'roles'));
         } else {
             return redirect()->route('home');
         }
@@ -44,20 +46,22 @@ class UserController extends Controller
 
         $u->status = $request->status;
 
-        //Registro manual / Usuario final
-        if (empty($u->agencia_id)) {
-            $u->user_id = 1;
-            $u->save();
-            Auth::login($u);
-            return redirect()->route('home')->with('message', 'Usuario creado satisfactoriamente')->with('icon', 'success');
-        }
-
-        //Registro manual / Adminstrador
-        else {
-            $u->user_id = Auth::user()->id;
-            $u->save();
-            $u->email_verified_at = now();
-            return back()->with('message', 'Usuario creado satisfactoriamente')->with('icon', 'success');
+        if (Auth::check()) {
+            // Registro manual / Administrador
+            if (empty($u->agencia_id)) {
+                $u->user_id = Auth::user()->id;
+                $u->email_verified_at = now();
+                $u->save();
+                return back()->with('message', 'Usuario creado satisfactoriamente')->with('icon', 'success');
+            }
+        } else {
+            // Registro manual / Usuario final
+            if (empty($u->agencia_id)) {
+                $u->user_id = 1;
+                $u->save();
+                Auth::login($u);
+                return redirect()->route('home')->with('message', 'Usuario creado ADMIN')->with('icon', 'success');
+            }
         }
     }
 
@@ -65,12 +69,10 @@ class UserController extends Controller
     {
         $u = User::findOrFail($id);
         $u->name = $request->name;
-        $u->username = $request->username;
         $u->email = $request->email;
         if ($request->password) {
             $u->password = Hash::make($request->password);
         }
-        $u->agencia_id = $request->agencia;
         $u->role_id = $request->rol;
 
         $r = Rol::where('id', $request->rol)->first();

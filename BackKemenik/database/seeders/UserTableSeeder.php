@@ -20,7 +20,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Ronald Fuentes',
             'email' => 'rdfuentes@gmail.com',
             'role_id' => 1,
-            'permissions' => '{}',
+            'permissions' => '{"get_users":"on","post_users":"on","edit_users":"on","delete_users":"on","permissions_users":"on","recover_passwords_users":"on","get_roles":"on","post_roles":"on","edit_roles":"on"}',
             'email_verified_at' => now(),
             'password' => \Hash::make('ontabebe'),
             'status' => 1,

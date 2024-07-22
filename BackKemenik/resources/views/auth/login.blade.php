@@ -13,6 +13,12 @@
                         </div>
                     </div>
 
+                    @if (session('message'))
+                    <div style="color:red" class="alert alert-{{ session('icon') }} text-center">
+                        {{ session('message') }}
+                    </div>
+                    @endif
+
                     <div class="card-body pt-0">
                         <div class="p-0">
                             <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate>
