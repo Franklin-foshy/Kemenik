@@ -1,26 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+<div class="account-pages my-5 pt-sm-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-6">
 
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                <div class="card">
+                    <div class="card-body">
+                        @if (session('resent'))
+                        <div class="alert alert-success text-center" role="alert">
+                            {{ __('Se ha enviado un nuevo correo electrónico de verificación') }}
                         </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
+                        @endif
+                        <div class="p-0">
+                            <div class="text-center">
+                                <div class="row justify-content-center p-4">
+                                    <div class="col-8">
+                                        <img src="/assets/images/logo-light.png" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                                <div class="avatar-md mx-auto">
+                                    <div class="avatar-title rounded-circle bg-light">
+                                        <i class="fa fa-envelope h1 mb-0 text-danger"></i>
+                                    </div>
+                                </div>
+                                <div class="p-2 mt-4">
+                                    <h4>¡Listo!</h4>
+                                    <p>Te hemos enviado un correo electrónico de verificación</p>
+                                    <p>¿No has recibido ningun correo?</p>
+                                    <div class="mt-4">
+                                        <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary w-md">{{ __('Volver a enviar') }}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
