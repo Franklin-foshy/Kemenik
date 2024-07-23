@@ -31,6 +31,15 @@ function permissionsUser()
                 'recover_passwords_users' => 'Reestablecer contraseña'
             ]
         ],
+        'niveles' => [
+            'title' => 'Módulo de Niveles',
+            'keys' => [
+                'get_niveles' => 'Ver niveles',
+                'post_niveles' => 'Crear niveles',
+                'edit_niveles' => 'Editar niveles',
+                'delete_niveles' => 'Eliminar niveles',
+            ]
+        ],
     ];
 
     return $p;

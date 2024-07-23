@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\NivelController;
 
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
@@ -31,4 +32,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/Roles', [RolController::class, 'getRoles'])->name('roles');
     Route::post('/Roles/Nuevo', [RolController::class, 'postRol'])->name('rol-post');
     Route::post('/Roles/Editar/Rol/{id}', [RolController::class, 'postEditRol'])->name('rol-edit-post');
+
+    Route::get('/Niveles', [NivelController::class, 'getNiveles'])->name('niveles');
+    Route::post('/Niveles/Nuevo', [NivelController::class, 'postNivel'])->name('nivel-post');
+    Route::post('/Niveles/Editar/Nivel/{id}', [NivelController::class, 'postEditNivel'])->name('nivel-edit-post');
+    Route::post('/Niveles/Eliminar/Nivel/{id}', [NivelController::class, 'deleteNivel'])->name('nivel-delete');
 });
