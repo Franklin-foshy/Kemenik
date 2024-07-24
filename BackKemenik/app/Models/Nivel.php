@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Nivel extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'nivels';
     protected $fillable = ['name', 'descripcion'];
+
+    public function preguntas()
+    {
+        return $this->hasMany(Pregunta::class);
+    }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\NivelController;
+use App\Http\Controllers\PreguntaController;
 
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
@@ -37,4 +38,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Niveles/Nuevo', [NivelController::class, 'postNivel'])->name('nivel-post');
     Route::post('/Niveles/Editar/Nivel/{id}', [NivelController::class, 'postEditNivel'])->name('nivel-edit-post');
     Route::post('/Niveles/Eliminar/Nivel/{id}', [NivelController::class, 'deleteNivel'])->name('nivel-delete');
+
+    Route::get('/MisPreguntas', [PreguntaController::class, 'getPreguntas'])->name('mispreguntas');
+    Route::post('/Preguntas/Nuevo', [PreguntaController::class, 'postPregunta'])->name('pregunta-post');
+    Route::post('/Preguntas/Editar/Pregunta/{id}', [PreguntaController::class, 'postEditPregunta'])->name('pregunta-edit-post');
+    Route::post('/Preguntas/Eliminar/Pregunta/{id}', [PreguntaController::class, 'deletePregunta'])->name('pregunta-delete');
 });

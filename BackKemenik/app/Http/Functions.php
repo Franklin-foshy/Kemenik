@@ -40,6 +40,15 @@ function permissionsUser()
                 'delete_niveles' => 'Eliminar niveles',
             ]
         ],
+        'preguntas' => [
+            'title' => 'Módulo de preguntas',
+            'keys' => [
+                'get_preguntas' => 'Ver preguntas',
+                'post_preguntas' => 'Crear preguntas',
+                'edit_preguntas' => 'Editar preguntas',
+                'delete_preguntas' => 'Eliminar preguntas',
+            ]
+        ],
     ];
 
     return $p;

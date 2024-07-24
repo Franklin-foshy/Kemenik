@@ -22,6 +22,11 @@
                         <i class="bx bx-stats me-2"></i><span key="t-dashboards">NIVELES</span>
                     </a>
                     @endif
+                    @if(kvfj(Auth::user()->rol->permissions, 'get_preguntas'))
+                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('mispreguntas') }}" id="topnav-dashboard" role="button">
+                        <i class="bx bx-stats me-2"></i><span key="t-dashboards">PREGUNTAS</span>
+                    </a>
+                    @endif
                 </ul>
             </div>
 

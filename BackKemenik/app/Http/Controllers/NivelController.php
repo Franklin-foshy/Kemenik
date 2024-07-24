@@ -17,8 +17,8 @@ class NivelController extends Controller
             ];
             return view('registrados.niveles.index', $data);
         } else {
+            return redirect()->route('home');
         }
-        return redirect()->route('home');
     }
 
     public function postNivel(Request $request)
@@ -50,4 +50,3 @@ class NivelController extends Controller
         return back()->with('message', $message)->with('icon', 'success');
     }
 }
-
