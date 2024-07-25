@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             RolTableSeeder::class,
             UserTableSeeder::class,
             NivelTableSeeder::class,
-            //PreguntaTableSeeder::class,
+            PreguntaTableSeeder::class,
+            RespuestaTableSeeder::class,
         ]);
     }
 }

@@ -49,6 +49,15 @@ function permissionsUser()
                 'delete_preguntas' => 'Eliminar preguntas',
             ]
         ],
+        'respuestas' => [
+            'title' => 'Módulo de respuestas',
+            'keys' => [
+                'get_respuestas' => 'Ver respuestas',
+                'post_respuestas' => 'Crear respuestas',
+                'edit_respuestas' => 'Editar respuestas',
+                'delete_respuestas' => 'Eliminar respuestas',
+            ]
+        ],
     ];
 
     return $p;

@@ -16,4 +16,9 @@ class Pregunta extends Model
     {
         return $this->belongsTo(Nivel::class);
     }
+
+    public function respuestas()
+    {
+        return $this->hasMany(Respuesta::class);
+    }
 }
