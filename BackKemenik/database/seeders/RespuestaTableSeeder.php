@@ -16,7 +16,7 @@ class RespuestaTableSeeder extends Seeder
         Respuesta::create([
             'pregunta_id' => 1,
             'texto_respuesta' => 5,
-            'imagen' => 'Englis City.png',
+            'imagen' => 'example.png',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()

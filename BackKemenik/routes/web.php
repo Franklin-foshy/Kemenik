@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Roles/Nuevo', [RolController::class, 'postRol'])->name('rol-post');
     Route::post('/Roles/Editar/Rol/{id}', [RolController::class, 'postEditRol'])->name('rol-edit-post');
 
-    Route::get('/Niveles', [NivelController::class, 'getNiveles'])->name('niveles');
+    Route::get('/MisNiveles', [NivelController::class, 'getMisNiveles'])->name('misniveles');
     Route::post('/Niveles/Nuevo', [NivelController::class, 'postNivel'])->name('nivel-post');
     Route::post('/Niveles/Editar/Nivel/{id}', [NivelController::class, 'postEditNivel'])->name('nivel-edit-post');
     Route::post('/Niveles/Eliminar/Nivel/{id}', [NivelController::class, 'deleteNivel'])->name('nivel-delete');

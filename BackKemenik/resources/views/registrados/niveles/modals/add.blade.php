@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('nivel-post') }}" method="post" autocomplete="off">
+                <form action="{{ route('nivel-post') }}" method="post" autocomplete="off" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-2">
                         <div class="col-md-12 col-lg-12">
@@ -19,6 +19,12 @@
                             <div class="mb-3">
                                 <label class="form-label text-uppercase" for="descripcion">Descripción del Nivel</label>
                                 <input class="form-control" type="text" name="descripcion" placeholder="Escriba la descripcion" required />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="mb-3">
+                                <label class="form-label text-uppercase" for="imagen">Imagen</label>
+                                <input class="form-control" type="file" name="imagen" />
                             </div>
                         </div>
                     </div>
