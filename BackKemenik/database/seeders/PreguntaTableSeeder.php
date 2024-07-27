@@ -17,7 +17,27 @@ class PreguntaTableSeeder extends Seeder
             'nivel_id' => 1,
             'texto_pregunta' => 'Cuantas vocales existes',
             'texto_respuesta' => 5,
-            'imagen' => 'example.png',
+            'imagen' => 'uno.png',
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Pregunta::create([
+            'nivel_id' => 1,
+            'texto_pregunta' => 'Cuantos días tiene la semana',
+            'texto_respuesta' => 7,
+            'imagen' => 'dos.png',
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        Pregunta::create([
+            'nivel_id' => 1,
+            'texto_pregunta' => 'Cual es la primera letra del abc',
+            'texto_respuesta' => 'a',
+            'imagen' => 'tres.png',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()

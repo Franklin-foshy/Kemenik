@@ -49,4 +49,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Respuestas/Nuevo', [RespuestaController::class, 'postRespuesta'])->name('respuesta-post');
     Route::post('/Respuestas/Editar/Respuesta/{id}', [RespuestaController::class, 'postEditRespuesta'])->name('respuesta-edit-post');
     Route::post('/Respuestas/Eliminar/Respuesta/{id}', [RespuestaController::class, 'deleteRespuesta'])->name('respuesta-delete');
+
+    //Usuario final
+    Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
+    Route::get('/nivel/{id}/preguntas', [PreguntaController::class, 'getPreguntasPorNivel'])->name('nivel.preguntas');
 });

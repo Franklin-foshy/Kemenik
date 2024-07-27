@@ -12,6 +12,18 @@ function kvfj($json, $key)
 function permissionsUser()
 {
     $p = [
+        'administrador' => [
+            'title' => 'Administrador',
+            'keys' => [
+                'admin' => 'Administrador',
+            ]
+        ],
+        'usuariofinal' => [
+            'title' => 'Usuario Final',
+            'keys' => [
+                'usuariofinal' => 'Usuario Final',
+            ]
+        ],
         'roles' => [
             'title' => 'Módulo de Roles',
             'keys' => [

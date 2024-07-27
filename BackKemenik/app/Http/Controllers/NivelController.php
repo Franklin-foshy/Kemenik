@@ -13,10 +13,7 @@ class NivelController extends Controller
     {
         if (kvfj(Auth::user()->rol->permissions, 'get_niveles')) {
             $niveles = Nivel::get();
-            $data = [
-                'niveles' => $niveles
-            ];
-            return view('registrados.niveles.index', $data);
+            return view('registrados.niveles.index', compact('niveles'));
         } else {
             return redirect()->route('home');
         }
@@ -71,5 +68,11 @@ class NivelController extends Controller
         $message = ($n->status == 1) ? 'Nivel habilitado satisfactoriamente' : 'Nivel inhabilitado satisfactoriamente';
         $n->save();
         return back()->with('message', $message)->with('icon', 'success');
+    }
+
+    public function getMisNivelesUsuarioFinal(Request $request)
+    {
+        $niveles = Nivel::get();
+        return view('registrados.index', compact('niveles'));
     }
 }

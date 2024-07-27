@@ -17,7 +17,7 @@ class NivelTableSeeder extends Seeder
 
             'name' => 'Nivel 1',
             'descripcion' => 'Este es el nivel uno',
-            'imagen' => 'example.png',
+            'imagen' => 'uno.png',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -27,7 +27,7 @@ class NivelTableSeeder extends Seeder
 
             'name' => 'Nivel 2',
             'descripcion' => 'Este es el nivel dos',
-            'imagen' => 'example.png',
+            'imagen' => 'dos.png',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -37,7 +37,7 @@ class NivelTableSeeder extends Seeder
 
             'name' => 'Nivel 3',
             'descripcion' => 'Este es el nivel tres',
-            'imagen' => 'example.png',
+            'imagen' => 'tres.png',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()

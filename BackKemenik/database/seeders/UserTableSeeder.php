@@ -20,7 +20,22 @@ class UserTableSeeder extends Seeder
             'name' => 'Ronald Fuentes',
             'email' => 'rdfuentes@gmail.com',
             'role_id' => 1,
-            'permissions' => '{"get_users":"on","post_users":"on","edit_users":"on","delete_users":"on","permissions_users":"on","recover_passwords_users":"on","get_roles":"on","post_roles":"on","edit_roles":"on"}',
+            'permissions' => '{}',
+            'email_verified_at' => now(),
+            'password' => \Hash::make('ontabebe'),
+            'status' => 1,
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+
+        ]);
+
+        User::create([
+
+            'name' => 'Daisy Miranda',
+            'email' => 'damiranda@gmail.com',
+            'role_id' => 2,
+            'permissions' => '{}',
             'email_verified_at' => now(),
             'password' => \Hash::make('ontabebe'),
             'status' => 1,
