@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('nivel_id')->constrained('nivels')->onDelete('cascade');
             $table->string('texto_pregunta');
             $table->string('texto_respuesta');
-            $table->string('imagen')->nullable();
             $table->smallInteger('status')->default(1);
             $table->timestamps();
         });

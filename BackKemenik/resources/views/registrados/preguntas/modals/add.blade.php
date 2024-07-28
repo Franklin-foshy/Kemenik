@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('pregunta-post') }}" method="post" autocomplete="off" enctype="multipart/form-data">
+                <form action="{{ route('pregunta-post') }}" method="post" autocomplete="off">
                     @csrf
                     <div class="row mb-2">
                         <div class="col-md-12 col-lg-12">
@@ -30,12 +30,6 @@
                                     <option value="{{ $nivel->id }}">{{ $nivel->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12">
-                            <div class="mb-3">
-                                <label class="form-label text-uppercase" for="imagen">Imagen</label>
-                                <input class="form-control" type="file" name="imagen" />
                             </div>
                         </div>
                     </div>

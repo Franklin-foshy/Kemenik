@@ -7,7 +7,7 @@
             </div>
 
             <div class="modal-body">
-                <form action="{{ route('pregunta-edit-post', $pregunta->id) }}" method="post" autocomplete="off" enctype="multipart/form-data">
+                <form action="{{ route('pregunta-edit-post', $pregunta->id) }}" method="post" autocomplete="off">
                     @csrf
                     <div class="row mb-2">
                         <div class="col-md-12 col-lg-12">
@@ -31,17 +31,6 @@
                                     <option value="{{ $nivel->id }}" @if ($nivel->id == $pregunta->nivel->id) selected @endif>{{ $nivel->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12 col-lg-12">
-                            <div class="mb-3">
-                                <label class="form-label text-uppercase" for="imagen">Imagen</label>
-                                @if($pregunta->imagen)
-                                <div class="mb-3 text-center">
-                                    <img src="{{ asset('preguntas/' . $pregunta->imagen) }}" alt="Imagen de la pregunta" style="max-width: 250px;">
-                                </div>
-                                @endif
-                                <input class="form-control" type="file" name="imagen" />
                             </div>
                         </div>
                     </div>
