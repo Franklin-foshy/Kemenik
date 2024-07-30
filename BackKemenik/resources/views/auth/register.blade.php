@@ -2,148 +2,221 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-5">
-            <div class="card overflow-hidden">
+    <div class="card">
+        <div class="card-body">
 
-                <div class="row justify-content-center p-1">
-                    <div class="col-8">
-                        <a href="/"><img src="assets/images/logo-light.png" alt="" class="img-fluid"></a>
+            <div class="row justify-content-center p-1">
+                <div class="col-md-8 col-lg-6 col-xl-3">
+                    <a href="/"><img src="assets/images/logo-light.png" alt="" class="img-fluid"></a>
+                </div>
+            </div>
+
+            <form action="{{ route('user-register') }}" method="post" autocomplete="off" class="needs-validation" novalidate>
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nombres y apellidos completos</label>
+                            <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            <div class="invalid-feedback">
+                                Por favor ingresa nombres y apellidos completos
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required>
+                            <div class="invalid-feedback">
+                                Por favor ingresa un número de teléfono
+                            </div>
+                            @error('telefono')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
-
-                <div class="card-body pt-0">
-                    <div class="p-0">
-                        <form action="{{ route('user-register') }}" method="post" autocomplete="off" class="needs-validation" novalidate>
-                            @csrf
-                            <div class="mb-1">
-                                <label for="" class="form-label">Nombres y apellidos completos</label>
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                <div class="invalid-feedback">
-                                    Por favor ingresa nombres y apellidos completos
-                                </div>
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo electrónico</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                            <div class="invalid-feedback">
+                                Por favor ingresa un correo electrónico correcto
                             </div>
-                            <div class="mb-1">
-                                <label for="" class="form-label">Correo electrónico</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-                                <div class="invalid-feedback">
-                                    Por favor ingresa correo electrónico
-                                </div>
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input id="fecha_nacimiento" type="date" class="form-control" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required>
+                            <div class="invalid-feedback">
+                                Por favor ingresa tu fecha de nacimiento
                             </div>
-                            <div class="mb-1">
-                                <label for="" class="form-label">Contraseña</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                <div class="invalid-feedback">
-                                    Por favor ingresa contraseña
-                                </div>
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            <select id="departamento" class="form-select" name="departamento" required>
+                                <option value="">Selecciona un departamento</option>
+                                <option value="Alta Verapaz" {{ old('departamento') == 'Alta Verapaz' ? 'selected' : '' }}>Alta Verapaz</option>
+                                <option value="Baja Verapaz" {{ old('departamento') == 'Baja Verapaz' ? 'selected' : '' }}>Baja Verapaz</option>
+                                <option value="Chimaltenango" {{ old('departamento') == 'Chimaltenango' ? 'selected' : '' }}>Chimaltenango</option>
+                                <option value="Chiquimula" {{ old('departamento') == 'Chiquimula' ? 'selected' : '' }}>Chiquimula</option>
+                                <option value="El Progreso" {{ old('departamento') == 'El Progreso' ? 'selected' : '' }}>El Progreso</option>
+                                <option value="Escuintla" {{ old('departamento') == 'Escuintla' ? 'selected' : '' }}>Escuintla</option>
+                                <option value="Guatemala" {{ old('departamento') == 'Guatemala' ? 'selected' : '' }}>Guatemala</option>
+                                <option value="Huehuetenango" {{ old('departamento') == 'Huehuetenango' ? 'selected' : '' }}>Huehuetenango</option>
+                                <option value="Izabal" {{ old('departamento') == 'Izabal' ? 'selected' : '' }}>Izabal</option>
+                                <option value="Jalapa" {{ old('departamento') == 'Jalapa' ? 'selected' : '' }}>Jalapa</option>
+                                <option value="Jutiapa" {{ old('departamento') == 'Jutiapa' ? 'selected' : '' }}>Jutiapa</option>
+                                <option value="Petén" {{ old('departamento') == 'Petén' ? 'selected' : '' }}>Petén</option>
+                                <option value="Quetzaltenango" {{ old('departamento') == 'Quetzaltenango' ? 'selected' : '' }}>Quetzaltenango</option>
+                                <option value="Quiché" {{ old('departamento') == 'Quiché' ? 'selected' : '' }}>Quiché</option>
+                                <option value="Retalhuleu" {{ old('departamento') == 'Retalhuleu' ? 'selected' : '' }}>Retalhuleu</option>
+                                <option value="Sacatepéquez" {{ old('departamento') == 'Sacatepéquez' ? 'selected' : '' }}>Sacatepéquez</option>
+                                <option value="San Marcos" {{ old('departamento') == 'San Marcos' ? 'selected' : '' }}>San Marcos</option>
+                                <option value="Santa Rosa" {{ old('departamento') == 'Santa Rosa' ? 'selected' : '' }}>Santa Rosa</option>
+                                <option value="Sololá" {{ old('departamento') == 'Sololá' ? 'selected' : '' }}>Sololá</option>
+                                <option value="Suchitepéquez" {{ old('departamento') == 'Suchitepéquez' ? 'selected' : '' }}>Suchitepéquez</option>
+                                <option value="Totonicapán" {{ old('departamento') == 'Totonicapán' ? 'selected' : '' }}>Totonicapán</option>
+                                <option value="Zacapa" {{ old('departamento') == 'Zacapa' ? 'selected' : '' }}>Zacapa</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor selecciona un departamento
                             </div>
-                            <div class="mb-1">
-                                <label for="" class="form-label">Repita Contraseña</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                <div class="invalid-feedback">
-                                    Por favor repite tu contraseña
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="sexo" class="form-label">Sexo</label>
+                            <select id="sexo" class="form-select" name="sexo" required>
+                                <option value="">Selecciona tu sexo</option>
+                                <option value="Masculino" {{ old('sexo') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                                <option value="Femenino" {{ old('sexo') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor selecciona tu sexo
                             </div>
-                            <div style="display: none;">
-                                <div class="col-md-12 col-lg-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="rut">Rol</label>
-                                        <select name="rol" class="form-select selectpicker" required>
-                                            <option value="2">Usuario Final</option>
-                                        </select>
-                                        </select>@error('rol') <span class="error text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="status">Estado</label>
-                                        <select name="status" class="form-select selectpicker" required>
-                                            <option value="1">Activo</option>
-                                        </select>@error('status') <span class="error text-danger">{{ $message }}</span> @enderror
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+                            <div class="invalid-feedback">
+                                Por favor ingresa contraseña
                             </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label" for="invalidCheck">
-                                    Acepto los <a data-bs-toggle="modal" data-bs-target="#myModal">Terminos de uso</a>
-                                </label>
-                                <div class="invalid-feedback">
-                                    Por favor acepta los terminos y condiciones
-                                </div>
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="password-confirm" class="form-label">Repita Contraseña</label>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <div class="invalid-feedback">
+                                Por favor repite tu contraseña
                             </div>
-
-                            <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="myModalLabel">Terminos y condiciones</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h5>Detalles</h5>
-                                            <p>Cras mattis consectetur purus sit amet fermentum.
-                                                Cras justo odio, dapibus ac facilisis in,
-                                                egestas eget quam. Morbi leo risus, porta ac
-                                                consectetur ac, vestibulum at eros.</p>
-                                            <p>Praesent commodo cursus magna, vel scelerisque
-                                                nisl consectetur et. Vivamus sagittis lacus vel
-                                                augue laoreet rutrum faucibus dolor auctor.</p>
-                                            <p>Aenean lacinia bibendum nulla sed consectetur.
-                                                Praesent commodo cursus magna, vel scelerisque
-                                                nisl consectetur et. Donec sed odio dui. Donec
-                                                ullamcorper nulla non metus auctor
-                                                fringilla.</p>
-                                            <p>Cras mattis consectetur purus sit amet fermentum.
-                                                Cras justo odio, dapibus ac facilisis in,
-                                                egestas eget quam. Morbi leo risus, porta ac
-                                                consectetur ac, vestibulum at eros.</p>
-                                            <p>Praesent commodo cursus magna, vel scelerisque
-                                                nisl consectetur et. Vivamus sagittis lacus vel
-                                                augue laoreet rutrum faucibus dolor auctor.</p>
-                                            <p>Aenean lacinia bibendum nulla sed consectetur.
-                                                Praesent commodo cursus magna, vel scelerisque
-                                                nisl consectetur et. Donec sed odio dui. Donec
-                                                ullamcorper nulla non metus auctor
-                                                fringilla.</p>
-                                            <p>Cras mattis consectetur purus sit amet fermentum.
-                                                Cras justo odio, dapibus ac facilisis in,
-                                                egestas eget quam. Morbi leo risus, porta ac
-                                                consectetur ac, vestibulum at eros.</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: none;">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="rol">Rol</label>
+                            <select name="rol" class="form-select selectpicker" required>
+                                <option value="2">Usuario Final</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-12">
+                        <div class="mb-1">
+                            <label class="form-label" for="status">Estado</label>
+                            <select name="status" class="form-select selectpicker" required>
+                                <option value="1">Activo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Acepto los <a data-bs-toggle="modal" data-bs-target="#myModal">Terminos de uso</a>
+                            </label>
+                            <div class="invalid-feedback">
+                                Por favor acepta los términos y condiciones
                             </div>
-
-                            <div class="mt-4 d-grid">
-                                <button class="btn btn-primary waves-effect btn-label waves-light" type="submit"><i class="bx bx-check label-icon"></i>REGISTRAR</button>
-                            </div>
-                        </form>
-                        <div class="mt-4 text-center">
-                            <a href="{{ route('login') }}" style="color: #0d3e66;">¿Ya tienes una cuenta? <strong>Iniciar Sesión</strong></a>
                         </div>
                     </div>
                 </div>
 
+                <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">Terminos y condiciones</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h5>Detalles</h5>
+                                <p>Cras mattis consectetur purus sit amet fermentum.
+                                    Cras justo odio, dapibus ac facilisis in,
+                                    egestas eget quam. Morbi leo risus, porta ac
+                                    consectetur ac, vestibulum at eros.</p>
+                                <p>Praesent commodo cursus magna, vel scelerisque
+                                    nisl consectetur et. Vivamus sagittis lacus vel
+                                    augue laoreet rutrum faucibus dolor auctor.</p>
+                                <p>Aenean lacinia bibendum nulla sed consectetur.
+                                    Praesent commodo cursus magna, vel scelerisque
+                                    nisl consectetur et. Donec sed odio dui. Donec
+                                    ullamcorper nulla non metus auctor
+                                    fringilla.</p>
+                                <p>Cras mattis consectetur purus sit amet fermentum.
+                                    Cras justo odio, dapibus ac facilisis in,
+                                    egestas eget quam. Morbi leo risus, porta ac
+                                    consectetur ac, vestibulum at eros.</p>
+                                <p>Praesent commodo cursus magna, vel scelerisque
+                                    nisl consectetur et. Vivamus sagittis lacus vel
+                                    augue laoreet rutrum faucibus dolor auctor.</p>
+                                <p>Aenean lacinia bibendum nulla sed consectetur.
+                                    Praesent commodo cursus magna, vel scelerisque
+                                    nisl consectetur et. Donec sed odio dui. Donec
+                                    ullamcorper nulla non metus auctor
+                                    fringilla.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-grid">
+                    <button class="btn btn-primary waves-effect btn-label waves-light" type="submit"><i class="bx bx-check label-icon"></i>REGISTRAR</button>
+                </div>
+            </form>
+
+
+            <div class="mt-4 text-center">
+                <a href="{{ route('login') }}" style="color: #0d3e66;">¿Ya tienes una cuenta? <strong>Iniciar Sesión</strong></a>
             </div>
+
         </div>
     </div>
 </div>

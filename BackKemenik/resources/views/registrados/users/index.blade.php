@@ -41,6 +41,7 @@
                                         <th>No.</th>
                                         <th>Nombre y Apellidos</th>
                                         <th>Rol</th>
+                                        <th>Teléfono</th>
                                         <th>Correo Electrónico</th>
                                         <th>Estado</th>
                                         <th class="text-center">Acciones</th>
@@ -49,7 +50,6 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                     @include('registrados.users.modals.edit')
-                                    @include('registrados.users.modals.permissions')
                                     <tr class="align-middle">
                                         <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
@@ -57,10 +57,17 @@
                                             @if ($user->rol->id == 1)
                                             <span class="badge bg-danger">Administrador</span>
                                             @else
-                                            <span class="badge bg-primary">Usuario Final</span>
+                                            <span class="badge bg-info">Usuario Final</span>
                                             @endif
                                         </td>
-                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->telefono }}</td>
+                                        <td>
+                                            @if ($user->email)
+                                            {{ $user->email }}
+                                            @else
+                                            <span class="badge bg-danger">Sin correo</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             @if ($user->status == 1)
                                             <span class="badge bg-success">Activo</span>
@@ -81,13 +88,6 @@
                                                         </button>
                                                     </li>
                                                     @endif
-                                                    @if(kvfj(Auth::user()->rol->permissions, 'permissions_users'))
-                                                    <li>
-                                                        <button class="dropdown-item pointer btn-sm" data-bs-toggle="modal" data-bs-target="#permissionUser{{ $user->id }}">
-                                                            <i class="fas fa-key"></i>&nbsp; Permisos
-                                                        </button>
-                                                    </li>
-                                                    @endif
                                                     @if(kvfj(Auth::user()->rol->permissions, 'delete_users'))
                                                     <li>
                                                         <form action="{{ route('user-delete', $user->id) }}" method="post" autocomplete="off" id="delete_form_{{ $user->id }}">
@@ -103,17 +103,6 @@
                                                                 @endswitch
                                                             </button>
                                                         </form>
-                                                    </li>
-                                                    @endif
-                                                    @if(kvfj(Auth::user()->rol->permissions, 'recover_passwords_users'))
-                                                    <li>
-                                                        @if(kvfj(Auth::user()->rol->permissions, 'recover_passwords_users'))
-                                                        <form action="{{ route('recover-password', $user->email) }}" method="post" autocomplete="off" id="recover_form_{{ $user->id }}">
-                                                            @csrf
-                                                            <button class="dropdown-item pointer btn-sm" type="button" onclick="confirmRecover({{$user->id}})">
-                                                                <i class="fas fa-lock"></i> &nbsp; Recuperar Contraseña</button>
-                                                        </form>
-                                                        @endif
                                                     </li>
                                                     @endif
                                                 </ul>

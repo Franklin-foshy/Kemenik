@@ -8,28 +8,35 @@ use App\Http\Controllers\NivelController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\RespuestaController;
 
+use App\Http\Controllers\Auth\LoginController;
+
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
     return view('welcome');
 });
 
-//verificación de contraseña
-Auth::routes(['verify' => true]);
+// Validación por correo electrónico
+Auth::routes(['verify' => false]);
 
-// Ruta, Valida inicio de sesión
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
+// Redirecciona a esta ruta despues de que se valide el correo electrónico
+/* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified'); */
 
-// Ruta, Valida inicio de sesión al registrarse manualmente desde App 
+// Registro usuario sin estar logeo
 Route::post('/register', [UserController::class, 'postUser'])->name('user-register');
 
+// Rutas integradas por inicio de sesión con teléfono
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+// Fin rutas integradas por inicio de sesión con teléfono
+
+// Rutas protegidas
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/Usuarios', [UserController::class, 'getUsers'])->name('users');
     Route::post('/Usuarios/Nuevo', [UserController::class, 'postUser'])->name('user-post');
     Route::post('/Usuarios/Editar/Usuario/{id}', [UserController::class, 'postEditUser'])->name('user-edit-post');
     Route::post('/Usuarios/Eliminar/Usuario/{id}', [UserController::class, 'deleteUser'])->name('user-delete');
-    Route::post('/Usuarios/Permisos/Usuario/{id}', [UserController::class, 'permissionsUser'])->name('user-permissions-post');
-    Route::post('/Recuperar/Contraseña/{email}', [UserController::class, 'sendRecoverPassword'])->name('recover-password');
 
     Route::get('/Roles', [RolController::class, 'getRoles'])->name('roles');
     Route::post('/Roles/Nuevo', [RolController::class, 'postRol'])->name('rol-post');
@@ -50,7 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Respuestas/Editar/Respuesta/{id}', [RespuestaController::class, 'postEditRespuesta'])->name('respuesta-edit-post');
     Route::post('/Respuestas/Eliminar/Respuesta/{id}', [RespuestaController::class, 'deleteRespuesta'])->name('respuesta-delete');
 
-    //Usuario final
+    //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
     Route::get('/nivel/{id}/preguntas', [PreguntaController::class, 'getPreguntasPorNivel'])->name('nivel.preguntas');
 });

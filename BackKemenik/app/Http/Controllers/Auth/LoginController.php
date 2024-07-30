@@ -3,52 +3,50 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function showLoginForm()
     {
-        $this->middleware('guest')->except('logout');
-        $this->middleware('auth')->only('logout');
+        return view('auth.login');
     }
 
-    protected function authenticated(Request $request, $user)
+    public function login(Request $request)
     {
-        // Verificar si el usuario está inactivo
-        if ($user->status == 0) {
-            Auth::logout(); // Cerrar sesión si el usuario está inactivo
-            return redirect()->route('login')->with('message', 'Tu cuenta está inactiva, por favor contacta al administador')->with('icon', 'error');
+        $credentials = $request->validate([
+            'telefono' => ['required', 'numeric', 'digits:8'],
+            'password' => ['required'],
+        ]);
+
+        $user = User::where('telefono', $credentials['telefono'])->first();
+
+        if ($user && $user->status == 0) {
+            return back()->withErrors([
+                'telefono' => 'Tu cuenta está inactiva. Por favor, contacta al administrador.',
+            ]);
         }
 
-        // Si el usuario está activo, puedes realizar otras acciones aquí si es necesario
-        return redirect()->intended($this->redirectPath())->with('message', 'Bienvenido!')->with('icon', 'success');
+        if (Auth::attempt(['telefono' => $credentials['telefono'], 'password' => $credentials['password']])) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('home');
+        }
+
+        return back()->withErrors([
+            'telefono' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

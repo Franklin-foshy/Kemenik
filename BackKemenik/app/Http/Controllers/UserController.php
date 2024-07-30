@@ -29,21 +29,31 @@ class UserController extends Controller
     public function postUser(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|max:100|unique:users',
+            'email' => 'nullable|email|max:50',
+            'telefono' => 'required|max:8|unique:users',
             'password' => 'required|min:8|confirmed',
+        ], [
+            'email.email' => 'El formato del correo electrónico no es válido.',
+            'email.max' => 'El correo electrónico no debe ser mayor a 50 caracteres.',
+            'telefono.required' => 'El campo teléfono es obligatorio.',
+            'telefono.max' => 'El teléfono no debe ser mayor a 8 caracteres.',
+            'telefono.unique' => 'El teléfono ya está registrado.',
+            'password.required' => 'El campo contraseña es obligatorio.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.'
         ]);
 
         //dd($request->all());
 
         $u = new User;
         $u->name = $request->name;
+        $u->telefono = $request->telefono;
         $u->email = $request->email;
+        $u->fecha_nacimiento = $request->fecha_nacimiento;
+        $u->departamento = $request->departamento;
+        $u->sexo = $request->sexo;
         $u->password = Hash::make($request->password);
         $u->role_id = $request->rol;
-
-        $r = Rol::where('id', $request->rol)->first();
-        $u->permissions = $r->permissions;
-
         $u->status = $request->status;
 
         if (Auth::check()) {
@@ -60,24 +70,37 @@ class UserController extends Controller
                 $u->user_id = 1;
                 $u->save();
                 Auth::login($u);
-                return redirect()->route('home')->with('message', 'Usuario creado ADMIN')->with('icon', 'success');
+                return redirect()->route('misniveles')->with('message', 'Usuario creado ADMIN')->with('icon', 'success');
             }
         }
     }
 
     public function postEditUser(Request $request, $id)
     {
+        $request->validate([
+            'email' => 'nullable|email|max:50',
+            'telefono' => 'required|max:8',
+            'password' => 'nullable|min:8',
+        ], [
+            'email.email' => 'El formato del correo electrónico no es válido.',
+            'email.max' => 'El correo electrónico no debe ser mayor a 50 caracteres.',
+            'telefono.max' => 'El teléfono no debe ser mayor a 8 caracteres.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        ]);
+
         $u = User::findOrFail($id);
         $u->name = $request->name;
+        $u->telefono = $request->telefono;
         $u->email = $request->email;
-        if ($request->password) {
+        $u->fecha_nacimiento = $request->fecha_nacimiento;
+        $u->departamento = $request->departamento;
+        $u->sexo = $request->sexo;
+
+        if ($request->filled('password')) {
             $u->password = Hash::make($request->password);
         }
+
         $u->role_id = $request->rol;
-
-        $r = Rol::where('id', $request->rol)->first();
-        $u->permissions = $r->permissions;
-
         $u->save();
 
         return back()->with('message', 'Usuario actualizado satisfactoriamente')->with('icon', 'success');
@@ -90,32 +113,5 @@ class UserController extends Controller
         $message = ($u->status == 1) ? 'Usuario habilitado satisfactoriamente' : 'Usuario inhabilitado satisfactoriamente';
         $u->save();
         return back()->with('message', $message)->with('icon', 'success');
-    }
-
-    public function permissionsUser(Request $request, $id)
-    {
-        $u = User::findOrFail($id);
-        $u->permissions = json_encode($request->except(['_token']));
-        $u->save();
-        return back()->with('message', 'Permisos actualizados satisfactoriamente')->with('icon', 'success');
-    }
-
-    public function sendRecoverPassword($email)
-    {
-        $user = User::where('email', $email)->first();
-
-        $new_password = Str::random(8);
-        $user->password = Hash::make($new_password);
-        $user->save();
-
-        $data = [
-            'user' => $user,
-            'password' => $new_password
-        ];
-
-        $send = [$user->email];
-
-        Mail::to($send)->send(new UserSendNewPassword($data));
-        return back()->with('message', 'Contraseña reestablecida satisfactoriamente')->with('icon', 'success');
     }
 }

@@ -39,8 +39,6 @@ function permissionsUser()
                 'post_users' => 'Crear usuarios',
                 'edit_users' => 'Editar usuarios',
                 'delete_users' => 'Suspender usuarios',
-                'permissions_users' => 'Modificar los permisos del usuario',
-                'recover_passwords_users' => 'Reestablecer contraseña'
             ]
         ],
         'niveles' => [
