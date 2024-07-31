@@ -46,36 +46,6 @@
                             </div>
                             <div class="col-md-12 col-lg-12">
                                 <div class="mb-3">
-                                    <label class="form-label text-uppercase" for="departamento">Departamento</label>
-                                    <select name="departamento" class="form-select selectpicker" required>
-                                        <option value="">-- SELECCIONE --</option>
-                                        <option value="Alta Verapaz" @if ($user->departamento == 'Alta Verapaz') selected @endif>Alta Verapaz</option>
-                                        <option value="Baja Verapaz" @if ($user->departamento == 'Baja Verapaz') selected @endif>Baja Verapaz</option>
-                                        <option value="Chimaltenango" @if ($user->departamento == 'Chimaltenango') selected @endif>Chimaltenango</option>
-                                        <option value="Chiquimula" @if ($user->departamento == 'Chiquimula') selected @endif>Chiquimula</option>
-                                        <option value="El Progreso" @if ($user->departamento == 'El Progreso') selected @endif>El Progreso</option>
-                                        <option value="Escuintla" @if ($user->departamento == 'Escuintla') selected @endif>Escuintla</option>
-                                        <option value="Guatemala" @if ($user->departamento == 'Guatemala') selected @endif>Guatemala</option>
-                                        <option value="Huehuetenango" @if ($user->departamento == 'Huehuetenango') selected @endif>Huehuetenango</option>
-                                        <option value="Izabal" @if ($user->departamento == 'Izabal') selected @endif>Izabal</option>
-                                        <option value="Jalapa" @if ($user->departamento == 'Jalapa') selected @endif>Jalapa</option>
-                                        <option value="Jutiapa" @if ($user->departamento == 'Jutiapa') selected @endif>Jutiapa</option>
-                                        <option value="Petén" @if ($user->departamento == 'Petén') selected @endif>Petén</option>
-                                        <option value="Quetzaltenango" @if ($user->departamento == 'Quetzaltenango') selected @endif>Quetzaltenango</option>
-                                        <option value="Quiché" @if ($user->departamento == 'Quiché') selected @endif>Quiché</option>
-                                        <option value="Retalhuleu" @if ($user->departamento == 'Retalhuleu') selected @endif>Retalhuleu</option>
-                                        <option value="Sacatepéquez" @if ($user->departamento == 'Sacatepéquez') selected @endif>Sacatepéquez</option>
-                                        <option value="San Marcos" @if ($user->departamento == 'San Marcos') selected @endif>San Marcos</option>
-                                        <option value="Santa Rosa" @if ($user->departamento == 'Santa Rosa') selected @endif>Santa Rosa</option>
-                                        <option value="Sololá" @if ($user->departamento == 'Sololá') selected @endif>Sololá</option>
-                                        <option value="Suchitepéquez" @if ($user->departamento == 'Suchitepéquez') selected @endif>Suchitepéquez</option>
-                                        <option value="Totonicapán" @if ($user->departamento == 'Totonicapán') selected @endif>Totonicapán</option>
-                                        <option value="Zacapa" @if ($user->departamento == 'Zacapa') selected @endif>Zacapa</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-lg-12">
-                                <div class="mb-3">
                                     <label class="form-label text-uppercase" for="sexo">Sexo</label>
                                     <select name="sexo" class="form-select selectpicker" required>
                                         <option value="">-- SELECCIONE --</option>

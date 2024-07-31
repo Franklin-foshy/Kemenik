@@ -10,7 +10,7 @@ class Nivel extends Model
     use HasFactory;
 
     protected $table = 'nivels';
-    protected $fillable = ['name', 'descripcion', 'imagen'];
+    protected $fillable = ['name', 'descripcion', 'imagen','status'];
 
     public function preguntas()
     {

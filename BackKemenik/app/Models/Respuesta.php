@@ -10,7 +10,7 @@ class Respuesta extends Model
     use HasFactory;
 
     protected $table = 'respuestas';
-    protected $fillable = ['pregunta_id', 'texto_respuesta', 'imagen'];
+    protected $fillable = ['pregunta_id','texto_respuesta','imagen','status'];
 
     public function pregunta()
     {

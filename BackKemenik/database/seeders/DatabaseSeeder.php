@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
             NivelTableSeeder::class,
             PreguntaTableSeeder::class,
             RespuestaTableSeeder::class,
+            PaisTableSeeder::class,
+            DepartamentoTableSeeder::class,
+            MunicipioTableSeeder::class,
         ]);
     }
 }

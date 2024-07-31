@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="email" class="form-label">Correo electrónico</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
@@ -53,45 +53,12 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="mb-3">
                             <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
                             <input id="fecha_nacimiento" type="date" class="form-control" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required>
                             <div class="invalid-feedback">
                                 Por favor ingresa tu fecha de nacimiento
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="mb-3">
-                            <label for="departamento" class="form-label">Departamento</label>
-                            <select id="departamento" class="form-select" name="departamento" required>
-                                <option value="">Selecciona un departamento</option>
-                                <option value="Alta Verapaz" {{ old('departamento') == 'Alta Verapaz' ? 'selected' : '' }}>Alta Verapaz</option>
-                                <option value="Baja Verapaz" {{ old('departamento') == 'Baja Verapaz' ? 'selected' : '' }}>Baja Verapaz</option>
-                                <option value="Chimaltenango" {{ old('departamento') == 'Chimaltenango' ? 'selected' : '' }}>Chimaltenango</option>
-                                <option value="Chiquimula" {{ old('departamento') == 'Chiquimula' ? 'selected' : '' }}>Chiquimula</option>
-                                <option value="El Progreso" {{ old('departamento') == 'El Progreso' ? 'selected' : '' }}>El Progreso</option>
-                                <option value="Escuintla" {{ old('departamento') == 'Escuintla' ? 'selected' : '' }}>Escuintla</option>
-                                <option value="Guatemala" {{ old('departamento') == 'Guatemala' ? 'selected' : '' }}>Guatemala</option>
-                                <option value="Huehuetenango" {{ old('departamento') == 'Huehuetenango' ? 'selected' : '' }}>Huehuetenango</option>
-                                <option value="Izabal" {{ old('departamento') == 'Izabal' ? 'selected' : '' }}>Izabal</option>
-                                <option value="Jalapa" {{ old('departamento') == 'Jalapa' ? 'selected' : '' }}>Jalapa</option>
-                                <option value="Jutiapa" {{ old('departamento') == 'Jutiapa' ? 'selected' : '' }}>Jutiapa</option>
-                                <option value="Petén" {{ old('departamento') == 'Petén' ? 'selected' : '' }}>Petén</option>
-                                <option value="Quetzaltenango" {{ old('departamento') == 'Quetzaltenango' ? 'selected' : '' }}>Quetzaltenango</option>
-                                <option value="Quiché" {{ old('departamento') == 'Quiché' ? 'selected' : '' }}>Quiché</option>
-                                <option value="Retalhuleu" {{ old('departamento') == 'Retalhuleu' ? 'selected' : '' }}>Retalhuleu</option>
-                                <option value="Sacatepéquez" {{ old('departamento') == 'Sacatepéquez' ? 'selected' : '' }}>Sacatepéquez</option>
-                                <option value="San Marcos" {{ old('departamento') == 'San Marcos' ? 'selected' : '' }}>San Marcos</option>
-                                <option value="Santa Rosa" {{ old('departamento') == 'Santa Rosa' ? 'selected' : '' }}>Santa Rosa</option>
-                                <option value="Sololá" {{ old('departamento') == 'Sololá' ? 'selected' : '' }}>Sololá</option>
-                                <option value="Suchitepéquez" {{ old('departamento') == 'Suchitepéquez' ? 'selected' : '' }}>Suchitepéquez</option>
-                                <option value="Totonicapán" {{ old('departamento') == 'Totonicapán' ? 'selected' : '' }}>Totonicapán</option>
-                                <option value="Zacapa" {{ old('departamento') == 'Zacapa' ? 'selected' : '' }}>Zacapa</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Por favor selecciona un departamento
                             </div>
                         </div>
                     </div>

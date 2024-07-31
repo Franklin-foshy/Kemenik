@@ -10,7 +10,7 @@ class Pregunta extends Model
     use HasFactory;
 
     protected $table = 'preguntas';
-    protected $fillable = ['nivel_id','texto_pregunta', 'texto_respuesta', 'imagen'];
+    protected $fillable = ['nivel_id','texto_pregunta','texto_respuesta','status'];
 
     public function nivel()
     {

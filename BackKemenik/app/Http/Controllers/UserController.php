@@ -50,7 +50,6 @@ class UserController extends Controller
         $u->telefono = $request->telefono;
         $u->email = $request->email;
         $u->fecha_nacimiento = $request->fecha_nacimiento;
-        $u->departamento = $request->departamento;
         $u->sexo = $request->sexo;
         $u->password = Hash::make($request->password);
         $u->role_id = $request->rol;
@@ -93,7 +92,6 @@ class UserController extends Controller
         $u->telefono = $request->telefono;
         $u->email = $request->email;
         $u->fecha_nacimiento = $request->fecha_nacimiento;
-        $u->departamento = $request->departamento;
         $u->sexo = $request->sexo;
 
         if ($request->filled('password')) {

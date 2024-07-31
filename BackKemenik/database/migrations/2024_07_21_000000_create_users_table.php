@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('telefono')->unique();
             $table->string('email')->nullable();
             $table->date('fecha_nacimiento');
-            $table->text('departamento');
             $table->text('sexo');
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')
