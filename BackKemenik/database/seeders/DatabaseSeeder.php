@@ -13,14 +13,14 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            PaisTableSeeder::class,
+            DepartamentoTableSeeder::class,
+            MunicipioTableSeeder::class,
             RolTableSeeder::class,
             UserTableSeeder::class,
             NivelTableSeeder::class,
             PreguntaTableSeeder::class,
             RespuestaTableSeeder::class,
-            PaisTableSeeder::class,
-            DepartamentoTableSeeder::class,
-            MunicipioTableSeeder::class,
         ]);
     }
 }

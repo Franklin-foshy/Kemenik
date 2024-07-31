@@ -44,6 +44,85 @@
                                     <input class="form-control" type="date" name="fecha_nacimiento" placeholder="Escriba la fecha de nacimiento" required value="{{ $user->fecha_nacimiento }}">
                                 </div>
                             </div>
+
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3">
+                                    <label for="pais" class="form-label">País</label>
+                                    <select id="paisEdit" name="pais_id" class="form-control" required>
+                                        <option value="">Selecciona tu país</option>
+                                        @foreach($paises as $pais)
+                                        <option value="{{ $pais->id }}">{{ $pais->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor selecciona tu país
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3" id="departamento-container-edit" style="display:none;">
+                                    <label for="departamento" class="form-label">Departamento</label>
+                                    <select id="departamentoEdit" name="departamento_id" class="form-control">
+                                        <!-- Opciones de departamentos cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3" id="municipio-container-edit" style="display:none;">
+                                    <label for="municipio" class="form-label">Municipio</label>
+                                    <select id="municipioEdit" name="municipio_id" class="form-control">
+                                        <!-- Opciones de municipios cargadas dinámicamente -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <script>
+                                document.getElementById('paisEdit').addEventListener('change', function() {
+                                    const paisId = this.value;
+
+                                    if (paisId == 185) { // ID de Guatemala
+                                        document.getElementById('departamento-container-edit').style.display = 'block';
+                                        // Cargar los departamentos vía AJAX
+                                        fetch(`/getDepartamentos/${paisId}`)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                let departamentoSelect = document.getElementById('departamentoEdit');
+                                                departamentoSelect.innerHTML = '';
+                                                data.forEach(departamento => {
+                                                    let option = document.createElement('option');
+                                                    option.value = departamento.id;
+                                                    option.text = departamento.name;
+                                                    departamentoSelect.appendChild(option);
+                                                });
+                                            });
+                                    } else {
+                                        document.getElementById('departamento-container-edit').style.display = 'none';
+                                        document.getElementById('municipio-container-edit').style.display = 'none';
+                                    }
+                                });
+
+                                document.getElementById('departamentoEdit').addEventListener('change', function() {
+                                    const departamentoId = this.value;
+
+                                    if (departamentoId) {
+                                        document.getElementById('municipio-container-edit').style.display = 'block';
+                                        // Cargar los municipios vía AJAX
+                                        fetch(`/getMunicipios/${departamentoId}`)
+                                            .then(response => response.json())
+                                            .then(data => {
+                                                let municipioSelect = document.getElementById('municipioEdit');
+                                                municipioSelect.innerHTML = '';
+                                                data.forEach(municipio => {
+                                                    let option = document.createElement('option');
+                                                    option.value = municipio.id;
+                                                    option.text = municipio.name;
+                                                    municipioSelect.appendChild(option);
+                                                });
+                                            });
+                                    }
+                                });
+                            </script>
+
                             <div class="col-md-12 col-lg-12">
                                 <div class="mb-3">
                                     <label class="form-label text-uppercase" for="sexo">Sexo</label>

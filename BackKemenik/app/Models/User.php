@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<int, string>
      */
-    protected $fillable = ['name', 'telefono', 'email', 'fecha_nacimiento', 'sexo', 'role_id', 'permissions', 'email_verified_at', 'password', 'status', 'user_id', 'remember_token'];
+    protected $fillable = ['name', 'telefono', 'email', 'fecha_nacimiento', 'pais_id', 'departamento_id', 'municipio_id', 'sexo', 'role_id', 'permissions', 'email_verified_at', 'password', 'status', 'user_id', 'remember_token'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +45,20 @@ class User extends Authenticatable implements MustVerifyEmail
     public function rol()
     {
         return $this->hasOne(Rol::class, 'id', 'role_id');
+    }
+
+    public function pais()
+    {
+        return $this->hasOne(Pais::class, 'id', 'pais_id');
+    }
+
+    public function departamento()
+    {
+        return $this->hasOne(Departamento::class, 'id', 'departamento_id');
+    }
+
+    public function municipio()
+    {
+        return $this->hasOne(Municipio::class, 'id', 'municipio_id');
     }
 }

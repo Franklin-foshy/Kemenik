@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Pais;
+use App\Models\Departamento;
+use App\Models\Municipio;
 
 
 class UserController extends Controller
@@ -20,10 +23,29 @@ class UserController extends Controller
         if (kvfj(Auth::user()->rol->permissions, 'get_users')) {
             $users = User::with(['rol'])->orderBy('id', 'desc')->get();
             $roles = Rol::orderBy('name', 'asc')->get();
-            return view('registrados.users.index', compact('users', 'roles'));
+            $paises = Pais::orderBy('name', 'asc')->get();
+            return view('registrados.users.index', compact('users', 'roles', 'paises'));
         } else {
             return redirect()->route('home');
         }
+    }
+
+    public function showRegisterForm()
+    {
+        $paises = Pais::orderBy('name', 'asc')->get();
+        return view('auth.register', compact('paises'));
+    }
+
+    public function getDepartamentos($pais_id)
+    {
+        $departamentos = Departamento::where('pais_id', $pais_id)->orderBy('name', 'asc')->get();
+        return response()->json($departamentos);
+    }
+
+    public function getMunicipios($departamento_id)
+    {
+        $municipios = Municipio::where('departamento_id', $departamento_id)->orderBy('name', 'asc')->get();
+        return response()->json($municipios);
     }
 
     public function postUser(Request $request)
@@ -50,6 +72,9 @@ class UserController extends Controller
         $u->telefono = $request->telefono;
         $u->email = $request->email;
         $u->fecha_nacimiento = $request->fecha_nacimiento;
+        $u->pais_id = $request->pais_id;
+        $u->departamento_id = $request->departamento_id;
+        $u->municipio_id = $request->municipio_id;
         $u->sexo = $request->sexo;
         $u->password = Hash::make($request->password);
         $u->role_id = $request->rol;
@@ -92,6 +117,9 @@ class UserController extends Controller
         $u->telefono = $request->telefono;
         $u->email = $request->email;
         $u->fecha_nacimiento = $request->fecha_nacimiento;
+        $u->pais_id = $request->pais_id;
+        $u->departamento_id = $request->departamento_id;
+        $u->municipio_id = $request->municipio_id;
         $u->sexo = $request->sexo;
 
         if ($request->filled('password')) {

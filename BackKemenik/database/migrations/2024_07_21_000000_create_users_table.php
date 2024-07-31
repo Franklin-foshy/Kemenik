@@ -17,6 +17,21 @@ return new class extends Migration
             $table->integer('telefono')->unique();
             $table->string('email')->nullable();
             $table->date('fecha_nacimiento');
+            $table->unsignedBigInteger('pais_id')->nullable();
+            $table->unsignedBigInteger('departamento_id')->nullable();
+            $table->unsignedBigInteger('municipio_id')->nullable();
+            $table->foreign('pais_id')
+                ->references('id')->on('paiss')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->foreign('departamento_id')
+                ->references('id')->on('departamentos')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->foreign('municipio_id')
+                ->references('id')->on('municipios')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
             $table->text('sexo');
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')

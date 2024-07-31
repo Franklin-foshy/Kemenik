@@ -63,6 +63,87 @@
                         </div>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="mb-3">
+                            <label for="pais" class="form-label">País</label>
+                            <select id="pais" name="pais_id" class="form-control" required>
+                                <option value="">Selecciona tu país</option>
+                                @foreach($paises as $pais)
+                                <option value="{{ $pais->id }}">{{ $pais->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor selecciona tu país
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3" id="departamento-container" style="display:none;">
+                            <label for="departamento" class="form-label">Departamento</label>
+                            <select id="departamento" name="departamento_id" class="form-control">
+                                <!-- Opciones de departamentos cargadas dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="mb-3" id="municipio-container" style="display:none;">
+                            <label for="municipio" class="form-label">Municipio</label>
+                            <select id="municipio" name="municipio_id" class="form-control">
+                                <!-- Opciones de municipios cargadas dinámicamente -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.getElementById('pais').addEventListener('change', function() {
+                        const paisId = this.value;
+
+                        if (paisId == 185) { // ID de Guatemala
+                            document.getElementById('departamento-container').style.display = 'block';
+                            // Cargar los departamentos vía AJAX
+                            fetch(`/getDepartamentos/${paisId}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    let departamentoSelect = document.getElementById('departamento');
+                                    departamentoSelect.innerHTML = '';
+                                    data.forEach(departamento => {
+                                        let option = document.createElement('option');
+                                        option.value = departamento.id;
+                                        option.text = departamento.name;
+                                        departamentoSelect.appendChild(option);
+                                    });
+                                });
+                        } else {
+                            document.getElementById('departamento-container').style.display = 'none';
+                            document.getElementById('municipio-container').style.display = 'none';
+                        }
+                    });
+
+                    document.getElementById('departamento').addEventListener('change', function() {
+                        const departamentoId = this.value;
+
+                        if (departamentoId) {
+                            document.getElementById('municipio-container').style.display = 'block';
+                            // Cargar los municipios vía AJAX
+                            fetch(`/getMunicipios/${departamentoId}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    let municipioSelect = document.getElementById('municipio');
+                                    municipioSelect.innerHTML = '';
+                                    data.forEach(municipio => {
+                                        let option = document.createElement('option');
+                                        option.value = municipio.id;
+                                        option.text = municipio.name;
+                                        municipioSelect.appendChild(option);
+                                    });
+                                });
+                        }
+                    });
+                </script>
+
                 <div class="row">
                     <div class="col-md-4">
                         <div class="mb-3">

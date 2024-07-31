@@ -21,8 +21,14 @@ Auth::routes(['verify' => false]);
 // Redirecciona a esta ruta despues de que se valide el correo electrónico
 /* Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified'); */
 
-// Registro usuario sin estar logeo
+// Registro usuario sin estar logeado
 Route::post('/register', [UserController::class, 'postUser'])->name('user-register');
+
+// Obtener paises, departamentos y municipios dinámicamente
+Route::get('/register', [UserController::class, 'showRegisterForm'])->name('register');
+Route::get('/getDepartamentos/{pais_id}', [UserController::class, 'getDepartamentos'])->name('get.departamentos');
+Route::get('/getMunicipios/{departamento_id}', [UserController::class, 'getMunicipios'])->name('get.municipios');
+
 
 // Rutas integradas por inicio de sesión con teléfono
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

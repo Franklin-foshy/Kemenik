@@ -35,7 +35,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive mb-0" data-pattern="priority-columns">
-                            <table class="table data-table table-striped">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
                                 <thead>
                                     <tr class="text-nowrap">
                                         <th>No.</th>
@@ -43,6 +43,9 @@
                                         <th>Rol</th>
                                         <th>Teléfono</th>
                                         <th>Correo Electrónico</th>
+                                        <th>País</th>
+                                        <th>Departamento</th>
+                                        <th>Município</th>
                                         <th>Estado</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
@@ -66,6 +69,21 @@
                                             {{ $user->email }}
                                             @else
                                             <span class="badge bg-danger">Sin correo</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->pais->name }}</td>
+                                        <td>
+                                            @if ($user->departamento_id)
+                                            {{ $user->departamento->name }}
+                                            @else
+                                            <span class="badge bg-danger">Vacio</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($user->municipio_id)
+                                            {{ $user->municipio->name }}
+                                            @else
+                                            <span class="badge bg-danger">Vacio</span>
                                             @endif
                                         </td>
                                         <td>
