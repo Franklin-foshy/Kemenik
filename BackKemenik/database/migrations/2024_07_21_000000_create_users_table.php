@@ -38,6 +38,8 @@ return new class extends Migration
                 ->references('id')->on('rols')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('comunidad')->nullable();
+            $table->string('etnia');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->smallInteger('status');

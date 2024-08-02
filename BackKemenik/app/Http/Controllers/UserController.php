@@ -76,6 +76,8 @@ class UserController extends Controller
         $u->departamento_id = $request->departamento_id;
         $u->municipio_id = $request->municipio_id;
         $u->sexo = $request->sexo;
+        $u->comunidad = $request->comunidad;
+        $u->etnia = $request->etnia;
         $u->password = Hash::make($request->password);
         $u->role_id = $request->rol;
         $u->status = $request->status;
@@ -121,6 +123,8 @@ class UserController extends Controller
         $u->departamento_id = $request->departamento_id;
         $u->municipio_id = $request->municipio_id;
         $u->sexo = $request->sexo;
+        $u->comunidad = $request->comunidad;
+        $u->etnia = $request->etnia;
 
         if ($request->filled('password')) {
             $u->password = Hash::make($request->password);

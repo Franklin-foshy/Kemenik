@@ -128,8 +128,26 @@
                                     <label class="form-label text-uppercase" for="sexo">Sexo</label>
                                     <select name="sexo" class="form-select selectpicker" required>
                                         <option value="">-- SELECCIONE --</option>
-                                        <option value="Masculino" @if ($user->sexo == 'Masculino') selected @endif>Masculino</option>
-                                        <option value="Femenino" @if ($user->sexo == 'Femenino') selected @endif>Femenino</option>
+                                        <option value="Hombre" @if ($user->sexo == 'Hombre') selected @endif>Hombre</option>
+                                        <option value="Mujer" @if ($user->sexo == 'Mujer') selected @endif>Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3">
+                                    <label class="form-label text-uppercase" for="comunidad">Comunidad</label>
+                                    <input class="form-control" type="text" name="comunidad" placeholder="Escriba la comunidad" value="{{ $user->comunidad }}" />
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3">
+                                    <label class="form-label text-uppercase" for="etnia">Grupo etnico</label>
+                                    <select name="etnia" class="form-select selectpicker" required>
+                                        <option value="">-- SELECCIONE --</option>
+                                        <option value="Maya" @if ($user->etnia == 'Maya') selected @endif>Maya</option>
+                                        <option value="Xinka" @if ($user->etnia == 'Xinka') selected @endif>Xinka</option>
+                                        <option value="Garifuna" @if ($user->etnia == 'Garifuna') selected @endif>Garifuna</option>
+                                        <option value="Ladino" @if ($user->etnia == 'Ladino') selected @endif>Ladino</option>
                                     </select>
                                 </div>
                             </div>

@@ -44,7 +44,7 @@
                                     <input class="form-control" type="date" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" placeholder="Escriba la fecha de nacimiento" required>
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12 col-lg-12">
                                 <div class="mb-3">
                                     <label for="pais" class="form-label">País</label>
@@ -75,7 +75,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <script>
                                 document.getElementById('pais').addEventListener('change', function() {
                                     const paisId = this.value;
@@ -128,9 +128,33 @@
                                     <label for="sexo" class="form-label">Sexo</label>
                                     <select id="sexo" class="form-select" name="sexo" required>
                                         <option value="">Selecciona tu sexo</option>
-                                        <option value="Masculino" {{ old('sexo') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
-                                        <option value="Femenino" {{ old('sexo') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                                        <option value="Hombre" {{ old('sexo') == 'Hombre' ? 'selected' : '' }}>Hombre</option>
+                                        <option value="Mujer" {{ old('sexo') == 'Mujer' ? 'selected' : '' }}>Mujer</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3">
+                                    <label for="comunidad" class="form-label">Comunidad</label>
+                                    <input id="comunidad" type="text" class="form-control" name="comunidad" value="{{ old('comunidad') }}">
+                                    <div class="invalid-feedback">
+                                        Por favor ingresa nombres y apellidos completos
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-12">
+                                <div class="mb-3">
+                                    <label for="etnia" class="form-label">Grupo etnico</label>
+                                    <select id="etnia" class="form-select" name="etnia" required>
+                                        <option value="">Selecciona tu etnia</option>
+                                        <option value="Maya" {{ old('etnia') == 'Maya' ? 'selected' : '' }}>Maya</option>
+                                        <option value="Xinka" {{ old('etnia') == 'Xinka' ? 'selected' : '' }}>Xinka</option>
+                                        <option value="Garifuna" {{ old('etnia') == 'Garifuna' ? 'selected' : '' }}>Garifuna</option>
+                                        <option value="Ladino" {{ old('etnia') == 'Ladino' ? 'selected' : '' }}>Ladino</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor selecciona tu grupo etnico
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">
