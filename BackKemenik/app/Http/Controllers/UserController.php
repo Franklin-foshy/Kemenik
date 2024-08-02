@@ -24,7 +24,9 @@ class UserController extends Controller
             $users = User::with(['rol'])->orderBy('id', 'desc')->get();
             $roles = Rol::orderBy('name', 'asc')->get();
             $paises = Pais::orderBy('name', 'asc')->get();
-            return view('registrados.users.index', compact('users', 'roles', 'paises'));
+            $departamentos = Departamento::orderBy('name', 'asc')->get();
+            $municipios = Municipio::orderBy('name', 'asc')->get();
+            return view('registrados.users.index', compact('users', 'roles', 'paises', 'departamentos', 'municipios'));
         } else {
             return redirect()->route('home');
         }
@@ -33,7 +35,9 @@ class UserController extends Controller
     public function showRegisterForm()
     {
         $paises = Pais::orderBy('name', 'asc')->get();
-        return view('auth.register', compact('paises'));
+        $departamentos = Departamento::orderBy('name', 'asc')->get();
+        $municipios = Municipio::orderBy('name', 'asc')->get();
+        return view('auth.register', compact('paises', 'departamentos', 'municipios'));
     }
 
     public function getDepartamentos($pais_id)
@@ -65,7 +69,13 @@ class UserController extends Controller
             'password.confirmed' => 'Las contraseñas no coinciden.'
         ]);
 
-        //dd($request->all());
+        // Si el país seleccionado es diferente a Guatemala (185), establecer departamento y municipio en null
+        if ($request->pais_id != 185) {
+            $request->merge([
+                'departamento_id' => null,
+                'municipio_id' => null
+            ]);
+        }
 
         $u = new User;
         $u->name = $request->name;
@@ -113,6 +123,14 @@ class UserController extends Controller
             'telefono.max' => 'El teléfono no debe ser mayor a 8 caracteres.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
         ]);
+
+        // Si el país seleccionado es diferente a Guatemala (185), establecer departamento y municipio en null
+        if ($request->pais_id != 185) {
+            $request->merge([
+                'departamento_id' => null,
+                'municipio_id' => null
+            ]);
+        }
 
         $u = User::findOrFail($id);
         $u->name = $request->name;

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             NivelTableSeeder::class,
             PreguntaTableSeeder::class,
             RespuestaTableSeeder::class,
+            RompecabezaTableSeeder::class,
         ]);
     }
 }

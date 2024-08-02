@@ -7,6 +7,7 @@ use App\Http\Controllers\RolController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\RespuestaController;
+use App\Http\Controllers\RompecabezaController;
 
 use App\Http\Controllers\Auth\LoginController;
 
@@ -48,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Roles/Nuevo', [RolController::class, 'postRol'])->name('rol-post');
     Route::post('/Roles/Editar/Rol/{id}', [RolController::class, 'postEditRol'])->name('rol-edit-post');
 
-    Route::get('/MisNiveles', [NivelController::class, 'getMisNiveles'])->name('misniveles');
+    Route::get('/Nivels', [NivelController::class, 'getNivels'])->name('nivels');
     Route::post('/Niveles/Nuevo', [NivelController::class, 'postNivel'])->name('nivel-post');
     Route::post('/Niveles/Editar/Nivel/{id}', [NivelController::class, 'postEditNivel'])->name('nivel-edit-post');
     Route::post('/Niveles/Eliminar/Nivel/{id}', [NivelController::class, 'deleteNivel'])->name('nivel-delete');
@@ -62,6 +63,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Respuestas/Nuevo', [RespuestaController::class, 'postRespuesta'])->name('respuesta-post');
     Route::post('/Respuestas/Editar/Respuesta/{id}', [RespuestaController::class, 'postEditRespuesta'])->name('respuesta-edit-post');
     Route::post('/Respuestas/Eliminar/Respuesta/{id}', [RespuestaController::class, 'deleteRespuesta'])->name('respuesta-delete');
+
+    Route::get('/MisRompecabezas', [RompecabezaController::class, 'getMisRompecabezas'])->name('misrompecabezas');
+    Route::post('/Rompecabezas/Nuevo', [RompecabezaController::class, 'postRompecabeza'])->name('rompecabeza-post');
+    Route::post('/Rompecabezas/Editar/Rompecabeza/{id}', [RompecabezaController::class, 'postEditRompecabeza'])->name('rompecabeza-edit-post');
+    Route::post('/Rompecabezas/Eliminar/Rompecabeza/{id}', [RompecabezaController::class, 'deleteRompecabeza'])->name('rompecabeza-delete');
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');

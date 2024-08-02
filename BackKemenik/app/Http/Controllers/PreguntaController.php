@@ -48,7 +48,7 @@ class PreguntaController extends Controller
     {
         $p = Pregunta::findOrFail($id);
         $p->status = ($p->status == 1) ? 0 : 1;
-        $message = ($p->status == 1) ? 'Pregunta habilitada satisfactoriamente' : 'Pregunta habilitada satisfactoriamente';
+        $message = ($p->status == 1) ? 'Pregunta habilitada satisfactoriamente' : 'Pregunta inhabilitada satisfactoriamente';
         $p->save();
         return back()->with('message', $message)->with('icon', 'success');
     }

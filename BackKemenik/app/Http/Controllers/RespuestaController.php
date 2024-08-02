@@ -68,7 +68,7 @@ class RespuestaController extends Controller
     {
         $r = Respuesta::findOrFail($id);
         $r->status = ($r->status == 1) ? 0 : 1;
-        $message = ($r->status == 1) ? 'Respuesta habilitada satisfactoriamente' : 'Respuesta habilitada satisfactoriamente';
+        $message = ($r->status == 1) ? 'Respuesta habilitada satisfactoriamente' : 'Respuesta inhabilitada satisfactoriamente';
         $r->save();
         return back()->with('message', $message)->with('icon', 'success');
     }

@@ -16,4 +16,9 @@ class Nivel extends Model
     {
         return $this->hasMany(Pregunta::class);
     }
+
+    public function rompecabezas()
+    {
+        return $this->hasMany(Rompecabeza::class);
+    }
 }

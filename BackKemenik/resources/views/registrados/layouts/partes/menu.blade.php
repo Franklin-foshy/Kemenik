@@ -18,7 +18,7 @@
                     </a>
                     @endif
                     @if(kvfj(Auth::user()->rol->permissions, 'get_niveles'))
-                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('misniveles') }}" id="topnav-dashboard" role="button">
+                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('nivels') }}" id="topnav-dashboard" role="button">
                         <i class="bx bx-stats me-2"></i><span key="t-dashboards">NIVELES</span>
                     </a>
                     @endif
@@ -30,6 +30,11 @@
                     @if(kvfj(Auth::user()->rol->permissions, 'get_respuestas'))
                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('misrespuestas') }}" id="topnav-dashboard" role="button">
                         <i class="bx bx-check-circle me-2"></i><span key="t-dashboards">RESPUESTAS</span>
+                    </a>
+                    @endif
+                    @if(kvfj(Auth::user()->rol->permissions, 'get_rompecabezas'))
+                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('misrompecabezas') }}" id="topnav-dashboard" role="button">
+                        <i class="bx bx-check-circle me-2"></i><span key="t-dashboards">ROMPECABEZAS</span>
                     </a>
                     @endif
                 </ul>

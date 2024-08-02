@@ -26,7 +26,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="telefono" class="form-label">Teléfono</label>
-                            <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required>
+                            <input id="telefono" type="text" class="form-control @error('telefono') is-invalid @enderror" name="telefono" value="{{ old('telefono') }}" required maxlength="8" pattern="\d{8}">
                             <div class="invalid-feedback">
                                 Por favor ingresa un número de teléfono
                             </div>
@@ -71,7 +71,9 @@
                             <select id="pais" name="pais_id" class="form-control" required>
                                 <option value="">Selecciona tu país</option>
                                 @foreach($paises as $pais)
-                                <option value="{{ $pais->id }}">{{ $pais->name }}</option>
+                                <option value="{{ $pais->id }}" {{ old('pais_id') == $pais->id ? 'selected' : '' }}>
+                                    {{ $pais->name }}
+                                </option>
                                 @endforeach
                             </select>
                             <div class="invalid-feedback">
@@ -83,7 +85,13 @@
                         <div class="mb-3" id="departamento-container" style="display:none;">
                             <label for="departamento" class="form-label">Departamento</label>
                             <select id="departamento" name="departamento_id" class="form-control">
-                                <!-- Opciones de departamentos cargadas dinámicamente -->
+                                @if(old('pais_id') == 185)
+                                @foreach($departamentos as $departamento)
+                                <option value="{{ $departamento->id }}" {{ old('departamento_id') == $departamento->id ? 'selected' : '' }}>
+                                    {{ $departamento->name }}
+                                </option>
+                                @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -91,13 +99,34 @@
                         <div class="mb-3" id="municipio-container" style="display:none;">
                             <label for="municipio" class="form-label">Municipio</label>
                             <select id="municipio" name="municipio_id" class="form-control">
-                                <!-- Opciones de municipios cargadas dinámicamente -->
+                                @if(old('departamento_id'))
+                                @foreach($municipios as $municipio)
+                                <option value="{{ $municipio->id }}" {{ old('municipio_id') == $municipio->id ? 'selected' : '' }}>
+                                    {{ $municipio->name }}
+                                </option>
+                                @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
                 </div>
 
                 <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const paisId = document.getElementById('pais').value;
+                        const departamentoId = document.getElementById('departamento').value;
+
+                        if (paisId == 185) {
+                            document.getElementById('departamento-container').style.display = 'block';
+                            // Cargar los departamentos vía AJAX si es necesario
+                        }
+
+                        if (departamentoId) {
+                            document.getElementById('municipio-container').style.display = 'block';
+                            // Cargar los municipios vía AJAX si es necesario
+                        }
+                    });
+
                     document.getElementById('pais').addEventListener('change', function() {
                         const paisId = this.value;
 

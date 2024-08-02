@@ -68,6 +68,15 @@ function permissionsUser()
                 'delete_respuestas' => 'Eliminar respuestas',
             ]
         ],
+        'rompecabezas' => [
+            'title' => 'Módulo de rompecabezas',
+            'keys' => [
+                'get_rompecabezas' => 'Ver rompecabezas',
+                'post_rompecabezas' => 'Crear rompecabezas',
+                'edit_rompecabezas' => 'Editar rompecabezas',
+                'delete_rompecabezas' => 'Eliminar rompecabezas',
+            ]
+        ],
     ];
 
     return $p;

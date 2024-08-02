@@ -37,6 +37,26 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Franklin Oxlaj',
+            'telefono' => 36106865,
+            'email' => 'foxlaj.77@gmail.com',
+            'fecha_nacimiento' => '1998-12-12',
+            'pais_id' => 185,
+            'departamento_id' => 17,
+            'municipio_id' => 259,
+            'comunidad' => '',
+            'etnia' => 'Ladino',
+            'sexo' => 'Hombre',
+            'role_id' => 1,
+            'email_verified_at' => now(),
+            'password' => Hash::make('123456789'),
+            'status' => 1,
+            'user_id' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        User::create([
 
             'name' => 'Daisy Miranda',
             'telefono' => 59426788,

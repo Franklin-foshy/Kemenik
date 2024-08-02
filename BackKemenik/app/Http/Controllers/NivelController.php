@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 
 class NivelController extends Controller
 {
-    public function getMisNiveles(Request $request)
+    public function getNivels(Request $request)
     {
         if (kvfj(Auth::user()->rol->permissions, 'get_niveles')) {
             $niveles = Nivel::get();
