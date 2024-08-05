@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NivelController;
 use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\RespuestaController;
+use App\Http\Controllers\Api\RompecabezaController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -31,3 +32,11 @@ Route::get('/respuestas/{id}', [RespuestaController::class, 'getRespuestaByIdAPI
 Route::post('/respuestas', [RespuestaController::class, 'postRespuestaAPI']);
 Route::put('/respuestas/{id}', [RespuestaController::class, 'postEditRespuestaAPI']);
 Route::delete('/respuestas/{id}', [RespuestaController::class, 'deleteRespuestaAPI']);
+
+
+// ROMPECABEZAS
+Route::get('/rompecabezas', [RompecabezaController::class, 'getRompecabezasAPI']);
+Route::get('/rompecabezas/{id}', [RompecabezaController::class, 'getRompecabezaByIdAPI']);
+Route::post('/rompecabezas', [RompecabezaController::class, 'postCreateRompecabezaAPI']);
+Route::put('/rompecabezas/{id}', [RompecabezaController::class, 'postEditRompecabezaAPI']);
+Route::delete('/rompecabezas/{id}', [RompecabezaController::class, 'deleteRompecabezaAPI']);
