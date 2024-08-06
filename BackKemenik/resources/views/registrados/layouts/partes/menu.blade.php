@@ -14,7 +14,7 @@
                     @endif
                     @if(kvfj(Auth::user()->rol->permissions, 'get_users'))
                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('users') }}" id="topnav-dashboard" role="button">
-                        <i class="bx bxs-user-detail me-2"></i><span key="t-dashboards">USUARIOS</span>
+                        <i class="bx bx-user-circle me-2"></i><span key="t-dashboards">USUARIOS</span>
                     </a>
                     @endif
                     @if(kvfj(Auth::user()->rol->permissions, 'get_niveles'))
@@ -34,7 +34,12 @@
                     @endif
                     @if(kvfj(Auth::user()->rol->permissions, 'get_rompecabezas'))
                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('misrompecabezas') }}" id="topnav-dashboard" role="button">
-                        <i class="bx bx-check-circle me-2"></i><span key="t-dashboards">ROMPECABEZAS</span>
+                        <i class="bx bx-extension me-2"></i><span key="t-dashboards">ROMPECABEZAS</span>
+                    </a>
+                    @endif
+                    @if(kvfj(Auth::user()->rol->permissions, 'get_escenas'))
+                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('escenas') }}" id="topnav-dashboard" role="button">
+                        <i class="bx bxs-videos me-2"></i><span key="t-dashboards">ESCENAS</span>
                     </a>
                     @endif
                 </ul>

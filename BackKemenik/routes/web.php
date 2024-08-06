@@ -10,6 +10,7 @@ use App\Http\Controllers\RespuestaController;
 use App\Http\Controllers\RompecabezaController;
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\EscenaController;
 
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
@@ -68,6 +69,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Rompecabezas/Nuevo', [RompecabezaController::class, 'postRompecabeza'])->name('rompecabeza-post');
     Route::post('/Rompecabezas/Editar/Rompecabeza/{id}', [RompecabezaController::class, 'postEditRompecabeza'])->name('rompecabeza-edit-post');
     Route::post('/Rompecabezas/Eliminar/Rompecabeza/{id}', [RompecabezaController::class, 'deleteRompecabeza'])->name('rompecabeza-delete');
+
+    Route::get('/Escenas', [EscenaController::class, 'getEscenas'])->name('escenas');
+    Route::post('/Escenas/Nuevo', [EscenaController::class, 'postEscena'])->name('escena-post');
+    Route::post('/Escenas/Editar/Escena/{id}', [EscenaController::class, 'postEditEscena'])->name('escena-edit-post');
+    Route::post('/Escenas/Eliminar/Escena/{id}', [EscenaController::class, 'deleteEscena'])->name('escena-delete');
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');

@@ -21,7 +21,8 @@ class RolTableSeeder extends Seeder
             "get_roles":"on","post_roles":"on","edit_roles":"on","get_niveles":"on","post_niveles":"on","edit_niveles":"on","delete_niveles":"on",
             "get_preguntas":"on","post_preguntas":"on","edit_preguntas":"on","delete_preguntas":"on",
             "get_respuestas":"on","post_respuestas":"on","edit_respuestas":"on","delete_respuestas":"on",
-            "get_rompecabezas":"on","post_rompecabezas":"on","edit_rompecabezas":"on","delete_rompecabezas":"on"}',
+            "get_rompecabezas":"on","post_rompecabezas":"on","edit_rompecabezas":"on","delete_rompecabezas":"on",
+            "get_escenas":"on","post_escenas":"on","edit_escenas":"on","delete_escenas":"on"}',
             'created_at' => now(),
             'updated_at' => now()
 

@@ -77,6 +77,15 @@ function permissionsUser()
                 'delete_rompecabezas' => 'Eliminar rompecabezas',
             ]
         ],
+        'escenas' => [
+            'title' => 'Módulo de escenas',
+            'keys' => [
+                'get_escenas' => 'Ver escenas',
+                'post_escenas' => 'Crear escenas',
+                'edit_escenas' => 'Editar escenas',
+                'delete_escenas' => 'Eliminar escenas',
+            ]
+        ],
     ];
 
     return $p;

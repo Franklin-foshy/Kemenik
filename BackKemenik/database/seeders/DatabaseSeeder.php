@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PreguntaTableSeeder::class,
             RespuestaTableSeeder::class,
             RompecabezaTableSeeder::class,
+            EscenaTableSeeder::class,
         ]);
     }
 }
