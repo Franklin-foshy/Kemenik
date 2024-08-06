@@ -16,4 +16,9 @@ class Escena extends Model
     {
         return $this->belongsTo(Nivel::class);
     }
+
+    public function ppreguntas()
+    {
+        return $this->hasMany(PPregunta::class);
+    }
 }

@@ -42,6 +42,11 @@
                         <i class="bx bxs-videos me-2"></i><span key="t-dashboards">ESCENAS</span>
                     </a>
                     @endif
+                    @if(kvfj(Auth::user()->rol->permissions, 'get_ppreguntas'))
+                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('ppreguntas') }}" id="topnav-dashboard" role="button">
+                        <i class="bx bxs-videos me-2"></i><span key="t-dashboards">PERSONA PREGUNTAS</span>
+                    </a>
+                    @endif
                 </ul>
             </div>
 

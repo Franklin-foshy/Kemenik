@@ -11,6 +11,7 @@ use App\Http\Controllers\RompecabezaController;
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EscenaController;
+use App\Http\Controllers\PPreguntaController;
 
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
@@ -74,6 +75,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Escenas/Nuevo', [EscenaController::class, 'postEscena'])->name('escena-post');
     Route::post('/Escenas/Editar/Escena/{id}', [EscenaController::class, 'postEditEscena'])->name('escena-edit-post');
     Route::post('/Escenas/Eliminar/Escena/{id}', [EscenaController::class, 'deleteEscena'])->name('escena-delete');
+
+    Route::get('/PPreguntas', [PPreguntaController::class, 'getPPreguntas'])->name('ppreguntas');
+    Route::post('/PPreguntas/Nuevo', [PPreguntaController::class, 'postPPregunta'])->name('ppregunta-post');
+    Route::post('/PPreguntas/Editar/PPreguntas/{id}', [PPreguntaController::class, 'postEditPPregunta'])->name('ppregunta-edit-post');
+    Route::post('/PPreguntas/Eliminar/PPreguntas/{id}', [PPreguntaController::class, 'deletePPregunta'])->name('ppregunta-delete');
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');

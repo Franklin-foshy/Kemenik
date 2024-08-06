@@ -86,6 +86,15 @@ function permissionsUser()
                 'delete_escenas' => 'Eliminar escenas',
             ]
         ],
+        'ppreguntas' => [
+            'title' => 'Módulo de preguntas',
+            'keys' => [
+                'ppreguntas' => 'Ver ppreguntas',
+                'ppreguntas' => 'Crear ppreguntas',
+                'ppreguntas' => 'Editar ppreguntas',
+                'ppreguntas' => 'Eliminar ppreguntas',
+            ]
+        ],
     ];
 
     return $p;

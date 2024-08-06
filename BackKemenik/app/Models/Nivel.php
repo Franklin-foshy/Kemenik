@@ -26,4 +26,9 @@ class Nivel extends Model
     {
         return $this->hasMany(Escena::class);
     }
+
+    public function ppreguntas()
+    {
+        return $this->hasMany(PPregunta::class);
+    }
 }
