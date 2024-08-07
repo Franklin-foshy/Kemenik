@@ -33,7 +33,7 @@ class PPreguntaController extends Controller
         $p->texto_respuesta = $request->input('texto_respuesta');
         $p->save();
 
-        return back()->with('message', 'Pregunta Persona creada satisfactoriamente')->with('icon', 'success');
+        return back()->with('message', 'Personaje pregunta creado satisfactoriamente')->with('icon', 'success');
     }
 
     public function postEditPPregunta(Request $request, $id)
@@ -46,14 +46,14 @@ class PPreguntaController extends Controller
         $p->texto_respuesta = $request->input('texto_respuesta');
         $p->save();
 
-        return back()->with('message', 'Pregunta Persona actualizada satisfactoriamente')->with('icon', 'success');
+        return back()->with('message', 'Personaje pregunta actualizado satisfactoriamente')->with('icon', 'success');
     }
 
     public function deletePPregunta($id)
     {
         $p = PPregunta::findOrFail($id);
         $p->status = ($p->status == 1) ? 0 : 1;
-        $message = ($p->status == 1) ? 'Pregunta Persona habilitada satisfactoriamente' : 'Pregunta Persona inhabilitada satisfactoriamente';
+        $message = ($p->status == 1) ? 'Personaje pregunta habilitado satisfactoriamente' : 'Personaje pregunta inhabilitado satisfactoriamente';
         $p->save();
         return back()->with('message', $message)->with('icon', 'success');
     }

@@ -21,4 +21,9 @@ class PPregunta extends Model
     {
         return $this->belongsTo(Escena::class);
     }
+
+    public function prespuestas()
+    {
+        return $this->hasMany(PRespuesta::class);
+    }
 }

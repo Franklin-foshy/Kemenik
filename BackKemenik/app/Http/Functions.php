@@ -86,13 +86,22 @@ function permissionsUser()
                 'delete_escenas' => 'Eliminar escenas',
             ]
         ],
-        'ppreguntas' => [
-            'title' => 'Módulo de preguntas',
+        'personaje preguntas' => [
+            'title' => 'Módulo de personaje preguntas',
             'keys' => [
-                'ppreguntas' => 'Ver ppreguntas',
-                'ppreguntas' => 'Crear ppreguntas',
-                'ppreguntas' => 'Editar ppreguntas',
-                'ppreguntas' => 'Eliminar ppreguntas',
+                'ppreguntas' => 'Ver personaje preguntas',
+                'ppreguntas' => 'Crear personaje preguntas',
+                'ppreguntas' => 'Editar personaje preguntas',
+                'ppreguntas' => 'Eliminar personaje preguntas',
+            ]
+        ],
+        'personaje respuestas' => [
+            'title' => 'Módulo de personaje respuestas',
+            'keys' => [
+                'prespuestas' => 'Ver personaje respuestas',
+                'prespuestas' => 'Crear personaje respuestas',
+                'prespuestas' => 'Editar personaje respuestas',
+                'prespuestas' => 'Eliminar personaje respuestas',
             ]
         ],
     ];

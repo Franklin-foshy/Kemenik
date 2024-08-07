@@ -1,5 +1,5 @@
 @extends('registrados.layouts.master')
-@section('title', 'Personaje preguntas')
+@section('title', 'Personaje respuestas')
 
 @section('content')
 <div class="main-content">
@@ -11,16 +11,16 @@
 
                 <div class="row justify-content-between mb-3">
                     <div class="col-auto">
-                        <h5 class="mt-2">PERSONAJE PREGUNTAS</h5>
+                        <h5 class="mt-2">PERSONA RESPUESTAS</h5>
                     </div>
                     <div class="col-auto">
-                        @if(kvfj(Auth::user()->rol->permissions, 'post_ppreguntas'))
+                        @if(kvfj(Auth::user()->rol->permissions, 'post_prespuestas'))
                         <div class="col-auto">
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newPPregunta">
-                                <span data-bs-toggle="tooltip" data-bs-offset="0,1" data-bs-placement="top" data-bs-html="true" title="" data-bs-original-title="<span>Crear nuevo personaje pregunta</span>"><i class="fas fa-plus"></i></span>
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newPRespuesta">
+                                <span data-bs-toggle="tooltip" data-bs-offset="0,1" data-bs-placement="top" data-bs-html="true" title="" data-bs-original-title="<span>Crear nueva persona respuesta</span>"><i class="fas fa-plus"></i></span>
                             </button>
                         </div>
-                        @include('registrados.ppreguntas.modals.add')
+                        @include('registrados.prespuestas.modals.add')
                         @endif
                     </div>
                 </div>
@@ -40,32 +40,26 @@
                                     <tr class="text-nowrap">
                                         <th>No.</th>
                                         <th>Nombre personaje</th>
-                                        <th>Pregunta</th>
-                                        <th>Respuesta</th>
-                                        <th>Nivel</th>
-                                        <th>Escena</th>
+                                        <th>Texto pregunta</th>
+                                        <th>Texto respuesta</th>
                                         <th>Estado</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($ppreguntas as $ppregunta)
-                                    @include('registrados.ppreguntas.modals.edit')
+                                    @foreach ($prespuestas as $prespuesta)
+                                    @include('registrados.prespuestas.modals.edit')
                                     <tr class="align-middle">
-                                        <td>{{ $ppregunta->id }}</td>
+                                        <td>{{ $prespuesta->id }}</td>
                                         <td class="text-nowrap">
-                                            {{ $ppregunta->nombre }}
+                                            {{ $prespuesta->nombre }}
                                         </td>
+                                        <td>{{ $prespuesta->ppregunta->texto_pregunta }}</td>
                                         <td class="text-nowrap">
-                                            {{ $ppregunta->texto_pregunta }}
+                                            {{ $prespuesta->texto_respuesta }}
                                         </td>
-                                        <td class="text-nowrap">
-                                            {{ $ppregunta->texto_respuesta }}
-                                        </td>
-                                        <td>{{ $ppregunta->nivel->name }}</td>
-                                        <td>{{ $ppregunta->escena->id }}</td>
                                         <td>
-                                            @if ($ppregunta->status == 1)
+                                            @if ($prespuesta->status == 1)
                                             <span class="badge bg-success">Activo</span>
                                             @else
                                             <span class="badge bg-danger">Inactivo</span>
@@ -77,19 +71,19 @@
                                                     <i class="fas fa-ellipsis-v"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    @if(kvfj(Auth::user()->rol->permissions, 'edit_ppreguntas'))
+                                                    @if(kvfj(Auth::user()->rol->permissions, 'edit_prespuestas'))
                                                     <li>
-                                                        <button class="dropdown-item pointer btn-sm" data-bs-toggle="modal" data-bs-target="#editPPregunta{{ $ppregunta->id }}">
+                                                        <button class="dropdown-item pointer btn-sm" data-bs-toggle="modal" data-bs-target="#editPRespuesta{{ $prespuesta->id }}">
                                                             <i class="fas fa-edit"></i>&nbsp; Editar
                                                         </button>
                                                     </li>
                                                     @endif
-                                                    @if(kvfj(Auth::user()->rol->permissions, 'delete_ppreguntas'))
+                                                    @if(kvfj(Auth::user()->rol->permissions, 'delete_prespuestas'))
                                                     <li>
-                                                        <form action="{{ route('ppregunta-delete', $ppregunta->id) }}" method="post" autocomplete="off" id="delete_form_{{ $ppregunta->id }}">
+                                                        <form action="{{ route('prespuesta-delete', $prespuesta->id) }}" method="post" autocomplete="off" id="delete_form_{{ $prespuesta->id }}">
                                                             @csrf
-                                                            <button class="dropdown-item pointer btn-sm" type="button" onclick="confirmDelete({{ $ppregunta->id }}, {{ $ppregunta->status }} ,'el ppregunta')">
-                                                                @switch($ppregunta->status)
+                                                            <button class="dropdown-item pointer btn-sm" type="button" onclick="confirmDelete({{ $prespuesta->id }}, {{ $prespuesta->status }} ,'el prespuesta')">
+                                                                @switch($prespuesta->status)
                                                                 @case(0)
                                                                 <i class="fas fa-check"></i>&nbsp; Habilitar
                                                                 @break

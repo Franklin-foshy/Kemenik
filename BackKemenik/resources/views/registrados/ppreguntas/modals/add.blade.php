@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel4">Registrar Nueva PERSONA PREGUNTA</h5>
+                <h5 class="modal-title" id="exampleModalLabel4">Registrar Nuevo PERSONAJE PREGUNTA</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -11,14 +11,14 @@
                     <div class="row mb-2">
                         <div class="col-md-12 col-lg-12">
                             <div class="mb-3">
-                                <label class="form-label text-uppercase" for="texto_pregunta">Texto de ppregunta</label>
-                                <input class="form-control" type="text" name="texto_pregunta" placeholder="Escriba texto de la persona pregunta" required />
+                                <label class="form-label text-uppercase" for="texto_pregunta">Texto del personaje pregunta</label>
+                                <input class="form-control" type="text" name="texto_pregunta" placeholder="Escriba texto del personaje pregunta" required />
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12">
                             <div class="mb-3">
-                                <label class="form-label text-uppercase" for="texto_respuesta">Texto de respuesta</label>
-                                <input class="form-control" type="text" name="texto_respuesta" placeholder="Escriba texto de la persona respuesta" required />
+                                <label class="form-label text-uppercase" for="texto_respuesta">Texto de personaje respuesta</label>
+                                <input class="form-control" type="text" name="texto_respuesta" placeholder="Escriba texto del personaje respuesta" required />
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12">

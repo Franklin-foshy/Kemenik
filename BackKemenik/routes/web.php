@@ -12,6 +12,7 @@ use App\Http\Controllers\RompecabezaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EscenaController;
 use App\Http\Controllers\PPreguntaController;
+use App\Http\Controllers\PRespuestaController;
 
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
@@ -80,6 +81,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/PPreguntas/Nuevo', [PPreguntaController::class, 'postPPregunta'])->name('ppregunta-post');
     Route::post('/PPreguntas/Editar/PPreguntas/{id}', [PPreguntaController::class, 'postEditPPregunta'])->name('ppregunta-edit-post');
     Route::post('/PPreguntas/Eliminar/PPreguntas/{id}', [PPreguntaController::class, 'deletePPregunta'])->name('ppregunta-delete');
+
+    Route::get('/PRespuestas', [PRespuestaController::class, 'getPRespuestas'])->name('prespuestas');
+    Route::post('/PRespuestas/Nuevo', [PRespuestaController::class, 'postPRespuesta'])->name('prespuesta-post');
+    Route::post('/PRespuestas/Editar/PRespuestas/{id}', [PRespuestaController::class, 'postEditPRespuesta'])->name('prespuesta-edit-post');
+    Route::post('/PRespuestas/Eliminar/PRespuestas/{id}', [PRespuestaController::class, 'deletePRespuesta'])->name('prespuesta-delete');
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');

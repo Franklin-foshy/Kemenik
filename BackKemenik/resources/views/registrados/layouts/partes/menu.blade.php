@@ -44,7 +44,12 @@
                     @endif
                     @if(kvfj(Auth::user()->rol->permissions, 'get_ppreguntas'))
                     <a class="nav-link dropdown-toggle arrow-none" href="{{ route('ppreguntas') }}" id="topnav-dashboard" role="button">
-                        <i class="bx bxs-videos me-2"></i><span key="t-dashboards">PERSONA PREGUNTAS</span>
+                        <i class="bx bxs-user-voice me-2"></i><span key="t-dashboards">PERSONAJE PREGUNTAS</span>
+                    </a>
+                    @endif
+                    @if(kvfj(Auth::user()->rol->permissions, 'get_prespuestas'))
+                    <a class="nav-link dropdown-toggle arrow-none" href="{{ route('prespuestas') }}" id="topnav-dashboard" role="button">
+                        <i class="bx bx-user-check me-2"></i><span key="t-dashboards">PERSONAJE RESPUESTAS</span>
                     </a>
                     @endif
                 </ul>

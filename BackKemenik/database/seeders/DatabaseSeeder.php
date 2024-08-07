@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             RompecabezaTableSeeder::class,
             EscenaTableSeeder::class,
             PPreguntaTableSeeder::class,
+            PRespuestaTableSeeder::class,
         ]);
     }
 }
