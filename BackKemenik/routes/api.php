@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EscenaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NivelController;
@@ -40,3 +41,11 @@ Route::get('/rompecabezas/{id}', [RompecabezaController::class, 'getRompecabezaB
 Route::post('/rompecabezas', [RompecabezaController::class, 'postCreateRompecabezaAPI']);
 Route::put('/rompecabezas/{id}', [RompecabezaController::class, 'postEditRompecabezaAPI']);
 Route::delete('/rompecabezas/{id}', [RompecabezaController::class, 'deleteRompecabezaAPI']);
+
+// ESCENAS
+Route::get('/escenas', [EscenaController::class, 'getEscenasAPI']);
+Route::get('/escenas/{id}', [EscenaController::class, 'getEscenaAPI']);
+Route::post('/escenas', [EscenaController::class, 'postCreateEscenaAPI']);
+Route::put('/escenas/{id}', [EscenaController::class, 'putEditEscenaAPI']);
+Route::delete('/escenas/{id}', [EscenaController::class, 'deleteEscenaAPI']);
+

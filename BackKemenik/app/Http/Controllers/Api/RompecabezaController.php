@@ -15,6 +15,13 @@ class RompecabezaController extends Controller
     {
         $rompecabezas = Rompecabeza::with('nivel')->get();
 
+        if ($rompecabezas->isEmpty()) {
+            return response()->json([
+                'message' => 'No se encontraron rompecabezas',
+                'status_code' => 404
+            ], 404);
+        }
+
         return response()->json([
             'rompecabezas' => $rompecabezas,
             'message' => 'Rompecabezas obtenidos satisfactoriamente',
