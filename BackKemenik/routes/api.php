@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\EscenaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NivelController;
+use App\Http\Controllers\Api\PPreguntasController;
 use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\RespuestaController;
 use App\Http\Controllers\Api\RompecabezaController;
@@ -48,4 +49,11 @@ Route::get('/escenas/{id}', [EscenaController::class, 'getEscenaAPI']);
 Route::post('/escenas', [EscenaController::class, 'postCreateEscenaAPI']);
 Route::put('/escenas/{id}', [EscenaController::class, 'putEditEscenaAPI']);
 Route::delete('/escenas/{id}', [EscenaController::class, 'deleteEscenaAPI']);
+
+// PPREGUNTAS
+Route::get('/ppreguntas', [PPreguntasController::class, 'getAllPPreguntasAPI']);
+Route::get('/ppreguntas/{id}', [PPreguntasController::class, 'getPPreguntaByIdAPI']);
+Route::post('/ppreguntas', [PPreguntasController::class, 'createPPreguntaAPI']);
+Route::put('/ppreguntas/{id}', [PPreguntasController::class, 'putEditPPreguntaAPI']);
+Route::delete('/ppreguntas/{id}', [PPreguntasController::class, 'deletePPreguntaAPI']);
 
