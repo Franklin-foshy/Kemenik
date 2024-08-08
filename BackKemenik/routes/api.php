@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\NivelController;
 use App\Http\Controllers\Api\PPreguntasController;
 use App\Http\Controllers\Api\PreguntaController;
+use App\Http\Controllers\Api\PRespuestasController;
 use App\Http\Controllers\Api\RespuestaController;
 use App\Http\Controllers\Api\RompecabezaController;
 
@@ -50,10 +51,16 @@ Route::post('/escenas', [EscenaController::class, 'postCreateEscenaAPI']);
 Route::put('/escenas/{id}', [EscenaController::class, 'putEditEscenaAPI']);
 Route::delete('/escenas/{id}', [EscenaController::class, 'deleteEscenaAPI']);
 
-// PPREGUNTAS
+// PERSONAJES PPREGUNTAS
 Route::get('/ppreguntas', [PPreguntasController::class, 'getAllPPreguntasAPI']);
 Route::get('/ppreguntas/{id}', [PPreguntasController::class, 'getPPreguntaByIdAPI']);
 Route::post('/ppreguntas', [PPreguntasController::class, 'createPPreguntaAPI']);
 Route::put('/ppreguntas/{id}', [PPreguntasController::class, 'putEditPPreguntaAPI']);
 Route::delete('/ppreguntas/{id}', [PPreguntasController::class, 'deletePPreguntaAPI']);
 
+// PERSONAJES RESPUESTAS
+Route::get('/prespuestas', [PRespuestasController::class, 'getPRespuestasAPI']);
+Route::get('/prespuestas/{id}', [PRespuestasController::class, 'getPRespuestaAPI']);
+Route::post('/prespuestas', [PRespuestasController::class, 'postPRespuestaAPI']);
+Route::put('/prespuestas/{id}', [PRespuestasController::class, 'putEditPRespuestaAPI']);
+Route::delete('/prespuestas/{id}', [PRespuestasController::class, 'deletePRespuestaAPI']);
