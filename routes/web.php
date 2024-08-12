@@ -89,5 +89,4 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
-    Route::get('/nivel/{id}/preguntas', [PreguntaController::class, 'getPreguntasPorNivel'])->name('nivel.preguntas');
 });

@@ -22,6 +22,16 @@ class PPreguntasController extends Controller
             ], 404);
         }
 
+        // Añadir la URL completa de la imagen del nivel y escena asociados
+        $ppreguntas->transform(function ($item) {
+            // Procesar imagen del nivel
+            if ($item->nivel && !str_starts_with($item->nivel->imagen, 'http')) {
+                $item->nivel->imagen = url('niveles/' . $item->nivel->imagen);
+            }
+
+            return $item;
+        });
+
         // Retorna la respuesta en formato JSON si se encontraron preguntas
         return response()->json([
             'ppreguntas' => $ppreguntas,
@@ -32,7 +42,7 @@ class PPreguntasController extends Controller
 
     public function getPPreguntaByIdAPI($id)
     {
-        // Intenta encontrar la pregunta por su ID
+        // Intenta encontrar la pregunta por su ID junto con la información del nivel y escena asociados
         $ppregunta = PPregunta::with(['nivel', 'escena'])->find($id);
 
         // Verifica si la pregunta no fue encontrada
@@ -41,6 +51,11 @@ class PPreguntasController extends Controller
                 'message' => 'Pregunta no encontrada',
                 'status_code' => 404
             ], 404);
+        }
+
+        // Procesar imagen del nivel
+        if ($ppregunta->nivel && !str_starts_with($ppregunta->nivel->imagen, 'http')) {
+            $ppregunta->nivel->imagen = url('niveles/' . $ppregunta->nivel->imagen);
         }
 
         // Retorna la respuesta en formato JSON si se encontró la pregunta
@@ -130,7 +145,14 @@ class PPreguntasController extends Controller
     public function deletePPreguntaAPI($id)
     {
         // Encuentra la pregunta por ID o retornar un error 404 si no se encuentra
-        $ppregunta = PPregunta::findOrFail($id);
+        $ppregunta = PPregunta::find($id);
+
+        if (!$ppregunta) {
+            return response()->json([
+                'message' => 'Personaje Pregunta no encontrada',
+                'status_code' => 404
+            ], 404);
+        }
 
         // Alterna el estado de la pregunta
         $ppregunta->status = ($ppregunta->status == 1) ? 0 : 1;

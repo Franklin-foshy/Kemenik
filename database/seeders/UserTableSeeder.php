@@ -59,7 +59,7 @@ class UserTableSeeder extends Seeder
         User::create([
 
             'name' => 'Daisy Miranda',
-            'telefono' => 59426788,
+            'telefono' => 59426786,
             'email' => 'damiranda@gmail.com',
             'fecha_nacimiento' => '1996-06-01',
             'pais_id' => 185,
