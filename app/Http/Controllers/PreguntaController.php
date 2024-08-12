@@ -52,10 +52,4 @@ class PreguntaController extends Controller
         $p->save();
         return back()->with('message', $message)->with('icon', 'success');
     }
-
-    public function getPreguntasPorNivel($id)
-    {
-        $nivel = Nivel::with('preguntas')->findOrFail($id);
-        return view('registrados.usuariofinal.preguntas', compact('nivel'));
-    }
 }

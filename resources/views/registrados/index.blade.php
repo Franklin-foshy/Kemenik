@@ -55,11 +55,14 @@
     <!-- end row -->
 
 
-    <!-- start row userFinal-->
+    <!--  ####### ACA SE RETORNA TODO LO RELACIONADO AL USUARIO FINAL ####### -->
+
+    <!-- Valida que tenga el permiso 'usuariofinal' -->
     @if(kvfj(Auth::user()->rol->permissions, 'usuariofinal'))
     @include('registrados.usuariofinal.niveles');
     @endif
-    <!-- end row -->
+    <!-- Fin validación de permisos 'usuariofinal' -->
+
 
 </div> <!-- container-fluid -->
 

@@ -22,6 +22,15 @@ class RompecabezaController extends Controller
             ], 404);
         }
 
+        // Añadir la URL completa de las imágenes de rompecabeza y del nivel asociado
+        $rompecabezas->transform(function ($item) {
+            $item->imagen = url('rompecabezas/' . $item->imagen);
+            if ($item->nivel) {
+                $item->nivel->imagen = url('niveles/' . $item->nivel->imagen);
+            }
+            return $item;
+        });
+
         return response()->json([
             'rompecabezas' => $rompecabezas,
             'message' => 'Rompecabezas obtenidos satisfactoriamente',
@@ -34,6 +43,15 @@ class RompecabezaController extends Controller
         $rompecabeza = Rompecabeza::with('nivel')->find($id);
 
         if ($rompecabeza) {
+
+            // Añadir la URL completa de la imagen del rompecabeza
+            $rompecabeza->imagen = url('rompecabezas/' . $rompecabeza->imagen);
+
+            // Añadir la URL completa de la imagen del nivel asociado, si existe
+            if ($rompecabeza->nivel) {
+                $rompecabeza->nivel->imagen = url('niveles/' . $rompecabeza->nivel->imagen);
+            }
+
             return response()->json([
                 'rompecabeza' => $rompecabeza,
                 'message' => 'Rompecabeza obtenido satisfactoriamente',
@@ -46,6 +64,7 @@ class RompecabezaController extends Controller
             ], 404);
         }
     }
+
 
     public function postCreateRompecabezaAPI(Request $request)
     {
@@ -151,15 +170,26 @@ class RompecabezaController extends Controller
 
     public function deleteRompecabezaAPI($id)
     {
-        $rompecabeza = Rompecabeza::findOrFail($id);
+        $rompecabeza = Rompecabeza::find($id);
+
+        if (!$rompecabeza) {
+            return response()->json([
+                'message' => 'Rompecabeza no encontrado',
+                'status_code' => 404
+            ], 404);
+        }
+
         $rompecabeza->status = ($rompecabeza->status == 1) ? 0 : 1;
         $message = ($rompecabeza->status == 1) ? 'Rompecabeza habilitada satisfactoriamente' : 'Rompecabeza inhabilitada satisfactoriamente';
         $rompecabeza->save();
+
+        // Añadir la URL completa de la imagen
+        $rompecabeza->imagen = url('rompecabezas/' . $rompecabeza->imagen);
 
         return response()->json([
             'data' => $rompecabeza,
             'message' => $message,
             'status_code' => 200
         ], 200);
-    }
+    } 
 }

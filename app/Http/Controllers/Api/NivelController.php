@@ -12,7 +12,7 @@ class NivelController extends Controller
 {
     public function getMisNivelesAPI(Request $request)
     {
-        $niveles = Nivel::get();
+        $niveles = Nivel::where('status', 1)->get();
 
         if ($niveles->isEmpty()) {
             return response()->json([
@@ -20,6 +20,12 @@ class NivelController extends Controller
                 'error_code' => 404
             ], 404);
         }
+
+        // Añadir la URL completa de las imágenes
+        $niveles->transform(function ($item) {
+            $item->imagen = url('niveles/' . $item->imagen);
+            return $item;
+        });
 
         return response()->json([
             'data' => $niveles,
@@ -29,7 +35,7 @@ class NivelController extends Controller
     }
 
     public function getNivelByIdAPI($id)
-    {
+    {   
         $nivel = Nivel::find($id);
 
         if (!$nivel) {
@@ -38,6 +44,9 @@ class NivelController extends Controller
                 'error_code' => 404
             ], 404);
         }
+
+        // Añadir la URL completa de la imagen
+        $nivel->imagen = url('niveles/' . $nivel->imagen);
 
         return response()->json([
             'data' => $nivel,
@@ -171,6 +180,9 @@ class NivelController extends Controller
         $nivel->status = ($nivel->status == 1) ? 0 : 1;
         $message = ($nivel->status == 1) ? 'Nivel habilitado satisfactoriamente' : 'Nivel inhabilitado satisfactoriamente';
         $nivel->save();
+
+        // Añadir la URL completa de la imagen
+        $nivel->imagen = url('niveles/' . $nivel->imagen);
 
         return response()->json([
             'data' => $nivel,

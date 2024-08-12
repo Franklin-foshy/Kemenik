@@ -122,7 +122,14 @@ class PRespuestasController extends Controller
     public function deletePRespuestaAPI($id)
     {
         // Encuentra la respuesta por ID o retornar un error 404 si no se encuentra
-        $respuesta = PRespuesta::findOrFail($id);
+        $respuesta = PRespuesta::find($id);
+
+        if (!$respuesta) {
+            return response()->json([
+                'message' => 'Personaje Respuesta no encontrada',
+                'status_code' => 404
+            ], 404);
+        }
 
         // Alterna el estado de la respuesta
         $respuesta->status = ($respuesta->status == 1) ? 0 : 1;

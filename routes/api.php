@@ -27,6 +27,7 @@ Route::get('/preguntas/{id}', [PreguntaController::class, 'getPreguntaByIdAPI'])
 Route::post('/preguntas', [PreguntaController::class, 'postPreguntaAPI']);
 Route::put('/preguntas/{id}', [PreguntaController::class, 'postEditPreguntaAPI']);
 Route::delete('/preguntas/{id}', [PreguntaController::class, 'deletePreguntaAPI']);
+Route::get('/preguntas_por_nivel/{nivel_id}', [PreguntaController::class, 'getPreguntasPorNivel']);
 
 
 // RESPUESTAS
@@ -35,6 +36,7 @@ Route::get('/respuestas/{id}', [RespuestaController::class, 'getRespuestaByIdAPI
 Route::post('/respuestas', [RespuestaController::class, 'postRespuestaAPI']);
 Route::put('/respuestas/{id}', [RespuestaController::class, 'postEditRespuestaAPI']);
 Route::delete('/respuestas/{id}', [RespuestaController::class, 'deleteRespuestaAPI']);
+Route::get('/respuestas_por_pregunta/{pregunta_id}', [RespuestaController::class, 'getRespuestasPorPregunta']);
 
 
 // ROMPECABEZAS

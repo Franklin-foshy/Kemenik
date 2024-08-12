@@ -11,10 +11,8 @@ class EscenaController extends Controller
 {
     public function getEscenasAPI(Request $request)
     {
-        // Obtener todas las escenas junto con la información del nivel asociado
         $escenas = Escena::with('nivel')->get();
 
-        // Verificar si no se encontraron escenas
         if ($escenas->isEmpty()) {
             return response()->json([
                 'message' => 'No se encontraron escenas',
@@ -22,10 +20,17 @@ class EscenaController extends Controller
             ], 404);
         }
 
-        // Retornar la respuesta en formato JSON si se encontraron escenas
+        // Añadir la URL completa de la imagen del nivel asociado
+        $escenas->transform(function ($item) {
+            if ($item->nivel && !str_starts_with($item->nivel->imagen, 'http')) {
+                $item->nivel->imagen = url('niveles/' . $item->nivel->imagen);
+            }
+            return $item;
+        });
+
         return response()->json([
             'data' => $escenas,
-            'message' => 'Escenas encontradas',
+            'message' => 'Escenas obtenidas satisfactoriamente',
             'status_code' => 200
         ], 200);
     }
@@ -41,6 +46,11 @@ class EscenaController extends Controller
                 'message' => 'Escena no encontrada',
                 'status_code' => 404
             ], 404);
+        }
+
+        // Añadir la URL completa de la imagen del nivel asociado, si existe
+        if ($escena->nivel && !str_starts_with($escena->nivel->imagen, 'http')) {
+            $escena->nivel->imagen = url('niveles/' . $escena->nivel->imagen);
         }
 
         // Retornar la respuesta en formato JSON si se encuentra la escena
@@ -118,7 +128,15 @@ class EscenaController extends Controller
     public function deleteEscenaAPI($id)
     {
         // Encontrar la escena por ID o retornar un error 404 si no se encuentra
-        $escena = Escena::findOrFail($id);
+        $escena = Escena::find($id);
+
+        // Valida la existencia de la escena
+        if (!$escena) {
+            return response()->json([
+                'message' => 'Escena no encontrada',
+                'status_code' => 404
+            ], 404);
+        }
 
         // Alternar el estado de la escena
         $escena->status = ($escena->status == 1) ? 0 : 1;

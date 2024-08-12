@@ -21,6 +21,13 @@ class RespuestaController extends Controller
             ], 404);
         }
 
+
+        // Añadir la URL completa de las imágenes
+        $respuestas->transform(function ($item) {
+            $item->imagen = url('respuestas/' . $item->imagen);
+            return $item;
+        });
+
         return response()->json([
             'data' => $respuestas,
             'message' => 'Respuestas encontradas',
@@ -38,6 +45,9 @@ class RespuestaController extends Controller
                 'status_code' => 404
             ], 404);
         }
+
+        // Añadir la URL completa de la imagen
+        $respuesta->imagen = url('respuestas/' . $respuesta->imagen);
 
         return response()->json([
             'data' => $respuesta,
@@ -150,14 +160,64 @@ class RespuestaController extends Controller
 
     public function deleteRespuestaAPI($id)
     {
-        $respuesta = Respuesta::findOrFail($id);
+        $respuesta = Respuesta::find($id);
+
+        if (!$respuesta) {
+            return response()->json([
+                'message' => 'Respuesta no encontrada',
+                'status_code' => 404
+            ], 404);
+        }
+
         $respuesta->status = ($respuesta->status == 1) ? 0 : 1;
         $message = ($respuesta->status == 1) ? 'Respuesta habilitada satisfactoriamente' : 'Respuesta inhabilitada satisfactoriamente';
         $respuesta->save();
 
+        // Añadir la URL completa de la imagen
+        $respuesta->imagen = url('respuestas/' . $respuesta->imagen);
+
         return response()->json([
             'data' => $respuesta,
             'message' => $message,
+            'status_code' => 200
+        ], 200);
+    }
+
+    public function getRespuestasPorPregunta($pregunta_id)
+    {
+        // Validar que el pregunta_id sea un entero y exista en la tabla preguntas
+        $validated = Validator::make(['pregunta_id' => $pregunta_id], [
+            'pregunta_id' => 'required|integer|exists:preguntas,id'
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json([
+                'message' => 'Pregunta no válida',
+                'status_code' => 400
+            ], 400);
+        }
+
+        // Obtener respuestas asociadas a la pregunta específica
+        $respuestas = Respuesta::where('pregunta_id', $pregunta_id)->with('pregunta')->get();
+
+        if ($respuestas->isEmpty()) {
+            return response()->json([
+                'message' => 'No se encontraron respuestas para la pregunta especificada',
+                'status_code' => 404
+            ], 404);
+        }
+
+        // Añadir la URL completa de las imágenes
+        $respuestas->transform(function ($item) {
+            if ($item->imagen && !str_starts_with($item->imagen, 'http')) {
+                $item->imagen = url('respuestas/' . $item->imagen);
+            }
+            return $item;
+        });
+
+        return response()->json([
+            'data' => $respuestas,
+            'message' => 'Respuestas encontradas',
             'status_code' => 200
         ], 200);
     }
