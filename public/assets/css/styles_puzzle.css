@@ -1,0 +1,1568 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+
+
+header {
+  position: relative;
+  top: 0%;
+  position: absolute;
+  width: 70%;
+}
+
+header img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+
+
+.nivel{
+  font-size: 30px;
+  font-weight: bold;
+  position: absolute;
+  top: 16%;
+  left: 22%;
+}
+
+
+.barra {
+  position: absolute;
+  align-items: center;
+  border: none;
+}
+
+.barra {
+  width: 60%;
+  top: 22%;
+  height: 20px; /* Altura del contenedor de la barra de progreso */
+  background-color: #f3f3f3; /* Color de fondo del contenedor */
+  border-radius: 25px;
+  overflow: hidden;
+
+ /* Espacio superior para separar la barra del contenido superior */
+}
+
+/* Estilo para el contenedor interno de la barra de progreso */
+.progress {
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilo para la barra de progreso */
+.progress-barra {
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+  appearance: none; /* Eliminar el estilo predeterminado */
+}
+
+/* Estilo para la barra de progreso en navegadores WebKit */
+.progress-barra::-webkit-progress-bar {
+  background-color: #eeae87; /* Color de fondo del contenedor */
+  border-radius: 25px;
+}
+
+.progress-barra::-webkit-progress-value {
+  background-color: #a41d23; /* Color de la barra de llenado */
+  border-radius: 25px;
+}
+
+/* Estilo para la barra de progreso en navegadores Mozilla */
+.progress-barra::-moz-progress-bar {
+  background-color: #a41d23; /* Color de la barra de llenado */
+  border-radius: 25px;
+}
+
+.modal-continuar{
+  font-size: 40px;
+  color: #0a295e;
+}
+
+
+
+.rompecabezas_final {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 420px; 
+  height: 300px; 
+}
+
+.espacio {
+  width: 200px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+}
+
+.quitar_borde {
+  border: none;
+  width: 200px;
+  height: 200px;
+  background-color: #f9f9f9;
+}
+.dragBox{
+  width: 200px;
+  height: 200px;
+}
+
+.pieza {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  background-size: 600px 400px;
+  background-color: lightblue;
+  /*filter: blur(20px) grayscale(100%);*/
+  cursor: pointer;
+  transition: filter 0.3s;
+  background-repeat: no-repeat;
+}
+
+#casilla_1 {
+  position: absolute;
+  left: 80%;
+  top: 28%;
+}
+#casilla_2 {
+  position: absolute;
+  left: 8%;
+  top: 52%;
+}
+#casilla_3 {
+  position: absolute;
+  left: 5%;
+  top: 30%;
+}
+#casilla_4 {
+  position: absolute;
+  left: 86%;
+  top: 67%;
+}
+#casilla_5 {
+  position: absolute;
+  left: 2%;
+  top: 70%;
+}
+#casilla_6 {
+  position: absolute;
+  left: 84%;
+  top: 46%;
+}
+
+.pieza[data-index="1"] { background-position: 0 0; }
+.pieza[data-index="2"] { background-position: -200px 0; }
+.pieza[data-index="3"] { background-position: -400px 0; }
+.pieza[data-index="4"] { background-position: 0 -200px; }
+.pieza[data-index="5"] { background-position: -200px -200px; }
+.pieza[data-index="6"] { background-position: -400px -200px; }
+
+.pieza.completada {
+  filter: grayscale(0%);
+}
+
+#contador {
+  font-size: 24px;
+  position: absolute;
+  top: 90%;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*------modal-------*/
+*{
+  margin: 0;
+  padding: 0;
+}
+
+
+.container-modal{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(255, 255, 255);
+  margin: 10%;
+}
+
+.modal_boton{
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 0;
+  font-size: 2rem;
+  background-color: #F26250;
+  color: white;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.modal{
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111bd;
+  pointer-events: none;
+  display: flex;
+  opacity: 0;
+  transition: opacity .2s .2s;
+  --transform: translateY(-100vh);
+  --transition: transform .3s;
+}
+
+.modal_cont{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+  max-height: 90%;
+  background: linear-gradient(to right, #eeae87, #ffffff);
+  border-radius: 30px;
+  padding: 3rem 2.5rem;
+  transform: var(--transform);
+  transition: var(--transition)
+}
+
+
+.modal_cont h2{
+  font-size: 1.5rem;
+  top: 0%;
+  justify-content: center;
+}
+
+.modal_cont p{
+  margin-bottom: 10px;
+}
+
+.modal_cont img{
+  width: 30%;
+  height: 30%;
+  max-width: 300px;
+  max-height: 300px;
+  cursor: pointer;
+}
+.cont_imagenes_modal{
+  display: flex;
+  gap: 10px; /* Espacio entre imágenes */
+  overflow-x: auto;
+  justify-content: center;
+}
+
+
+.contacto {
+  text-decoration: none;
+  color: #fff;
+  background-color: #F26250;
+  padding: 1rem 3rem;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 300;
+}
+
+.close_modal {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  font-size: xx-large;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal_show { 
+  opacity: 1;
+  pointer-events: unset;
+  transition: opacity .1s;
+  --transform: translateY(0);
+  --transition: transform .2s .2s;
+
+}
+
+
+/*------modal-------*/
+
+
+.continuar {
+  position: absolute;
+  width: 150px;
+  background-color: #03358a;
+  border: 4px solid #A41D23;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  left: 75%;
+  top: 90%;
+}
+
+.gif_preguntas{
+  left: 18%;
+  top: 65%;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+}
+
+.gif_preguntas img{
+  height: 100%;
+  width: 100%;
+}
+
+
+@media (max-width: 1024px) {
+  .nivel{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 16%;
+    left: 16%;
+  }
+  
+  
+  .barra {
+    position: absolute;
+    align-items: center;
+    border: none;
+  }
+  
+  .barra {
+    width: 70%;
+    top: 22%;
+    height: 20px; /* Altura del contenedor de la barra de progreso */
+    background-color: #f3f3f3; /* Color de fondo del contenedor */
+    border-radius: 25px;
+    overflow: hidden;
+  
+   /* Espacio superior para separar la barra del contenido superior */
+  }
+  
+  /* Estilo para el contenedor interno de la barra de progreso */
+  .progress {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Estilo para la barra de progreso */
+  .progress-barra {
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+    appearance: none; /* Eliminar el estilo predeterminado */
+  }
+  
+  /* Estilo para la barra de progreso en navegadores WebKit */
+  .progress-barra::-webkit-progress-bar {
+    background-color: #eeae87; /* Color de fondo del contenedor */
+    border-radius: 25px;
+  }
+  
+  .progress-barra::-webkit-progress-value {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+  
+  /* Estilo para la barra de progreso en navegadores Mozilla */
+  .progress-barra::-moz-progress-bar {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+  
+  .modal-continuar{
+    font-size: 40px;
+    color: #0a295e;
+  }
+  
+  
+  
+  .rompecabezas_final {
+    position: absolute;
+    top: 28%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 420px; 
+    height: 300px; 
+  }
+  
+  .espacio {
+    width: 160px;
+    height: 160px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .quitar_borde {
+    border: none;
+    width: 160px;
+    height: 160px;
+    background-color: #f9f9f9;
+  }
+  .dragBox{
+    width: 160px;
+    height: 160px;
+  }
+  
+  .pieza {
+    width: 160px; /* Ajustado según el tamaño del fondo */
+    height: 165px; /* Ajustado según el tamaño del fondo */
+    background-size: 480px 330px;
+    background-color: lightblue;
+    /*filter: blur(20px) grayscale(100%);*/
+    cursor: pointer;
+    transition: filter 0.3s;
+    background-repeat: no-repeat;
+  }
+  
+  #casilla_1 {
+    position: absolute;
+    left: 76%;
+    top: 28%;
+  }
+  #casilla_2 {
+    position: absolute;
+    left: 8%;
+    top: 52%;
+  }
+  #casilla_3 {
+    position: absolute;
+    left: 5%;
+    top: 30%;
+  }
+  #casilla_4 {
+    position: absolute;
+    left: 82%;
+    top: 67%;
+  }
+  #casilla_5 {
+    position: absolute;
+    left: 2%;
+    top: 70%;
+  }
+  #casilla_6 {
+    position: absolute;
+    left: 80%;
+    top: 46%;
+  }
+  
+  
+  
+  .pieza[data-index="1"] { background-position: 0 0; }
+  .pieza[data-index="2"] { background-position: -160px 0; }
+  .pieza[data-index="3"] { background-position: -320px 0; }
+  .pieza[data-index="4"] { background-position: 0 -165px; }
+  .pieza[data-index="5"] { background-position: -160px -165px; }
+  .pieza[data-index="6"] { background-position: -320px -165px; }
+  
+  
+  #contador {
+    font-size: 30px;
+    position: absolute;
+    top: 80%;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /*------modal-------*/
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .container-modal{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    margin: 10%;
+  }
+  
+  .modal_boton{
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: 0;
+    font-size: 2rem;
+    background-color: #F26250;
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  
+  .modal{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    pointer-events: none;
+    display: flex;
+    opacity: 0;
+    transition: opacity .2s .2s;
+    --transform: translateY(-100vh);
+    --transition: transform .3s;
+  }
+  
+  .modal_cont{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    max-height: 90%;
+    background: linear-gradient(to right, #eeae87, #ffffff);
+    border-radius: 30px;
+    padding: 3rem 2.5rem;
+    transform: var(--transform);
+    transition: var(--transition)
+  }
+  
+  
+  .modal_cont h2{
+    font-size: 1.5rem;
+    top: 0%;
+    justify-content: center;
+  }
+  
+  .modal_cont p{
+    margin-bottom: 10px;
+  }
+  
+  .modal_cont img{
+    width: 30%;
+    height: 30%;
+    max-width: 300px;
+    max-height: 300px;
+    cursor: pointer;
+  }
+  .cont_imagenes_modal{
+    display: flex;
+    gap: 10px; /* Espacio entre imágenes */
+    overflow-x: auto;
+    justify-content: center;
+  }
+  
+  
+  .contacto {
+    text-decoration: none;
+    color: #fff;
+    background-color: #F26250;
+    padding: 1rem 3rem;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+  }
+  
+  .close_modal {
+    position: absolute;
+    top: 2%;
+    right: 4%;
+    font-size: xx-large;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .modal_show { 
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .1s;
+    --transform: translateY(0);
+    --transition: transform .2s .2s;
+  
+  }
+  
+  
+  /*------modal-------*/
+  
+  
+  .continuar {
+    position: absolute;
+    width: 150px;
+    background-color: #03358a;
+    border: 4px solid #A41D23;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    left: 70%;
+    top: 90%;
+  }
+  
+  .gif_preguntas{
+    left: 18%;
+    top: 65%;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .gif_preguntas img{
+    height: 100%;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 913px) {
+
+  .modal-continuar{
+    font-size: 40px;
+    color: #0a295e;
+  }
+  
+  
+  
+  .rompecabezas_final {
+    position: absolute;
+    top: 28%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 420px; 
+    height: 300px; 
+  }
+  
+  .espacio {
+    width: 140px;
+    height: 140px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .quitar_borde {
+    border: none;
+    width: 140px;
+    height: 140px;
+    background-color: #f9f9f9;
+  }
+  .dragBox{
+    width: 140px;
+    height: 140px;
+  }
+  
+  .pieza {
+    width: 140px; /* Ancho de cada pieza */
+    height: 140px; /* Altura de cada pieza */
+    background-size: 420px 280px; /* Tamaño total de la imagen de fondo */
+    background-color: lightblue;
+    cursor: pointer;
+    transition: filter 0.3s;
+    background-repeat: no-repeat;
+  }
+  
+  #casilla_1 {
+    position: absolute;
+    left: 80%;
+    top: 28%;
+  }
+  #casilla_2 {
+    position: absolute;
+    left: 25%;
+    top: 60%;
+  }
+  #casilla_3 {
+    position: absolute;
+    left: 2%;
+    top: 30%;
+  }
+  #casilla_4 {
+    position: absolute;
+    left: 82%;
+    top: 67%;
+  }
+  #casilla_5 {
+    position: absolute;
+    left: 2%;
+    top: 70%;
+  }
+  #casilla_6 {
+    position: absolute;
+    left: 80%;
+    top: 46%;
+  }
+  
+  .pieza[data-index="1"] { background-position: 0 0; }
+  .pieza[data-index="2"] { background-position: -140px 0; }
+  .pieza[data-index="3"] { background-position: -280px 0; }
+  .pieza[data-index="4"] { background-position: 0 -140px; }
+  .pieza[data-index="5"] { background-position: -140px -140px; }
+  .pieza[data-index="6"] { background-position: -280px -140px; }
+
+#contador {
+  font-size: 30px;
+  position: absolute;
+  top: 80%;
+}
+.continuar {
+  position: absolute;
+  width: 150px;
+  background-color: #03358a;
+  border: 4px solid #A41D23;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  left: 70%;
+  top: 85%;
+}
+}
+@media (max-width: 600px) { 
+
+  .nivel{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 16%;
+    left: 8%;
+  }
+
+  .barra {
+    width: 90%;
+    top: 22%;
+    height: 20px; /* Altura del contenedor de la barra de progreso */
+    background-color: #f3f3f3; /* Color de fondo del contenedor */
+    border-radius: 25px;
+    overflow: hidden;
+  }
+
+  .modal-continuar{
+    font-size: 40px;
+    color: #0a295e;
+  }
+  
+  
+  
+  .rompecabezas_final {
+    position: absolute;
+    top: 28%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 300px; 
+    height: 200px; 
+  }
+  
+  .espacio {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .quitar_borde {
+    border: none;
+    width: 100px;
+    height: 100px;
+    background-color: #f9f9f9;
+  }
+  .dragBox{
+    width: 140px;
+    height: 140px;
+  }
+  
+  .pieza {
+    width: 100px; /* Ancho de cada pieza */
+    height: 100px; /* Altura de cada pieza */
+    background-size: 300px 200px; /* Tamaño total de la imagen de fondo ajustado */
+    background-color: lightblue;
+    cursor: pointer;
+    transition: filter 0.3s;
+    background-repeat: no-repeat;
+}
+
+  #casilla_1 {
+    position: absolute;
+    left: 82%;
+    top: 28%;
+  }
+  #casilla_2 {
+    position: absolute;
+    left: 25%;
+    top: 60%;
+  }
+  #casilla_3 {
+    position: absolute;
+    left: 1%;
+    top: 30%;
+  }
+  #casilla_4 {
+    position: absolute;
+    left: 82%;
+    top: 67%;
+  }
+  #casilla_5 {
+    position: absolute;
+    left: 2%;
+    top: 70%;
+  }
+  #casilla_6 {
+    position: absolute;
+    left: 84%;
+    top: 46%;
+  }
+  
+  .pieza[data-index="2"] { background-position: -100px 0; }
+  .pieza[data-index="3"] { background-position: -200px 0; }
+  .pieza[data-index="4"] { background-position: 0 -100px; }
+  .pieza[data-index="5"] { background-position: -100px -100px; }
+  .pieza[data-index="6"] { background-position: -200px -100px; }
+}
+  
+
+
+
+@media (max-width: 431px) {
+  .nivel{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 17%;
+    left: 8%;
+  }
+  
+  
+  .barra {
+    position: absolute;
+    align-items: center;
+    border: none;
+  }
+  
+  .barra {
+    width: 90%;
+    top: 22%;
+    height: 20px; /* Altura del contenedor de la barra de progreso */
+    background-color: #f3f3f3; /* Color de fondo del contenedor */
+    border-radius: 25px;
+    overflow: hidden;
+  
+   /* Espacio superior para separar la barra del contenido superior */
+  }
+  
+  /* Estilo para el contenedor interno de la barra de progreso */
+  .progress {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Estilo para la barra de progreso */
+  .progress-barra {
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+    appearance: none; /* Eliminar el estilo predeterminado */
+  }
+  
+  /* Estilo para la barra de progreso en navegadores WebKit */
+  .progress-barra::-webkit-progress-bar {
+    background-color: #eeae87; /* Color de fondo del contenedor */
+    border-radius: 25px;
+  }
+  
+  .progress-barra::-webkit-progress-value {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+  
+  /* Estilo para la barra de progreso en navegadores Mozilla */
+  .progress-barra::-moz-progress-bar {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+  
+  .modal-continuar{
+    font-size: 40px;
+    color: #0a295e;
+  }
+  
+  
+  
+  .rompecabezas_final {
+    position: absolute;
+    top: 28%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: 300px; 
+    height: 200px; 
+  }
+  
+  .espacio {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+  }
+  
+  .quitar_borde {
+    border: none;
+    width: 100px;
+    height: 100px;
+    background-color: #f9f9f9;
+  }
+  .dragBox{
+    width: 100px;
+    height: 100px;
+  }
+  
+  .pieza {
+    width: 100px; /* Ancho de cada pieza */
+    height: 100px; /* Altura de cada pieza */
+    background-size: 300px 200px; /* Tamaño total de la imagen de fondo ajustado */
+    background-color: lightblue;
+    cursor: pointer;
+    transition: filter 0.3s;
+    background-repeat: no-repeat;
+}
+
+  #casilla_1 {
+    position: absolute;
+    left: 68%;
+    top: 60%;
+  }
+  #casilla_2 {
+    position: absolute;
+    left: 25%;
+    top: 60%;
+  }
+  #casilla_3 {
+    position: absolute;
+    left: 5%;
+    top: 57%;
+  }
+  #casilla_4 {
+    position: absolute;
+    left: 65%;
+    top: 70%;
+  }
+  #casilla_5 {
+    position: absolute;
+    left: 2%;
+    top: 70%;
+  }
+  #casilla_6 {
+    position: absolute;
+    left: 50%;
+    top: 64%;
+  }
+  
+  .pieza[data-index="2"] { background-position: -100px 0; }
+  .pieza[data-index="3"] { background-position: -200px 0; }
+  .pieza[data-index="4"] { background-position: 0 -100px; }
+  .pieza[data-index="5"] { background-position: -100px -100px; }
+  .pieza[data-index="6"] { background-position: -200px -100px; }
+
+
+  
+  #contador {
+    font-size: 24px;
+    position: absolute;
+    left: 49%;
+    top:85%;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /*------modal-------*/
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .container-modal{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    margin: 10%;
+  }
+  
+  .modal_boton{
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: 0;
+    font-size: 2rem;
+    background-color: #F26250;
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  
+  .modal{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    pointer-events: none;
+    display: flex;
+    opacity: 0;
+    transition: opacity .2s .2s;
+    --transform: translateY(-100vh);
+    --transition: transform .3s;
+  }
+  
+  .modal_cont{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin: auto;
+    width: 75%;
+    max-width: 600px;
+    margin: auto;
+    max-height: 90%;
+    background: linear-gradient(to right, #eeae87, #ffffff);
+    border-radius: 30px;
+    padding: 3rem 2.5rem;
+    transform: var(--transform);
+    transition: var(--transition)
+  }
+  
+  
+  .modal_cont h2{
+    font-size: 1rem;
+    top: 0%;
+    justify-content: center;
+  }
+  
+  .modal_cont p{
+    margin-bottom: 10px;
+  }
+  
+  .modal_cont img{
+    width: 30%;
+    height: 30%;
+    max-width: 300px;
+    max-height: 300px;
+    cursor: pointer;
+  }
+  .cont_imagenes_modal{
+    display: flex;
+    gap: 10px; /* Espacio entre imágenes */
+    overflow-x: auto;
+    justify-content: center;
+  }
+  
+  
+  .contacto {
+    text-decoration: none;
+    color: #fff;
+    background-color: #F26250;
+    padding: 1rem 3rem;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+  }
+  
+  .close_modal {
+    position: absolute;
+    top: 2%;
+    right: 4%;
+    font-size: xx-large;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .modal_show { 
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .1s;
+    --transform: translateY(0);
+    --transition: transform .2s .2s;
+  
+  }
+  
+  
+  /*------modal-------*/
+  
+  
+  .continuar {
+    position: absolute;
+    width: 150px;
+    background-color: #03358a;
+    border: 4px solid #A41D23;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    left: 55%;
+    top: 90%;
+  }
+  
+  .gif_preguntas{
+    left: 12%;
+    top: 70%;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+  }
+  
+  .gif_preguntas img{
+    height: 100%;
+    width: 100%;
+  }
+}
+  @media (max-width: 360px) {
+
+    .nivel{
+      font-size: 30px;
+      font-weight: bold;
+      position: absolute;
+      top: 17%;
+      left: 2%;
+    }
+    
+    
+    .barra {
+      position: absolute;
+      align-items: center;
+      border: none;
+    }
+    
+    .barra {
+      width: 98%;
+      top: 22%;
+      height: 20px; /* Altura del contenedor de la barra de progreso */
+      background-color: #f3f3f3; /* Color de fondo del contenedor */
+      border-radius: 25px;
+      overflow: hidden;
+    
+     /* Espacio superior para separar la barra del contenido superior */
+    }
+    
+    /* Estilo para el contenedor interno de la barra de progreso */
+    .progress {
+      width: 100%;
+      height: 100%;
+    }
+    
+    /* Estilo para la barra de progreso */
+    .progress-barra {
+      width: 100%;
+      height: 100%;
+      -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+      appearance: none; /* Eliminar el estilo predeterminado */
+    }
+    
+    /* Estilo para la barra de progreso en navegadores WebKit */
+    .progress-barra::-webkit-progress-bar {
+      background-color: #eeae87; /* Color de fondo del contenedor */
+      border-radius: 25px;
+    }
+    
+    .progress-barra::-webkit-progress-value {
+      background-color: #a41d23; /* Color de la barra de llenado */
+      border-radius: 25px;
+    }
+    
+    /* Estilo para la barra de progreso en navegadores Mozilla */
+    .progress-barra::-moz-progress-bar {
+      background-color: #a41d23; /* Color de la barra de llenado */
+      border-radius: 25px;
+    }
+    
+    .modal-continuar{
+      font-size: 40px;
+      color: #0a295e;
+    }
+    
+    
+    
+    .rompecabezas_final {
+      position: absolute;
+      top: 28%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      width: 300px; 
+      height: 200px; 
+    }
+    
+    .espacio {
+      width: 100px;
+      height: 100px;
+      border: 2px dashed #ccc;
+      background-color: #f9f9f9;
+    }
+    
+    .quitar_borde {
+      border: none;
+      width: 100px;
+      height: 100px;
+      background-color: #f9f9f9;
+    }
+    .dragBox{
+      width: 100px;
+      height: 100px;
+    }
+    
+    .pieza {
+      width: 100px; /* Ancho de cada pieza */
+      height: 100px; /* Altura de cada pieza */
+      background-size: 300px 200px; /* Tamaño total de la imagen de fondo ajustado */
+      background-color: lightblue;
+      cursor: pointer;
+      transition: filter 0.3s;
+      background-repeat: no-repeat;
+      z-index: 1;
+  }
+  
+    #casilla_1 {
+      position: absolute;
+      left: 68%;
+      top: 60%;
+    }
+    #casilla_2 {
+      position: absolute;
+      left: 25%;
+      top: 60%;
+    }
+    #casilla_3 {
+      position: absolute;
+      left: 5%;
+      top: 57%;
+    }
+    #casilla_4 {
+      position: absolute;
+      left: 65%;
+      top: 70%;
+    }
+    #casilla_5 {
+      position: absolute;
+      left: 2%;
+      top: 70%;
+    }
+    #casilla_6 {
+      position: absolute;
+      left: 50%;
+      top: 64%;
+    }
+    
+    .pieza[data-index="2"] { background-position: -100px 0; }
+    .pieza[data-index="3"] { background-position: -200px 0; }
+    .pieza[data-index="4"] { background-position: 0 -100px; }
+    .pieza[data-index="5"] { background-position: -100px -100px; }
+    .pieza[data-index="6"] { background-position: -200px -100px; }
+  
+  
+    
+    #contador {
+      font-size: 24px;
+      position: absolute;
+      left: 49%;
+      top:85%;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    /*------modal-------*/
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    
+    
+    .container-modal{
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgb(255, 255, 255);
+      margin: 10%;
+    }
+    
+    .modal_boton{
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      border: 0;
+      font-size: 2rem;
+      background-color: #F26250;
+      color: white;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+    
+    .modal{
+      z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #111111bd;
+      pointer-events: none;
+      display: flex;
+      opacity: 0;
+      transition: opacity .2s .2s;
+      --transform: translateY(-100vh);
+      --transition: transform .3s;
+    }
+    
+    .modal_cont{
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      margin: auto;
+      width: 75%;
+      max-width: 600px;
+      margin: auto;
+      max-height: 90%;
+      background: linear-gradient(to right, #eeae87, #ffffff);
+      border-radius: 30px;
+      padding: 3rem 2.5rem;
+      transform: var(--transform);
+      transition: var(--transition)
+    }
+    
+    
+    .modal_cont h2{
+      font-size: 1rem;
+      top: 0%;
+      justify-content: center;
+    }
+    
+    .modal_cont p{
+      margin-bottom: 10px;
+    }
+    
+    .modal_cont img{
+      width: 30%;
+      height: 30%;
+      max-width: 300px;
+      max-height: 300px;
+      cursor: pointer;
+    }
+    .cont_imagenes_modal{
+      display: flex;
+      gap: 10px; /* Espacio entre imágenes */
+      overflow-x: auto;
+      justify-content: center;
+    }
+    
+    
+    .contacto {
+      text-decoration: none;
+      color: #fff;
+      background-color: #F26250;
+      padding: 1rem 3rem;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 300;
+    }
+    
+    .close_modal {
+      position: absolute;
+      top: 2%;
+      right: 4%;
+      font-size: xx-large;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .modal_show { 
+      opacity: 1;
+      pointer-events: unset;
+      transition: opacity .1s;
+      --transform: translateY(0);
+      --transition: transform .2s .2s;
+    
+    }
+    
+    
+    /*------modal-------*/
+    
+    
+    .continuar {
+      position: absolute;
+      width: 150px;
+      background-color: #03358a;
+      border: 4px solid #A41D23;
+      border-radius: 10px;
+      color: white;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: transform 0.1s;
+      left: 55%;
+      top: 90%;
+    }
+    
+    .gif_preguntas{
+      left: 12%;
+      top: 70%;
+      position: absolute;
+      width: 200px;
+      height: 200px;
+    }
+    
+    .gif_preguntas img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+

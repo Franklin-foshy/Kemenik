@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color:#fff;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    gap: 50px; /* Espacio entre las tarjetas */
+    display: flex;
+    flex-direction: row; /* Disposición horizontal */
+    justify-content: center;
+    align-items: flex-start; /* Alinear al inicio verticalmente */
+    padding: 0px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    text-align: center;
+    width: 1000px; /* Ajusta el ancho del contenedor según sea necesario */
+    height: 500px;
+    position: absolute; /* Posicionamiento absoluto */
+    top: 400px; /* Ajusta la posición desde la parte superior */
+    left: 300px; /* Ajusta la posición desde la parte izquierda */
+}
+
+.card {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0);
+    overflow: hidden;
+    width: 200px; /* Ajusta el ancho según sea necesario */
+    height: 300px; /* Controla la altura de las tarjetas */
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card-body {
+    padding: 10px 0;
+}
+/* movimiento de la imagen*/
+.card {
+    position: relative;
+    overflow: hidden; /* Oculta cualquier exceso de los elementos */
+}
+
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-out; /* Transición suave para la propiedad transform */
+}
+
+.card-img-top:hover {
+    transform: scale(1.1); /* Escala la imagen al hacer hover */
+}
+.card-body {
+    position: relative; /* Añade posición relativa para controlar el movimiento */
+    overflow: hidden; /* Oculta cualquier exceso de los elementos */
+}
+
+.card-body a.button {
+    display: inline-block;
+    padding: 10px 20px; /* Ajusta el padding según tu diseño */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: transform 0.3s ease-out; /* Transición suave para la propiedad transform */
+}
+
+.card-body a.button:hover {
+    transform: translateY(-5px); /* Mueve el botón hacia arriba */
+
+}
+
+
+/*botones de el index*/
+a.button {
+    width: 10em;
+    position: relative;
+    height: 3.5em;
+    line-height: 3.5em; /* Alinea verticalmente el texto dentro del botón */
+    border: 3px ridge #eab114;
+    outline: none;
+    background-color: transparent;
+    color: rgb(18, 17, 17);
+    transition: 1s;
+    border-radius: 0.3em;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a.button::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: #fff;
+    transition: 0.5s;
+    transform-origin: center;
+}
+
+a.button::before {
+    content: "";
+    transform-origin: center;
+    position: absolute;
+    top: 80%;
+    left: 3%;
+    width: 95%;
+    height: 40%;
+    background-color: #fff;
+    transition: 0.5s;
+}
+
+a.button:hover::before, a.button:hover::after {
+    transform: scale(0)
+}
+
+a.button:hover {
+    box-shadow: inset 0px 0px 25px #eab114;
+}
+
+a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none; /* Elimina la subrayado de los enlaces */
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
