@@ -16,7 +16,7 @@
         <div class="close_modal">{{_('x')}}</div>
     </div>
     <div class="gif_preguntas">
-        <img src="{{ asset('assets/imgs/nivel2/sujeto de preguntas.gif')}}" alt="">
+        <img src="{{ asset('imgs/nivel2/sujeto de preguntas.gif')}}" alt="">
     </div>
 </section>
 

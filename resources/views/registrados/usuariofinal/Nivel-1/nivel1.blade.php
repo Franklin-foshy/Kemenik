@@ -18,43 +18,43 @@
 
 <!-------------------------------------- Header de imagen ---------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.header_imagen')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.header_imagen')
 
 <!-------------------------------------- Header de imagen ---------------------------------------------->
 
 <!-------------------------------------- Barra de progreso --------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.barra_progreso')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.barra_progreso')
 
 <!-------------------------------------- Barra de progreso --------------------------------------------->
 
 <!-------------------------------------- piezas --------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.piezas')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.piezas')
 
 <!-------------------------------------- piezas --------------------------------------------->
 
 <!-------------------------------------- cuadro rompecabezas --------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.cuadro_rompecabezas')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.cuadro_rompecabezas')
 
 <!-------------------------------------- cuadro rompecabezas --------------------------------------------->
 
 <!-------------------------------------- modal --------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.modal')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.modal')
 
 <!-------------------------------------- modal --------------------------------------------->
 
 <!-------------------------------------- contador --------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.contador')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.contador')
 
 <!-------------------------------------- contador --------------------------------------------->
 
 <!-------------------------------------- boton_continuar --------------------------------------------->
 
-@include ('usuariofinal.Nivel-1.componentes_nivel1.boton_continuar')
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.boton_continuar')
 
 <!-------------------------------------- boton_continuar --------------------------------------------->
 

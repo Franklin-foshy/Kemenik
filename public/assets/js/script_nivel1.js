@@ -437,7 +437,7 @@ function goHome() {
     musica.currentTime = 0 ;
 
 
-    window.location.href = 'dashboard';
+    window.location.href = 'home';
 }
 
 

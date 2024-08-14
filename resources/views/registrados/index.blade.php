@@ -59,6 +59,8 @@
     @if(kvfj(Auth::user()->rol->permissions, 'usuariofinal'))
     @include('registrados.usuariofinal.niveles');
     @endif
+
+    
     <!-- end row -->
 
 </div> <!-- container-fluid -->
