@@ -101,7 +101,9 @@ Route::group(['middleware' => ['auth']], function () {
     
     
     Route::get('/nivel2', function() {
-        return view('usuariofinal.Nivel-2.historia_nivel2');
+        return view('registrados.usuariofinal.Nivel-2.historia_nivel2');
     })->name('nivel2');
+
+
     Route::get('/nivel/{id}/preguntas', [PreguntaController::class, 'getPreguntasPorNivel'])->name('nivel.preguntas');
 });

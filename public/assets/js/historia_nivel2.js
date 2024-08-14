@@ -404,5 +404,5 @@ modalContent.addEventListener('click', (e) => {
 
 
 function goHome() {
-    window.location.href = 'dashboard';
+    window.location.href = 'home';
 }

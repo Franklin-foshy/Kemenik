@@ -1,7 +1,7 @@
 <div id = "contenedor" class="container">
     <!------------------------------------------ gifs  ---------------------------------------------->
     
-    @include('participante.Nivel-2.componenetes_nivel2.gifs')
+    @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.gifs')
 
     
     <!------------------------------------------ gifs  ---------------------------------------------->
@@ -9,11 +9,11 @@
 
 <!------------------------------ botones respuestas ------------------------------------>
 
-@include('participante.Nivel-2.componenetes_nivel2.respuesas_botones')
+@include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.respuesas_botones')
 
 <!------------------------------ botones respuestas ------------------------------------>
     
-    @include('participante.Nivel-2.componenetes_nivel2.mensajes')
+    @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.mensajes')
 
 
     <button class="siguiente-mensaje" id="siguiente_mensaje">

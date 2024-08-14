@@ -214,7 +214,7 @@ function showResult() {
 }
 
 function goHome() {
-    window.location.href = 'dashboard';
+    window.location.href = 'home';
     quiz3.pause();
     fuegos_artificiales.pause();
 

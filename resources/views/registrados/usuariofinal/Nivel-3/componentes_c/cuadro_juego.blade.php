@@ -19,7 +19,7 @@
             </div>
             <div id="result">
                 <div id="result-text"></div>
-                    <button class="volver" id="home-button" href="{{ route('dashboard') }}" onclick="goHome()">{{_('Ir a la página principal')}} </button>
+                    <button class="volver" id="home-button" href="{{ route('misniveles') }}" onclick="goHome()">{{_('Ir a la página principal')}} </button>
                 </div>
         </div>
 </div>
