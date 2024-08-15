@@ -6,8 +6,34 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #fff;
+
+}
+#page-topbar {
+left: 50%;
+position: absolute;
 }
 
+
+#layout-wrapper {
+  position: relative;
+  top: 0%;
+  position: absolute;
+  width: 70%;
+  left: 20%;
+}
+
+
+.main-content {
+  height: 40%;
+  margin-top: absolute;
+}
+.page-content active{
+  margin-top: 0px;
+}
+.page-title-box {
+
+  display: none;
+}
 header {
   position: relative;
   top: 0%;
@@ -19,6 +45,7 @@ header img {
   width: 100%;
   height: auto;
   display: block;
+
 }
 
 

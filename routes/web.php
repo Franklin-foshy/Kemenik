@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Escenas/Eliminar/Escena/{id}', [EscenaController::class, 'deleteEscena'])->name('escena-delete');
 
     Route::get('/PPreguntas', [PPreguntaController::class, 'getPPreguntas'])->name('ppreguntas');
+    
     Route::post('/PPreguntas/Nuevo', [PPreguntaController::class, 'postPPregunta'])->name('ppregunta-post');
     Route::post('/PPreguntas/Editar/PPreguntas/{id}', [PPreguntaController::class, 'postEditPPregunta'])->name('ppregunta-edit-post');
     Route::post('/PPreguntas/Eliminar/PPreguntas/{id}', [PPreguntaController::class, 'deletePPregunta'])->name('ppregunta-delete');
@@ -89,20 +90,20 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
+    Route::get('/nivel/{id}', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('nivel');
 
-    
-    Route::get('/nivel3', function() {
-        return view('registrados.usuariofinal.Nivel-3.c_nivel3');
-    })->name('nivel3');
-    
-    Route::get('/nivel1', function() {
-        return view('registrados.usuariofinal.Nivel-1.nivel1');
-    })->name('nivel1');
-    
-    
-    Route::get('/nivel2', function() {
-        return view('registrados.usuariofinal.Nivel-2.historia_nivel2');
-    })->name('nivel2');
+Route::get('/nivel/{id}', function($id) {
+    switch ($id) {
+        case 1:
+            return view('registrados.usuariofinal.Nivel-1.nivel1');
+        case 2:
+            return view('registrados.usuariofinal.Nivel-2.historia_nivel2');
+        case 3:
+            return view('registrados.usuariofinal.Nivel-3.c_nivel3');
+        default:
+            abort(404); // Mostrar página 404 si el ID no coincide con ningún nivel
+    }
+})->name('nivel');
 
 
     Route::get('/nivel/{id}/preguntas', [PreguntaController::class, 'getPreguntasPorNivel'])->name('nivel.preguntas');

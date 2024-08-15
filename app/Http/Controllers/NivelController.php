@@ -75,4 +75,13 @@ class NivelController extends Controller
         $niveles = Nivel::get();
         return view('registrados.index', compact('niveles'));
     }
+
+    public function mostrarNiveles()
+{
+    $response = Http::get('http://127.0.0.1:8000/api/niveles/');
+    $niveles = $response->json();
+
+    return view('nombre_de_tu_vista', compact('niveles'));
 }
+}
+

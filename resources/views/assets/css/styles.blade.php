@@ -7,6 +7,7 @@
     <link href="{{ asset('assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
     <!-- Select2 -->
     <link href="{{ asset('assets/libs/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    
     <!--Icono -->
     <link rel="shortcut icon" href="{{ asset('assets/images/logo.png') }}">
     <!-- DataTable -->
