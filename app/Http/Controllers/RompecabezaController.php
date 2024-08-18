@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Rompecabeza;
 use App\Models\Nivel;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 
 class RompecabezaController extends Controller
 {

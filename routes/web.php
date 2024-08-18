@@ -90,21 +90,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
-    Route::get('/nivel/{id}', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('nivel');
-
-Route::get('/nivel/{id}', function($id) {
-    switch ($id) {
-        case 1:
-            return view('registrados.usuariofinal.Nivel-1.nivel1');
-        case 2:
-            return view('registrados.usuariofinal.Nivel-2.historia_nivel2');
-        case 3:
-            return view('registrados.usuariofinal.Nivel-3.c_nivel3');
-        default:
-            abort(404); // Mostrar página 404 si el ID no coincide con ningún nivel
-    }
-})->name('nivel');
-
 
     Route::get('/nivel/{id}/preguntas', [PreguntaController::class, 'getPreguntasPorNivel'])->name('nivel.preguntas');
 });

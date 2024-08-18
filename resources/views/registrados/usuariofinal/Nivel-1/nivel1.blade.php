@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/styles_puzzle.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles_nivel1.css')}}">
     <title>{{_('Puzzle')}}</title>
 </head>
 <body>
@@ -60,5 +60,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 
     <script src="{{ asset('assets/js/script_nivel1.js') }}"></script>
+    <script>
+
+    </script>
 </body>
 </html>

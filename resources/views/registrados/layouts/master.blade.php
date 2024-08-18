@@ -42,10 +42,5 @@
 </body>
 
 <style>
-            .topnav {
-            position: absolute;
-            top: 5%
-        
-        }
 
 </style>

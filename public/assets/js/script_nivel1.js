@@ -253,7 +253,7 @@ let preguntas = [
         pregunta: "¿Cuál es la capital de Francia?",
         images: ["imgs/nivel2/imagen_5.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
         respuestas: ["París", "Londres", "Madrid"],
-        correcta: 0
+        correcta: "París"
     },
     {
         pregunta: "¿Cuál es la capital de Alemania?",
