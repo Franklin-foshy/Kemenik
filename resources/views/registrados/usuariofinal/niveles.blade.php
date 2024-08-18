@@ -1,163 +1,100 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="text-center mb-5">
-                    <h3>CORRESPONSABILIDAD DOMESTICA</h3>
-                </div>
-            </div>
-        </div>
-        <div id="niveles-container" class="row">
-            <!-- Aquí se cargarán dinámicamente los niveles -->
-        </div>
-        <div id="preguntas-container" class="row mt-4">
-            <!-- Aquí se cargarán dinámicamente las preguntas -->
-        </div>
-        <div id="respuestas-container" class="row mt-4">
-            <!-- Aquí se cargarán dinámicamente las respuestas -->
-        </div>
-    </div>
-</div>
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!DOCTYPE html>
+<html lang="en">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ asset('css/img/favicon.png') }}">
+  <meta charset="utf-8" />
+  <title>KEMENIK</title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css?v=3.1.0') }}" rel="stylesheet" />
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+</head>
 
-<script>
-    $(document).ready(function() {
-        // Cargar los niveles
-        $.ajax({
-            url: 'http://127.0.0.1:8000/api/niveles/',
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response.data && response.data.length > 0) {
-                    let nivelesHtml = '';
-                    response.data.forEach(function(nivel) {
-                        nivelesHtml += `
-                        <div class="col-lg-4 col-md-6">
-                            <div class="card mb-4">
-                                <img src="${nivel.imagen}" class="card-img-top" alt="${nivel.name}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${nivel.name}</h5>
-                                    <p class="card-text">${nivel.descripcion}</p>
-                                    <button class="btn btn-primary ver-preguntas" data-nivel-id="${nivel.id}">Ver preguntas</button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    });
-                    $('#niveles-container').html(nivelesHtml);
-                } else {
-                    $('#niveles-container').html(`
-                    <div class="col-12">
-                        <div class="alert alert-primary text-center">
-                            No hay niveles disponibles.
-                        </div>
-                    </div>
-                `);
-                }
-            },
-            error: function() {
-                $('#niveles-container').html(`
-                <div class="col-12">
-                    <div class="alert alert-danger text-center">
-                        Error al cargar los niveles.
-                    </div>
-                </div>
-            `);
-            }
-        });
+<body class="g-sidenav-show bg-gray-200">
+  <!-- Menu -->
+  @include('registrados.usuariofinal.dashboard_componentes.menu')
+  
+  <!-- Cerrar Menu -->
+  
+  <main class="main-content">
+  
+  <!-- Header -->
+  
+  
+  <!-- Cerrar Header -->
+  
+  <!-- Titulo Corresponsabilidad -->
+  @include('registrados.usuariofinal.dashboard_componentes.titulo')
+  
+  <!-- Cerrar Titulo Corresponsabilidad -->
+  
+  <!-- Imagenes Niveles -->
+  @include('registrados.usuariofinal.dashboard_componentes.niveles')
+  
+  <!-- Cerrar Imagenes Niveles -->
+  
+  <!-- Gif Comentario -->
+  @include('registrados.usuariofinal.dashboard_componentes.gif_comentario')
+  
+  <!-- Cerrar Gif Comentario -->
+  
+  <footer class="footer py-4">
+  
+  </main>
+  
+  <!-- Configuración colores -->
+  @include('registrados.usuariofinal.dashboard_componentes.configuracion_colores')
+  
+  <!-- Cerrar Configuración colores -->
+  
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0')}}"></script>
+    <script src="{{ asset('assets/js/script_index.js') }}"></script>
+  </body>
+  <style>
 
-        // Manejador de evento para el botón "Ver preguntas"
-        $(document).on('click', '.ver-preguntas', function() {
-            let nivelId = $(this).data('nivel-id');
+  </style>
 
-            $.ajax({
-                url: `http://127.0.0.1:8000/api/preguntas_por_nivel/${nivelId}`,
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    if (response.data && response.data.length > 0) {
-                        let preguntasHtml = '';
-                        response.data.forEach(function(pregunta) {
-                            preguntasHtml += `
-                            <div class="col-lg-12">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${pregunta.texto_pregunta}</h5>
-                                        <p class="card-text">${pregunta.texto_respuesta}</p>
-                                        <button class="btn btn-secondary ver-respuestas" data-pregunta-id="${pregunta.id}">Ver respuestas</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        });
-                        $('#preguntas-container').html(preguntasHtml);
-                    } else {
-                        $('#preguntas-container').html(`
-                        <div class="col-12">
-                            <div class="alert alert-primary text-center">
-                                No hay preguntas disponibles para este nivel.
-                            </div>
-                        </div>
-                    `);
-                    }
-                },
-                error: function() {
-                    $('#preguntas-container').html(`
-                    <div class="col-12">
-                        <div class="alert alert-danger text-center">
-                            Error al cargar las preguntas.
-                        </div>
-                    </div>
-                `);
-                }
-            });
-        });
+</html>
 
-        // Manejador de evento para el botón "Ver respuestas"
-        $(document).on('click', '.ver-respuestas', function() {
-            let preguntaId = $(this).data('pregunta-id');
-
-            $.ajax({
-                url: `http://127.0.0.1:8000/api/respuestas_por_pregunta/${preguntaId}`,
-                type: 'GET',
-                dataType: 'json',
-                success: function(response) {
-                    if (response.data && response.data.length > 0) {
-                        let respuestasHtml = '';
-                        response.data.forEach(function(respuesta) {
-                            respuestasHtml += `
-                            <div class="col-lg-12">
-                                <div class="card mb-4">
-                                    <img src="${respuesta.imagen}" class="card-img-top" alt="Respuesta ${respuesta.id}">
-                                    <div class="card-body">
-                                        <p class="card-text">${respuesta.texto_respuesta}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        });
-                        $('#respuestas-container').html(respuestasHtml);
-                    } else {
-                        $('#respuestas-container').html(`
-                        <div class="col-12">
-                            <div class="alert alert-primary text-center">
-                                No hay respuestas disponibles para esta pregunta.
-                            </div>
-                        </div>
-                    `);
-                    }
-                },
-                error: function() {
-                    $('#respuestas-container').html(`
-                    <div class="col-12">
-                        <div class="alert alert-danger text-center">
-                            Error al cargar las respuestas.
-                        </div>
-                    </div>
-                `);
-                }
-            });
-        });
-    });
-</script>
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->
+<!-------------------------DASHBOARD PARTICIPANTE------------------------->

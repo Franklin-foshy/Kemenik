@@ -89,4 +89,18 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Usuario final logeado
     Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
+    
+    Route::get('/nivel3', function() {
+        return view('registrados.usuariofinal.Nivel-3.nivel3');
+    })->name('nivel3');
+    
+    Route::get('/nivel1', function() {
+        return view('registrados.usuariofinal.Nivel-1.nivel1');
+    })->name('nivel1');
+    
+    
+    Route::get('/nivel2', function() {
+        return view('registrados.usuariofinal.Nivel-2.nivel2');
+    })->name('nivel2');
+    
 });

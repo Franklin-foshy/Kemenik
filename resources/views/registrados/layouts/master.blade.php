@@ -6,8 +6,11 @@
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>KEMENIK</title>
+    <link id="pagestyle" href="{{ asset('assets/css/styles_back.css') }}" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('assets.css.styles')
+    
+
 </head>
 <!-- end encabezado -->
 
@@ -23,7 +26,7 @@
         <div class="main-content">
             <div class="page-content">
                 @yield('content')
-            </div>
+            </div>                          
         </div>
         <!-- end main content-->
         <footer>
@@ -37,3 +40,7 @@
     <!-- TOAST -->
     @include('registrados.layouts.components.toast')
 </body>
+
+<style>
+
+</style>

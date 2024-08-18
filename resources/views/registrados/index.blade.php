@@ -2,16 +2,35 @@
 
 @section('content')
 <div class="container-fluid">
-
+    @php
+    $img_src = 'https://ui-avatars.com/api/?name=' . Auth::user()->name;
+    @endphp
     <!-- start page title -->
+    <style>
+        .small-avatar {
+            width: 30px;
+            height: 30px;
+        }
+        .img-thumbnail {
+        padding: 0.25rem;
+        background-color: #fff;
+        border: 1px solid #db6b42 !important;
+        border-radius: 0.375rem;
+        max-width: 100%;
+        height: auto;
+        }
+    </style>
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0 font-size-18">INICIO</h4>
-
+                <h4 class="mb-sm-0 font-size-18">Bienvenido</h4>
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item active">Bienvenidos</li>
+                        <li class="breadcrumb-item active">:
+                            <img class="img-thumbnail rounded-circle small-avatar" src="{{ $img_src }}" alt="Header Avatar">
+                            {{ \Auth::user()->name }} 
+                        </li>
+                        
                     </ol>
                 </div>
 
