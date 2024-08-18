@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\NivelController;
 use App\Http\Controllers\Api\PPreguntasController;
 use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\PRespuestasController;
+use App\Http\Controllers\Api\ProgresoUsuarioController;
 use App\Http\Controllers\Api\RespuestaController;
 use App\Http\Controllers\Api\RompecabezaController;
 
@@ -66,3 +67,9 @@ Route::get('/prespuestas/{id}', [PRespuestasController::class, 'getPRespuestaAPI
 Route::post('/prespuestas', [PRespuestasController::class, 'postPRespuestaAPI']);
 Route::put('/prespuestas/{id}', [PRespuestasController::class, 'putEditPRespuestaAPI']);
 Route::delete('/prespuestas/{id}', [PRespuestasController::class, 'deletePRespuestaAPI']);
+
+// PROGRESO DE USUARIO
+Route::get('progreso/{id}', [ProgresoUsuarioController::class, 'show']);
+Route::post('/progreso-usuario', [ProgresoUsuarioController::class, 'store']);
+Route::get('/progreso-usuario/{usuario_id}', [ProgresoUsuarioController::class, 'getByUserId']);
+Route::delete('/progreso-usuario/{usuario_id}/registro/{id}', [ProgresoUsuarioController::class, 'deleteByUserId']);

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -60,5 +61,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function municipio()
     {
         return $this->hasOne(Municipio::class, 'id', 'municipio_id');
+    }
+
+    // Relación con el modelo ProgresoUsuario
+    public function progreso()
+    {
+        return $this->hasMany(ProgresoUsuario::class, 'usuario_id');
     }
 }

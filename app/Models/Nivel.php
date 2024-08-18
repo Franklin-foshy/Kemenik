@@ -10,7 +10,7 @@ class Nivel extends Model
     use HasFactory;
 
     protected $table = 'nivels';
-    protected $fillable = ['name', 'descripcion', 'imagen','status'];
+    protected $fillable = ['name', 'descripcion', 'imagen', 'status'];
 
     public function preguntas()
     {
@@ -30,5 +30,11 @@ class Nivel extends Model
     public function ppreguntas()
     {
         return $this->hasMany(PPregunta::class);
+    }
+
+    // Relación con el modelo ProgresoUsuario
+    public function progresos()
+    {
+        return $this->hasMany(ProgresoUsuario::class, 'nivel_id');
     }
 }
