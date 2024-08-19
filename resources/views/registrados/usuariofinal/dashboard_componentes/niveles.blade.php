@@ -12,7 +12,6 @@
             </div>
             <div class="card-body">
               <h6 class="mb-0">{{ $nivel['name'] }}</h6>
-              <p class="text-sm">{{_('Test corresponsabilidad')}}</p>
               <hr class="dark horizontal">
               <div class="d-flex">
                 <i class="material-icons text-sm my-auto me-1">{{_('schedule')}}</i>

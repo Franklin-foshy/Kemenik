@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // -------------------------------- Logica para loch ( PC ) ------------------------------
 
 
-
+/*
 let preguntas = [
     {
         pregunta: "¿Cuál es la capital de Francia?",
@@ -285,8 +285,63 @@ let preguntas = [
         respuestas: ["Berlín", "Viena", "Zurich"],
         correcta: 'Viena'
     },
-    // Añadir más preguntas según sea necesario
-];
+
+]; */
+
+
+// ---------------- IMPLEMENTACION DEL BACKEND --------------------
+
+let preguntas = [];
+
+    $.ajax({
+        url: `http://127.0.0.1:8000/api/preguntas_por_nivel/1`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response.data && response.data.length > 0) {
+                response.data.forEach(function(pregunta) {
+                    let imagenes = [] ;
+                    let respuestas = [] ;
+                    $.ajax({
+                        url: `http://127.0.0.1:8000/api/respuestas_por_pregunta/${pregunta.id}`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.data && response.data.length > 0) {
+                                response.data.forEach(function(respuesta) {
+                                    let img = respuesta.imagen ;
+                                    let res = respuesta.texto_respuesta ;
+
+                                    imagenes.push(img);
+                                    respuestas.push(res);
+                                });
+                                
+                            }
+                        }
+                    });
+                    let preguntaDiccionario = {
+                        pregunta: `¿ ${pregunta.texto_pregunta} ?`,
+                        images :imagenes,
+                        respuestas: respuestas,
+                        correcta: pregunta.texto_respuesta
+                    };
+                    
+                    preguntas.push(preguntaDiccionario);
+                });
+                
+            } else {
+                console.log('No hay preguntas disponibles para este nivel.');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error en la solicitud:', textStatus, errorThrown);
+        }
+    });
+
+
+    // ---------------- IMPLEMENTACION DEL BACKEND --------------------
+
+
 
 let tamaño = 100 / preguntas.length;
 let confetti_ = 0 ;

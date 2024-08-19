@@ -57,11 +57,8 @@
 @include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.boton_continuar')
 
 <!-------------------------------------- boton_continuar --------------------------------------------->
-
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('assets/js/script_nivel1.js') }}"></script>
-    <script>
-
-    </script>
 </body>
 </html>
