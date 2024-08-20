@@ -343,10 +343,10 @@ let preguntas = [];
 
 
 
-let tamaño = 100 / preguntas.length;
+
 let confetti_ = 0 ;
 
-function cargar_barra() {
+function cargar_barra(tamaño) {
     const barra = document.getElementById('barra');
     barra.value += tamaño;
 }
@@ -452,7 +452,8 @@ imagenesRespuesta.forEach((imagen, i) => {
         contador.innerText = `${completadas}/6`;
         e.preventDefault();
         modal.classList.remove('modal_show');
-        cargar_barra();
+        let tamaño = 100 / preguntas.length;
+        cargar_barra(tamaño);
     });
 });
 

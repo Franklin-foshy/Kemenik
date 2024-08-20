@@ -48,7 +48,9 @@
 
 
     <!-- Script JavaScript para el confeti -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
 
     <!-- Script JavaScript para nivel1.html -->
     <script src="{{ asset('assets/js/script_c_nivel3.js')}}"></script>
