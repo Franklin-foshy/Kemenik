@@ -1,3 +1,35 @@
+// --------------------------- Pantalla de carga ------------------------------
+const cargando = document.getElementById('cargando');
+const header = document.getElementById('header');
+const nivel = document.getElementById('nivel1');
+const barra_id = document.getElementById('barra_id');
+const piezasss1 = document.getElementById('casilla_1');
+const piezasss2 = document.getElementById('casilla_2');
+const piezasss3 = document.getElementById('casilla_3');
+const piezasss4 = document.getElementById('casilla_4');
+const piezasss5 = document.getElementById('casilla_5');
+const piezasss6 = document.getElementById('casilla_6');
+const espacioss = document.getElementById('targetContainer');
+const boton_regresar = document.getElementById('regresar');
+
+time_teminar = setTimeout(function(){
+    header.style.display = 'block'
+    nivel.style.display = 'block'
+    barra_id.style.display = 'block'
+    barra_id.style.display = 'block'
+    piezasss1.style.display = 'block'
+    piezasss2.style.display = 'block'
+    piezasss3.style.display = 'block'
+    piezasss4.style.display = 'block'
+    piezasss5.style.display = 'block'
+    piezasss6.style.display = 'block'
+    espacioss.style.display = 'grid'
+    cargando.style.display = 'none'
+    boton_regresar.style.display = 'block'
+    contador.style.display = 'block'
+    musica.play();
+}, 5000);
+
 
 // ---------------------------------- Audio ------------------------------------
 
@@ -13,7 +45,7 @@
 
 
 // -------------------------------- Logica para loch ( Movil )---------------------------
-musica.play();
+
 document.addEventListener('DOMContentLoaded', () => {
     const piezas = document.querySelectorAll('.pieza');
     const espacios = document.querySelectorAll('.espacio');
@@ -320,7 +352,7 @@ let preguntas = [];
                         }
                     });
                     let preguntaDiccionario = {
-                        pregunta: `¿ ${pregunta.texto_pregunta} ?`,
+                        pregunta: `¿${pregunta.texto_pregunta}?`,
                         images :imagenes,
                         respuestas: respuestas,
                         correcta: pregunta.texto_respuesta
@@ -370,7 +402,6 @@ const espacio4 = document.getElementById('espacio4');
 const espacio5 = document.getElementById('espacio5');
 const espacio6 = document.getElementById('espacio6');
 const boton_continuar = document.getElementById('next-button');
-const boton_regresar = document.getElementById('regresar');
 const modal_continuar = document.getElementById('modal-continuar');
 
 
