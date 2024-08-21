@@ -23,12 +23,8 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{{_('Datos Personales')}}</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="profile.php">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">person</i>
-            </div>
-            <span class="nav-link-text ms-1">{{_('Perfil')}}</span>
-          </a>
+          <img class="img-thumbnail rounded-circle small-avatar" src="{{ $img_src }}" alt="Header Avatar">
+          <span class="nav-link-text ms-1">{{ \Auth::user()->name }}</span>
         </li>
         <li class="nav-item">
           <form method="POST" action="{{ route('logout') }}" >
@@ -43,15 +39,25 @@
       
             <!--<span class="nav-link-text ms-1">Salir</span>-->
           </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-white "href="{{ route('login') }}">
-            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="material-icons opacity-10">{{_('assignment')}}</i>
-            </div>
-            <span class="nav-link-text ms-1">{{_('Sign Up')}}</span>
-          </a>
-        </li>
       </ul>
     </div>
   </aside>
+  <style>
+            .small-avatar {
+            margin-right: 10px !important; /* Espacio entre el avatar y el nombre */
+            width: 30px; /* Ajusta el tamaño del avatar */
+            height: 30px; /* Asegura que sea un círculo perfecto */
+        }
+        .img-thumbnail {
+        
+        position: relative !important;
+        padding: 0.25rem;
+        margin-right: 15% !important;
+        background-color: #fff;
+        border: 1px solid #db6b42 !important;
+        border-radius: 0.375rem;
+        max-width: 100%;
+        height: auto;
+        left: 12%;
+        }
+  </style>

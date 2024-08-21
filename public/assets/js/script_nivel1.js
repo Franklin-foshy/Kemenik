@@ -1,3 +1,4 @@
+
 // --------------------------- Pantalla de carga ------------------------------
 const cargando = document.getElementById('cargando');
 const header = document.getElementById('header');
@@ -11,6 +12,7 @@ const piezasss5 = document.getElementById('casilla_5');
 const piezasss6 = document.getElementById('casilla_6');
 const espacioss = document.getElementById('targetContainer');
 const boton_regresar = document.getElementById('regresar');
+
 
 time_teminar = setTimeout(function(){
     header.style.display = 'block'
@@ -321,9 +323,46 @@ let preguntas = [
 ]; */
 
 
-// ---------------- IMPLEMENTACION DEL BACKEND --------------------
+// ---------------- Añadiendo rompecabezas -----------------------
 
+let rompecabezas_random = [];
+
+
+$.ajax({
+    url: `http://127.0.0.1:8000/api/rompecabezas/`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(response) {
+        if (response.rompecabezas && response.rompecabezas.length > 0) {
+            // Llena el array con las URLs de las imágenes obtenidas del servidor
+            response.rompecabezas.forEach(function(rompecabezas_ran) {
+                rompecabezas_random.push(rompecabezas_ran.imagen);
+            });
+
+            // Selecciona una imagen aleatoria de la lista
+            let escojer_imagen_rompecabezas = rompecabezas_random[Math.floor(Math.random() * rompecabezas_random.length)];
+
+            // Selecciona todas las piezas
+            const piezas = document.querySelectorAll('.pieza');
+
+            // Aplica la misma imagen a todas las piezas
+            piezas.forEach(function(pieza) {
+                pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
+            });
+        } else {
+            console.error('No se encontraron rompecabezas en la respuesta.');
+        }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error en la solicitud:', textStatus, errorThrown);
+    }
+});
+
+
+
+// ---------------- IMPLEMENTACION DEL BACKEND --------------------
 let preguntas = [];
+let preguntas_guardar = [];
 
     $.ajax({
         url: `http://127.0.0.1:8000/api/preguntas_por_nivel/1`,
@@ -358,9 +397,16 @@ let preguntas = [];
                         correcta: pregunta.texto_respuesta
                     };
                     
-                    preguntas.push(preguntaDiccionario);
+                    preguntas_guardar.push(preguntaDiccionario);
                 });
+
+                for (let i = 0; i < 6; i++) {
+
+                    let randomIndex = Math.floor(Math.random() * preguntas_guardar.length);
                 
+                    let seleccion = preguntas_guardar.splice(randomIndex, 1)[0];
+                    preguntas.push(seleccion);
+                }
             } else {
                 console.log('No hay preguntas disponibles para este nivel.');
             }
@@ -369,6 +415,8 @@ let preguntas = [];
             console.error('Error en la solicitud:', textStatus, errorThrown);
         }
     });
+
+
 
 
     // ---------------- IMPLEMENTACION DEL BACKEND --------------------

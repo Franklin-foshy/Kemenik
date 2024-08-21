@@ -37,6 +37,10 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
+
+  <!-- modal -->
+  @include('registrados.usuariofinal.dashboard_componentes.modal')
+
   <!-- Menu -->
   @include('registrados.usuariofinal.dashboard_componentes.menu')
   
@@ -78,6 +82,7 @@
   
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0')}}"></script>
+    <script src="{{ asset('assets/js/modal.js') }}"></script>
     <script src="{{ asset('assets/js/script_index.js') }}"></script>
   </body>
   <style>

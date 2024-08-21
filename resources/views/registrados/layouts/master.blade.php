@@ -36,6 +36,7 @@
     <!-- end Page -->
 
     <!-- JAVASCRIPT -->
+    
     @include('assets.js.scripts')
     <!-- TOAST -->
     @include('registrados.layouts.components.toast')
