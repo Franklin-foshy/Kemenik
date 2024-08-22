@@ -1,7 +1,7 @@
 <!-------------------------------------- modal --------------------------------------------->
 
 
-<section class="custom-modal" id="modal" style="display: none">
+<section class="custom-modal" id="modal" >
     <div class="custom-modal-content">
         <div class="image-container">
             <div class="modal-text" id="modal-text">

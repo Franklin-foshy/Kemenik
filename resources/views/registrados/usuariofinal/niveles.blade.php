@@ -20,12 +20,8 @@
   <link rel="icon" type="image/png" href="{{ asset('css/img/favicon.png') }}">
   <meta charset="utf-8" />
   <title>KEMENIK</title>
-  <!--     Fonts and icons     -->
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
-  <!-- Nucleo Icons -->
   <link href="{{ asset('assets/css/nucleo-icons.css') }}" rel="stylesheet" />
   <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
-
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
   <!-- CSS Files -->
@@ -74,8 +70,6 @@
   
   <!-- Cerrar Configuración colores -->
   
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0')}}"></script>
