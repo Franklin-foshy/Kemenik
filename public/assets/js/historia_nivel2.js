@@ -30,7 +30,7 @@ let tamaño = 100/array_opciones.length;
 function cargar_barra (){
     const barra = document.getElementById('barra');
     barra.value += tamaño;
-}
+}/*
 function asignar_opciones(escena){
     posicion_opcion = array_opciones[escena];
 
@@ -46,7 +46,7 @@ function asignar_opciones(escena){
 
     opciones.style.pointerEvents = "auto"
 
-};
+};*/
 
 
 
@@ -105,17 +105,16 @@ let correcto = 0;
  // Primer escena 
 function escena_1() {
     contador = 0;
-
+    cambiar_fondo(contendor, 'imgs/nivel2/BACKGROUND-E1.png');
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
-        disguise(gif_image);
-        show(static_image);
 
-        seguiente_memsaje.addEventListener('click', mostrarMensajeMama1);
+
+        //seguiente_memsaje.addEventListener('click', mostrarMensajeMama1);
     }, 3500);
 
-    asignar_opciones(contador);
+    //asignar_opciones(contador);
 }
 /*
 function mostrarMensajeMama1() {
@@ -279,26 +278,26 @@ function mensaje_divertido() {
                 actualizarVidas();
                 if (vidas === 0) {
                     modal.classList.add('modal_show');
-                    deshabilitarOpciones();
+                    //deshabilitarOpciones();
                     
                 }
             } else if (esCorrecta) {
                 launchConfetti();
                 reiniciar_tiempos();
-                opciones.style.pointerEvents = "none"
+                //opciones.style.pointerEvents = "none"
                 setTimeout(() => {
                     siguiente_escena.style.display = "block"
                     siguiente_escena.style.pointerEvents = "auto"
                     siguiente_escena.addEventListener('click', () => {
-                            if (contador === 0) {
+                            /*if (contador === 0) {
 
-                                escena_2();
+                                //escena_2();
 
                             } else if (contador === 1) {
-                                escena_3();
+                               // escena_3();
                             }
 
-                            cargar_barra()
+                            cargar_barra()*/
                     siguiente_escena.style.display = "none"
                     siguiente_escena.style.pointerEvents = "none"
 
@@ -320,11 +319,11 @@ function mensaje_divertido() {
         }
     }
 
-    function deshabilitarOpciones() {
+   /* function deshabilitarOpciones() {
         document.querySelectorAll('.opcion').forEach(boton => {
             boton.disabled = true;
         });
-    }
+    }*/
 
     // Inicializa las vidas
     actualizarVidas();

@@ -26,7 +26,6 @@
     document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('modal');
     const cerrarModal = document.getElementById('close-modal');
-    let contador =;
     cerrarModal.addEventListener('click', (e) => {
         e.preventDefault(); 
         modal.classList.add('modal-visible');

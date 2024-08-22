@@ -2,7 +2,7 @@
         <div id="game" class="container-game">
             <div id="question-container" >
                 <div id="image-container">
-                    <div class="imagenes-descrip">
+                <!-- <div class="imagenes-descrip">
                         <img src="{{ asset('imgs/nivel2/imagen_4.jpeg')}}" alt="Imagen 1" class="image" onclick="checkAnswer(0)">
                         <p class="descripccion" id="descripcion1">{{_('desconocimiento de actividades recreativas')}}</p>
                     </div>
@@ -13,7 +13,7 @@
                     <div class="imagenes-descrip">
                         <img src="{{ asset('imgs/nivel2/imagen_4.jpeg')}}" alt="Imagen 3" class="image" onclick="checkAnswer(2)">
                         <p class="descripccion" id="descripcion3">{{_('ayudando a mamá con los deberes de la casa')}}</p>
-                    </div>
+                    </div>-->
                 </div>
                 <div id="feedback"></div>
             </div>
