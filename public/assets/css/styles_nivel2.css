@@ -1,0 +1,6854 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f9fa;
+}
+/*------modal-------*/
+*{
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  .container-modal{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255, 255, 255);
+    margin: 10%;
+  }
+  
+  .modal_boton{
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: 0;
+    font-size: 2rem;
+    background-color: #F26250;
+    color: white;
+    cursor: pointer;
+    transition: all .3s ease;
+  }
+  
+  .modal{
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    pointer-events: none;
+    display: flex;
+    opacity: 0;
+    transition: opacity .2s .2s;
+    --transform: translateY(-100vh);
+    --transition: transform .3s;
+  }
+  
+  .modal_cont{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    max-height: 90%;
+    background: linear-gradient(to right, #eeae87, #ffffff);
+    border-radius: 30px;
+    padding: 3rem 2.5rem;
+    transform: var(--transform);
+    transition: var(--transition)
+  }
+  
+  
+  .modal-continuar{
+    font-size: 30px;
+  }
+
+  .modal_cont h2{
+    font-size: 1.5rem;
+    top: 0%;
+    justify-content: center;
+  }
+  
+  .modal_cont p{
+    margin-bottom: 10px;
+  }
+  
+  .modal_cont img{
+    width: 50%;
+    height: 50%;
+    max-width: 300px;
+    max-height: 300px;
+    cursor: pointer;
+  }
+  .cont_imagenes_modal{
+    display: flex;
+    gap: 2px; /* Espacio entre imágenes */
+    overflow-x: auto;
+    justify-content: center;
+  }
+  
+  
+  .contacto {
+    position: absolute;
+    top: 93%;
+    left: 70%;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(to right, #e08484, #F26250);;
+    padding: 1rem 3rem;
+    border-radius: 10px;
+    display: inline-block;
+    font-weight: 300;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .close_modal {
+    position: absolute;
+    top: 2%;
+    right: 4%;
+    font-size: xx-large;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .modal_show { 
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .1s;
+    --transform: translateY(0);
+    --transition: transform .2s .2s;
+  
+  }
+  
+  
+  /*------modal-------*/
+  
+.nivel{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    display: block;
+    top: 12%;
+    left: 18%;
+  }
+  
+  .barra {
+    position: absolute;
+    justify-content: center;
+    top: 20%;
+    border: none;
+  }
+  
+  .barra {
+    width: 65%;
+    top: 15%;
+    height: 20px; /* Altura del contenedor de la barra de progreso */
+    background-color: #f3f3f3; /* Color de fondo del contenedor */
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+  }
+  
+  /* Estilo para el contenedor interno de la barra de progreso */
+  .progress {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Estilo para la barra de progreso */
+  .progress-barra {
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+    appearance: none; /* Eliminar el estilo predeterminado */
+  }
+  
+  /* Estilo para la barra de progreso en navegadores WebKit */
+  .progress-barra::-webkit-progress-bar {
+    background-color: #eeae87; /* Color de fondo del contenedor */
+    border-radius: 25px;
+  }
+  
+  .progress-barra::-webkit-progress-value {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+  
+  /* Estilo para la barra de progreso en navegadores Mozilla */
+  .progress-barra::-moz-progress-bar {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+
+.container {
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 75%;
+    max-height: 950px;
+    width: 82%;
+    max-width: 950px;
+    margin: auto;
+    border: 5px solid rgb(70, 15, 15);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    top: 22%;
+}
+header {
+
+    top: 0%;
+    position: absolute;
+    width: 100%;
+    height: 12%;
+    background-color: #fff;
+    
+}
+
+header img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 100%;
+    display: block;
+}
+
+#vidas {
+    font-size: 3em;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 23%;
+    left: 82%;
+    align-items: center;
+    background: #e8e4e1;
+    border-radius: 10px;
+    width: 4.5%;
+    height: 62%;
+
+}
+
+.vida {
+    margin-right: 20px; /* Espacio entre cada vida */
+}
+
+
+.opcion {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #eeae87; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+    position: relative;
+    white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+    transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+}
+
+.opcion::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 15px;
+    height: 15px;
+    background-color: #eeae87;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+    transform: rotate(45deg);
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.opcion:hover {
+    background-color: #a41d23; /* Color de fondo al pasar el ratón */
+}
+
+.opcion:hover::after {
+    background-color: #a41d23; /* Color del triángulo al pasar el ratón */
+}
+
+.opcion:active {
+    transform: scale(0.95); /* Efecto de presionado al hacer clic */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+}
+
+
+
+
+#respuestas{
+    position: absolute;
+    top: 35%;
+    left: 27%;          
+    display: none;
+    flex-direction: column;
+    align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+    gap: 20px; /* Espacio entre los botones */
+    padding: 20px;
+}
+
+.container-fluid{
+    border-bottom: 1px solid rgb(224, 217, 217);
+    max-height: 400px;
+    height: 50%;
+}
+.body-nivel2 {
+    background-color: rgb(72, 160, 204);
+}
+.gif-mama-1 {
+    width: 70%;
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    animation: move_gif_mama 6s infinite alternate;
+    z-index: 4;
+    top: 20%;
+}
+.gif-mama-2 {
+    display: none;
+    width: 70%;
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    animation: move_gif_mama_re 4s infinite alternate;
+    z-index: 4;
+    top: 19%;
+}
+.gif-mama-3 {
+    display: none;
+    width: 70%;
+    max-width: 40px;
+    height: auto;
+    position: absolute;
+    animation: move_gif_mama 4s infinite alternate;
+    z-index: 4;
+    top: 4.5%;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 34%;
+    }
+    100% {
+        left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+
+
+.siguiente-mensaje {
+    position: absolute;
+    cursor: pointer;
+    font-weight: 700;
+    font-family: Helvetica,"sans-serif";
+    transition: all .2s;
+    padding: 10px 20px;
+    border-radius: 100px;
+    background:#eeae87;
+    border: 1px solid transparent;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    top: 87%;
+    left: 83%;
+    align-items: center;
+    font-size: 15px;
+    z-index: 100;
+  }
+  .siguiente-mensaje span{
+    color: #ffff;
+  }
+  .siguiente-mensaje:hover {
+    background: #a41d23;
+  }
+  
+  .siguiente-mensaje > svg {
+    width: 34px;
+    margin-left: 10px;
+    transition: transform .3s ease-in-out;
+  }
+  
+  .siguiente-mensaje:hover svg {
+    transform: translateX(5px);
+  }
+  
+  .siguiente-mensaje:active {
+    transform: scale(0.95);
+  }
+  
+
+.continuar {
+    position: absolute;
+    width: 150px;
+    background-color: #03358a;
+    border: 4px solid #A41D23;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    left: 82%;
+    top: 91%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 53%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 67%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 100%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 100%;
+    max-width: 500px;
+}
+.gif-hijo-1 {
+    position: absolute;
+    top: 85%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: auto;
+}
+
+.gif-hijo-2 {
+    position: absolute;
+    display: none;
+    top: 43%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: auto;
+}
+
+.gif-hijo-3 {
+    position: absolute;
+    display: none;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: auto;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 38%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-hijo1::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.mensaje-hijo2 {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 44%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-hijo2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+
+.mensaje-hijo3 {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 53%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-hijo3::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+
+/* Estilos para pantallas grandes */
+@media (max-width: 1280px ) {
+
+   
+.nivel{
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    display: block;
+    top: 12%;
+    left: 18%;
+  }
+  
+  .barra {
+    position: absolute;
+    justify-content: center;
+    top: 20%;
+    border: none;
+  }
+  
+  .barra {
+    width: 65%;
+    top: 15%;
+    height: 20px; /* Altura del contenedor de la barra de progreso */
+    background-color: #f3f3f3; /* Color de fondo del contenedor */
+    border-radius: 25px;
+    overflow: hidden;
+    margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+  }
+  
+  /* Estilo para el contenedor interno de la barra de progreso */
+  .progress {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Estilo para la barra de progreso */
+  .progress-barra {
+    width: 100%;
+    height: 100%;
+    -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+    appearance: none; /* Eliminar el estilo predeterminado */
+  }
+  
+  /* Estilo para la barra de progreso en navegadores WebKit */
+  .progress-barra::-webkit-progress-bar {
+    background-color: #eeae87; /* Color de fondo del contenedor */
+    border-radius: 25px;
+  }
+  
+  .progress-barra::-webkit-progress-value {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+  
+  /* Estilo para la barra de progreso en navegadores Mozilla */
+  .progress-barra::-moz-progress-bar {
+    background-color: #a41d23; /* Color de la barra de llenado */
+    border-radius: 25px;
+  }
+
+.container {
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 60%;
+    max-height: 950px;
+    width: 60%;
+    max-width: 950px;
+    margin: auto;
+    border: 5px solid rgb(70, 15, 15);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    top:27%;
+}
+header {
+    position: relative;
+    top: 0%;
+    position: absolute;
+    width: 50%;
+    height: 25%;
+}
+
+header img {
+    width: 100%;
+    height: 50%;
+    display: block;
+}
+
+#vidas {
+    font-size: 2em;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 20%;
+    left: 64%;
+}
+
+.vida {
+    margin-right: 10px;
+}
+
+
+.opcion {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #eeae87; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+    position: relative;
+    white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+    transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+}
+
+.opcion::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    width: 15px;
+    height: 15px;
+    background-color: #eeae87;
+    border-radius: 50%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+    transform: rotate(45deg);
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+.opcion:hover {
+    background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+}
+
+.opcion:hover::after {
+    background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+}
+
+.opcion:active {
+    transform: scale(0.95); /* Efecto de presionado al hacer clic */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+}
+
+
+
+
+#respuestas{
+    position: absolute;
+    top: 30%;
+    left: 27%;          
+    display: none;
+    flex-direction: column;
+    align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+    gap: 20px; /* Espacio entre los botones */
+    padding: 20px;
+}
+
+.container-fluid{
+    border-bottom: 1px solid rgb(224, 217, 217);
+    max-height: 400px;
+    height: 50%;
+}
+.body-nivel2 {
+    background-color: rgb(72, 160, 204);
+}
+.gif-mama-1 {
+    width: 70%;
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    animation: move_gif_mama 6s infinite alternate;
+    z-index: 4;
+    top: 2%;
+}
+.gif-mama-2 {
+    display: none;
+    width: 70%;
+    max-width: 500px;
+    height: auto;
+    position: absolute;
+    animation: move_gif_mama_re 4s infinite alternate;
+    z-index: 4;
+    top: 19%;
+}
+.gif-mama-3 {
+    display: none;
+    width: 70%;
+    max-width: 40px;
+    height: auto;
+    position: absolute;
+    animation: move_gif_mama 4s infinite alternate;
+    z-index: 4;
+    top: 4.5%;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 34%;
+    }
+    100% {
+        left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+
+.button {
+    /*display: inline-block*/
+    display: none;
+    width: 100%;
+    max-width: 950px;
+    height: 62px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 1rem;
+    border: none;
+    position: absolute;
+    background: #100720;
+    transition: 0.1s;
+    text-align: center;
+    line-height: 62px;
+    text-decoration: none;
+    margin: 20px auto;
+    left: 18.9%;
+    top: 79%;
+}
+
+.button::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+    filter: blur(15px);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.button:active {
+    transform: scale(0.9) rotate(3deg);
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+    transition: 0.5s;
+}
+
+
+a.btn-salir {
+    display: inline-block;
+    width: 100%;
+    max-width: 950px;
+    height: 62px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 1rem;
+    border: none;
+    position: absolute;
+    background: #100720;
+    transition: 0.1s;
+    text-align: center;
+    line-height: 62px;
+    text-decoration: none;
+    margin: 20px auto;
+    left: 18.9%;
+    top: 88%;
+}
+
+a.btn-salir::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+    filter: blur(15px);
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+a.btn-salir:active {
+    transform: scale(0.9) rotate(3deg);
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+    transition: 0.5s;
+}
+
+
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 53%;
+    top: 25%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 100%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 100%;
+    max-width: 500px;
+}
+.gif-hijo-1 {
+    position: absolute;
+    top: 82%;
+    left: 32%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: auto;
+}
+
+.gif-hijo-2 {
+    position: absolute;
+    display: none;
+    top: 43%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 220px;
+    height: auto;
+}
+
+.gif-hijo-3 {
+    position: absolute;
+    display: none;
+    top: 27%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: auto;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 38%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-hijo1::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.mensaje-hijo2 {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 44%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-hijo2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+
+.mensaje-hijo3 {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    display: none;
+    left: 53%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.mensaje-hijo3::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 35%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+
+/* Estilos para pantallas grandes */
+}
+
+
+
+/* Estilos para tablet */
+
+@media  (max-width: 1024px) and (max-height: 600px){
+
+    .nivel{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 14%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 75%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 35%;
+        max-height: 950px;
+        width: 70%;
+        max-width: 950px;
+        margin: auto;
+        border: 5px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:25%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 20%;
+        left: 64%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 43%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 27%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .nivel{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 14%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 75%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 35%;
+        max-height: 950px;
+        width: 70%;
+        max-width: 950px;
+        margin: auto;
+        border: 5px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:25%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 20%;
+        left: 64%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 43%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 27%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+
+
+@media (max-width: 912px) {
+    .nivel{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 14%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 75%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 35%;
+        max-height: 950px;
+        width: 80%;
+        max-width: 950px;
+        margin: auto;
+        border: 5px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:25%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 20%;
+        left: 64%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 43%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 27%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+@media (max-width: 853px) {
+    .nivel{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 14%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 75%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 35%;
+        max-height: 950px;
+        width: 80%;
+        max-width: 950px;
+        margin: auto;
+        border: 5px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:25%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 20%;
+        left: 64%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 43%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 27%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+@media (max-width: 820px) {
+    .nivel{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 14%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 75%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 37%;
+        max-height: 950px;
+        width: 80%;
+        max-width: 950px;
+        margin: auto;
+        border: 5px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:25%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 20%;
+        left: 64%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 43%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 220px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 27%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+
+@media (max-width: 768px) {
+    .nivel{
+        font-size: 30px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 14%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 75%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 40%;
+        max-height: 950px;
+        width: 80%;
+        max-width: 950px;
+        margin: auto;
+        border: 5px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:25%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 20%;
+        left: 64%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 70%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 45%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+@media (max-width: 540px) {
+    .nivel{
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        display: block;
+        top: 12%;
+        left: 12%;
+      }
+      
+      .barra {
+        position: absolute;
+        justify-content: center;
+        top: 20%;
+        border: none;
+      }
+      
+      .barra {
+        width: 78%;
+        top: 15%;
+        height: 20px; /* Altura del contenedor de la barra de progreso */
+        background-color: #f3f3f3; /* Color de fondo del contenedor */
+        border-radius: 25px;
+        overflow: hidden;
+        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+      }
+      
+      /* Estilo para el contenedor interno de la barra de progreso */
+      .progress {
+        width: 100%;
+        height: 100%;
+      }
+      
+      /* Estilo para la barra de progreso */
+      .progress-barra {
+        width: 100%;
+        height: 100%;
+        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
+        appearance: none; /* Eliminar el estilo predeterminado */
+      }
+      
+      /* Estilo para la barra de progreso en navegadores WebKit */
+      .progress-barra::-webkit-progress-bar {
+        background-color: #eeae87; /* Color de fondo del contenedor */
+        border-radius: 25px;
+      }
+      
+      .progress-barra::-webkit-progress-value {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+      
+      /* Estilo para la barra de progreso en navegadores Mozilla */
+      .progress-barra::-moz-progress-bar {
+        background-color: #a41d23; /* Color de la barra de llenado */
+        border-radius: 25px;
+      }
+    
+    .container {
+        position: absolute;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 42%;
+        max-height: 950px;
+        width: 80%;
+        max-width: 950px;
+        margin: auto;
+        border: 3px solid rgb(70, 15, 15);
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        top:30%;
+    }
+    header {
+        top: 0%;
+        position: absolute;
+        width: 80%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 20%;
+        display: block;
+    }
+    
+    #vidas {
+        font-size: 2em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 22%;
+        left: 60%;
+    }
+    
+    .vida {
+        margin-right: 10px;
+    }
+    
+    
+    .opcion {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #eeae87; /* Color de fondo */
+        color: #fff; /* Color del texto */
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+        position: relative;
+        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
+        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    }
+    
+    .opcion::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 20px;
+        width: 15px;
+        height: 15px;
+        background-color: #eeae87;
+        border-radius: 50%;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
+        transform: rotate(45deg);
+        transition: background-color 0.3s; /* Transición suave */
+    }
+    
+    .opcion:hover {
+        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
+    }
+    
+    .opcion:hover::after {
+        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
+    }
+    
+    .opcion:active {
+        transform: scale(0.95); /* Efecto de presionado al hacer clic */
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
+    }
+    
+    
+    
+    
+    #respuestas{
+        position: absolute;
+        top: 30%;
+        left: 27%;          
+        display: none;
+        flex-direction: column;
+        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
+        gap: 20px; /* Espacio entre los botones */
+        padding: 20px;
+    }
+    
+    .container-fluid{
+        border-bottom: 1px solid rgb(224, 217, 217);
+        max-height: 400px;
+        height: 50%;
+    }
+    .body-nivel2 {
+        background-color: rgb(72, 160, 204);
+    }
+    .gif-mama-1 {
+        width: 75%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 6s infinite alternate;
+        z-index: 4;
+        top: 7%;
+    }
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 500px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 19%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 34%;
+        }
+        100% {
+            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 40%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+    
+    .button {
+        /*display: inline-block*/
+        display: none;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 79%;
+    }
+    
+    .button::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    .button:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    a.btn-salir {
+        display: inline-block;
+        width: 100%;
+        max-width: 950px;
+        height: 62px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 17px;
+        border-radius: 1rem;
+        border: none;
+        position: absolute;
+        background: #100720;
+        transition: 0.1s;
+        text-align: center;
+        line-height: 62px;
+        text-decoration: none;
+        margin: 20px auto;
+        left: 18.9%;
+        top: 88%;
+    }
+    
+    a.btn-salir::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        filter: blur(15px);
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    
+    a.btn-salir:active {
+        transform: scale(0.9) rotate(3deg);
+        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+        transition: 0.5s;
+    }
+    
+    
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 25%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .visible {
+        display: block;
+    }
+    
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 60%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 74%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 53%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 500px;
+    }
+    .gif-hijo-1 {
+        position: absolute;
+        top: 82%;
+        left: 32%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: auto;
+    }
+    
+    .gif-hijo-2 {
+        position: absolute;
+        display: none;
+        top: 45%;
+        left: 38%;
+        transform: translate(-50%, -50%);
+        width: 150px;
+        height: auto;
+    }
+    
+    .gif-hijo-3 {
+        position: absolute;
+        display: none;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        line-height: 1.5;
+        display: none;
+        left: 38%;
+        top: 58%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    .mensaje-hijo2 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.5;
+        display: none;
+        left: 44%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    .mensaje-hijo3 {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        display: none;
+        left: 53%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mensaje-hijo3::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+    
+    
+    /* Estilos para pantallas grandes */  
+}
+
+/* Estilos para móvil */
+@media (max-width: 480px) {
+    .container{
+        height: 200px;
+        width: 100%;
+        max-width: 350px;
+        border: 10px solid rgb(70, 15, 15)
+    }
+
+    a.btn-salir{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 10%;
+    }
+
+    .button{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 10%;
+        
+    }
+
+    .gif-mama-1 {
+        width: 70%;
+        max-width: 200px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    
+    .gif-mama-2 {
+        display: none;
+        width: 70%;
+        max-width: 200px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    .gif-mama-3 {
+        display: none;
+        width: 70%;
+        max-width: 200px;
+        height: auto;
+        position: absolute;
+        animation: move_gif_mama_re_2 4s infinite alternate;
+        z-index: 4;
+        top: 4.5%;
+    }
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 30%;
+        }
+        100% {
+            left: calc(45% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 50%;
+        }
+        100% {
+            left: calc(30% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }        
+    .gif-hijo-1{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 20%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+
+    @keyframes move_gif_hijo  {
+        0% {
+            left: 35%;
+        }
+        100% {
+            left: 35% /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    .mensaje-hijo1 {
+        left: 45%;
+        top: 15%;
+        width: 8%;
+        max-width: 100px;
+        height: auto;
+        font-size: 8px;
+    }
+
+    .mensaje-hijo1::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 35%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+    }
+
+    #staticImage {
+        position: relative; /* Cambiado a absolute */
+        left: 33%; /* Alineado con .card */
+        top: 20%; /* Alineado con .card */
+        height: auto;
+        display: none;
+        width: 100%;
+        max-width: 180px;
+        z-index: 0; /* Menor z-index para estar detrás de .card */
+    }
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 100px;
+        width: 15%;
+        height: auto;
+        font-family: Arial, sans-serif;
+        font-size: 8px;
+        line-height: 1.5;
+        display: none;
+        left: 62%; /* Coordenada similar a #staticImage */
+        top: 6%; /* Coordenada similar a #staticImage */
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        z-index: 10; /* Mayor z-index para estar delante de #staticImage */
+    }
+    
+    .mensaje::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+        z-index: 10;
+    }
+    
+}
+/* movil mas pequeño*/
+@media (max-width: 450px) {
+    header {
+        top: 0%;
+        position: absolute;
+        width: 85%;
+        height: 40%;
+    }
+    
+    header img {
+        width: 100%;
+        height: 17%;
+        display: block;
+    }
+        .container{
+            width: 60%;
+            max-width: 400px;
+            height: 35%;
+            border: 5px solid rgb(70, 15, 15);
+            top: 25%;
+            left: 1.7%;
+            }
+    
+        .gif-hijo-1{
+            width: 30%;
+            max-width: 300px;
+            height: auto;
+            left: 100%;
+            top: 85%;
+            position: absolute;
+            animation: move_gif_hijo 100s linear infinite;
+        }
+        .gif-hijo-2{
+            width: 50%;
+            max-width: 100px;
+            height: auto;
+            left: 100%;
+            top: 48%;
+            position: absolute;
+            animation: move_gif_hijo 100s linear infinite;
+        }
+        .gif-hijo-3{
+            position: absolute;
+            width: 15%;
+            max-width: 100px;
+            height: auto;
+            left: 52%;
+            top: 30%;
+        }
+        a.btn-salir{
+            height: 90px;
+            width: 75%;
+            max-width: 200px;
+            left: 1.5%;
+            top: 60%;
+        line-height: 80px;
+
+        }
+    
+        .button{
+            height: 90px;
+            width: 75%;
+            max-width: 200px;
+            left: 50.5%;
+            top: 60%;
+        line-height: 80px;
+            
+        }
+    
+        
+    #staticImage {
+        position: absolute;
+        left: 50%;
+        top: 65%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 60%;
+        max-width: 500px;
+    }
+    
+    #staticImage2 {
+        display: block;
+        position: absolute;
+        left: 67%;
+        top: 65%;
+        transform: translate(-50%, -50%);
+        height: auto;
+        display: none;
+        width: 60%;
+        max-width: 500px;
+    }
+    
+    .mensaje {
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 8px;
+        line-height: 1.5;
+        display: none;
+        left: 58%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        width: 25%;
+        
+    }
+    
+    .mensaje-mama2{
+        position: absolute;
+        display: inline-block;
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        padding: 10px 15px;
+        max-width: 300px;
+        font-family: Arial, sans-serif;
+        font-size: 8px;
+        line-height: 1.5;
+        display: none;
+        left: 70%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .textos-mensajes{
+        font-size: 12px;
+    }
+    
+    .mensaje-mama2::after {
+        content: '';
+        position: absolute;
+        bottom: -24px;
+        left: 70%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+        border-top-color: white;
+        font-size: 15px;
+    }
+    
+    .mensaje-hijo1 {
+        position: absolute;
+        left: 45%;
+        top: 54%;
+        width: 20%;
+        max-width: 100px;
+        height: auto;
+        font-size: 5px;
+    }
+    
+    .mensaje-hijo2 {
+        left: 45%;
+        top: 16%;
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        font-size: 8px;
+    }
+    
+    .mensaje-hijo3 {
+        left: 60%;
+        top: 15%;
+        width: 24%;
+        max-width: 100px;
+        height: auto;
+        font-size: 12px;
+    }
+    
+    .gif-mama-1{
+        top: 20%;
+        animation: move_gif_mama 6s infinite alternate;
+        width: 60%;
+        max-width: 500px;
+    }
+    
+    .gif-mama-2{
+        top: 12%;
+        top: 20%;
+        animation: move_gif_mama_re 6s infinite alternate;
+        width: 60%;
+        max-width: 500px;
+    }
+    
+    @keyframes move_gif_mama_re_2 {
+        0% {
+            left: 45%;
+        }
+        100% {
+            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    
+    @keyframes move_gif_mama_re {
+        0% {
+            left: 20%;
+        }
+        100% {
+            left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }
+    @keyframes move_gif_mama {
+        0% {
+            left: 38%;
+        }
+        100% {
+            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+        }
+    }  
+
+}
+@media (max-width: 431px) {
+    .container{
+        width: 100%;
+        max-width: 460px;
+        height: 30%;
+        border: 5px solid rgb(70, 15, 15);
+        top: 27%;
+        left: 0%;
+        }
+
+    .gif-hijo-1{
+        width: 30%;
+        max-width: 300px;
+        height: auto;
+        left: 100%;
+        top: 85%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 3%;
+        top: 60%;
+    }
+
+    .button{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 50.5%;
+        top: 60%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 12px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+    font-size: 15px;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 16%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 12px;
+}
+
+.gif-mama-1{
+    top: 20%;
+    animation: move_gif_mama 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+.gif-mama-2{
+    top: 12%;
+    top: 20%;
+    animation: move_gif_mama_re 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+
+
+@media (max-width: 415px) {
+    .container{
+        width: 98%;
+        max-width: 400px;
+        height: 30%;
+        border: 5px solid rgb(70, 15, 15);
+        top: 28%;
+        justify-content: center;
+
+        }
+
+        header {
+            top: 0%;
+            position: absolute;
+            width: 85%;
+            height: 40%;
+        }
+        
+        header img {
+            width: 100%;
+            height: 17%;
+            display: block;
+        }
+
+    .gif-hijo-1{
+        width: 30%;
+        max-width: 300px;
+        height: auto;
+        left: 100%;
+        top: 85%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 1.5%;
+        top: 60%;
+    }
+
+    .button{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 50.5%;
+        top: 60%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.opcion{
+    font-size: 10px;
+}
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 12px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+    font-size: 15px;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 16%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 12px;
+}
+
+.gif-mama-1{
+    top: 20%;
+    animation: move_gif_mama 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+.gif-mama-2{
+    top: 12%;
+    top: 20%;
+    animation: move_gif_mama_re 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+@media (max-width: 414px) {
+    .container{
+        width: 98%;
+        max-width: 400px;
+        height: 30%;
+        border: 5px solid rgb(70, 15, 15);
+        top: 28%;
+        justify-content: center;
+
+        }
+
+        header {
+            top: 0%;
+            position: absolute;
+            width: 85%;
+            height: 40%;
+        }
+        
+        header img {
+            width: 100%;
+            height: 17%;
+            display: block;
+        }
+
+    .gif-hijo-1{
+        width: 30%;
+        max-width: 300px;
+        height: auto;
+        left: 100%;
+        top: 85%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 1.5%;
+        top: 60%;
+    }
+
+    .button{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 50.5%;
+        top: 60%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.opcion{
+    font-size: 10px;
+}
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 12px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+    font-size: 15px;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 16%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 12px;
+}
+
+.gif-mama-1{
+    top: 20%;
+    animation: move_gif_mama 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+.gif-mama-2{
+    top: 12%;
+    top: 20%;
+    animation: move_gif_mama_re 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+@media (max-width: 412px) {
+    .container{
+        width: 98%;
+        max-width: 400px;
+        height: 30%;
+        border: 5px solid rgb(70, 15, 15);
+        top: 28%;
+        justify-content: center;
+
+        }
+
+        header {
+            top: 0%;
+            position: absolute;
+            width: 85%;
+            height: 40%;
+        }
+        
+        header img {
+            width: 100%;
+            height: 17%;
+            display: block;
+        }
+
+    .gif-hijo-1{
+        width: 30%;
+        max-width: 300px;
+        height: auto;
+        left: 100%;
+        top: 85%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 1.5%;
+        top: 60%;
+    }
+
+    .button{
+        height: 90px;
+        width: 75%;
+        max-width: 200px;
+        left: 50.5%;
+        top: 60%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.opcion{
+    font-size: 10px;
+}
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 12px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+    font-size: 15px;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 16%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 12px;
+}
+
+.gif-mama-1{
+    top: 20%;
+    animation: move_gif_mama 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+.gif-mama-2{
+    top: 12%;
+    top: 20%;
+    animation: move_gif_mama_re 6s infinite alternate;
+    width: 60%;
+    max-width: 500px;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;  
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+@media (max-width: 391px) {
+    .container{
+        width: 98%;
+        max-width: 400px;
+        height: 30%;
+        border: 3px solid rgb(70, 15, 15);
+        top: 28%;
+        justify-content: center;
+
+        }
+
+
+        #vidas {
+            font-size: 25px;
+        }
+        header {
+            top: 0%;
+            position: absolute;
+            width: 85%;
+            height: 40%;
+        }
+        
+        header img {
+            width: 100%;
+            height: 17%;
+            display: block;
+        }
+    .gif-hijo-1{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 85%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 8%;
+        top: 60%;
+    }
+
+    .button{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 52%;
+        top: 60%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 10px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 20%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 12px;
+}
+
+.gif-mama-1{
+    top: 15%;
+    animation: move_gif_mama 6s infinite alternate;
+    
+}
+
+.gif-mama-2{
+    top: 15%;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+
+
+
+
+@media (max-width: 376px) {
+    .container{
+        width: 95%;
+        height: 230px;
+        border: 5px solid rgb(70, 15, 15);
+        top: 28%;
+        left: 0%;
+        }
+
+    .opcion{
+        font-size: 8;
+    }
+    .gif-hijo-1{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 84%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 3%;
+        top: 60%;
+    }
+
+    .button{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 54%;
+        top: 60%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 10px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 8%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.gif-mama-1{
+    top: 12%;
+    animation: move_gif_mama 6s infinite alternate;
+    
+}
+
+.gif-mama-2{
+    top: 12%;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+
+@media (max-width: 360px) {
+    .container{
+        width: 95%;
+        height: 230px;
+        border: 5px solid rgb(70, 15, 15);
+        top: 29%;
+        left: 0%;
+        }
+
+    .opcion{
+        font-size: 8;
+    }
+    .gif-hijo-1{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 80%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 3%;
+        top: 55%;
+    }
+
+    .button{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 52%;
+        top: 55%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 10px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 8%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.gif-mama-1{
+    top: 12%;
+    animation: move_gif_mama 6s infinite alternate;
+    
+}
+
+.gif-mama-2{
+    top: 12%;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}
+
+@media (max-width: 345px) {
+    
+    .container{
+        width: 95%;
+        height: 230px;
+        max-width: px;
+        position: absolute;
+        top: 25%;
+        left: 1%;
+    }
+    .gif-hijo-1{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 80%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-2{
+        width: 50%;
+        max-width: 100px;
+        height: auto;
+        left: 100%;
+        top: 48%;
+        position: absolute;
+        animation: move_gif_hijo 100s linear infinite;
+    }
+    .gif-hijo-3{
+        position: absolute;
+        width: 15%;
+        max-width: 100px;
+        height: auto;
+        left: 52%;
+        top: 30%;
+    }
+    a.btn-salir{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 3%;
+        top: 50%;
+    }
+
+    .button{
+        height: 90px;
+        width: 100%;
+        max-width: 160px;
+        left: 52%;
+        top: 50%;
+        
+    }
+
+    
+#staticImage {
+    position: absolute;
+    left: 50%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+#staticImage2 {
+    display: block;
+    position: absolute;
+    left: 67%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    display: none;
+    width: 60%;
+    max-width: 500px;
+}
+
+.mensaje {
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 58%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    width: 25%;
+    
+}
+
+.mensaje-mama2{
+    position: absolute;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 10px 15px;
+    max-width: 300px;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    line-height: 1.5;
+    display: none;
+    left: 70%;
+    top: 20%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.textos-mensajes{
+    font-size: 10px;
+}
+
+.mensaje-mama2::after {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: white;
+}
+
+.mensaje-hijo1 {
+    position: absolute;
+    left: 45%;
+    top: 54%;
+    width: 20%;
+    max-width: 100px;
+    height: auto;
+    font-size: 5px;
+}
+
+.mensaje-hijo2 {
+    left: 45%;
+    top: 8%;
+    width: 50%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.mensaje-hijo3 {
+    left: 60%;
+    top: 15%;
+    width: 24%;
+    max-width: 100px;
+    height: auto;
+    font-size: 8px;
+}
+
+.gif-mama-1{
+    top: 12%;
+    animation: move_gif_mama 6s infinite alternate;
+    
+}
+
+.gif-mama-2{
+    top: 12%;
+}
+
+@keyframes move_gif_mama_re_2 {
+    0% {
+        left: 45%;
+    }
+    100% {
+        left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+
+@keyframes move_gif_mama_re {
+    0% {
+        left: 20%;
+    }
+    100% {
+        left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}
+@keyframes move_gif_mama {
+    0% {
+        left: 38%;
+    }
+    100% {
+        left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
+    }
+}  
+}

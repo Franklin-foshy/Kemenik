@@ -1,0 +1,1 @@
+<button class = "continuar" id="next-button"  style="display:none;">{{_('continuar')}}</button>
