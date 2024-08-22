@@ -62,9 +62,9 @@ $.ajax({
 });*/
 let questions = [];
 
-// Cargar las preguntas del API
+// Cargar las preguntas del API22
 $.ajax({
-    url: `http://127.0.0.1:8000/api/preguntas_por_nivel/2`,
+    url: `http://127.0.0.1:8000/api/preguntas_por_nivel/3`,
     type: 'GET',
     dataType: 'json',
     success: function(response) {

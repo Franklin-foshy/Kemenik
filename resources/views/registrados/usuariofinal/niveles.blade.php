@@ -37,7 +37,7 @@
 </head>
 
 <body class="g-sidenav-show bg-gray-200">
-
+  
   <!-- modal -->
   @include('registrados.usuariofinal.dashboard_componentes.modal')
 

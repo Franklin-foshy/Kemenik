@@ -11,8 +11,10 @@
                     
             </div>
             
-        </div>.
-        <img src="{{ asset('imgs/index/JUNAJPU_HABLANDO_E1.gif') }}" class="respuesta" id="imagen1">
+        </div>
+        <div class="imagen-contenet-modal-dashboard">
+            <img src="{{ asset('imgs/index/JUNAJPU_HABLANDO_E1.gif') }}" class="respuesta" id="imagen1" >
+        </div>
         <a href="#" id="close-modal" class="button-contact">
             {{_('Continuar')}}
         </a>
@@ -20,10 +22,11 @@
 </section>
 
 <script>
+
     document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('modal');
     const cerrarModal = document.getElementById('close-modal');
-    
+    let contador =;
     cerrarModal.addEventListener('click', (e) => {
         e.preventDefault(); 
         modal.classList.add('modal-visible');
