@@ -1,28 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener elementos del DOM
-    const gif_image = document.getElementById('gifImage');
-    const gif_hijo = document.getElementById('gifhijo');
-    const gif_hijo2 = document.getElementById('gifhijo2');
-    const gif_hijo3 = document.getElementById('gifhijo3');
-    const static_image = document.getElementById('staticImage');
-    const message_mama1 = document.getElementById('messageCard');
-    const message_mama2 = document.getElementById('messageCard2');
-    const message_hijo1 = document.getElementById('messagehijo1');
-    const message_hijo2 = document.getElementById('messagehijo2');
-    const message_hijo3 = document.getElementById('messagehijo3');
-    const mensaje_cambia_hijo = document.getElementById('mensaje_hijo');
-    const mensaje_cambia_hijo2 = document.getElementById('mensaje_hijo2');
-    const mensaje_cambia_hijo3 = document.getElementById('mensaje_hijo3');
-    const mensaje_cambia_madre = document.getElementById('mensaje_mama');
-    const mensaje_cambia_madre2 = document.getElementById('mensaje_mama2');
     const contendor = document.getElementById('contenedor');
-    const gifImage2 = document.getElementById('gifImage2');
-    const gifImage3 = document.getElementById('gifImage3');
-    const static_image2 = document.getElementById('staticImage2');
-    const opciones = document.getElementById('respuestas');
-    const opcion1 = document.getElementById('opcion1');
-    const opcion2 = document.getElementById('opcion2');
-    const opcion3 = document.getElementById('opcion3');
     const seguiente_memsaje = document.getElementById('siguiente_mensaje');
     const siguiente_escena = document.getElementById('siguiente_escena');
     const regresar = document.getElementById('regresar');
@@ -139,7 +117,7 @@ function escena_1() {
 
     asignar_opciones(contador);
 }
-
+/*
 function mostrarMensajeMama1() {
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
@@ -287,7 +265,7 @@ function mensaje_divertido() {
     salir()
 
     }, 500);
-}
+}*/
     escena_1();
 
     let vidas = 3;

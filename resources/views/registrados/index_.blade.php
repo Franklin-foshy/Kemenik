@@ -43,7 +43,7 @@
 
     <!-- start row userFinal-->
     @if(kvfj(Auth::user()->rol->permissions, 'usuariofinal'))
-    @include('registrados.usuariofinal.niveles');
+    @include('registrados.usuariofinal.Nivel-1.nivel1');
     @endif
 
     
