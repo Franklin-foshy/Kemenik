@@ -1,3 +1,4 @@
+
 <!-- JAVASCRIPT -->
 <script src="{{ asset('assets/libs/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -13,7 +14,6 @@
 <script src="{{ asset('assets/libs/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/pages/form-advanced.init.js') }}"></script>
-
 
 <!-- App js -->
 <script src="{{ asset('assets/js/plugin.js') }}"></script>

@@ -1,8 +1,100 @@
+
+let questions = [];
+
+// Cargar las preguntas del API
+$.ajax({
+    url: `http://127.0.0.1:8000/api/preguntas_por_nivel/3`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(response) {
+        if (response.data && response.data.length > 0) {
+            let requests = response.data.map(function(pregunta) {
+                return $.ajax({
+                    url: `http://127.0.0.1:8000/api/respuestas_por_pregunta/${pregunta.id}`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.data && response.data.length > 0) {
+                            let imagene = [];
+                            let respuestas = [];
+
+                            response.data.forEach(function(respuesta) {
+                                imagene.push(respuesta.imagen);
+                                respuestas.push(respuesta.texto_respuesta);
+                            });
+
+                            let preguntaDiccionario = {
+                                text: `¿${pregunta.texto_pregunta}?`,
+                                images: imagene,
+                                descrip: respuestas,
+                                correct: pregunta.texto_respuesta
+                            };
+
+                            questions.push(preguntaDiccionario);
+                        }
+                    },
+                    error: function() {
+                        console.error('Error al cargar las respuestas de la pregunta:', pregunta.id);
+                    }
+                });
+            });
+
+            // Esperar a que todas las solicitudes AJAX internas terminen
+            $.when(...requests).then(function() {
+                // Ahora que todas las preguntas y respuestas están cargadas, generar el HTML
+                generateHTMLForCurrentQuestion();
+            });
+
+        } else {
+            console.log('No hay preguntas disponibles para este nivel.');
+        }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error en la solicitud:', textStatus, errorThrown);
+    }
+});
+
+
+// ------------ crear epacios de respuestas --------------------
+
+function generateHTMLForCurrentQuestion() {
+    let preguntaSeleccionada = questions[currentQuestionIndex];
+
+    const container = document.getElementById('image-container'); 
+
+    preguntaSeleccionada.images.forEach((image, index) => {
+        // Crear el contenedor principal
+        const div = document.createElement('div');
+        div.className = 'imagenes-descrip';
+
+        // Crear la imagen
+        const img = document.createElement('img');
+        img.src = preguntaSeleccionada.images[index]; // Aquí se usa el nombre de la imagen del diccionario
+        img.alt = `Imagen ${index + 1}`;
+        img.className = 'image';
+        img.setAttribute('onclick', `checkAnswer(${index})`); // Se usa el índice como identificador
+
+        // Crear el párrafo con la descripción correspondiente
+        const p = document.createElement('p');
+        p.className = 'descripccion';
+        p.id = `descripcion${index + 1}`; // ID dinámico
+        p.textContent = preguntaSeleccionada.descrip[index]; // Descripción correspondiente al índice
+
+        // Añadir la imagen y el párrafo al div principal
+        div.appendChild(img);
+        div.appendChild(p);
+
+        // Finalmente, agregar el div completo al contenedor principal
+        container.appendChild(div);
+    });
+}
+
+
+// Variables globales y elementos del DOM
 var quiz3 = document.getElementById('quiz3');
 var aplausos = document.getElementById('audio_correcto');
 var audio_incorrecto = document.getElementById('audio_incorrecto');
 var fuegos_artificiales = document.getElementById('fuegos_artificiales');
-
 
 const body = document.getElementById('body-principal');
 const cargando = document.getElementById('cargando');
@@ -21,18 +113,15 @@ const cerrar_modal = document.getElementById('cerrar_modal');
 const gif_pregunta = document.getElementById('gif-pregunta');
 const text_nivel = document.getElementById('nivel');
 
-
-
 close_modal.addEventListener('click', (e)=> {
-    e.preventDefault()
-    modal.classList.remove('modal_show')
-} );
-
+    e.preventDefault();
+    modal.classList.remove('modal_show');
+});
 
 cerrar_modal.addEventListener('click', (e)=> {
-    e.preventDefault()
-    modal.classList.remove('modal_show')
-} );
+    e.preventDefault();
+    modal.classList.remove('modal_show');
+});
 
 let time_pantalla_carga;
 let time_teminar;
@@ -41,53 +130,18 @@ time_pantalla_carga = setTimeout(function(){
 },);
 
 time_teminar = setTimeout(function(){
-var quiz3 = document.getElementById('quiz3');
-
     game_cont.style.display = 'flex';
-    boton_continuar.style = 'block'
-    barra.style = 'block'
-    header.style = 'block'
+    boton_continuar.style.display = 'block';
+    barra.style.display = 'block';
+    header.style.display = 'block';
     cargando.style.display = 'none';
     gif_pregunta.style.display = 'flex';
     text_nivel.style.display = 'block';
-    
+    tamaño = 100/questions.length;
     quiz3.play();
-},1000)
+}, 5000);
 
-const questions = [
-    {
-        text: "¿Quien crees que deberia encargasrse de los deberes del hogar?",
-        images: ["imgs/nivel2/imagen_4.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_2.jpeg"],
-        descrip:["corresponsabilidad afectiva","señores en union","marchas en casa arraigadas a un espacio "],
-        correct: 'corresponsabilidad afectiva'
-    },
-    {
-        text: "Pregunta 2: ¿Cuál es la imagen correcta?",
-        images: ["imgs/nivel2/imagen_2.jpeg", "imgs/nivel2/imagen_6.jpeg","imgs/nivel2/imagen_5.jpeg"],
-        descrip:["ayuda en la limpieza","estutas socio economico","señores unidos por un mismo proposito"],
-        correct: 'ayuda en la limpieza'
-    },
-    {
-        text: "Pregunta 3: ¿Cuál es la imagen correcta?",
-        images: ["imgs/nivel2/imagen_4.jpeg", "imgs/nivel2/imagen_2.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        descrip:["dilectivo progenero","segramentaria de aprencio a los impuestos ","mujeres unidas"],
-        correct: 'mujeres unidas'
-    },
-    {
-        text: "Pregunta 4: ¿Cuál es la imagen correcta?",
-        images: ["imgs/nivel2/imagen_4.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_2.jpeg"],
-        descrip:["estatus en sociedad","marchas a favor de la igualdad","estatus cultural"],
-        correct: 'marchas a favor de la igualdad'
-    },
-    {
-        text: "Pregunta 5: ¿Cuál es la imagen correcta?",
-        images: ["imgs/nivel2/imagen_5.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        descrip:["corresponsabilidad en casa","no solo es mujer","todos juntos en casa"],
-        correct: 'todos juntos en casa'
-    }
-];
 
-let tamaño = 100/questions.length;
 
 function cargar_barra (){
     const barra = document.getElementById('barra');
@@ -96,35 +150,26 @@ function cargar_barra (){
 let currentQuestionIndex = 0;
 var correct3 = 0;
 
+
 function loadQuestion() {
     const question = questions[currentQuestionIndex];
     document.getElementById('question-clan').textContent = question.text;
-    document.getElementById('descripcion1').textContent = question.descrip[0]
-    document.getElementById('descripcion2').textContent = question.descrip[1]
-    document.getElementById('descripcion3').textContent = question.descrip[2]
+
     const images = document.querySelectorAll('.image');
-    images[0].src = question.images[0];
-    images[1].src = question.images[1];
-    images[2].src = question.images[2];
+
     images.forEach(img => {
         img.classList.remove('correct', 'incorrect');
         img.onclick = () => checkAnswer(Array.from(images).indexOf(img));
         aplausos.pause();
-        aplausos.currentTime = 0 ;
+        aplausos.currentTime = 0;
         audio_incorrecto.pause();
-        audio_incorrecto.currentTime = 0 ;
-
+        audio_incorrecto.currentTime = 0;
     });
+
     document.getElementById('feedback').textContent = '';
     document.getElementById('next-button').style.pointerEvents = 'none';
-
-
-
-
 }
 
-let time;
-clearTimeout(time);
 function checkAnswer(selectedIndex) {
     const question = questions[currentQuestionIndex];
     const images = document.querySelectorAll('.image');
@@ -154,10 +199,10 @@ function checkAnswer(selectedIndex) {
         texto_modal.textContent = "La respuesta era: " + question.descrip[correctIndex];
         audio_incorrecto.play();
     }
+
     document.getElementById('next-button').style.pointerEvents = 'auto';
     images.forEach(img => img.onclick = null); // Desactivar clics después de una selección
 }
-
 
 function launchConfetti() {
     const duration = 4 * 1000; // Duración en milisegundos
@@ -186,13 +231,19 @@ function launchConfetti() {
     }, 300);
 }
 
+
+boton_continuar.addEventListener('click', nextQuestion);
+
+
 function nextQuestion() {
     currentQuestionIndex++;
-    // aquí guardo la variable para poder mandársela al archivo de script_index.html
     localStorage.setItem('correct3', correct3);
-    cargar_barra()
+    cargar_barra();
     if (currentQuestionIndex < questions.length) {
-        loadQuestion();
+        // Limpiar el contenedor antes de cargar la nueva pregunta
+        document.getElementById('image-container').innerHTML = ''; 
+        generateHTMLForCurrentQuestion(); // Genera el nuevo contenido
+        loadQuestion(); // Carga los datos en el HTML generado
     } else {
         showResult();
     }
@@ -210,19 +261,18 @@ function showResult() {
     document.getElementById('home-button').style.display = 'block';
     launchConfetti();
     fuegos_artificiales.play();
-
 }
 
 function goHome() {
     window.location.href = 'home';
     quiz3.pause();
     fuegos_artificiales.pause();
-
-
 }
 
 // Iniciar la primera pregunta
-loadQuestion();
+setTimeout(function(){
+    loadQuestion();
+}, 5000);
 
 
 

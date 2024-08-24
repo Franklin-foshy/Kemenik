@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" data-scroll="true">
             <div class="content-img-header">
-              <img id = "header"src="{{ asset('imgs/nivel2/header_principal.jpeg') }}" alt="" class = "header">
+              <img id = "header"src="{{ asset('imgs/nivel2/header_principal.jpeg') }}" alt="" class = "header" style="display: block">
             </div>
             <ul class="navbar-nav  justify-content-end" id="menu-header">
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
@@ -16,7 +16,7 @@
             </li>
             <!---------------------------- Sing out ------------------------------>
             <div class = "sing-in-cont" >
-            <li class="nav-item d-flex align-items-center" id="sign-in">
+            <li class="nav-item d-flex align-items-center" id="sign-in" >
               <form method="POST" action="{{ route('logout') }}" style="display: inline;">
                   @csrf
                   <a href="{{ route('logout') }}" class="nav-link text-body font-weight-bold px-0" onclick="event.preventDefault(); this.closest('form').submit();">

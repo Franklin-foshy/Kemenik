@@ -1,7 +1,7 @@
 <!-------------------------------------- cuadro rompecabezas --------------------------------------------->
 
 
-<div class="rompecabezas_final" id="targetContainer">
+<div class="rompecabezas_final" id="targetContainer" style="display: none">
     <div class="espacio" data-index="1" id="espacio1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class="espacio" data-index="2" id="espacio2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
     <div class="espacio" data-index="3" id="espacio3" ondrop="drop(event)" ondragover="allowDrop(event)"></div>

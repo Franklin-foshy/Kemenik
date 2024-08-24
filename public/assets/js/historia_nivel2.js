@@ -1,28 +1,84 @@
+// ------------------------- Mensajes base de datos ----------------------------------
+
+let array_opciones = [];
+
+// Cargar las preguntas del API
+    $.ajax({
+        url: `http://127.0.0.1:8000/api/preguntas_por_nivel/2`,
+        type: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response.data && response.data.length > 0) {
+                response.data.forEach(function(pregunta) {
+                    let respuestas = [] ;
+                    $.ajax({
+                        url: `http://127.0.0.1:8000/api/respuestas_por_pregunta/${pregunta.id}`,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.data && response.data.length > 0) {
+                                response.data.forEach(function(respuesta) {
+                                    let res = respuesta.texto_respuesta ;
+                                    respuestas.push(res);
+                                });
+                                
+                            }
+                        }
+                    });
+                    let preguntaDiccionario = {
+                        pregunta: `¿${pregunta.texto_pregunta}?`,
+                        opcione: respuestas,
+                        correcta: pregunta.texto_respuesta
+                    };
+                    
+                    array_opciones.push(preguntaDiccionario);
+                });
+
+            } else {
+                console.log('No hay preguntas disponibles para este nivel.');
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.error('Error en la solicitud:', textStatus, errorThrown);
+        }
+    });
+
+
+
+
+function generarHTMLPorId(idPregunta) {
+        let contenedorMensajes = document.getElementById('mensajes_de_respuestas');
+        let preguntaDiccionario = array_opciones[idPregunta];
+    
+        // Verifica si el contenedor existe y si el idPregunta es válido
+        if (contenedorMensajes && preguntaDiccionario) {
+            // Elimina las respuestas previas
+            let elementosPrevios = contenedorMensajes.querySelectorAll('.respuesta');
+            elementosPrevios.forEach(function(elemento) {
+                contenedorMensajes.removeChild(elemento);
+            });
+    
+            // Crear los divs para las respuestas
+            preguntaDiccionario.opcione.forEach(function(respuesta) {
+                let divRespuesta = document.createElement('div');
+                divRespuesta.className = 'respuesta opciones_mensajes_botones';
+    
+                let pRespuesta = document.createElement('p');
+                pRespuesta.textContent = respuesta;
+    
+                divRespuesta.appendChild(pRespuesta);
+                contenedorMensajes.appendChild(divRespuesta);
+            });
+        } else {
+            console.log('Pregunta no encontrada o contenedor no disponible.');
+        }
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener elementos del DOM
-    const gif_image = document.getElementById('gifImage');
-    const gif_hijo = document.getElementById('gifhijo');
-    const gif_hijo2 = document.getElementById('gifhijo2');
-    const gif_hijo3 = document.getElementById('gifhijo3');
-    const static_image = document.getElementById('staticImage');
-    const message_mama1 = document.getElementById('messageCard');
-    const message_mama2 = document.getElementById('messageCard2');
-    const message_hijo1 = document.getElementById('messagehijo1');
-    const message_hijo2 = document.getElementById('messagehijo2');
-    const message_hijo3 = document.getElementById('messagehijo3');
-    const mensaje_cambia_hijo = document.getElementById('mensaje_hijo');
-    const mensaje_cambia_hijo2 = document.getElementById('mensaje_hijo2');
-    const mensaje_cambia_hijo3 = document.getElementById('mensaje_hijo3');
-    const mensaje_cambia_madre = document.getElementById('mensaje_mama');
-    const mensaje_cambia_madre2 = document.getElementById('mensaje_mama2');
     const contendor = document.getElementById('contenedor');
-    const gifImage2 = document.getElementById('gifImage2');
-    const gifImage3 = document.getElementById('gifImage3');
-    const static_image2 = document.getElementById('staticImage2');
-    const opciones = document.getElementById('respuestas');
-    const opcion1 = document.getElementById('opcion1');
-    const opcion2 = document.getElementById('opcion2');
-    const opcion3 = document.getElementById('opcion3');
     const seguiente_memsaje = document.getElementById('siguiente_mensaje');
     const siguiente_escena = document.getElementById('siguiente_escena');
     const regresar = document.getElementById('regresar');
@@ -32,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     
     
-    
+/*
 let array_opciones = [
 
     {
@@ -47,12 +103,12 @@ let array_opciones = [
 ];
 
 
-let tamaño = 100/array_opciones.length;
+let tamaño = 100/array_opciones.length;*/
 
 function cargar_barra (){
     const barra = document.getElementById('barra');
     barra.value += tamaño;
-}
+}/*
 function asignar_opciones(escena){
     posicion_opcion = array_opciones[escena];
 
@@ -68,7 +124,7 @@ function asignar_opciones(escena){
 
     opciones.style.pointerEvents = "auto"
 
-};
+};*/
 
 
 
@@ -127,165 +183,39 @@ let correcto = 0;
  // Primer escena 
 function escena_1() {
     contador = 0;
-
+    cambiar_fondo(contendor, 'imgs/nivel2/E1/BACKGROUND-E1.png');
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
-        disguise(gif_image);
-        show(static_image);
+        disguise(document.getElementById('junajpu_caminando_ixkin_E1'))
+        show(document.getElementById('junajpu_quieto_E1'))
+        show(document.getElementById('ixkin_quieta_E1'))
+        show(document.getElementById('batz_quieto'))
+        disguise(document.getElementById('batz_caimando_E1'))
+        seguiente_memsaje.addEventListener('click', pregunta_de_batz_E1);
+    }, 8000);
 
-        seguiente_memsaje.addEventListener('click', mostrarMensajeMama1);
-    }, 3500);
-
-    asignar_opciones(contador);
+    //asignar_opciones(contador);
 }
 
-function mostrarMensajeMama1() {
+function pregunta_de_batz_E1() {
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(mensaje_cambia_madre, 'Hola hijo querido');
-        show(message_mama1);
-
-        seguiente_memsaje.addEventListener('click', mostrarMensajeHijo1);
-    }, 500);
-}
-
-function mostrarMensajeHijo1() {
-    seguiente_memsaje.removeEventListener('click', mostrarMensajeMama1);
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(mensaje_cambia_hijo, 'Hola mamá...');
-        show(message_hijo1);
-        seguiente_memsaje.removeEventListener('click', mostrarMensajeHijo1);
-        seguiente_memsaje.addEventListener('click', mostrarMensajeMama2);
-    }, 500);
-}
-
-function mostrarMensajeMama2() {
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(mensaje_cambia_madre, '¿Cómo estás hijo?');
-        seguiente_memsaje.removeEventListener('click', mostrarMensajeMama2);
-        seguiente_memsaje.addEventListener('click', mostrarMensajeHijo2);
-    }, 500);
-}
-
-function mostrarMensajeHijo2() {
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(mensaje_cambia_hijo, 'mmm...');
-        seguiente_memsaje.removeEventListener('click', mostrarMensajeHijo2);
-        seguiente_memsaje.addEventListener('click', mostrarMensajeHijo3);
-    }, 500);
-}
-
-function mostrarMensajeHijo3() {
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(mensaje_cambia_hijo, 'Bien.');
-        seguiente_memsaje.removeEventListener('click', mostrarMensajeHijo3);
-
-        seguiente_memsaje.addEventListener('click', mostrarSolicitudMadre);
-    }, 500);
-}
-
-function mostrarSolicitudMadre() {
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "auto";
-        disguise(message_hijo1);
-        change_message(mensaje_cambia_madre, 'Hijo, ¿podrías ayudarme?');
-        seguiente_memsaje.removeEventListener('click', mostrarSolicitudMadre);
-
-        seguiente_memsaje.addEventListener('click', mostrarOpciones);
-    }, 500);
-}
-
-function mostrarOpciones() {
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "none";
-        opciones.style.display = "flex";
-        seguiente_memsaje.removeEventListener('click', mostrarOpciones);
-        seguiente_memsaje.style.display = "none";
-    }, 500);
-}
-
-function escena_2() {
-    contador = 1;
-
-    setTimeout(() => {
-        opciones.style.display = "none";
-        seguiente_memsaje.style.display = "flex";
-
-        cambiar_ubicacion_porcentaje(opciones, '60', '25');
-        disguise(gif_image);
-        disguise(static_image);
-        disguise(message_mama1);
-        disguise(message_hijo1);
-        disguise(gif_hijo);
-        disguise(static_image2);
-        cambiar_fondo(contendor, 'imgs/nivel2/escena1.jpg');
-        show(gif_hijo2);
-
-        seguiente_memsaje.style.pointerEvents = "auto";
-        seguiente_memsaje.addEventListener('click', mostrarReflexionHijo);
-    }, 0);
-
-    asignar_opciones(contador);
-}
-
-function mostrarReflexionHijo() {
-
-    seguiente_memsaje.style.pointerEvents = "none";
-    setTimeout(() => {
-        seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(mensaje_cambia_hijo2, 'Creo que tenía que ayudar a mi mamá');
-        show(message_hijo2);
-
-        seguiente_memsaje.addEventListener('click', habilitarBotonSiguiente);
-    }, 500);
-}
-
-function habilitarBotonSiguiente() {
-    seguiente_memsaje.removeEventListener('click', mostrarReflexionHijo);
-    seguiente_memsaje.style.pointerEvents = "none"; 
-    setTimeout(() => {
-        opciones.style.display = "flex";   
-        seguiente_memsaje.style.display = "none";
-
+        change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0].pregunta)
+        disguise(document.getElementById('batz_quieto'))
+        show(document.getElementById('batz_hablando_E1'))
+        show(document.getElementById('mensaje_batz_a_junajpu_E1'))
+        seguiente_memsaje.addEventListener('click',opciones_para_respuesta_junajpu_E1);
     }, 500);
 }
 
 
-    function escena_3() {
-        contador = 2;
-        seguiente_memsaje.style.display = "flex";
-        seguiente_memsaje.style.pointerEvents = "auto"; 
-        opciones.style.display = "none";
-        disguise(gif_hijo2);
-        disguise(message_hijo2);
-        cambiar_fondo(contendor, 'imgs/nivel2/escena2.avif');
-        show(gif_hijo3);
-        seguiente_memsaje.removeEventListener('click', habilitarBotonSiguiente);
-        seguiente_memsaje.addEventListener('click', mensaje_divertido);
-
-    }
-function mensaje_divertido() {
+function opciones_para_respuesta_junajpu_E1() {
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
-        change_message(message_hijo3, '¡Qué divertido!');
-        show(message_hijo3);
-    seguiente_memsaje.removeEventListener('click', mensaje_divertido);
-    seguiente_memsaje.style.display = "none";
-
-    salir()
-
+        generarHTMLPorId(contador)
+        seguiente_memsaje.addEventListener('click',);
     }, 500);
 }
     escena_1();
@@ -301,26 +231,26 @@ function mensaje_divertido() {
                 actualizarVidas();
                 if (vidas === 0) {
                     modal.classList.add('modal_show');
-                    deshabilitarOpciones();
+                    //deshabilitarOpciones();
                     
                 }
             } else if (esCorrecta) {
                 launchConfetti();
                 reiniciar_tiempos();
-                opciones.style.pointerEvents = "none"
+                //opciones.style.pointerEvents = "none"
                 setTimeout(() => {
                     siguiente_escena.style.display = "block"
                     siguiente_escena.style.pointerEvents = "auto"
                     siguiente_escena.addEventListener('click', () => {
-                            if (contador === 0) {
+                            /*if (contador === 0) {
 
-                                escena_2();
+                                //escena_2();
 
                             } else if (contador === 1) {
-                                escena_3();
+                               // escena_3();
                             }
 
-                            cargar_barra()
+                            cargar_barra()*/
                     siguiente_escena.style.display = "none"
                     siguiente_escena.style.pointerEvents = "none"
 
@@ -342,11 +272,11 @@ function mensaje_divertido() {
         }
     }
 
-    function deshabilitarOpciones() {
+   /* function deshabilitarOpciones() {
         document.querySelectorAll('.opcion').forEach(boton => {
             boton.disabled = true;
         });
-    }
+    }*/
 
     // Inicializa las vidas
     actualizarVidas();

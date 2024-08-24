@@ -13,10 +13,6 @@
             <div class="card-body">
               <h6 class="mb-0">{{ $nivel['name'] }}</h6>
               <hr class="dark horizontal">
-              <div class="d-flex">
-                <i class="material-icons text-sm my-auto me-1">{{_('schedule')}}</i>
-                <p class="mb-0 text-sm">{{ $nivel['descripcion'] }}</p>
-              </div>
             </div>
           </div>
         </div>

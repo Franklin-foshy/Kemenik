@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/css/styles_nivel2.css')}}">
-    <title>{{_('hirtoria_nivel_2')}}</title>
+    <title>{{_('Nivel 2')}}</title>
 </head>
 <body>
 
@@ -56,7 +56,7 @@
 
 
     
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
     <script src="{{ asset('assets/js/historia_nivel2.js')}}"></script>

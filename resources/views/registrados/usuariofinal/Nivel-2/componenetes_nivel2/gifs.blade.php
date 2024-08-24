@@ -1,14 +1,21 @@
 <!------------------------------------------ gifs  ---------------------------------------------->
 
-<img id = "gifhijo" src="{{ asset('imgs/nivel2/gifs/hijio_escena1.gif')}}" alt="GIF animado" class="gif-hijo-1">
-<img id = "gifhijo2" src="{{ asset('imgs/nivel2/gifs/hijio_escena1.gif')}}" alt="GIF animado" class="gif-hijo-2">
-<img id = "gifhijo3" src="{{ asset('imgs/nivel2/gifs/hijio_escena1.gif')}}" alt="GIF animado" class="gif-hijo-3">
 
-    <img id="gifImage" src="{{ asset('imgs/nivel2/gifs/download-unscreen.gif')}}" alt="GIF" class="gif-mama-1">
-<img id="staticImage" src="{{ asset('imgs/nivel2/gifs/Captura_de_pantalla_2024-06-27_234837-removebg-preview.png')}}" alt="Imagen estática" class="hidden">
-<img id="gifImage2" src="{{ asset('imgs/nivel2/gifs/download-unscreen.gif')}}" alt="GIF" class="gif-mama-2">
-<img id="gifImage3" src="{{ asset('imgs/nivel2/gifs/download-unscreen.gif')}}" alt="GIF" class="gif-mama-3">
-<img id="staticImage2" src="{{ asset('imgs/nivel2/gifs/Captura_de_pantalla_2024-06-27_234837-removebg-preview.png')}}" alt="Imagen estática" class="hidden">
+<!------------------------------ Escena 1 --------------------------------->
+
+<img id = "junajpu_caminando_ixkin_E1" src="{{ asset('imgs/nivel2/E1/JUNAJPU_IXKIK_CAMINANDO_E1.gif')}}" alt="GIF animado" class="gif_amimado_escena_1">
+
+<img id = "batz_caimando_E1" src="{{ asset('imgs/nivel2/E1/BATZ_CAMINANDO_E1_1.gif')}}" alt="GIF animado" class="gif_amimado_escena_1">
+
+<img id = "junajpu_quieto_E1" src="{{ asset('imgs/nivel2/E1/JANAJPU-PERFIL-E1.png')}}" alt="imagen animado" class="imagen_escena_1">
+
+<img id = "ixkin_quieta_E1" src="{{ asset('imgs/nivel2/E1/IXKIK_PERFIL_E1.png')}}" alt="imagen animado" class="imagen_escena_1">
+
+<img id = "batz_hablando_E1" src="{{ asset('imgs/nivel2/E1/BATZ_HABLANDO_E1.gif')}}" alt="GIF animado" class="gif_amimado_escena_1">
+
+<img id = "batz_quieto" src="{{ asset('imgs/nivel2/E1/BATZ_FRENTE_E1.png')}}" alt="GIF animado" class="imagen_escena_1">
+
+<!------------------------------ Escena 1 --------------------------------->
 
 <!------------------------------------------ gifs  ---------------------------------------------->
 

@@ -14,6 +14,14 @@
 <audio id="audio_incorrecto" src="{{ asset('music/incorrecto.mp3')}}"></audio>
 <audio id="aplausos" src="{{ asset('music/aplausos.mp3')}}"></audio>
 
+
+<!-------------------------- Pantalla de carga ------------------------>
+
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.pantalla_carga')
+
+<!-------------------------- Pantalla de carga ------------------------>
+
+
 <!--------------------------     barra de carga       ------------------------------->
 
 <!-------------------------------------- Header de imagen ---------------------------------------------->

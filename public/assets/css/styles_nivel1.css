@@ -9,6 +9,184 @@ body {
 }
 
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: not-allowed;
+  scale: 0.7;
+}
+
+.central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  box-shadow: 0.5em 1em 1em blueviolet,
+    -0.5em 0.5em 1em blue,
+    0.5em -0.5em 1em purple,
+    -0.5em -0.5em 1em cyan;
+}
+
+.external-shadow {
+  width: 10em;
+  height: 10em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0.5em 0.5em 3em blueviolet,
+    -0.5em 0.5em 3em blue,
+    0.5em -0.5em 3em purple,
+    -0.5em -0.5em 3em cyan;
+  z-index: 999;
+  animation: rotate 3s linear infinite;
+  background-color: #212121;
+}
+
+.intern {
+  position: absolute;
+  color: white;
+  z-index: 9999;
+}
+
+.intern::before {
+  content: "100%";
+  animation: percent 5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes percent {
+  0% {
+    content: '0%';
+  }
+
+  25% {
+    content: '25%';
+  }
+
+  33% {
+    content: '33%';
+  }
+
+  42% {
+    content: '42%';
+  }
+
+  51% {
+    content: '51%';
+  }
+
+  67% {
+    content: '67%';
+  }
+
+  74% {
+    content: '74%';
+  }
+
+  75% {
+    content: '75%';
+  }
+
+  86% {
+    content: '86%';
+  }
+
+  95% {
+    content: '95%';
+  }
+
+  98% {
+    content: '98%';
+  }
+
+  99% {
+  content: '99%';
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes percent {
+  0% {
+    content: '0%';
+  }
+
+  25% {
+    content: '25%';
+  }
+
+  33% {
+    content: '33%';
+  }
+
+  42% {
+    content: '42%';
+  }
+
+  51% {
+    content: '51%';
+  }
+
+  67% {
+    content: '67%';
+  }
+
+  74% {
+    content: '74%';
+  }
+
+  75% {
+    content: '75%';
+  }
+
+  86% {
+    content: '86%';
+  }
+
+  95% {
+    content: '95%';
+  }
+
+  98% {
+    content: '98%';
+  }
+
+  99% {
+  content: '99%';
+  }
+}
 
 header {
   position: relative;
@@ -284,12 +462,33 @@ header img {
   margin-bottom: 10px;
 }
 
-.modal_cont img{
-  width: 30%;
-  height: 30%;
-  max-width: 300px;
-  max-height: 300px;
+
+
+.contenedor_de_preguntas_respuestas img {
+  max-width: 100%;  /* Asegura que la imagen ocupe todo el ancho disponible */
+  height: auto;  /* Mantén la proporción de la imagen */
+  display: block;
+  margin: 0 auto;  /* Centra la imagen dentro del contenedor */
+}
+.contenedor_de_preguntas_respuestas p {
+  width: 90%;  /* El texto ocupa todo el ancho disponible */
+  word-wrap: break-word;  /* Permite que las palabras largas se dividan */
+  word-break: break-all;  /* Fuerza el texto a romperse si es necesario */
+  text-align: justify;  /* Justifica el texto */
+  margin: 10px 0 0 0;  /* Añade un margen superior para separar la imagen del texto */
+  padding: 0 5px;  /* Un poco de padding para que no esté pegado a los bordes */
+}
+
+.contenedor_de_preguntas_respuestas {
+  width: 90%;  /* Ajusta el ancho al 90% del contenedor padre */
+  max-width: 300px;  /* Máximo ancho para evitar desbordes */
+  height: auto;  /* Deja que la altura se ajuste automáticamente */
+  max-height: 300px;  /* Máxima altura */
   cursor: pointer;
+  overflow: hidden;  /* Oculta cualquier contenido que se desborde */
+  text-align: center;  /* Centra el contenido */
+  margin: 10px auto;  /* Añade un margen para separar los contenedores */
+  box-sizing: border-box;  /* Incluye padding y borde en el ancho total */
 }
 .cont_imagenes_modal{
   display: flex;
@@ -614,7 +813,7 @@ header img {
   }
   
   .modal_cont p{
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   
   .modal_cont img{
@@ -1155,7 +1354,7 @@ header img {
   }
   
   .modal_cont p{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .modal_cont img{

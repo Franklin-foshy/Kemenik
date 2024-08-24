@@ -28,8 +28,6 @@
     <!------------------------------------------------------- mensajes ------------------------------------------------------>
         </div>
         <style>
-            .container {
-                background-image: url("{{ asset('imgs/nivel2/escena_1.jpg')}}");
-                }
+
         </style>
 
