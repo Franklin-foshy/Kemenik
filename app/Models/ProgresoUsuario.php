@@ -15,12 +15,15 @@ class ProgresoUsuario extends Model
     // Campos que se pueden llenar de manera masiva
     protected $fillable = [
         'usuario_id',
-        'nivel_id',
         'completado',
         'intentos',
         'puntuacion',
         'estado_proceso',
+        'texto_respuesta_preguntas',
+        'texto_respuesta_respuestas',
+        'status_final_respuesta',
         'status',
+        'nivel_id_pregunta',
     ];
 
     // Relación con el modelo User
@@ -29,9 +32,9 @@ class ProgresoUsuario extends Model
         return $this->belongsTo(User::class, 'usuario_id');
     }
 
-    // Relación con el modelo Nivel
-    public function nivel()
+    // Relación con el modelo pregunta
+    public function pregunta()
     {
-        return $this->belongsTo(Nivel::class, 'nivel_id');
+        return $this->belongsTo(Pregunta::class, 'nivel_id_pregunta');
     }
 }
