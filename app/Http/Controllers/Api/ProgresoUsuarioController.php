@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pregunta;
 use Illuminate\Http\Request;
 use App\Models\ProgresoUsuario;
 use Illuminate\Validation\ValidationException;
@@ -17,8 +18,8 @@ class ProgresoUsuarioController extends Controller
         $messages = [
             'usuario_id.required' => 'El campo usuario es obligatorio.',
             'usuario_id.exists' => 'El usuario seleccionado no es válido.',
-            'nivel_id.required' => 'El campo nivel es obligatorio.',
-            'nivel_id.exists' => 'El nivel seleccionado no es válido.',
+            'pregunta_id.required' => 'El campo pregunta es obligatorio.',
+            'pregunta_id.exists' => 'La pregunta seleccionada no es válida.',
             'completado.required' => 'El campo completado es obligatorio.',
             'completado.boolean' => 'El valor de completado debe ser 0 o 1.',
             'intentos.required' => 'El campo intentos es obligatorio.',
@@ -31,6 +32,8 @@ class ProgresoUsuarioController extends Controller
             'puntuacion.max' => 'El campo puntuación no puede ser mayor que 100.',
             'estado_proceso.required' => 'El campo estado de proceso es obligatorio.',
             'estado_proceso.in' => 'El estado de proceso seleccionado no es válido.',
+            'texto_respuesta_preguntas.required' => 'El campo de respuesta de la pregunta es obligatorio.',
+            'texto_respuesta_respuestas.required' => 'El campo de respuesta es obligatorio.',
             'status.required' => 'El campo status es obligatorio.',
             'status.boolean' => 'El valor de status debe ser 0 o 1.',
         ];
@@ -39,13 +42,22 @@ class ProgresoUsuarioController extends Controller
             // Validar los datos recibidos con mensajes personalizados
             $validated = $request->validate([
                 'usuario_id' => 'required|exists:users,id',
-                'nivel_id' => 'required|exists:nivels,id',
+                'pregunta_id' => 'required|exists:preguntas,id',
                 'completado' => 'required|boolean',
                 'intentos' => 'required|integer|min:0|max:3',
                 'puntuacion' => 'required|integer|min:0|max:100',
                 'estado_proceso' => 'required|integer|in:1,2',
+                'texto_respuesta_preguntas' => 'required',
+                'texto_respuesta_respuestas' => 'required',
                 'status' => 'required|boolean',
             ], $messages);
+
+            // Obtener la pregunta y su nivel_id
+            $pregunta = Pregunta::findOrFail($validated['pregunta_id']);
+            $validated['nivel_id_pregunta'] = $pregunta->nivel_id; // Asignar nivel_id a la columna
+
+            // Determinar el estado final de la respuesta
+            $validated['status_final_respuesta'] = $validated['texto_respuesta_preguntas'] === $validated['texto_respuesta_respuestas'];
 
             // Crear un nuevo registro en la base de datos
             $progresoUsuario = ProgresoUsuario::create($validated);
@@ -70,7 +82,7 @@ class ProgresoUsuarioController extends Controller
     {
         try {
             // Consultar el registro con las relaciones de usuario y nivel
-            $progresoUsuario = ProgresoUsuario::with(['usuario', 'nivel'])->findOrFail($id);
+            $progresoUsuario = ProgresoUsuario::with(['usuario', 'pregunta'])->findOrFail($id);
 
             // Retornar la respuesta con la data
             return response()->json([
@@ -91,7 +103,7 @@ class ProgresoUsuarioController extends Controller
     public function getByUserId($usuario_id)
     {
         // Obtener todos los registros asociados a usuario_id
-        $progresosUsuario = ProgresoUsuario::with(['usuario', 'nivel'])
+        $progresosUsuario = ProgresoUsuario::with(['usuario', 'pregunta'])
             ->where('usuario_id', $usuario_id)
             ->get();
 

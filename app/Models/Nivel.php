@@ -31,10 +31,4 @@ class Nivel extends Model
     {
         return $this->hasMany(PPregunta::class);
     }
-
-    // Relación con el modelo ProgresoUsuario
-    public function progresos()
-    {
-        return $this->hasMany(ProgresoUsuario::class, 'nivel_id');
-    }
 }
