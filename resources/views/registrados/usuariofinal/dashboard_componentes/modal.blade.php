@@ -5,10 +5,13 @@
     <div class="custom-modal-content">
         <div class="image-container">
             <div class="modal-text" id="modal-text">
-                {{_('Que mal, has perdido todas tus vidas, regresaras hasta la primer escena pero no pierdas los animos, SIGUE INTENTANDO!!!')}}
+                {{ __('Hola Bienvenido ') . \Auth::user()->name}}
+            </div>
+            <div class="modal-text" id="modal-text">
+                {{ __('Hoy aprenderas sobre la correspondabilidad')}}
             </div>
             <div class="contenedor-imagen">
-                    
+                <img src="{{ asset('imgs/index/JUNAM_FRONTAL_MEDIO_PLANO_E3.png') }}" class="respuesta" id="imagen1" >
             </div>
             
         </div>

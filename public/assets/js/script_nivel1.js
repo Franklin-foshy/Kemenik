@@ -423,24 +423,106 @@ let preguntas_guardar = [];
 
 
 
-
-let confetti_ = 0 ;
-
+// ----------- FUNCION PARA CARGAR LA BARRA --------------------
 function cargar_barra(tamaño) {
     const barra = document.getElementById('barra');
     barra.value += tamaño;
 }
+// ----------- FUNCION PARA CARGAR LA BARRA --------------------
+
+
+
+// -------- creacion de respuestas y html respuestas con pregunta --------
+function mostrarContenidoPorId(id) {
+    // Obtén el diccionario correspondiente al ID
+    let preguntaDiccionario = preguntas[id - 1];
+
+    if (!preguntaDiccionario) {
+        console.error('No se encontró el diccionario para el ID:', id);
+        return;
+    }
+    
+    const contenedor = document.querySelector('.cont_imagenes_modal');
+    
+    // Limpia el contenedor antes de agregar nuevo contenido
+    contenedor.innerHTML = '';
+    let pregunta = preguntas[id - 1];
+    preguntaTexto.innerText = pregunta.pregunta;
+    
+    // Genera el HTML basado en la cantidad de imágenes
+    preguntaDiccionario.images.forEach((image, index) => {
+        contenedor.innerHTML += `
+            <div class="contenedor_de_preguntas_respuestas">
+                <img src="${image}" class="respuesta" id="imagen${index + 1}" alt="Respuesta ${index + 1}" data-id="${index}" onclick="verificarRespuesta(${index}, ${id})">
+                <p>${preguntaDiccionario.respuestas[index]}</p>
+            </div>
+        `;
+    });
+}
+
+function verificarRespuesta(imagenIndex, preguntaId) {
+    let preguntaDiccionario = preguntas[preguntaId - 1];
+    let respuestaCorrecta = preguntaDiccionario.correcta;
+
+    if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+        alert("¡Correcto!");
+        // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
+    } else {
+        alert(`Incorrecto. Intenta de nuevo. la respuesta era: ${respuestaCorrecta
+        }`);
+        // Aquí puedes añadir cualquier otra acción en caso de respuesta incorrecta
+    }
+        
+    // Cierre del modal
+    modal.classList.remove('modal_show');
+    completadas++;
+    localStorage.setItem('completadas', completadas);
+    if (completadas >= 6) {
+        completadas = 6;
+        
+        boton_continuar.style.display = "block" ;
+        boton_regresar.style.display = "none" ;
+    }
+    if (completadas == 6) {
+        confetti_++;
+        espacio1.style.border = "none";
+        espacio2.style.border = "none";
+        espacio3.style.border = "none";
+        espacio4.style.border = "none";
+        espacio5.style.border = "none";
+        espacio6.style.border = "none";
+        rompecabezas.style.gap = "0px";
+        aplausos.play();
+        setTimeout(() => {
+            aplausos.pause();
+            aplausos.currentTime = 0 ;
+
+        }, 15000);
+    }
+
+    if (confetti_ == 1) {
+        launchConfetti();
+    }
+    let tamaño = 100 / preguntas.length;
+    cargar_barra(tamaño);
+    contador.innerText = `${completadas}/6`;
+
+}
+
+let confetti_ = 0 ;
+
+
 var correctas = 0 ;
 let completadas = 0;
+
+
 let modal = document.getElementById("modal");
 let span = document.getElementsByClassName("close")[0];
 let preguntaTexto = document.getElementById("pregunta");
 let imagenesRespuesta = document.querySelectorAll(".respuesta");
 let contador = document.getElementById("contador");
 const close_modal = document.querySelector('.close_modal');
-const imagen1 = document.getElementById('imagen1');
-const imagen2 = document.getElementById('imagen2');
-const imagen3 = document.getElementById('imagen3');
+
 const rompecabezas = document.querySelector('.rompecabezas_final');
 const espacios = document.querySelector('.espacio');
 const espacio1 = document.getElementById('espacio1');
@@ -451,17 +533,17 @@ const espacio5 = document.getElementById('espacio5');
 const espacio6 = document.getElementById('espacio6');
 const boton_continuar = document.getElementById('next-button');
 const modal_continuar = document.getElementById('modal-continuar');
+const contenedor_imagenes = document.getElementById('contenedor_modal_imagenes');
+
 
 
 boton_regresar.addEventListener('click', (e) => {
     e.preventDefault();
     modal.classList.add('modal_show');
+    contenedor_imagenes.style.display = "none";
     close_modal.style.display = "block";
     modal_continuar.style.display = "block";
     preguntaTexto.style.display = "none";
-    imagen1.style.display = "none";
-    imagen2.style.display = "none";
-    imagen3.style.display = "none";
 });
 
 
@@ -474,11 +556,8 @@ close_modal.addEventListener('click', (e) => {
     setTimeout(() => {
         modal_continuar.style.display = "none"
         preguntaTexto.style.display = "block";
-        imagen1.style.display = "block";
-        imagen2.style.display = "block";
-        imagen3.style.display = "block";
+        contenedor_imagenes.style.display = "flex";
     }, 1000);
-
 });
 
 span.onclick = function() {
@@ -492,10 +571,14 @@ window.onclick = function(event) {
 }
 
 imagenesRespuesta.forEach((imagen, i) => {
-    imagen.addEventListener('click', (e) => {
+  imagen.addEventListener('click', (e) => {
+        e.preventDefault();
         let index = modal.getAttribute('data-index');
-        let esCorrecta = imagen.getAttribute('data-correct') === 'true'; // Aqui esta la validacion de las respuestas, hacer el cambio para ajustar la base de datos -----------------
+        let esCorrecta = imagen.getAttribute('data-correct') === 'true'; // Aquí la validación de las respuestas si la necesitas
         document.querySelector(`.pieza[data-index="${index}"]`).classList.add('completada');
+        
+        // Cierre del modal
+        modal.classList.remove('modal_show');
         if (esCorrecta) {
             correctas++;
             
@@ -537,17 +620,8 @@ imagenesRespuesta.forEach((imagen, i) => {
 });
 
 function mostrarPregunta(index) {
-    let pregunta = preguntas[index - 1];
-    preguntaTexto.innerText = pregunta.pregunta;
 
-    imagen1.src = pregunta.images[0];
-    imagen1.setAttribute('data-correct', pregunta.respuestas[0] === pregunta.correcta ? 'true' : 'false');
-
-    imagen2.src = pregunta.images[1];
-    imagen2.setAttribute('data-correct', pregunta.respuestas[1] === pregunta.correcta ? 'true' : 'false');
-
-    imagen3.src = pregunta.images[2];
-    imagen3.setAttribute('data-correct', pregunta.respuestas[2] === pregunta.correcta ? 'true' : 'false');
+    mostrarContenidoPorId(index)
 
     modal.classList.add('modal_show');
     modal.setAttribute('data-index', index);

@@ -210,7 +210,7 @@ body {
   max-width: 600px;
   margin: auto;
   max-height: 90%;
-  background: linear-gradient(to right, #ffffff, #ffffff);
+  background: linear-gradient(to right, #cfecf4, #ffffff);
   border-radius: 30px;
   padding: 3rem 2.5rem;
   transform: var(--transform);
@@ -219,10 +219,18 @@ body {
 }
 
 .modal-text {
-  font-size: 30px;
+  font-size: 20px;
   width: 50%;
   height: 50%;
+  background-color: #83eded; /* Aqua */
+  color: #003333; /* Texto oscuro que contrasta con aqua */
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin: auto;
+  text-align: center;
 }
+
 
 .custom-modal-content h2 {
   font-size: 1.5rem;

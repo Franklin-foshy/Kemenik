@@ -462,12 +462,33 @@ header img {
   margin-bottom: 10px;
 }
 
-.modal_cont img{
-  width: 30%;
-  height: 30%;
-  max-width: 300px;
-  max-height: 300px;
+
+
+.contenedor_de_preguntas_respuestas img {
+  max-width: 100%;  /* Asegura que la imagen ocupe todo el ancho disponible */
+  height: auto;  /* Mantén la proporción de la imagen */
+  display: block;
+  margin: 0 auto;  /* Centra la imagen dentro del contenedor */
+}
+.contenedor_de_preguntas_respuestas p {
+  width: 90%;  /* El texto ocupa todo el ancho disponible */
+  word-wrap: break-word;  /* Permite que las palabras largas se dividan */
+  word-break: break-all;  /* Fuerza el texto a romperse si es necesario */
+  text-align: justify;  /* Justifica el texto */
+  margin: 10px 0 0 0;  /* Añade un margen superior para separar la imagen del texto */
+  padding: 0 5px;  /* Un poco de padding para que no esté pegado a los bordes */
+}
+
+.contenedor_de_preguntas_respuestas {
+  width: 90%;  /* Ajusta el ancho al 90% del contenedor padre */
+  max-width: 300px;  /* Máximo ancho para evitar desbordes */
+  height: auto;  /* Deja que la altura se ajuste automáticamente */
+  max-height: 300px;  /* Máxima altura */
   cursor: pointer;
+  overflow: hidden;  /* Oculta cualquier contenido que se desborde */
+  text-align: center;  /* Centra el contenido */
+  margin: 10px auto;  /* Añade un margen para separar los contenedores */
+  box-sizing: border-box;  /* Incluye padding y borde en el ancho total */
 }
 .cont_imagenes_modal{
   display: flex;
@@ -792,7 +813,7 @@ header img {
   }
   
   .modal_cont p{
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   
   .modal_cont img{
@@ -1333,7 +1354,7 @@ header img {
   }
   
   .modal_cont p{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   
   .modal_cont img{

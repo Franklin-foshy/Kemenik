@@ -231,7 +231,7 @@ function launchConfetti() {
     }, 300);
 }
 
-    
+
 boton_continuar.addEventListener('click', nextQuestion);
 
 
