@@ -21,11 +21,15 @@ body {
 #batz_caimando_E1 {
     right: 0%;
     z-index: 5;
+    display: none;
+
 }
 
 #junajpu_caminando_ixkin_E1 {
     left: 0%;
     z-index: 4;
+    display: none;
+
 }
 
 
@@ -93,7 +97,7 @@ body {
     margin: auto;
     border-radius: 10px;
     justify-content: center;
-    top: 50%;
+    top: 55%;
 }
 
 .opciones_mensajes_botones {
