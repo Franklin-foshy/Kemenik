@@ -2,79 +2,185 @@
 
 let array_opciones = [];
 
-// Cargar las preguntas del API
-    $.ajax({
-        url: `http://127.0.0.1:8000/api/preguntas_por_nivel/2`,
-        type: 'GET',
-        dataType: 'json',
-        success: function(response) {
-            if (response.data && response.data.length > 0) {
-                response.data.forEach(function(pregunta) {
-                    let respuestas = [] ;
-                    $.ajax({
-                        url: `http://127.0.0.1:8000/api/respuestas_por_pregunta/${pregunta.id}`,
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.data && response.data.length > 0) {
-                                response.data.forEach(function(respuesta) {
-                                    let res = respuesta.texto_respuesta ;
-                                    respuestas.push(res);
-                                });
-                                
-                            }
+// Cargar las escenas del API
+$.ajax({
+    url: `http://127.0.0.1:8000/api/escenas/`,
+    type: 'GET',
+    dataType: 'json',
+    success: function(sceneResponse) {
+        if (sceneResponse.data && sceneResponse.data.length > 0) {
+            sceneResponse.data.forEach(function(escena) {
+                let todo = [] ;
+                // Cargar las preguntas relacionadas con la escena
+                $.ajax({
+                    url: `http://127.0.0.1:8000/api/ppreguntas/`,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(questionResponse) {
+                        if (questionResponse.ppreguntas && questionResponse.ppreguntas.length > 0) {
+                            questionResponse.ppreguntas.forEach(function(pregunta) {
+
+                                // Evaluar si el id de la escena coincide con el id de la escena en la pregunta
+                                if (escena.id === pregunta.escena_id) {
+                                    let respuestas = [];
+
+                                    // Cargar las respuestas para la pregunta actual
+                                    $.ajax({
+                                        url: `http://127.0.0.1:8000/api/prespuestas/`,
+                                        type: 'GET',
+                                        dataType: 'json',
+                                        success: function(response) {
+                                            if (response.data && response.data.length > 0) {
+                                                response.data.forEach(function(respuesta) {
+                                                    
+                                                    // Evaluar si el id de la pregunta coincide con el id de la pregunta en la respuesta
+                                                    if (pregunta.id === respuesta.ppregunta_id) {
+                                                        respuestas.push(respuesta.texto_respuesta);
+                                                    }
+                                                });
+
+                                                let preguntaDiccionario = {
+                                                    pregunta: pregunta.texto_pregunta,
+                                                    opciones: respuestas,
+                                                    correcta: pregunta.texto_respuesta
+                                                };
+
+                                                todo.push(preguntaDiccionario);
+                                            }
+                                        },
+                                        error: function(jqXHR, textStatus, errorThrown) {
+                                            console.error('Error en la solicitud de respuestas:', textStatus, errorThrown);
+                                        }
+                                    });
+                                }
+                            });
+                        } else {
+                            console.log('No hay preguntas disponibles para esta escena.');
                         }
-                    });
-                    let preguntaDiccionario = {
-                        pregunta: `¿${pregunta.texto_pregunta}?`,
-                        opcione: respuestas,
-                        correcta: pregunta.texto_respuesta
-                    };
-                    
-                    array_opciones.push(preguntaDiccionario);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error('Error en la solicitud de preguntas:', textStatus, errorThrown);
+                    }
                 });
-
-            } else {
-                console.log('No hay preguntas disponibles para este nivel.');
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.error('Error en la solicitud:', textStatus, errorThrown);
+                array_opciones.push(todo);
+            });
+        } else {
+            console.log('No hay escenas disponibles.');
         }
-    });
-
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error en la solicitud de escenas:', textStatus, errorThrown);
+    }
+});
 
 
 
 function generarHTMLPorId(idPregunta) {
-        let contenedorMensajes = document.getElementById('mensajes_de_respuestas');
-        let preguntaDiccionario = array_opciones[idPregunta];
+    let contenedorMensajes = document.getElementById('mensajes_de_respuestas');
+    let diccionario_pre = array_opciones[idPregunta];
+    let preguntaDiccionario = diccionario_pre[diccionario_pre.length - 1];
     
-        // Verifica si el contenedor existe y si el idPregunta es válido
-        if (contenedorMensajes && preguntaDiccionario) {
-            // Elimina las respuestas previas
-            let elementosPrevios = contenedorMensajes.querySelectorAll('.respuesta');
-            elementosPrevios.forEach(function(elemento) {
-                contenedorMensajes.removeChild(elemento);
-            });
-    
-            // Crear los divs para las respuestas
-            preguntaDiccionario.opcione.forEach(function(respuesta) {
-                let divRespuesta = document.createElement('div');
-                divRespuesta.className = 'respuesta opciones_mensajes_botones';
-    
-                let pRespuesta = document.createElement('p');
-                pRespuesta.textContent = respuesta;
-    
-                divRespuesta.appendChild(pRespuesta);
-                contenedorMensajes.appendChild(divRespuesta);
-            });
-        } else {
-            console.log('Pregunta no encontrada o contenedor no disponible.');
-        }
+    // Verifica si el contenedor existe y si el idPregunta es válido
+    if (contenedorMensajes && preguntaDiccionario) {
+        // Elimina las respuestas previas
+        let elementosPrevios = contenedorMensajes.querySelectorAll('.respuesta');
+        elementosPrevios.forEach(function(elemento) {
+            contenedorMensajes.removeChild(elemento);
+        });
+        
+        // Crear los divs para las respuestas
+        preguntaDiccionario.opciones.forEach(function(respuesta) {
+            let divRespuesta = document.createElement('div');
+            divRespuesta.className = 'respuesta opciones_mensajes_botones';
+            divRespuesta.textContent = respuesta;
+
+            divRespuesta.onclick = function() {
+                verificarRespuesta(respuesta);
+            };
+
+            contenedorMensajes.appendChild(divRespuesta);
+        });
+    } else {
+        console.log('Pregunta no encontrada o contenedor no disponible.');
+    }
+}
+let vidas = 3;
+
+let tamaño = 100/array_opciones.length;
+
+function cargar_barra (){
+    const barra = document.getElementById('barra');
+    barra.value += tamaño;
 }
 
+function verificarRespuesta(respuestaSeleccionada) {
+    let respuestaCorrecta = array_opciones[0][array_opciones[0].length - 1].correcta ;
+    window.alert('llego a la verificacion')
+    if (respuestaSeleccionada === respuestaCorrecta) {
+        window.alert('entro al if')
+        // Respuesta correcta
+        launchConfetti();
+        window.alert('llego al confetti')
+        setTimeout(() => {
+            siguiente_escena.style.display = "block";
+            siguiente_escena.style.pointerEvents = "auto";
+            siguiente_escena.onclick = () => {
+                siguiente_escena.style.display = "none";
+                siguiente_escena.style.pointerEvents = "none";
+                cargar_barra(); // Llama a la función que necesitas
+            };
+        }, 4000);
+    } else {
+        // Respuesta incorrecta
+        vidas--;
+        actualizarVidas();
+        if (vidas === 0) {
+            modal.classList.add('modal_show');
+            // Deshabilitar opciones si es necesario
+        }
+    }
+}
 
+// Inicializa las vidas
+    actualizarVidas();
+
+function actualizarVidas() {
+    const contenedorVidas = document.getElementById('vidas');
+    contenedorVidas.innerHTML = '';
+    for (let i = 0; i < vidas; i++) {
+        const vida = document.createElement('span');
+        vida.classList.add('vida');
+        vida.textContent = '❤️';
+        contenedorVidas.appendChild(vida);
+    }
+}
+
+function launchConfetti() {
+    const duration = 4 * 1000; // Duración en milisegundos
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function randomInRange(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+        const particleCount = 250 * (timeLeft / duration);
+        // Lanzar confeti desde diferentes lugares
+        confetti(Object.assign({}, defaults, { 
+            particleCount, 
+            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+        }));
+        confetti(Object.assign({}, defaults, { 
+            particleCount, 
+            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+        }));
+    }, 300);
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener elementos del DOM
@@ -86,45 +192,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let modal = document.getElementById("modal");
     const cerrar_modal = document.getElementById('cerrar_modal');
 
-    
-    
-/*
-let array_opciones = [
-
-    {
-        opcione: ["No, tu hazlo","No, Tu eres mujer","Esta bien madre, ayudare"],
-        correcta: ["false","false","true"]
-    },
-    {
-        opcione: ["No, hiciste lo correcto","Si tengo que ayudarla","Que ella limpie sola"],
-        correcta: ["false","true","false"]
-    },
-    
-];
-
-
-let tamaño = 100/array_opciones.length;*/
-
-function cargar_barra (){
-    const barra = document.getElementById('barra');
-    barra.value += tamaño;
-}/*
-function asignar_opciones(escena){
-    posicion_opcion = array_opciones[escena];
-
-    //cambiando la respuesta correcta
-    opcion1.dataset.correct = posicion_opcion.correcta[0];
-    opcion2.dataset.correct = posicion_opcion.correcta[1];
-    opcion3.dataset.correct = posicion_opcion.correcta[2];
-
-    //cambiando el contenido de las opciones
-    opcion1.textContent = posicion_opcion.opcione[0]
-    opcion2.textContent = posicion_opcion.opcione[1]
-    opcion3.textContent = posicion_opcion.opcione[2]
-
-    opciones.style.pointerEvents = "auto"
-
-};*/
 
 
 
@@ -184,6 +251,8 @@ let correcto = 0;
 function escena_1() {
     contador = 0;
     cambiar_fondo(contendor, 'imgs/nivel2/E1/BACKGROUND-E1.png');
+    show(document.getElementById('junajpu_caminando_ixkin_E1'))
+    show(document.getElementById('batz_caimando_E1'))
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
@@ -202,7 +271,7 @@ function pregunta_de_batz_E1() {
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0].pregunta)
+        change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0][0].pregunta)
         disguise(document.getElementById('batz_quieto'))
         show(document.getElementById('batz_hablando_E1'))
         show(document.getElementById('mensaje_batz_a_junajpu_E1'))
@@ -218,95 +287,18 @@ function opciones_para_respuesta_junajpu_E1() {
         seguiente_memsaje.addEventListener('click',);
     }, 500);
 }
-    escena_1();
+   escena_1();
 
-    let vidas = 3;
 
-    document.querySelectorAll('.opcion').forEach(boton => {
-        boton.addEventListener('click', function() {
-            const esCorrecta = boton.getAttribute('data-correct') === 'true';
-
-            if (!esCorrecta) {
-                vidas--;
-                actualizarVidas();
-                if (vidas === 0) {
-                    modal.classList.add('modal_show');
-                    //deshabilitarOpciones();
-                    
-                }
-            } else if (esCorrecta) {
-                launchConfetti();
-                reiniciar_tiempos();
-                //opciones.style.pointerEvents = "none"
-                setTimeout(() => {
-                    siguiente_escena.style.display = "block"
-                    siguiente_escena.style.pointerEvents = "auto"
-                    siguiente_escena.addEventListener('click', () => {
-                            /*if (contador === 0) {
-
-                                //escena_2();
-
-                            } else if (contador === 1) {
-                               // escena_3();
-                            }
-
-                            cargar_barra()*/
-                    siguiente_escena.style.display = "none"
-                    siguiente_escena.style.pointerEvents = "none"
-
-                });
-                }, 4000);
-                
-            }
-        });
-    });
-
-    function actualizarVidas() {
-        const contenedorVidas = document.getElementById('vidas');
-        contenedorVidas.innerHTML = '';
-        for (let i = 0; i < vidas; i++) {
-            const vida = document.createElement('span');
-            vida.classList.add('vida');
-            vida.textContent = '❤️';
-            contenedorVidas.appendChild(vida);
-        }
-    }
-
-   /* function deshabilitarOpciones() {
-        document.querySelectorAll('.opcion').forEach(boton => {
+function deshabilitarOpciones() {
+        document.querySelectorAll('.respuesta opciones_mensajes_botones').forEach(boton => {
             boton.disabled = true;
         });
-    }*/
-
-    // Inicializa las vidas
-    actualizarVidas();
-
-    function launchConfetti() {
-        const duration = 4 * 1000; // Duración en milisegundos
-        const animationEnd = Date.now() + duration;
-        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-        function randomInRange(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        const interval = setInterval(function() {
-            const timeLeft = animationEnd - Date.now();
-            if (timeLeft <= 0) {
-                return clearInterval(interval);
-            }
-            const particleCount = 250 * (timeLeft / duration);
-            // Lanzar confeti desde diferentes lugares
-            confetti(Object.assign({}, defaults, { 
-                particleCount, 
-                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-            }));
-            confetti(Object.assign({}, defaults, { 
-                particleCount, 
-                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-            }));
-        }, 300);
     }
+
+
+
+
 });
 
 
