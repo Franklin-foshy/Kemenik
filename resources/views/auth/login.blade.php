@@ -70,4 +70,5 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('assets/js/validacion_modal.js') }}"></script>
 @endsection

@@ -1,5 +1,9 @@
-// ------------------------- Mensajes base de datos ----------------------------------
+const modal_niveles = document.querySelector('.modal_niveles');
+const contenedor_mensajes = document.getElementById('mensajes_de_respuestas')
 
+
+// ------------------------- Mensajes base de datos ----------------------------------
+var tamaño = 1;
 let array_opciones = [];
 
 // Cargar las escenas del API
@@ -64,7 +68,7 @@ $.ajax({
                 });
                 array_opciones.push(todo);
             });
-        } else {
+
             console.log('No hay escenas disponibles.');
         }
     },
@@ -104,30 +108,67 @@ function generarHTMLPorId(idPregunta) {
         console.log('Pregunta no encontrada o contenedor no disponible.');
     }
 }
-let vidas = 3;
-
-let tamaño = 100/array_opciones.length;
-
-function cargar_barra (){
+// funcion para cargar la barra
+function cargar_barra(){
     const barra = document.getElementById('barra');
     barra.value += tamaño;
 }
 
+
+let vidas = 3;
+
+
+function cambiar_fondo(elemento, nueva_ruta) {
+    elemento.style.backgroundImage = `url(${nueva_ruta})`;
+};
+
+
+
+
+
+
+
+
+var contador = 1;
+var contendor = document.getElementById('contenedor');
+var seguiente_memsaje = document.getElementById('siguiente_mensaje');
+var siguiente_escena = document.getElementById('siguiente_escena');
+var regresar = document.getElementById('regresar');
+var close_modal = document.querySelector('.close_modal');
+var modal = document.getElementById("modal");
+var cerrar_modal = document.getElementById('cerrar_modal');
+
+
+
+
+
+
+
+
 function verificarRespuesta(respuestaSeleccionada) {
-    let respuestaCorrecta = array_opciones[0][array_opciones[0].length - 1].correcta ;
-    window.alert('llego a la verificacion')
+    let respuestaCorrecta = array_opciones[contador][array_opciones[contador].length - 1].correcta ;
+    //window.alert('llego a la verificacion')
     if (respuestaSeleccionada === respuestaCorrecta) {
-        window.alert('entro al if')
+        //window.alert('entro al if')
         // Respuesta correcta
         launchConfetti();
-        window.alert('llego al confetti')
+        contenedor_mensajes.style.display = "none";
+        seguiente_memsaje.style.display = "none";
+        //window.alert('llego al confetti')
         setTimeout(() => {
             siguiente_escena.style.display = "block";
             siguiente_escena.style.pointerEvents = "auto";
             siguiente_escena.onclick = () => {
                 siguiente_escena.style.display = "none";
                 siguiente_escena.style.pointerEvents = "none";
+                contador ++;
+                window.alert('llego a la funcion')
+                cambiar_fondo(contendor,imagenes_fondo[contador])
                 cargar_barra(); // Llama a la función que necesitas
+                window.alert('paso a la funcion')
+                modal_niveles.style.opacity = '1';
+                modal_niveles.style.visibility = 'visible';
+
             };
         }, 4000);
     } else {
@@ -184,19 +225,11 @@ function launchConfetti() {
 
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener elementos del DOM
-    const contendor = document.getElementById('contenedor');
-    const seguiente_memsaje = document.getElementById('siguiente_mensaje');
-    const siguiente_escena = document.getElementById('siguiente_escena');
-    const regresar = document.getElementById('regresar');
-    const close_modal = document.querySelector('.close_modal');
-    let modal = document.getElementById("modal");
-    const cerrar_modal = document.getElementById('cerrar_modal');
 
 
 
 
 let correcto = 0;
-    var contador = 0;
     
     let timeoutIDs = [];
     // Funcion para mostrar cosas 
@@ -219,23 +252,7 @@ let correcto = 0;
         variable.textContent = text_new;
     };
 
-
-    // funcion para ca,biar de ubicacion con %
-    function cambiar_ubicacion_porcentaje(variable,left,top){
-        variable.style.position = 'absolute';
-        variable.style.left = left + '%';
-        variable.style.top = top + '%';
-    }
-    // cambiar ubicacion e tipo relativo
-    function cambiar_ubicacion_porcentaje_rela(variable,left,top){
-        variable.style.position = 'relative';
-        variable.style.left = left + '%';
-        variable.style.top = top + '%';
-    }
     // Funcion para cambiar de fondo 
-    function cambiar_fondo(elemento, nueva_ruta) {
-        elemento.style.backgroundImage = `url(${nueva_ruta})`;
-    };
 
     // Cambiar tamaño de cosas
     function Cambiar_tamaño (variable,tamaño){
@@ -247,18 +264,20 @@ let correcto = 0;
         timeoutIDs = []; 
     }
 
+// --------------- cambiar el fondo -----------------------------
+
+
+cambiar_fondo(contendor,imagenes_fondo[contador])
  // Primer escena 
 function escena_1() {
-    contador = 0;
-    cambiar_fondo(contendor, 'imgs/nivel2/E1/BACKGROUND-E1.png');
-    show(document.getElementById('junajpu_caminando_ixkin_E1'))
+    //cambiar_fondo(contendor, 'imgs/nivel2/E1/IXKIK_PERFIL_E1.png');
+    show(document.getElementById('junajpu_quieto_E1'))
+    show(document.getElementById('ixkin_quieta_E1'))
     show(document.getElementById('batz_caimando_E1'))
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
         disguise(document.getElementById('junajpu_caminando_ixkin_E1'))
-        show(document.getElementById('junajpu_quieto_E1'))
-        show(document.getElementById('ixkin_quieta_E1'))
         show(document.getElementById('batz_quieto'))
         disguise(document.getElementById('batz_caimando_E1'))
         seguiente_memsaje.addEventListener('click', pregunta_de_batz_E1);
@@ -283,21 +302,51 @@ function pregunta_de_batz_E1() {
 function opciones_para_respuesta_junajpu_E1() {
     seguiente_memsaje.style.pointerEvents = "none";
     setTimeout(() => {
+        contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
         seguiente_memsaje.addEventListener('click',);
     }, 500);
 }
-   escena_1();
 
+
+
+function escena2() {
+    disguise(document.getElementById('junajpu_quieto_E1'))
+    disguise(document.getElementById('ixkin_quieta_E1'))
+    disguise(document.getElementById('batz_hablando_E1'))
+    disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
+    window.alert('llamada a la escena 2')
+}
+
+
+let escenas_ = [escena_1,escena2]
+
+document.querySelector('.close-btn').addEventListener('click', function() {
+    modal_niveles.style.opacity = '0';
+    modal_niveles.style.visibility = 'hidden';
+    escenas_[contador]();
+});
 
 function deshabilitarOpciones() {
-        document.querySelectorAll('.respuesta opciones_mensajes_botones').forEach(boton => {
+        document.querySelectorAll('.mensajes_de_respuestas').forEach(boton => {
             boton.disabled = true;
         });
     }
 
 
 
+time_teminar = setTimeout(function(){
+        document.getElementById('header_principal').style.display = 'block'
+        document.getElementById('barra_id').style.display = 'block'
+        document.getElementById('nivel').style.display = 'block'
+        document.getElementById('contenedor').style.display = 'flex'
+        document.getElementById('vidas').style.display = 'block'
+        modal_niveles.style.opacity = '1';
+        modal_niveles.style.visibility = 'visible'; 
+        cargando.style.display = 'none'
+        tamaño = 100/array_opciones.length;
+        
+}, 5000);
 
 });
 
@@ -328,3 +377,4 @@ modalContent.addEventListener('click', (e) => {
 function goHome() {
     window.location.href = '/home';
 }
+

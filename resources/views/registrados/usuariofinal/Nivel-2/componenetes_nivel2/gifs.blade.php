@@ -16,6 +16,15 @@
 <img id = "batz_quieto" src="{{ asset('imgs/nivel2/E1/BATZ_FRENTE_E1.png')}}" alt="GIF animado" class="imagen_escena_1">
 
 <!------------------------------ Escena 1 --------------------------------->
+<!------------------------------ Escena 2 --------------------------------->
+
+<img id = "ixchel_quieta" src="{{ asset('imgs/nivel2/E2/IXCHEL_FRONTAL_SONRIENDO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<img id = "junajpu_sentado" src="{{ asset('imgs/nivel2/E2/JUANJPU_FRONTAL_MEDIO_PLANO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<img id = "ixkin_sentada" src="{{ asset('imgs/nivel2/E2/IXKIK_FRONTAL_MEDIO_PLANO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<!------------------------------ Escena 2 --------------------------------->
 
 <!------------------------------------------ gifs  ---------------------------------------------->
 

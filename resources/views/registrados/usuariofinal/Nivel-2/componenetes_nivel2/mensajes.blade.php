@@ -1,9 +1,20 @@
 <!------------------------------------------------------- mensajes ------------------------------------------------------>
 
+<!------------------------------------------------------- mensajes  E1------------------------------------------------------>
 
-<div id = "mensaje_batz_a_junajpu_E1" class="mensajes_personajes">
+
+<div id = "mensaje_batz_a_junajpu_E1" class="mensajes_personajes_izquierda">
     <p class = "textos-mensajes" id = "mensaje_batz_a_junajpu_E1_pregregunta">{{_('')}}</p>
 </div>
 
+<!------------------------------------------------------- mensajes  E1 ------------------------------------------------------>
+
+<!------------------------------------------------------- mensajes  E2 ------------------------------------------------------>
+
+<div id = "mensaje_ixchel_a_junajpu" class="mensajes_personajes_derecha" style="display: block">
+    <p class = "textos-mensajes" id = "mensaje_batz_a_junajpu_E1_pregregunta">{{_('holaaaaaaaaa junajpu')}}</p>
+</div>  
+
+<!------------------------------------------------------- mensajes  E2 ------------------------------------------------------>
 
 <!------------------------------------------------------- mensajes ------------------------------------------------------>

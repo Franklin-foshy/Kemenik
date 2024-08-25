@@ -24,17 +24,5 @@
     </div>
 </section>
 
-<script>
-
-    document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('modal');
-    const cerrarModal = document.getElementById('close-modal');
-    cerrarModal.addEventListener('click', (e) => {
-        e.preventDefault(); 
-        modal.classList.add('modal-visible');
-    });
-});
-</script>
-
 
 <!-------------------------------------- modal --------------------------------------------->
