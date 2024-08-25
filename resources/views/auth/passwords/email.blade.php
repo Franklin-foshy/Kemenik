@@ -9,7 +9,7 @@
 
                     <div class="row justify-content-center p-5">
                         <div class="col-8">
-                            <img src="/assets/images/logo-light.png" alt="" class="img-fluid">
+                            <img src="{{ asset('imgs/nivel2/header_principal.jpeg') }}" style="width: 100%;">
                         </div>
                     </div>
 

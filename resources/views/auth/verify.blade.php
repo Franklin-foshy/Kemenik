@@ -17,7 +17,7 @@
                             <div class="text-center">
                                 <div class="row justify-content-center p-4">
                                     <div class="col-8">
-                                        <img src="/assets/images/logo-light.png" alt="" class="img-fluid">
+                                        <img src="{{ asset('imgs/nivel2/header_principal.jpeg') }}" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="avatar-md mx-auto">

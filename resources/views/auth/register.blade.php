@@ -7,7 +7,7 @@
 
             <div class="row justify-content-center p-1">
                 <div class="col-md-8 col-lg-6 col-xl-3">
-                    <a href="/"><img src="assets/images/logo-light.png" alt="" class="img-fluid"></a>
+                    <a href="/"><img src="{{ asset('imgs/nivel2/header_principal.jpeg') }}" style="width: 100%;"></a>
                 </div>
             </div>
 
