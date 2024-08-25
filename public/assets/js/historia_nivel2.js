@@ -326,5 +326,5 @@ modalContent.addEventListener('click', (e) => {
 
 
 function goHome() {
-    window.location.href = 'home';
+    window.location.href = '/home';
 }

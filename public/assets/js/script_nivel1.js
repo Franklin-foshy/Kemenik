@@ -646,7 +646,7 @@ function goHome() {
     musica.currentTime = 0 ;
 
 
-    window.location.href = 'home';
+    window.location.href = '/home';
 }
 
 

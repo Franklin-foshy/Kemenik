@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>KEMENIK</title>
-    <link id="pagestyle" href="{{ asset('assets/css/styles_back.css') }}" rel="stylesheet" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('assets.css.styles')
     
