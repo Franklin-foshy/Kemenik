@@ -124,7 +124,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 0;
+var contador = 1;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
@@ -230,6 +230,13 @@ let correcto = 0;
         variable.style.display = 'block';
     };
 
+    // Funcion para reiniciar los gifs
+    function resetGif(gifElement) {
+        const parent = gifElement.parentNode;
+        const clone = gifElement.cloneNode(true); // Clonar el elemento GIF
+        parent.removeChild(gifElement); // Eliminar el GIF original del DOM
+        parent.appendChild(clone); // Volver a agregar el clon al DOM
+    }
 
     function salir() {
         regresar.style.display = "block"
@@ -273,23 +280,60 @@ function escena_1() {
         disguise(document.getElementById('junajpu_caminando_ixkin_E1'))
         show(document.getElementById('batz_quieto'))
         disguise(document.getElementById('batz_caimando_E1'))
-        seguiente_memsaje.addEventListener('click', pregunta_de_batz_E1);
+        seguiente_memsaje.addEventListener('click', saludos_de_batz_a_junajpu);
     }, 8000);
 
     //asignar_opciones(contador);
 }
+function saludos_de_batz_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    show(document.getElementById('batz_hablando_E1'))
+    change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0][0].pregunta)
+    show(document.getElementById('mensaje_batz_a_junajpu_E1'))
+    disguise(document.getElementById('batz_quieto'))
+    disguise(document.getElementById('junajpu_caminando_ixkin_E1'))
+    setTimeout(() => {
+        seguiente_memsaje.style.pointerEvents = "auto";
+        show(document.getElementById('batz_quieto'))
+        disguise(document.getElementById('batz_hablando_E1'))
+        seguiente_memsaje.removeEventListener('click', saludos_de_batz_a_junajpu);
+        seguiente_memsaje.addEventListener('click', saludo_de_junajpu_a_batz);
+    }, 3000);
+
+}
+
+function saludo_de_junajpu_a_batz (){
+    seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('menaje_junajpu_a_batz_E1_respuesta'), array_opciones[0][0].correcta)
+    show(document.getElementById('junajpu_hablando'))
+    show(document.getElementById('menaje_junajpu_a_batz'))
+    disguise(document.getElementById('junajpu_quieto_E1'))
+    setTimeout(() => {
+        seguiente_memsaje.style.pointerEvents = "auto";
+        show(document.getElementById('junajpu_quieto_E1'))
+        disguise(document.getElementById('junajpu_hablando'))
+        seguiente_memsaje.removeEventListener('click', saludo_de_junajpu_a_batz);
+        seguiente_memsaje.addEventListener('click', pregunta_de_batz_E1);
+        resetGif(document.getElementById('batz_hablando_E1'))
+    }, 3000);
+}
 
 function pregunta_de_batz_E1() {
     seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0][1].pregunta)
+    disguise(document.getElementById('batz_quieto'))
+    disguise(document.getElementById('menaje_junajpu_a_batz'))
+    show(document.getElementById('batz_hablando2_E1'))
+    show(document.getElementById('mensaje_batz_a_junajpu_E1'))
     setTimeout(() => {
         seguiente_memsaje.style.pointerEvents = "auto";
-        change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0][0].pregunta)
-        disguise(document.getElementById('batz_quieto'))
-        show(document.getElementById('batz_hablando_E1'))
-        show(document.getElementById('mensaje_batz_a_junajpu_E1'))
+        show(document.getElementById('batz_quieto'))
+        disguise(document.getElementById('batz_hablando2_E1'))
+        seguiente_memsaje.removeEventListener('click', pregunta_de_batz_E1);
         seguiente_memsaje.addEventListener('click',opciones_para_respuesta_junajpu_E1);
-    }, 500);
+    }, 3000);
 }
+
 
 
 function opciones_para_respuesta_junajpu_E1() {
@@ -297,7 +341,7 @@ function opciones_para_respuesta_junajpu_E1() {
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
-        seguiente_memsaje.addEventListener('click',);
+        seguiente_memsaje.removeEventListener('click', opciones_para_respuesta_junajpu_E1);
     }, 500);
 }
 
@@ -306,21 +350,21 @@ function opciones_para_respuesta_junajpu_E1() {
 function escena2() {
     disguise(document.getElementById('junajpu_quieto_E1'))
     disguise(document.getElementById('ixkin_quieta_E1'))
-    disguise(document.getElementById('batz_hablando_E1'))
+    disguise(document.getElementById('batz_quieto'))
     disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
     show(document.getElementById('plato_de_sopa'))
     show(document.getElementById('ixchel_quieta'))
     show(document.getElementById('junajpu_sentado'))
     show(document.getElementById('ixkin_sentada'))
     setTimeout(() => {
-        seguiente_memsaje.style.display = "block";
+        seguiente_memsaje.style.display = "flex";
         seguiente_memsaje.style.pointerEvents = "auto";
         seguiente_memsaje.addEventListener('click', pregunta_ixchel_E2);
     }, 100);
 }
 
 function pregunta_ixchel_E2(){
-    change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][array_opciones[0].length - 1].pregunta)
+    change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][array_opciones[contador].length - 1].pregunta)
     show(document.getElementById('mensaje_ixchel_a_junajpu'))
 }
 

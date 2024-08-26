@@ -238,6 +238,7 @@ body {
     height: auto;
     max-width: 800px ;
     top: 20%;
+    display: none;
 }
 
 #batz_caimando_E1 {
@@ -261,6 +262,7 @@ body {
     max-width: 230px;
     height: auto;
     top: 15.5%;
+    display: none;
 }
 #junajpu_quieto_E1 {
     left: 28%;
@@ -272,8 +274,17 @@ body {
     left: 25.5%; /*28*/
     width: 19%;
     height: 300px;
+    z-index: 6;
     display: none;
 }
+
+#junajpu_hablando{
+    left: 0%;
+    z-index: 5;
+
+}
+
+
 
 #batz_quieto{
     left: 45%;
@@ -284,6 +295,12 @@ body {
 #batz_hablando_E1 {
     display: none;
     left: 18%;
+}
+
+#batz_hablando2_E1 {
+    display: none;
+    left: 18%;
+    z-index: 0;
 }
 
 /* -------------- gifs  E1 ---------------- */
@@ -299,6 +316,13 @@ body {
     z-index: 200;
 }
 
+
+#menaje_junajpu_a_batz{
+    display: none;
+    left: 37%;
+    top: 22%;
+    z-index: 200;
+}
 /* -------------- mensajes E1---------------- */
 
 
