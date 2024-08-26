@@ -36,7 +36,12 @@
                 <span class="nav-link-text ms-1">{{_('Salir')}}</span>
             </a>
         </form>
-      
+        <script type="text/javascript">
+      // Este script se ejecutará cuando el usuario haga clic en el botón de cerrar sesión
+      document.querySelector('.logout-btn').addEventListener('click', function() {
+        localStorage.removeItem('modalShown');
+      });
+    </script>
             <!--<span class="nav-link-text ms-1">Salir</span>-->
           </a>
       </ul>

@@ -1,0 +1,162 @@
+body {
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    font-family: "Laila", serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.contLogin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.titulo {
+    font-family: "Laila", serif;
+    font-weight: 700;
+}
+
+.titulo h1 {
+    font-size: 175%;
+    color: #eeae87;
+}
+.tituloLogin h1 {
+    color: #eeae87;
+}
+.contImgs {
+    padding: 5%;
+}
+
+.logos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    text-align: center;
+    align-items: center;
+}
+
+.logos img {
+    padding: 15%;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.imgPrincipal img {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.contForm {
+    background-color: #a41d23;
+    color: white;
+    font-family: "Laila", serif;
+    font-weight: 500;
+    font-style: normal;
+    padding: 5%;
+    line-height: 45px;
+}
+
+.tituloLogin {
+    margin-bottom: 10px;
+}
+
+.formulario button {
+    background-color: #1c3f59;
+    color: white;
+    border: transparent 1px solid;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.formulario button:hover {
+    background-color: white;
+    color: black;
+    border: #1c3f59 1px solid;
+}
+
+.formulario {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.formulario label {
+    font-size: 12px;
+}
+
+.contForm a {
+    text-decoration: none;
+    color: white;
+    text-decoration: underline;
+    font-family: "Laila", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 25px;
+}
+
+.contForm a:hover {
+    color: #eeae87;
+}
+
+@media screen and (max-width: 767px) {
+    .contLogin {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .contForm {
+        padding: 5%;
+    }
+
+    .titulo h1 {
+        font-size: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+    .contLogin {
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
+
+    .contForm {
+        padding: 5%;
+    }
+
+    .titulo h1 {
+        font-size: 150%;
+    }
+
+    .imgPrincipal img {
+        visibility: collapse;
+    }
+
+    .contImgs {
+        background-image: url("../imgs/imgMain.png");
+        background-size: 115%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+.invalid-feedback {
+    color: white;
+    font-size: 13px;
+}
+.modal-body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(
+        0,
+        0,
+        0
+    ); /* Cambia el color del texto para que sea legible sobre fondo negro */
+}
+.form-check-label,
+.form-check-label a {
+    font-size: 16px; /* Ajusta el tamaño según lo que necesites */
+}
+form.needs-validation label {
+    font-size: 18px; /* Ajusta el tamaño de la fuente según lo que necesites */
+    color: #ffffff; /* Cambia este valor al color que desees */
+    font-weight: bold;
+    font-family: Oswald;
+}
