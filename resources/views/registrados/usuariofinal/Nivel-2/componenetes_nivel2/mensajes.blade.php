@@ -11,8 +11,8 @@
 
 <!------------------------------------------------------- mensajes  E2 ------------------------------------------------------>
 
-<div id = "mensaje_ixchel_a_junajpu" class="mensajes_personajes_derecha" style="display: block">
-    <p class = "textos-mensajes" id = "mensaje_batz_a_junajpu_E1_pregregunta">{{_('holaaaaaaaaa junajpu')}}</p>
+<div id = "mensaje_ixchel_a_junajpu" class="mensajes_personajes_derecha">
+    <p class = "textos-mensajes" id = "mensaje_ixchel_a_junajpu_E1_pregregunta">{{_('holaaaaaaaaa junajpu')}}</p>
 </div>  
 
 <!------------------------------------------------------- mensajes  E2 ------------------------------------------------------>

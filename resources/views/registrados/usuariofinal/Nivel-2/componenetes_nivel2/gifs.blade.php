@@ -24,6 +24,20 @@
 
 <img id = "ixkin_sentada" src="{{ asset('imgs/nivel2/E2/IXKIK_FRONTAL_MEDIO_PLANO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
 
+<img id = "ixkin_llorando" src="{{ asset('imgs/nivel2/E2/IXKIK_FRONTAL_LLORANDO_MEDIO_PLANO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena_2">
+
+<img id = "junjpu_enojado" src="{{ asset('imgs/nivel2/E2/JUANJPU_FRONTAL_ENOJADO_MEDIO_PLANO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<img id = "ixchel_triste" src="{{ asset('imgs/nivel2/E2/IXCHEL_FRONTAL_TRISTE_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<img id = "plato_de_sopa" src="{{ asset('imgs/nivel2/E2/PLATO_SOPA_PASTA_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<img id = "junajpu_hablando_E2" src="{{ asset('imgs/nivel2/E2/JUANJPU_FRONTAL_HABLANDO_MEDIO_PLANO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena_2">
+
+<img id = "ixchel_hablando_E2" src="{{ asset('imgs/nivel2/E2/IXCHEL_FRONTAL_HABLANDO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena_2">
+
+
+
 <!------------------------------ Escena 2 --------------------------------->
 
 <!------------------------------------------ gifs  ---------------------------------------------->
