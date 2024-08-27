@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Nivel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Models\ProgresoUsuario;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class NivelController extends Controller
 {
@@ -70,9 +73,59 @@ class NivelController extends Controller
         return back()->with('message', $message)->with('icon', 'success');
     }
 
-    public function getMisNivelesUsuarioFinal(Request $request)
+    public function ResultadoNiveles()
     {
+
+        # OBTIENE LOS NIVELES VISTA USUARIO FINAL
         $niveles = Nivel::get();
-        return view('registrados.index', compact('niveles'));
+
+
+
+        # GRAFICAS CARDS
+        // Contar registros únicos por usuario_id, nivel_id_pregunta y estado_proceso = 1 para nivel 1
+        $nivelUnoFin = ProgresoUsuario::where('nivel_id_pregunta', 1)
+            ->where('estado_proceso', 1)
+            ->distinct('usuario_id')
+            ->count('usuario_id');
+
+        // Contar registros únicos por usuario_id, nivel_id_pregunta y estado_proceso = 1 para nivel 2
+        $nivelDosFin = ProgresoUsuario::where('nivel_id_pregunta', 2)
+            ->where('estado_proceso', 1)
+            ->distinct('usuario_id')
+            ->count('usuario_id');
+
+        // Contar registros únicos por usuario_id, nivel_id_pregunta y estado_proceso = 1 para nivel 3
+        $nivelTresFin = ProgresoUsuario::where('nivel_id_pregunta', 3)
+            ->where('estado_proceso', 1)
+            ->distinct('usuario_id')
+            ->count('usuario_id');
+
+
+
+        # GRAFICA DE PASTEL
+        // Contar registros por nivel_id_pregunta 1,2 y 3
+        $nivelUnoGen = ProgresoUsuario::where('nivel_id_pregunta', 1)
+            ->count();
+
+        $nivelDosGen = ProgresoUsuario::where('nivel_id_pregunta', 2)
+            ->count();
+
+        $nivelTresGen = ProgresoUsuario::where('nivel_id_pregunta', 3)
+            ->count();
+
+
+
+        # GRAFICA DE BARRAS
+        // Obtener el total de usuarios registrados
+        $totalUsuarios = User::count();
+
+        // Obtener la cantidad de usuarios por departamento y el nombre del departamento
+        $usuariosPorDepartamento = User::select('departamento_id', DB::raw('count(*) as total'))
+            ->groupBy('departamento_id')
+            ->with('departamento:id,name') // Cargar el nombre del departamento
+            ->get();
+
+        // Retornar los contadores a la vista
+        return view('registrados.index', compact('niveles', 'nivelUnoFin', 'nivelDosFin', 'nivelTresFin', 'nivelUnoGen', 'nivelDosGen', 'nivelTresGen', 'totalUsuarios', 'usuariosPorDepartamento'));
     }
 }

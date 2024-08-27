@@ -53,7 +53,7 @@
                                 <h5 class="font-size-14 mb-0">Nivel 1</h5>
                             </div>
                             <div class="text-muted mt-4">
-                                <h4>30<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                <h4>{{ $nivelUnoFin }}<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
                                 <div class="d-flex">
                                     <span class="badge badge-soft-success font-size-12">100%</span> <span class="ms-2 text-truncate">Terminado</span>
                                 </div>
@@ -61,7 +61,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body">
@@ -74,7 +73,7 @@
                                 <h5 class="font-size-14 mb-0">Nivel 2</h5>
                             </div>
                             <div class="text-muted mt-4">
-                                <h4>20<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                <h4>{{ $nivelDosFin }}<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
                                 <div class="d-flex">
                                     <span class="badge badge-soft-success font-size-12">100%</span> <span class="ms-2 text-truncate">Terminado</span>
                                 </div>
@@ -82,7 +81,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body">
@@ -95,7 +93,7 @@
                                 <h5 class="font-size-14 mb-0">Nivel 3</h5>
                             </div>
                             <div class="text-muted mt-4">
-                                <h4>15 <i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
+                                <h4>{{ $nivelTresFin }}<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
 
                                 <div class="d-flex">
                                     <span class="badge badge-soft-success font-size-12">100%</span> <span class="ms-2 text-truncate">Terminado</span>
@@ -116,78 +114,28 @@
                         <div class="mb-4">
                             <i class="bx bx-map display-4"></i>
                         </div>
-                        <h3>403</h3>
-                        <p>Kemenik</p>
+                        <h3>{{ $totalUsuarios }}</h3>
+                        <p>Usuarios registrados en Kemenik</p>
                     </div>
 
                     <div class="table-responsive mt-4">
                         <table class="table align-middle table-nowrap">
                             <tbody>
+                                @foreach($usuariosPorDepartamento as $registro)
                                 <tr>
                                     <td style="width: 30%">
-                                        <p class="mb-0">San Marcos</p>
+                                        <p class="mb-0">{{ $registro->departamento->name }}</p>
                                     </td>
                                     <td style="width: 25%">
-                                        <h5 class="mb-0">35</h5>
+                                        <h5 class="mb-0">{{ $registro->total }}</h5>
                                     </td>
                                     <td>
                                         <div class="progress bg-transparent progress-sm">
-                                            <div class="progress-bar bg-primary rounded" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                                            <div class="progress-bar bg-primary rounded" role="progressbar" style="width: {{ $registro->total / $totalUsuarios * 100 }}%" aria-valuenow="{{ $registro->total }}" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <p class="mb-0">Quetzaltenango</p>
-                                    </td>
-                                    <td>
-                                        <h5 class="mb-0">75</h5>
-                                    </td>
-                                    <td>
-                                        <div class="progress bg-transparent progress-sm">
-                                            <div class="progress-bar bg-success rounded" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="mb-0">Guatemala</p>
-                                    </td>
-                                    <td>
-                                        <h5 class="mb-0">135</h5>
-                                    </td>
-                                    <td>
-                                        <div class="progress bg-transparent progress-sm">
-                                            <div class="progress-bar bg-danger rounded" role="progressbar" style="width: 135%" aria-valuenow="135" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="mb-0">Escuintla</p>
-                                    </td>
-                                    <td>
-                                        <h5 class="mb-0">65</h5>
-                                    </td>
-                                    <td>
-                                        <div class="progress bg-transparent progress-sm">
-                                            <div class="progress-bar bg-info rounded" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="mb-0">Peten</p>
-                                    </td>
-                                    <td>
-                                        <h5 class="mb-0">93</h5>
-                                    </td>
-                                    <td>
-                                        <div class="progress bg-transparent progress-sm">
-                                            <div class="progress-bar bg-warning rounded" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -208,19 +156,19 @@
                             <div class="col-4">
                                 <div class="mt-4">
                                     <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-primary me-1"></i> Nivel 1</p>
-                                    <h5>170</h5>
+                                    <h5>{{ $nivelUnoGen }}</h5>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="mt-4">
                                     <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-success me-1"></i> Nivel 2</p>
-                                    <h5>100</h5>
+                                    <h5>{{ $nivelDosGen }}</h5>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="mt-4">
                                     <p class="mb-2 text-truncate"><i class="mdi mdi-circle text-danger me-1"></i> Nivel 3</p>
-                                    <h5>80</h5>
+                                    <h5>{{ $nivelTresGen }}</h5>
                                 </div>
                             </div>
                         </div>

@@ -14,6 +14,8 @@ use App\Http\Controllers\EscenaController;
 use App\Http\Controllers\PPreguntaController;
 use App\Http\Controllers\PRespuestaController;
 
+use App\Http\Controllers\DashboardController;
+
 // Ruta, página inicial al levantar el sistema 
 Route::get('/', function () {
     return view('welcome');
@@ -87,11 +89,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/PRespuestas/Editar/PRespuestas/{id}', [PRespuestaController::class, 'postEditPRespuesta'])->name('prespuesta-edit-post');
     Route::post('/PRespuestas/Eliminar/PRespuestas/{id}', [PRespuestaController::class, 'deletePRespuesta'])->name('prespuesta-delete');
 
-    //Usuario final logeado
-    Route::get('/home', [NivelController::class, 'getMisNivelesUsuarioFinal'])->name('misniveles');
-    
-    Route::get('/nivel/{id}', function($id) {
-        switch($id) {
+    // RUTA COMPARTIDA, DEBE DE ORDENARSE (TAREA DE RONALD)
+    Route::get('/home', [NivelController::class, 'ResultadoNiveles'])->name('misniveles');
+
+    Route::get('/nivel/{id}', function ($id) {
+        switch ($id) {
             case 1:
                 return view('registrados.usuariofinal.Nivel-1.nivel1');
             case 2:
@@ -99,7 +101,7 @@ Route::group(['middleware' => ['auth']], function () {
             case 3:
                 return view('registrados.usuariofinal.Nivel-3.nivel3');
             default:
-                abort(404); 
+                abort(404);
         }
     })->name('nivel');
 });
