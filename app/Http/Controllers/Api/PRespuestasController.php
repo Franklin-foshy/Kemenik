@@ -145,4 +145,35 @@ class PRespuestasController extends Controller
             'status_code' => 200
         ], 200);
     }
+
+    public function getRespuestasPorPPregunta($ppregunta_id)
+    {
+        // Validar que ppregunta_id sea un entero y exista en la tabla personaje preguntas
+        $validated = Validator::make(['ppregunta_id' => $ppregunta_id], [
+            'ppregunta_id' => 'required|integer|exists:p_preguntas,id'
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json([
+                'message' => 'Personaje Pregunta no válida',
+                'status_code' => 400
+            ], 400);
+        }
+
+        // Obtener respuestas asociadas a la pregunta personaje específica
+        $prespuestas = PRespuesta::where('ppregunta_id', $ppregunta_id)->with('ppregunta')->get();
+
+        if ($prespuestas->isEmpty()) {
+            return response()->json([
+                'message' => 'No se encontraron respuestas para la pregunta especificada',
+                'status_code' => 404
+            ], 404);
+        }
+
+        return response()->json([
+            'data' => $prespuestas,
+            'message' => 'Respuestas encontradas',
+            'status_code' => 200
+        ], 200);
+    }
 }

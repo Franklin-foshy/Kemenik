@@ -168,4 +168,43 @@ class PPreguntasController extends Controller
             'status_code' => 200
         ], 200);
     }
+
+    public function getPPreguntasPorEscena($escena_id)
+    {
+        // Validar que la escena_id sea un entero y exista en la tabla escenas
+        $validated = Validator::make(['escena_id' => $escena_id], [
+            'escena_id' => 'required|integer|exists:escenas,id'
+        ]);
+
+        if ($validated->fails()) {
+            return response()->json([
+                'message' => 'Escena no validada',
+                'status_code' => 400
+            ], 400);
+        }
+
+        // Obtener preguntas asociadas a la escena consultada
+        $ppreguntas = PPregunta::where('escena_id', $escena_id)->with('escena')->get();
+
+        if ($ppreguntas->isEmpty()) {
+            return response()->json([
+                'message' => 'No se encontraron preguntas para la escena consultada',
+                'status_code' => 404
+            ], 404);
+        }
+
+        // URL completa de la imagen del nivel asociado a la escena
+        $ppreguntas->transform(function ($item) {
+            if ($item->nivel && !str_starts_with($item->nivel->imagen, 'http')) {
+                $item->nivel->imagen = url('niveles/' . $item->nivel->imagen);
+            }
+            return $item;
+        });
+
+        return response()->json([
+            'data' => $ppreguntas,
+            'message' => 'Preguntas encontradas',
+            'status_code' => 200
+        ], 200);
+    }
 }

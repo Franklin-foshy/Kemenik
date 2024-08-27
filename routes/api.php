@@ -60,6 +60,7 @@ Route::get('/ppreguntas/{id}', [PPreguntasController::class, 'getPPreguntaByIdAP
 Route::post('/ppreguntas', [PPreguntasController::class, 'createPPreguntaAPI']);
 Route::put('/ppreguntas/{id}', [PPreguntasController::class, 'putEditPPreguntaAPI']);
 Route::delete('/ppreguntas/{id}', [PPreguntasController::class, 'deletePPreguntaAPI']);
+Route::get('/personaje_preguntas_por_escena/{escena_id}', [PPreguntasController::class, 'getPPreguntasPorEscena']);
 
 // PERSONAJES RESPUESTAS
 Route::get('/prespuestas', [PRespuestasController::class, 'getPRespuestasAPI']);
@@ -67,6 +68,7 @@ Route::get('/prespuestas/{id}', [PRespuestasController::class, 'getPRespuestaAPI
 Route::post('/prespuestas', [PRespuestasController::class, 'postPRespuestaAPI']);
 Route::put('/prespuestas/{id}', [PRespuestasController::class, 'putEditPRespuestaAPI']);
 Route::delete('/prespuestas/{id}', [PRespuestasController::class, 'deletePRespuestaAPI']);
+Route::get('/respuestas_por_ppreguntas/{ppregunta_id}', [PRespuestasController::class, 'getRespuestasPorPPregunta']);
 
 // PROGRESO DE USUARIO
 Route::get('progreso/{id}', [ProgresoUsuarioController::class, 'show']);
