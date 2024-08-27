@@ -324,7 +324,7 @@ let preguntas = [
 let rompecabezas_random = [];
 
 $.ajax({
-    url: `http://junamnoj.foxint.tech/api/rompecabezas/`,
+    url: `https://junamnoj.foxint.tech/api/rompecabezas/`,
     type: "GET",
     dataType: "json",
     success: function (response) {
@@ -361,7 +361,7 @@ let preguntas = [];
 let preguntas_guardar = [];
 
 $.ajax({
-    url: `http://junamnoj.foxint.tech/api/preguntas_por_nivel/1`,
+    url: `https://junamnoj.foxint.tech/api/preguntas_por_nivel/1`,
     type: "GET",
     dataType: "json",
     success: function (response) {
@@ -370,7 +370,7 @@ $.ajax({
                 let imagenes = [];
                 let respuestas = [];
                 $.ajax({
-                    url: `http://junamnoj.foxint.tech/api/respuestas_por_pregunta/${pregunta.id}`,
+                    url: `https://junamnoj.foxint.tech/api/respuestas_por_pregunta/${pregunta.id}`,
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
