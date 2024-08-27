@@ -158,5 +158,5 @@ form.needs-validation label {
     font-size: 18px; /* Ajusta el tamaño de la fuente según lo que necesites */
     color: #ffffff; /* Cambia este valor al color que desees */
     font-weight: bold;
-    font-family: Oswald;
+    font-family: "Courier New", monospace;
 }
