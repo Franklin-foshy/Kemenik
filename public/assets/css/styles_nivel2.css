@@ -232,7 +232,7 @@ body {
 
 /* -------------- gifs  E1 ---------------- */
 
-.gif_amimado_escena_1{
+.gif_amimado_escena{
     position: absolute;
     width: 100%;
     height: auto;
@@ -274,13 +274,13 @@ body {
     left: 25.5%; /*28*/
     width: 19%;
     height: 300px;
-    z-index: 6;
+    z-index: 1;
     display: none;
 }
 
 #junajpu_hablando{
     left: 0%;
-    z-index: 5;
+    z-index: 0;
 
 }
 
@@ -295,6 +295,7 @@ body {
 #batz_hablando_E1 {
     display: none;
     left: 18%;
+    z-index: 0;
 }
 
 #batz_hablando2_E1 {
@@ -362,19 +363,13 @@ body {
     left: 47%;
     top: 62%;
 }
-.gif_amimado_escena_2{
-    position: absolute;
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    top: 15.5%;
-    display: none;
-}
+
 
 #ixkin_llorando {
-    width: 90%;
-    left: 10%;
-    top: -4%;
+    width: 88%;
+    left: 13%;
+    top: 1.7%;
+
 }
 
 #junjpu_enojado{
@@ -391,8 +386,8 @@ body {
 
 #junajpu_hablando_E2{
     width: 86%;
-    left: -10%;
-    top: 0%;
+    left: -9%;
+    top: 1.5%;
 }
 
 #ixchel_hablando_E2{
@@ -400,9 +395,24 @@ body {
     left: 41%;
     top: 14%;
 }
+
+
+#ixchel_hablando2_E2{
+    width: 75%;
+    left: 41%;
+    top: 14%;
+}
 /* -------------- gifs E2 ----------------- */ 
 
 /* -------------- mensajes E2---------------- */
+
+#mensaje_junajpu_a_ixchel{
+    left: 27%;
+    top: 50%;
+    z-index: 200;
+}
+
+
 
 #mensaje_ixchel_a_junajpu{
     left: 75%;
@@ -416,6 +426,122 @@ body {
 /* -------------- mensajes E2---------------- */
 
 
+/* -------------- gifs E3 ----------------- */ 
+
+
+.imagen_escena_3 {
+    position: absolute;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    top: 15.5%;
+    display: none;
+}
+
+#junajpu_sonriendo_quieto {
+    width: 20%;
+    height: auto;
+    left: 55%;
+    top: 10%;
+}
+
+#junam_sentado{
+    width: 16%;
+    height: auto;
+    left: 47%;
+    top: 57.5%;
+}
+
+#ixkin_sentada_E3{
+    width: 16%;
+    height: auto;
+    left: 25%;
+    top: 62%;
+}
+
+
+
+#junajpu_hablando_telefono{
+    width: 68%;
+    left: 31%;
+    top: 15.5%;
+    
+
+}
+
+#junajpu_hablando_telefono_quieto{
+    width: 20%;                     
+    height: auto;
+    left: 55%;
+    top: 10%;
+    
+}
+
+#ixchel_hablando_telefono{
+    width: 30%;
+    left: 65%;
+    top: 5%;
+}
+
+#ixchel_hablando2_telefono{
+    width: 30%;
+    left: 65%;
+    top: 5%;
+}
+
+#ixchel_hablando_quieta {
+    width: 19%;
+    left: 70%;
+    top: 7%;
+}
+/* -------------- gifs E3 ----------------- */ 
+
+/* -------------- mensajes E3 ---------------- */
+
+#mensaje_junajpu_a_ixchel_llamada_telefono{
+    left: 55%;
+    top: 15%;
+    z-index: 200;
+    display: none;
+}
+#mensaje_junajpu_a_ixchel_llamada_telefono::after{
+    left: 85%;
+}
+
+#mensaje_repuesta_ixchel_a_junajpu_telefono {
+    left: 65%;
+    top: 5%;
+    z-index: 200;
+}
+
+#mensaje_repuesta_ixchel_a_junajpu_telefono::after{
+    left: 85%;
+}
+/* -------------- mensajes E3 ---------------- */
+
+
+/* -------------- gifs E4 ----------------- */ 
+
+
+.gif_amimado_escena_4 {
+    position: absolute;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    top: 15.5%;
+    
+}
+
+#ixkin_cuerpo_completo_E4_hablando {
+    width: 30%;                     
+    height: auto;
+    left: 55%;
+    top: 10%;
+    display: none;
+    
+}
+
+/* -------------- gifs E4 ----------------- */ 
 
 /* -------------- mensajes de respuestas ---------------*/
 
