@@ -324,21 +324,13 @@ let preguntas = [
 let rompecabezas_random = [];
 
 $.ajax({
-    url: `https://junamnoj.foxint.tech/api/rompecabezas/1`,
+    url: `https://junamnoj.foxint.tech/api/rompecabezas/2`,
     type: "GET",
     dataType: "json",
     success: function (response) {
-        if (response.rompecabezas && response.rompecabezas.length > 0) {
-            // Llena el array con las URLs de las imágenes obtenidas del servidor
-            response.rompecabezas.forEach(function (rompecabezas_ran) {
-                rompecabezas_random.push(rompecabezas_ran.imagen);
-            });
-
-            // Selecciona una imagen aleatoria de la lista
-            let escojer_imagen_rompecabezas =
-                rompecabezas_random[
-                    Math.floor(Math.random() * rompecabezas_random.length)
-                ];
+        if (response.rompecabeza && response.rompecabeza.imagen) {
+            // Obtiene la URL de la imagen del rompecabeza
+            let escojer_imagen_rompecabezas = response.rompecabeza.imagen;
 
             // Selecciona todas las piezas
             const piezas = document.querySelectorAll(".pieza");
@@ -348,7 +340,9 @@ $.ajax({
                 pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
             });
         } else {
-            console.error("No se encontraron rompecabezas en la respuesta.");
+            console.error(
+                "No se encontrÃ³ una imagen de rompecabeza en la respuesta."
+            );
         }
     },
     error: function (jqXHR, textStatus, errorThrown) {
