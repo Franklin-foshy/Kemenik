@@ -8,6 +8,9 @@
 </head>
 <body>
 
+<audio id="audio_correcto" src="{{ asset('music/correcto.mp3')}}"></audio>
+<audio id="audio_incorrecto" src="{{ asset('music/incorrecto.mp3')}}"></audio>
+<audio id="aplausos" src="{{ asset('music/aplausos.mp3')}}"></audio>
 
 
 @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.modal_niveles_escenas')
@@ -62,10 +65,14 @@
     
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
+            var fondo_campo_E4 = "{{ asset('imgs/nivel2/E4/BACKGROUND_04_02.png') }}";
+
             var imagenes_fondo = [
             "{{ asset('imgs/nivel2/E1/BACKGROUND-E1.png') }}",
             "{{ asset('imgs/nivel2/E2/BACKGROUND_E2_1.png') }}",
-            "{{ asset('imgs/nivel2/E1/BACKGROUND-E1.png') }}",
+            "{{ asset('imgs/nivel2/E3/BACKGROUND_03.png') }}",
+            "{{ asset('imgs/nivel2/E4/BACKGROUND_04.png') }}"
         ];
 </script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>

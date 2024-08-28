@@ -2,6 +2,18 @@ const modal_niveles = document.querySelector('.modal_niveles');
 const contenedor_mensajes = document.getElementById('mensajes_de_respuestas')
 
 
+// ---------------------------------- Audio ------------------------------------
+
+
+//var musica = document.getElementById('musica_fondo');
+var audio_correcto = document.getElementById('audio_correcto');
+var audio_incorrecto = document.getElementById('audio_incorrecto');
+var aplausos = document.getElementById('aplausos');
+
+
+// ---------------------------------- Audio ------------------------------------
+
+
 // ------------------------- Mensajes base de datos ----------------------------------
 var tamaño = 0;
 let array_opciones = [];
@@ -124,7 +136,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 1;
+var contador = 0;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
@@ -138,20 +150,37 @@ var cerrar_modal = document.getElementById('cerrar_modal');
 
 
 
+
 function verificarRespuesta(respuestaSeleccionada) {
     let respuestaCorrecta = array_opciones[contador][array_opciones[contador].length - 1].correcta ;
     //window.alert('llego a la verificacion')
     if (respuestaSeleccionada === respuestaCorrecta) {
+        audio_correcto.play();
+        setTimeout(() => {
+            audio_correcto.pause();
+            audio_correcto.currentTime = 0 ;
+            
+            },1000);
         //window.alert('entro al if')
         // Respuesta correcta
+        if (contador === 1){
+            acierto_E2()
+        }
         launchConfetti();
         contenedor_mensajes.style.display = "none";
         seguiente_memsaje.style.display = "none";
         //window.alert('llego al confetti')
         setTimeout(() => {
+            if (contador + 1 > array_opciones.length - 1 ){
+                regresar.style.display = "block";
+                regresar.style.pointerEvents = "auto";
+                siguiente_escena.style.display = "none";
+                siguiente_escena.style.pointerEvents = "none";
+            }else {
             siguiente_escena.style.display = "block";
             siguiente_escena.style.pointerEvents = "auto";
             siguiente_escena.onclick = () => {
+
                 siguiente_escena.style.display = "none";
                 siguiente_escena.style.pointerEvents = "none";
                 contador ++;
@@ -161,11 +190,20 @@ function verificarRespuesta(respuestaSeleccionada) {
                 window.alert('paso a la funcion')
                 modal_niveles.style.opacity = '1';
                 modal_niveles.style.visibility = 'visible';
-
+            }
             };
         }, 4000);
     } else {
+        audio_incorrecto.play();
+        setTimeout(() => {
+            audio_incorrecto.pause();
+            audio_incorrecto.currentTime = 0 ;
+            
+            },500);
         // Respuesta incorrecta
+        if (contador === 1){
+            equivocacion_E2()
+        }
         vidas--;
         actualizarVidas();
         if (vidas === 0) {
@@ -216,7 +254,7 @@ function launchConfetti() {
     }, 300);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+
     // Obtener elementos del DOM
 
 
@@ -247,6 +285,10 @@ let correcto = 0;
         variable.style.display = 'none';
     };
 
+    // Function top 
+    function toped(contendor, value) {
+        contendor.style.top = value + '%';
+    }
     // Funcion para cambia contenido de un parrafo
     function change_message(variable, text_new) {
         variable.textContent = text_new;
@@ -264,11 +306,16 @@ let correcto = 0;
         timeoutIDs = []; 
     }
 
+// ------------ sonido al avanzar ----------------------------
+
 // --------------- cambiar el fondo -----------------------------
 
 
 cambiar_fondo(contendor,imagenes_fondo[contador])
- // Primer escena 
+
+
+// ------------------- Escena 1 ---------------------------------
+
 function escena_1() {
     //cambiar_fondo(contendor, 'imgs/nivel2/E1/IXKIK_PERFIL_E1.png');
     show(document.getElementById('junajpu_quieto_E1'))
@@ -344,7 +391,11 @@ function opciones_para_respuesta_junajpu_E1() {
         seguiente_memsaje.removeEventListener('click', opciones_para_respuesta_junajpu_E1);
     }, 500);
 }
+// ------------------- Escena 1 ---------------------------------
 
+
+
+// ------------------- Escena 2 ---------------------------------
 
 
 function escena2() {
@@ -359,17 +410,196 @@ function escena2() {
     setTimeout(() => {
         seguiente_memsaje.style.display = "flex";
         seguiente_memsaje.style.pointerEvents = "auto";
-        seguiente_memsaje.addEventListener('click', pregunta_ixchel_E2);
+        seguiente_memsaje.addEventListener('click', Junajpu_preguinta_a_inchel);
     }, 100);
 }
 
-function pregunta_ixchel_E2(){
-    change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][array_opciones[contador].length - 1].pregunta)
+function Junajpu_preguinta_a_inchel(){
+    seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('mensaje_junajpu_a_ixchel_E2_pregregunta'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_junajpu_a_ixchel'))
+    disguise(document.getElementById('junajpu_sentado'))
+    show(document.getElementById('junajpu_hablando_E2'))
+    setTimeout(() => {
+        show(document.getElementById('junajpu_sentado'))
+        disguise(document.getElementById('junajpu_hablando_E2'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', Junajpu_preguinta_a_inchel);
+        seguiente_memsaje.addEventListener('click', respuesta_ixchel_a_junajpu);
+    }, 3000);
+}
+
+function respuesta_ixchel_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][0].correcta)
     show(document.getElementById('mensaje_ixchel_a_junajpu'))
+    disguise(document.getElementById('ixchel_quieta'))
+    show(document.getElementById('ixchel_hablando_E2'))
+    setTimeout(() => {
+        show(document.getElementById('ixchel_quieta'))
+        disguise(document.getElementById('ixchel_hablando_E2'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', respuesta_ixchel_a_junajpu);
+        seguiente_memsaje.addEventListener('click', preguta_ixchel_a_junajpu);
+    }, 3000);
+}
+
+function preguta_ixchel_a_junajpu () {
+    disguise(document.getElementById('mensaje_junajpu_a_ixchel'))
+    change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][1].pregunta)
+    show(document.getElementById('mensaje_ixchel_a_junajpu'))
+    disguise(document.getElementById('ixchel_quieta'))
+    show(document.getElementById('ixchel_hablando2_E2'))
+    setTimeout(() => {
+        show(document.getElementById('ixchel_quieta'))
+        disguise(document.getElementById('ixchel_hablando2_E2'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', preguta_ixchel_a_junajpu);
+        seguiente_memsaje.addEventListener('click', opciones_para_respuesta_junajpu_E2 );
+    }, 3000);
+}
+
+function opciones_para_respuesta_junajpu_E2() {
+    seguiente_memsaje.style.pointerEvents = "none";
+    setTimeout(() => {
+        toped(contenedor_mensajes,'80')
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', opciones_para_respuesta_junajpu_E2);
+    }, 500);
+}
+
+function equivocacion_E2 () {
+    disguise(document.getElementById('ixchel_quieta'))
+    disguise(document.getElementById('junajpu_sentado'))
+    disguise(document.getElementById('ixkin_sentada'))
+    show(document.getElementById('junjpu_enojado'))
+    show(document.getElementById('ixchel_triste'))
+    show(document.getElementById('ixkin_llorando'))
+}
+
+function acierto_E2 () {
+    show(document.getElementById('ixchel_quieta'))
+    show(document.getElementById('junajpu_sentado'))
+    show(document.getElementById('ixkin_sentada'))
+    disguise(document.getElementById('junjpu_enojado'))
+    disguise(document.getElementById('ixchel_triste'))
+    disguise(document.getElementById('ixkin_llorando'))
+}
+
+// ------------------- Escena 2 ---------------------------------
+
+// ------------------- Escena 3 ---------------------------------
+
+function escena3() {
+    seguiente_memsaje.style.display = "flex";
+    seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('ixchel_quieta'))
+    disguise(document.getElementById('junajpu_sentado'))
+    disguise(document.getElementById('ixkin_sentada'))
+    disguise(document.getElementById('mensaje_ixchel_a_junajpu'))
+    show(document.getElementById('junajpu_sonriendo_quieto'))
+    show(document.getElementById('junam_sentado'))
+    show(document.getElementById('ixkin_sentada_E3'))
+    seguiente_memsaje.addEventListener('click', llamada_de_ixchel_a_junajpu);
+
+}
+
+function llamada_de_ixchel_a_junajpu (){
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('junajpu_sonriendo_quieto'))
+    show(document.getElementById('junajpu_hablando_telefono'))
+    change_message(document.getElementById('mensaje_junajpu_a_ixchel_llamada_telefono_saludo'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_junajpu_a_ixchel_llamada_telefono'))
+    setTimeout(() => {
+        show(document.getElementById('junajpu_hablando_telefono_quieto'))
+        disguise(document.getElementById('junajpu_hablando_telefono'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', llamada_de_ixchel_a_junajpu);
+        seguiente_memsaje.addEventListener('click', respuesta_de_ixchel_a_junajpu);
+    }, 3000);
+}
+
+function respuesta_de_ixchel_a_junajpu (){
+    seguiente_memsaje.style.pointerEvents = "none";
+    show(document.getElementById('ixchel_hablando_quieta'))
+    setTimeout(() => {
+        disguise(document.getElementById('mensaje_junajpu_a_ixchel_llamada_telefono'))
+        change_message(document.getElementById('mensaje_repuesta_ixchel_a_junajpu_telefono_respuesta_E3'), array_opciones[contador][0].correcta)
+        show(document.getElementById('mensaje_repuesta_ixchel_a_junajpu_telefono'))
+        show(document.getElementById('ixchel_hablando_telefono'))
+        disguise(document.getElementById('ixchel_hablando_quieta'))
+        setTimeout(() => {
+            show(document.getElementById('ixchel_hablando_quieta'))
+            disguise(document.getElementById('ixchel_hablando_telefono'))
+            seguiente_memsaje.style.display = "flex";
+            seguiente_memsaje.style.pointerEvents = "auto";
+            seguiente_memsaje.removeEventListener('click', respuesta_de_ixchel_a_junajpu);
+            seguiente_memsaje.addEventListener('click',  pregunta_de_ixchel_a_junajpu);
+        }, 3000);
+    }, 1000);
+}
+
+function pregunta_de_ixchel_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('ixchel_hablando_quieta'))
+    show(document.getElementById('ixchel_hablando2_telefono')) 
+    change_message(document.getElementById('mensaje_repuesta_ixchel_a_junajpu_telefono_respuesta_E3'), array_opciones[contador][1].pregunta)
+    setTimeout(() => {
+        show(document.getElementById('ixchel_hablando_quieta'))
+        disguise(document.getElementById('ixchel_hablando2_telefono'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', pregunta_de_ixchel_a_junajpu);
+        seguiente_memsaje.addEventListener('click',  respuestas_de_junajpu_a_ixchel);
+    }, 3000);
+}
+
+function respuestas_de_junajpu_a_ixchel () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    setTimeout(() => {
+        toped(contenedor_mensajes,'55')
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', respuestas_de_junajpu_a_ixchel);
+    }, 500);
+}
+
+// ------------------- Escena 3 ---------------------------------
+
+// ------------------- Escena 4 ---------------------------------
+
+function escena4() {
+    seguiente_memsaje.style.display = "flex";
+    seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('junam_sentado'))
+    disguise(document.getElementById('ixkin_sentada_E3'))
+    disguise(document.getElementById('junajpu_hablando_telefono_quieto'))
+    disguise(document.getElementById('ixchel_hablando_quieta'))
+    disguise(document.getElementById('mensaje_repuesta_ixchel_a_junajpu_telefono'))
+
+
+
 }
 
 
-let escenas_ = [escena_1,escena2]
+// ------------------- Escena 4 ---------------------------------
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+
+
+let escenas_ = [escena_1,escena2,escena3,escena4]
 
 document.querySelector('.close-btn').addEventListener('click', function() {
     modal_niveles.style.opacity = '0';
