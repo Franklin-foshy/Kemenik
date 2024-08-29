@@ -457,7 +457,7 @@ function verificarRespuesta(imagenIndex, preguntaId) {
     let preguntaDiccionario = preguntas[preguntaId - 1];
     let respuestaCorrecta = preguntaDiccionario.correcta;
 
-   /* if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+   if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
         alert("¡Correcto!");
         // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
     } else {
