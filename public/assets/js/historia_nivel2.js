@@ -20,8 +20,8 @@ let array_opciones = [];
 
 // Cargar las escenas del API
 $.ajax({
-    //url: `http://127.0.0.1:8000/api/escenas/`,
-    url: `https://junamnoj.foxint.tech/api/escenas/`,
+        //url: `http://127.0.0.1:8000/api/escenas/`,
+        url: `https://junamnoj.foxint.tech/api/escenas/`,
     type: 'GET',
     dataType: 'json',
     success: function(sceneResponse) {
@@ -44,8 +44,8 @@ $.ajax({
 
                                     // Cargar las respuestas para la pregunta actual
                                     $.ajax({
-                                        //url: `http://127.0.0.1:8000/api/prespuestas/`,
-                                        url: `https://junamnoj.foxint.tech/api/prespuestas/`,
+                                         //url: `http://127.0.0.1:8000/api/prespuestas/`,
+                                         url: `https://junamnoj.foxint.tech/api/prespuestas/`,
                                         type: 'GET',
                                         dataType: 'json',
                                         success: function(response) {

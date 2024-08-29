@@ -1,7 +1,4 @@
 
-
-
-
 // --------------------------- Pantalla de carga ------------------------------
 const cargando = document.getElementById("cargando");
 const header = document.getElementById("header");
@@ -349,7 +346,7 @@ $.ajax({
 
             // Aplica la misma imagen a todas las piezas
             piezas.forEach(function (pieza) {
-                pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
+                pieza.style.backgroundImage = url("${escojer_imagen_rompecabezas}");
             });
         } else {
             console.error("No se encontraron rompecabezas en la respuesta.");
@@ -357,7 +354,7 @@ $.ajax({
     },
     error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error en la solicitud:", textStatus, errorThrown);
-    },
+    },
 });
 
 // ---------------- IMPLEMENTACION DEL BACKEND --------------------
@@ -461,7 +458,7 @@ function verificarRespuesta(imagenIndex, preguntaId) {
     let preguntaDiccionario = preguntas[preguntaId - 1];
     let respuestaCorrecta = preguntaDiccionario.correcta;
 
-    if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+   /* if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
         alert("¡Correcto!");
         // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
     } else {
