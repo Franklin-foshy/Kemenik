@@ -140,7 +140,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 3;
+var contador = 0;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
