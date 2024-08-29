@@ -20,8 +20,8 @@ let array_opciones = [];
 
 // Cargar las escenas del API
 $.ajax({
-    url: `http://127.0.0.1:8000/api/escenas/`,
-    //url: `https://junamnoj.foxint.tech/api/escenas/`,
+    //url: `http://127.0.0.1:8000/api/escenas/`,
+    url: `https://junamnoj.foxint.tech/api/escenas/`,
     type: 'GET',
     dataType: 'json',
     success: function(sceneResponse) {
@@ -30,8 +30,8 @@ $.ajax({
                 let todo = [] ;
                 // Cargar las preguntas relacionadas con la escena
                 $.ajax({
-                    url: `http://127.0.0.1:8000/api/ppreguntas/`,
-                    //url: `https://junamnoj.foxint.tech/api/ppreguntas/`,
+                    //url: `http://127.0.0.1:8000/api/ppreguntas/`,
+                    url: `https://junamnoj.foxint.tech/api/ppreguntas/`,
                     type: 'GET',
                     dataType: 'json',
                     success: function(questionResponse) {
@@ -44,8 +44,8 @@ $.ajax({
 
                                     // Cargar las respuestas para la pregunta actual
                                     $.ajax({
-                                        url: `http://127.0.0.1:8000/api/prespuestas/`,
-                                        //url: `https://junamnoj.foxint.tech/api/prespuestas/`,
+                                        //url: `http://127.0.0.1:8000/api/prespuestas/`,
+                                        url: `https://junamnoj.foxint.tech/api/prespuestas/`,
                                         type: 'GET',
                                         dataType: 'json',
                                         success: function(response) {
@@ -140,7 +140,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 3;
+var contador = 0;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
