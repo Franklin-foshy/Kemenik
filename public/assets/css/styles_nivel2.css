@@ -529,19 +529,119 @@ body {
     max-width: 1000px;
     height: auto;
     top: 15.5%;
-    
-}
-
-#ixkin_cuerpo_completo_E4_hablando {
-    width: 30%;                     
-    height: auto;
-    left: 55%;
-    top: 10%;
     display: none;
     
 }
 
+#ixkin_cuerpo_completo_E4_hablando {
+    width: 75%;
+    left: -5%;
+    top: 16%;
+}
+
+#junam_cuerpo_completo_E4_hablando{
+    width: 80%;
+    left: -20%;
+    top: 12%;
+}
+
+#junajpu_cuerpo_completo_E4_hablando{
+    width: 68%;
+    left: 28%;
+    top: 22%;
+
+}
+
+
+
+#junam_cuerpo_completo_E4_llorando{
+    width: 80%;
+    left: -20%;
+    top: 12%;
+}
+
+#ixkin_cuerpo_completo_E4_llorando{
+    width: 75%;
+    left: -5%;
+    top: 16%;
+
+}
+
+#junajpu_sonriendo_E4_quieto {
+    width: 20%;
+    height: auto;
+    left: 52%;
+    top: 16.7%;
+
+}
+
+.imagen_escena_4 {
+    position: absolute;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    top: 15.5%;
+    display: none;
+}
+
+#ixkin_quieta_E4{
+    width: 15.5%;
+    height: auto;
+    left: 25%;
+    top: 41.2%;
+
+}
+
+#junam_quieto_E4{
+    width: 15.7%;
+    height: auto;
+    left: 11.5%;
+    top: 31.9%;
+
+}
+
+#ixkin_cuerpo_completo_E4_hablando2 {
+    width: 75%;
+    left: -5%;
+    top: 16%;
+
+}
+
+#junam_cuerpo_completo_E4_hablando2{
+    width: 80%;
+    left: -20%;
+    top: 12%;
+
+}
+
 /* -------------- gifs E4 ----------------- */ 
+
+/* -------------- mensajes E4 ---------------- */
+
+#mensaje_pregunta_ixkina_a_junajpu {
+    left: 39%;
+    top: 37%;
+    z-index: 200;
+
+}
+
+#mensaje_pregunta_junam_a_junajpu{
+    left: 15%;
+    top: 30%;
+    z-index: 200;
+
+}
+#mensaje_pregunta_junajpu_respuestas_hijos{
+    left: 60%;
+    top: 22%;
+    z-index: 200;
+
+}
+
+
+
+/* -------------- mensajes E4 ---------------- */
+
 
 /* -------------- mensajes de respuestas ---------------*/
 

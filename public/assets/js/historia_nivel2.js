@@ -21,6 +21,7 @@ let array_opciones = [];
 // Cargar las escenas del API
 $.ajax({
     url: `http://127.0.0.1:8000/api/escenas/`,
+    //url: `https://junamnoj.foxint.tech/api/escenas/`,
     type: 'GET',
     dataType: 'json',
     success: function(sceneResponse) {
@@ -30,6 +31,7 @@ $.ajax({
                 // Cargar las preguntas relacionadas con la escena
                 $.ajax({
                     url: `http://127.0.0.1:8000/api/ppreguntas/`,
+                    //url: `https://junamnoj.foxint.tech/api/ppreguntas/`,
                     type: 'GET',
                     dataType: 'json',
                     success: function(questionResponse) {
@@ -43,6 +45,7 @@ $.ajax({
                                     // Cargar las respuestas para la pregunta actual
                                     $.ajax({
                                         url: `http://127.0.0.1:8000/api/prespuestas/`,
+                                        //url: `https://junamnoj.foxint.tech/api/prespuestas/`,
                                         type: 'GET',
                                         dataType: 'json',
                                         success: function(response) {
@@ -91,6 +94,7 @@ $.ajax({
 
 
 
+
 function generarHTMLPorId(idPregunta) {
     let contenedorMensajes = document.getElementById('mensajes_de_respuestas');
     let diccionario_pre = array_opciones[idPregunta];
@@ -136,7 +140,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 0;
+var contador = 3;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
@@ -498,6 +502,7 @@ function escena3() {
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('ixchel_quieta'))
+    disguise(document.getElementById('plato_de_sopa'))
     disguise(document.getElementById('junajpu_sentado'))
     disguise(document.getElementById('ixkin_sentada'))
     disguise(document.getElementById('mensaje_ixchel_a_junajpu'))
@@ -580,13 +585,79 @@ function escena4() {
     disguise(document.getElementById('ixkin_sentada_E3'))
     disguise(document.getElementById('junajpu_hablando_telefono_quieto'))
     disguise(document.getElementById('ixchel_hablando_quieta'))
+    disguise(document.getElementById('plato_de_sopa'))
     disguise(document.getElementById('mensaje_repuesta_ixchel_a_junajpu_telefono'))
+    show(document.getElementById('ixkin_quieta_E4')) 
+    show(document.getElementById('junam_quieto_E4')) 
+    show(document.getElementById('junajpu_sonriendo_E4_quieto')) 
+    seguiente_memsaje.addEventListener('click',  saludos_de_hijos_a_junajpu);
+}
 
+function saludos_de_hijos_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('ixkin_quieta_E4')) 
+    show(document.getElementById('ixkin_cuerpo_completo_E4_hablando')) 
+    change_message(document.getElementById('mensaje_pregunta_a_junajpu_ixkin_E4'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_pregunta_ixkina_a_junajpu')) 
+    setTimeout(() => {
+        show(document.getElementById('ixkin_quieta_E4'))
+        disguise(document.getElementById('ixkin_cuerpo_completo_E4_hablando'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', saludos_de_hijos_a_junajpu);
+        seguiente_memsaje.addEventListener('click',  saludo_padre);
+    }, 3000);
+}
 
+function saludo_padre () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('mensaje_pregunta_ixkina_a_junajpu')) 
+    disguise(document.getElementById('junajpu_sonriendo_E4_quieto')) 
+    show(document.getElementById('junajpu_cuerpo_completo_E4_hablando')) 
+    change_message(document.getElementById('mensaje_respuestas_junajpu_E4'), array_opciones[contador][0].correcta)
+    show(document.getElementById('mensaje_pregunta_junajpu_respuestas_hijos')) 
+    setTimeout(() => {
+        show(document.getElementById('junajpu_sonriendo_E4_quieto'))
+        disguise(document.getElementById('junajpu_cuerpo_completo_E4_hablando'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', saludo_padre);
+        seguiente_memsaje.addEventListener('click',  niños_le_preguntan_si_pueden_ir);
+    }, 3000);
+}
 
+function niños_le_preguntan_si_pueden_ir () {
+    disguise(document.getElementById('mensaje_pregunta_junajpu_respuestas_hijos')) 
+    disguise(document.getElementById('ixkin_quieta_E4')) 
+    change_message(document.getElementById('mensaje_pregunta_a_junajpu_junam_E4'), array_opciones[contador][2].pregunta)
+    change_message(document.getElementById('mensaje_pregunta_a_junajpu_ixkin_E4'), array_opciones[contador][2].pregunta)
+    show(document.getElementById('mensaje_pregunta_junam_a_junajpu')) 
+    show(document.getElementById('mensaje_pregunta_ixkina_a_junajpu')) 
+    disguise(document.getElementById('junam_quieto_E4')) 
+    show(document.getElementById('ixkin_cuerpo_completo_E4_hablando2')) 
+    show(document.getElementById('junam_cuerpo_completo_E4_hablando2')) 
+    setTimeout(() => {
+        show(document.getElementById('junam_quieto_E4'))
+        show(document.getElementById('ixkin_quieta_E4'))
+        disguise(document.getElementById('ixkin_cuerpo_completo_E4_hablando2'))
+        disguise(document.getElementById('junam_cuerpo_completo_E4_hablando2'))
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', niños_le_preguntan_si_pueden_ir);
+        seguiente_memsaje.addEventListener('click',  );
+    }, 3000);
 }
 
 
+function desisicion_junajpu_a_sus_hijos () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    setTimeout(() => {
+        toped(contenedor_mensajes,'50')
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', respuestas_de_junajpu_a_ixchel);
+    }, 500);
+}
 // ------------------- Escena 4 ---------------------------------
 
 
