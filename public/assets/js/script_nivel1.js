@@ -1,33 +1,3 @@
-<<<<<<< Updated upstream
-=======
-// Carga id del nivel 
-/*
-let niveles = [];
-
-$.ajax({
-    url: 'http://127.0.0.1:8000/api/niveles/',
-    type: 'GET',
-    dataType: 'json',
-    success: function(response) {
-
-        response.forEach(function(nivel) {
-            let nivele = nivel.id; 
-            niveles.push(nivele);
-        });
-        console.log(niveles);
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error en la solicitud:', textStatus, errorThrown);
-    }
-});
-*/
-
-
-
-
-
-
->>>>>>> Stashed changes
 // --------------------------- Pantalla de carga ------------------------------
 const cargando = document.getElementById("cargando");
 const header = document.getElementById("header");
