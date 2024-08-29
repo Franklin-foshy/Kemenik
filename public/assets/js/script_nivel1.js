@@ -324,7 +324,7 @@ let preguntas = [
 let rompecabezas_random = [];
 
 $.ajax({
-    url: https://junamnoj.foxint.tech/api/rompecabezas/,
+    url: `https://junamnoj.foxint.tech/api/rompecabezas/`,
     type: "GET",
     dataType: "json",
     success: function (response) {
