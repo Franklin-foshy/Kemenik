@@ -279,46 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // -------------------------------- Logica para loch ( PC ) ------------------------------
 
-/*
-let preguntas = [
-    {
-        pregunta: "¿Cuál es la capital de Francia?",
-        images: ["imgs/nivel2/imagen_5.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["París", "Londres", "Madrid"],
-        correcta: "París"
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Berlín'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Guatemala?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Viena'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Zurich'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Viena'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Viena'
-    },
-
-]; */
 
 // ---------------- Añadiendo rompecabezas -----------------------
 
@@ -458,7 +418,7 @@ function verificarRespuesta(imagenIndex, preguntaId) {
     let preguntaDiccionario = preguntas[preguntaId - 1];
     let respuestaCorrecta = preguntaDiccionario.correcta;
 
-   /* if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+   if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
         alert("¡Correcto!");
         // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
     } else {

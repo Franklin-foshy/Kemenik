@@ -43,19 +43,21 @@
 
 
 <div id = "mensaje_pregunta_ixkina_a_junajpu" class="mensajes_personajes_izquierda">
-    <p class = "textos-mensajes" id = "mensaje_pregunta_a_junajpu_ixkin_E4">{{_('ixkin')}}</p>
+    <p class = "textos-mensajes" id = "mensaje_pregunta_a_junajpu_ixkin_E4">{{_('')}}</p>
 </div>
 
 
 <div id = "mensaje_pregunta_junam_a_junajpu" class="mensajes_personajes_derecha">
-    <p class = "textos-mensajes" id = "mensaje_pregunta_a_junajpu_junam_E4">{{_('junam')}}</p>
+    <p class = "textos-mensajes" id = "mensaje_pregunta_a_junajpu_junam_E4">{{_('')}}</p>
 </div>
 
 <div id = "mensaje_pregunta_junajpu_respuestas_hijos" class="mensajes_personajes_derecha">
-    <p class = "textos-mensajes" id = "mensaje_respuestas_junajpu_E4">{{_('junajpu')}}</p>
+    <p class = "textos-mensajes" id = "mensaje_respuestas_junajpu_E4">{{_('')}}</p>
 </div>
 
-
+<div id = "mensaje_pensamiento_junajpu" class="mensajes_personajes_izquierda">
+    <p class = "textos-mensajes" id = "mensaje_pensamiento_junajpu_repuesta">{{_('junajpu')}}</p>
+</div>
 
 <!------------------------------------------------------- mensajes  E4 ------------------------------------------------------>
 

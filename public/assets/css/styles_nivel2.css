@@ -614,6 +614,36 @@ body {
 
 }
 
+#todos_van_caminando_al_campo{
+    width: 50%;
+    left: 0%;
+    top: 20%;
+
+}
+
+#junajpu_sonriendo_E4_quieto2 {
+    width: 14.5%;
+    left: 19%;
+    top: 17.5%;
+}
+#ixkin_quieta_E42{
+    width: 11%;
+    left: 15%;
+    top: 37%;
+}
+
+#junam_quieto_E42{
+    width: 11%;
+    left: 10%;
+    top: 30%;
+}
+
+
+#junajpu_cuerpo_completo_E4_hablando2{
+    width: 50%;
+    left: 1.1%;
+    top: 20.5%;
+}
 /* -------------- gifs E4 ----------------- */ 
 
 /* -------------- mensajes E4 ---------------- */
@@ -632,13 +662,18 @@ body {
 
 }
 #mensaje_pregunta_junajpu_respuestas_hijos{
-    left: 60%;
-    top: 22%;
+    left: 55%;
+    top: 19%;
     z-index: 200;
 
 }
 
 
+#mensaje_pensamiento_junajpu{
+    left: 33%;
+    top: 15%;
+    z-index: 200;
+}
 
 /* -------------- mensajes E4 ---------------- */
 
