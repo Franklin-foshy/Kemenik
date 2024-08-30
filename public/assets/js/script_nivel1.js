@@ -1,33 +1,4 @@
-<<<<<<< Updated upstream
-=======
-// Carga id del nivel 
-/*
-let niveles = [];
 
-$.ajax({
-    url: 'http://127.0.0.1:8000/api/niveles/',
-    type: 'GET',
-    dataType: 'json',
-    success: function(response) {
-
-        response.forEach(function(nivel) {
-            let nivele = nivel.id; 
-            niveles.push(nivele);
-        });
-        console.log(niveles);
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error en la solicitud:', textStatus, errorThrown);
-    }
-});
-*/
-
-
-
-
-
-
->>>>>>> Stashed changes
 // --------------------------- Pantalla de carga ------------------------------
 const cargando = document.getElementById("cargando");
 const header = document.getElementById("header");
@@ -308,53 +279,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // -------------------------------- Logica para loch ( PC ) ------------------------------
 
-/*
-let preguntas = [
-    {
-        pregunta: "¿Cuál es la capital de Francia?",
-        images: ["imgs/nivel2/imagen_5.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["París", "Londres", "Madrid"],
-        correcta: "París"
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Berlín'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Guatemala?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Viena'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Zurich'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Viena'
-    },
-    {
-        pregunta: "¿Cuál es la capital de Alemania?",
-        images: ["imgs/nivel2/imagen_1.jpeg", "imgs/nivel2/imagen_1.jpeg","imgs/nivel2/imagen_3.jpeg"],
-        respuestas: ["Berlín", "Viena", "Zurich"],
-        correcta: 'Viena'
-    },
-
-]; */
 
 // ---------------- Añadiendo rompecabezas -----------------------
 
 let rompecabezas_random = [];
 
 $.ajax({
-    url: `https://junamnoj.foxint.tech/api/rompecabezas/1`,
+    url: `https://junamnoj.foxint.tech/api/rompecabezas/`,
     type: "GET",
     dataType: "json",
     success: function (response) {
@@ -375,7 +306,7 @@ $.ajax({
 
             // Aplica la misma imagen a todas las piezas
             piezas.forEach(function (pieza) {
-                pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
+                pieza.style.backgroundImage = url("${escojer_imagen_rompecabezas}");
             });
         } else {
             console.error("No se encontraron rompecabezas en la respuesta.");
@@ -383,7 +314,7 @@ $.ajax({
     },
     error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error en la solicitud:", textStatus, errorThrown);
-    },
+    },
 });
 
 // ---------------- IMPLEMENTACION DEL BACKEND --------------------
@@ -487,7 +418,7 @@ function verificarRespuesta(imagenIndex, preguntaId) {
     let preguntaDiccionario = preguntas[preguntaId - 1];
     let respuestaCorrecta = preguntaDiccionario.correcta;
 
-   /* if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+   if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
         alert("¡Correcto!");
         // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
     } else {

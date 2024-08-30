@@ -73,8 +73,35 @@
 
 <img id = "ixkin_cuerpo_completo_E4_hablando" src="{{ asset('imgs/nivel2/E4/IXKIK_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
 
+<img id = "junam_cuerpo_completo_E4_hablando" src="{{ asset('imgs/nivel2/E4/JUNAM_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "junajpu_cuerpo_completo_E4_hablando" src="{{ asset('imgs/nivel2/E4/JUNAJPU_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "junam_cuerpo_completo_E4_llorando" src="{{ asset('imgs/nivel2/E4/JUNAM_FRONTAL_LLORANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "ixkin_cuerpo_completo_E4_llorando" src="{{ asset('imgs/nivel2/E4/IXKIK_FRONTAL_LLORANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "junajpu_sonriendo_E4_quieto" src="{{ asset('imgs/nivel2/E4/JUNAJPU_FRONTAL_SONRIENDO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "ixkin_quieta_E4" src="{{ asset('imgs/nivel2/E4/IXKIK_FRONTAL_SONRIENDO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "junam_quieto_E4" src="{{ asset('imgs/nivel2/E4/JUNAM_FRONTAL_SONRIENDO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
 
 
+<img id = "ixkin_cuerpo_completo_E4_hablando2" src="{{ asset('imgs/nivel2/E4/IXKIK_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "junam_cuerpo_completo_E4_hablando2" src="{{ asset('imgs/nivel2/E4/JUNAM_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "todos_van_caminando_al_campo" src="{{ asset('imgs/nivel2/E4/JUNAJPU_IXKIK_JUNAM_PERFIL_CAMINANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+
+<img id = "junajpu_sonriendo_E4_quieto2" src="{{ asset('imgs/nivel2/E4/JUNAJPU_FRONTAL_SONRIENDO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "ixkin_quieta_E42" src="{{ asset('imgs/nivel2/E4/IXKIK_FRONTAL_SONRIENDO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "junam_quieto_E42" src="{{ asset('imgs/nivel2/E4/JUNAM_FRONTAL_SONRIENDO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "junajpu_cuerpo_completo_E4_hablando2" src="{{ asset('imgs/nivel2/E4/JUNAJPU_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
 
 
 

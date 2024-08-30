@@ -72,8 +72,10 @@
             "{{ asset('imgs/nivel2/E1/BACKGROUND-E1.png') }}",
             "{{ asset('imgs/nivel2/E2/BACKGROUND_E2_1.png') }}",
             "{{ asset('imgs/nivel2/E3/BACKGROUND_03.png') }}",
-            "{{ asset('imgs/nivel2/E4/BACKGROUND_04.png') }}"
+            "{{ asset('imgs/nivel2/E4/BACKGROUND_04.png') }}", 
+            "{{ asset('imgs/nivel2/E5/BACKGROUND_05.png') }}", 
         ];
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
