@@ -104,6 +104,12 @@ function permissionsUser()
                 'prespuestas' => 'Eliminar personaje respuestas',
             ]
         ],
+        'Progreso usuarios' => [
+            'title' => 'Módulo progreso usuarios',
+            'keys' => [
+                'get_progresoUsuario' => 'Ver progreso usuario',
+            ]
+        ],
     ];
 
     return $p;
