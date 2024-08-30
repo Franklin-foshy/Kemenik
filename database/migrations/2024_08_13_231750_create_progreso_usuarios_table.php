@@ -18,10 +18,10 @@ return new class extends Migration
             $table->boolean('completado')->default(0)->comment('0: No, 1: Sí');
             $table->tinyInteger('intentos')->default(0)->unsigned()->comment('Hasta 3 intentos permitidos');
             $table->tinyInteger('puntuacion')->default(0)->unsigned()->comment('Puntuación máxima de 100');
-            $table->tinyInteger('estado_proceso')->default(1)->comment('1: En proceso, 2: Aprobado');
+            $table->tinyInteger('estado_proceso')->default(1)->comment('0: En proceso, 1: Aprobado');
             $table->string('texto_respuesta_preguntas')->comment('Texto respuesta de la pregunta');
             $table->string('texto_respuesta_respuestas')->comment('Texto respuesta de la respuesta');
-            $table->boolean('status_final_respuesta')->default(0)->comment('1: Correcto, 0: Incorrecto');
+            $table->boolean('status_final_respuesta')->default(0)->comment('0: Incorrecto, 1: Correcto');
             $table->boolean('status')->default(1);
             $table->unsignedBigInteger('nivel_id_pregunta')->nullable()->comment('ID del nivel asociado a la pregunta');
             $table->timestamps();

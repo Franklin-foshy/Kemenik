@@ -46,7 +46,7 @@ class ProgresoUsuarioController extends Controller
                 'completado' => 'required|boolean',
                 'intentos' => 'required|integer|min:0|max:3',
                 'puntuacion' => 'required|integer|min:0|max:100',
-                'estado_proceso' => 'required|integer|in:1,2',
+                'estado_proceso' => 'required|integer|in:0,1',
                 'texto_respuesta_preguntas' => 'required',
                 'texto_respuesta_respuestas' => 'required',
                 'status' => 'required|boolean',
