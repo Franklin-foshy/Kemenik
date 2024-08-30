@@ -107,6 +107,27 @@
 
 <!------------------------------ Escena 4 --------------------------------->
 
+<!------------------------------ Escena 5 --------------------------------->
+
+<img id = "ixcehl_barriendo_E5" src="{{ asset('imgs/nivel2/E5/IXCHEL_FRENTE_BARRIENDO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
+
+
+<img id = "ixkin_en_mesa_quieta" src="{{ asset('imgs/nivel2/E5/IXKIK_FRONTAL_MEDIO_PLANO_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
+
+<img id = "junam_en_mesa_quieta" src="{{ asset('imgs/nivel2/E5/JUNAM_FRONTAL_MEDIO_PLANO_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
+
+<img id = "junajpu_acostado_E5" src="{{ asset('imgs/nivel2/E5/JUNAJPU_PERFIL_ACOSTADO_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
+
+<img id = "ixkin_hablando_E5" src="{{ asset('imgs/nivel2/E5/IXKIK_FRONTAL_HABLANDO_MEDIO_PLANO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
+
+<img id = "junam_habalndo_E5" src="{{ asset('imgs/nivel2/E5/JUNAM_FRONTAL_HABLANDO_MEDIO_PLANO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
+
+<img id = "junajpu_hablando_E5" src="{{ asset('imgs/nivel2/E5/JUNAJPU_PERFIL_ACOSTADO_HABLANDO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
+
+
+
+
+<!------------------------------ Escena 5 --------------------------------->
 
 
 <!------------------------------------------ gifs  ---------------------------------------------->
