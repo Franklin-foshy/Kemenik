@@ -171,6 +171,8 @@ function verificarRespuesta(respuestaSeleccionada) {
             acierto_E2()
         }else if (contador ===  3){
             respuesta_correcta_E4()
+        }else if (contador === 4) {
+            respuesta_correcta_E5()
         }
 
         launchConfetti();
@@ -184,8 +186,15 @@ function verificarRespuesta(respuestaSeleccionada) {
                 siguiente_escena.style.display = "none";
                 siguiente_escena.style.pointerEvents = "none";
             }else {
+            if (contador === 3) {
+                setTimeout(() => {
+                    siguiente_escena.style.display = "block";
+                    siguiente_escena.style.pointerEvents = "auto";
+                    },7000);
+            }else {
             siguiente_escena.style.display = "block";
             siguiente_escena.style.pointerEvents = "auto";
+            }
             siguiente_escena.onclick = () => {
 
                 siguiente_escena.style.display = "none";
@@ -206,7 +215,7 @@ function verificarRespuesta(respuestaSeleccionada) {
             audio_incorrecto.pause();
             audio_incorrecto.currentTime = 0 ;
             
-            },500);
+            },1000);
         // Respuesta incorrecta
         if (contador === 1){
             equivocacion_E2()
@@ -394,7 +403,7 @@ function pregunta_de_batz_E1() {
 
 
 function opciones_para_respuesta_junajpu_E1() {
-    seguiente_memsaje.style.pointerEvents = "none";
+    seguiente_memsaje.style.display = "none";
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
@@ -457,6 +466,7 @@ function respuesta_ixchel_a_junajpu () {
 }
 
 function preguta_ixchel_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
     disguise(document.getElementById('mensaje_junajpu_a_ixchel'))
     change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][1].pregunta)
     show(document.getElementById('mensaje_ixchel_a_junajpu'))
@@ -473,9 +483,9 @@ function preguta_ixchel_a_junajpu () {
 }
 
 function opciones_para_respuesta_junajpu_E2() {
-    seguiente_memsaje.style.pointerEvents = "none";
+    seguiente_memsaje.style.display = "none";
     setTimeout(() => {
-        toped(contenedor_mensajes,'80')
+        //toped(contenedor_mensajes,'80')
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
         seguiente_memsaje.removeEventListener('click', opciones_para_respuesta_junajpu_E2);
@@ -528,7 +538,6 @@ function llamada_de_ixchel_a_junajpu (){
     setTimeout(() => {
         show(document.getElementById('junajpu_hablando_telefono_quieto'))
         disguise(document.getElementById('junajpu_hablando_telefono'))
-        seguiente_memsaje.style.display = "flex";
         seguiente_memsaje.style.pointerEvents = "auto";
         seguiente_memsaje.removeEventListener('click', llamada_de_ixchel_a_junajpu);
         seguiente_memsaje.addEventListener('click', respuesta_de_ixchel_a_junajpu);
@@ -571,9 +580,8 @@ function pregunta_de_ixchel_a_junajpu () {
 }
 
 function respuestas_de_junajpu_a_ixchel () {
-    seguiente_memsaje.style.pointerEvents = "none";
+    seguiente_memsaje.style.display = "none";
     setTimeout(() => {
-        toped(contenedor_mensajes,'55')
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
         seguiente_memsaje.removeEventListener('click', respuestas_de_junajpu_a_ixchel);
@@ -633,6 +641,7 @@ function saludo_padre () {
 }
 
 function niños_le_preguntan_si_pueden_ir () {
+    seguiente_memsaje.style.pointerEvents = "none";
     disguise(document.getElementById('mensaje_pregunta_junajpu_respuestas_hijos')) 
     disguise(document.getElementById('ixkin_quieta_E4')) 
     change_message(document.getElementById('mensaje_pregunta_a_junajpu_junam_E4'), array_opciones[contador][2].pregunta)
@@ -656,9 +665,9 @@ function niños_le_preguntan_si_pueden_ir () {
 
 
 function desisicion_junajpu_a_sus_hijos () {
-    seguiente_memsaje.style.pointerEvents = "none";
+    seguiente_memsaje.style.display = "none";
     setTimeout(() => {
-        toped(contenedor_mensajes,'55')
+        //toped(contenedor_mensajes,'55')
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
         seguiente_memsaje.removeEventListener('click', desisicion_junajpu_a_sus_hijos);
@@ -676,10 +685,11 @@ function repuesta_erronear_E4 () {
     change_message(document.getElementById('mensaje_respuestas_junajpu_E4'), array_opciones[contador][1].pregunta)
     setTimeout(() => {
         show(document.getElementById('mensaje_pregunta_junajpu_respuestas_hijos'))
-    }, 1000);
+    }, 100);
 }
 
 function respuesta_correcta_E4 () {
+    disguise(document.getElementById('mensaje_pregunta_junajpu_respuestas_hijos'))
     disguise(document.getElementById('mensaje_pregunta_junam_a_junajpu')) 
     disguise(document.getElementById('mensaje_pregunta_ixkina_a_junajpu')) 
     disguise(document.getElementById('junam_quieto_E4'))
@@ -687,7 +697,6 @@ function respuesta_correcta_E4 () {
     disguise(document.getElementById('ixkin_cuerpo_completo_E4_llorando'))
     disguise(document.getElementById('junam_cuerpo_completo_E4_llorando'))
     disguise(document.getElementById('junajpu_sonriendo_E4_quieto')) 
-    disguise(document.getElementById('mensaje_pregunta_junajpu_respuestas_hijos'))
     cambiar_fondo(contendor,fondo_campo_E4)
     setTimeout(() => {
         show(document.getElementById('todos_van_caminando_al_campo'))
@@ -716,12 +725,78 @@ function respuesta_correcta_E4 () {
 
 // ------------------- Escena 5 ---------------------------------
 
-function escena5(){
+function escena5(){        
+    seguiente_memsaje.style.display = "flex";
+    seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('junajpu_sonriendo_E4_quieto2'))
     disguise(document.getElementById('mensaje_pensamiento_junajpu'))
     disguise(document.getElementById('ixkin_quieta_E42'))
     disguise(document.getElementById('junam_quieto_E42'))
+    show(document.getElementById('ixcehl_barriendo_E5'))
+    show(document.getElementById('ixkin_en_mesa_quieta'))
+    show(document.getElementById('junam_en_mesa_quieta'))
+    show(document.getElementById('junajpu_acostado_E5'))
+    seguiente_memsaje.addEventListener('click', hijos_preguntan_a_ixchel);
 }
+
+function hijos_preguntan_a_ixchel () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    show(document.getElementById('ixkin_hablando_E5'))
+    show(document.getElementById('junam_habalndo_E5'))
+    disguise(document.getElementById('ixkin_en_mesa_quieta'))
+    disguise(document.getElementById('junam_en_mesa_quieta'))
+    change_message(document.getElementById('mensaje_ixkin_a_ixcehel_pregunta'), array_opciones[contador][0].pregunta)
+    change_message(document.getElementById('mensaje_junam_a_ixcehel_pregunta'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_ixkin_a_ixcehel'))
+    show(document.getElementById('mensaje_junam_a_ixcehel'))
+    setTimeout(() => {
+        disguise(document.getElementById('ixkin_hablando_E5'))
+        disguise(document.getElementById('junam_habalndo_E5'))
+        show(document.getElementById('ixkin_en_mesa_quieta'))
+        show(document.getElementById('junam_en_mesa_quieta'))        
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', hijos_preguntan_a_ixchel);
+        seguiente_memsaje.addEventListener('click', ixchel_responde_y_pregunta_a_junajpu );
+    }, 3000);
+}
+
+function ixchel_responde_y_pregunta_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('mensaje_ixkin_a_ixcehel'))
+    disguise(document.getElementById('mensaje_junam_a_ixcehel'))
+    change_message(document.getElementById('mensaje_ixchel_a_sus_a_junajpu_pregunta'), array_opciones[contador][0].correcta)
+    show(document.getElementById('mensaje_ixchel_a_sus_a_junajpu'))
+    setTimeout(() => {       
+        change_message(document.getElementById('mensaje_ixchel_a_sus_a_junajpu_pregunta'), array_opciones[contador][1].pregunta)
+        seguiente_memsaje.style.display = "flex";
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', ixchel_responde_y_pregunta_a_junajpu);
+        seguiente_memsaje.addEventListener('click', desicion_de_junajpu_de_ixchel );
+    }, 3000);
+}
+
+function desicion_de_junajpu_de_ixchel () {
+    seguiente_memsaje.style.display = "none";
+    setTimeout(() => {
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', desicion_de_junajpu_de_ixchel);
+    }, 500);
+}
+
+function respuesta_correcta_E5 () {
+    disguise(document.getElementById('junajpu_acostado_E5'))
+    show(document.getElementById('junajpu_hablando_E5'))
+    change_message(document.getElementById('mensaje_junajpu_despues_de_desicion_respuesta'), array_opciones[contador][1].correcta)
+    show(document.getElementById('mensaje_junajpu_despues_de_desicion'))
+    setTimeout(() => {       
+        disguise(document.getElementById('junajpu_hablando_E5'))
+        show(document.getElementById('junajpu_acostado_E5'))
+    }, 5000);
+}
+
+
 
 // ------------------- Escena 5 ---------------------------------
 

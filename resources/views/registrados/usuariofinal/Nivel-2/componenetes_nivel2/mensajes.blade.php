@@ -61,6 +61,32 @@
 
 <!------------------------------------------------------- mensajes  E4 ------------------------------------------------------>
 
+<!------------------------------------------------------- mensajes  E5 ------------------------------------------------------>
+
+<div id = "mensaje_junam_a_ixcehel" class="mensajes_personajes_izquierda">
+    <p class = "textos-mensajes" id = "mensaje_junam_a_ixcehel_pregunta">{{_('junam')}}</p>
+</div>
+
+
+
+<div id = "mensaje_ixkin_a_ixcehel" class="mensajes_personajes_derecha">
+    <p class = "textos-mensajes" id = "mensaje_ixkin_a_ixcehel_pregunta">{{_('ixkin')}}</p>
+</div>
+
+
+<div id = "mensaje_ixchel_a_sus_a_junajpu" class="mensajes_personajes_izquierda">
+    <p class = "textos-mensajes" id = "mensaje_ixchel_a_sus_a_junajpu_pregunta">{{_('ixchel')}}</p>
+</div>
+
+
+<div id = "mensaje_junajpu_despues_de_desicion" class="mensajes_personajes_derecha">
+    <p class = "textos-mensajes" id = "mensaje_junajpu_despues_de_desicion_respuesta">{{_('ixkin')}}</p>
+</div>
+
+<!------------------------------------------------------- mensajes  E5 ------------------------------------------------------>
+
+
+
 <!------------------------------------------------------- mensajes ------------------------------------------------------>
 
 

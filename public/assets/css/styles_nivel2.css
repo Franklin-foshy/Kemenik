@@ -242,10 +242,11 @@ body {
 }
 
 #batz_caimando_E1 {
+    width: 90%;
     right: 0%;
     z-index: 5;
     display: none;
-
+    top: 22%;
 }
 
 #junajpu_caminando_ixkin_E1 {
@@ -265,22 +266,26 @@ body {
     display: none;
 }
 #junajpu_quieto_E1 {
+    width: 27%;
     left: 28%;
     display: none;
+    top: 16%;
 }
 
 #ixkin_quieta_E1{
+    width: 18%;
     top: 48%;
     left: 25.5%; /*28*/
-    width: 19%;
-    height: 300px;
     z-index: 1;
     display: none;
 }
 
 #junajpu_hablando{
-    left: 0%;
+    left: -2%;
     z-index: 0;
+    display: none;
+    top: 22%;
+    width: 91%;
 
 }
 
@@ -288,17 +293,23 @@ body {
 
 #batz_quieto{
     left: 45%;
+    width: 27%;
+    top: 16%;
     display: none;
 }
 
 
 #batz_hablando_E1 {
+    width: 90%;
+    top: 22%;
     display: none;
     left: 18%;
     z-index: 0;
 }
 
 #batz_hablando2_E1 {
+    width: 90%;
+    top: 22%;
     display: none;
     left: 18%;
     z-index: 0;
@@ -352,6 +363,7 @@ body {
 }
 
 #junajpu_sentado{
+    width: 25%;
     left: 21%;
     top: 44%;
 }
@@ -373,6 +385,7 @@ body {
 }
 
 #junjpu_enojado{
+    width: 25%;
     left: 21%;
     top: 44%;
 }
@@ -677,6 +690,105 @@ body {
 
 /* -------------- mensajes E4 ---------------- */
 
+/* -------------- gifs E5 ----------------- */ 
+
+
+.gif_amimado_escena_5 {
+    position: absolute;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    top: 15.5%;
+    display: none;
+    
+}
+
+#ixcehl_barriendo_E5 {
+    width: 75%;
+    left: -25%;
+    top: 22%;
+}
+.imagen_escena_5 {
+    position: absolute;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    top: 15.5%;
+    display: none;
+}
+
+
+#ixkin_en_mesa_quieta{
+    width: 18%;
+    height: auto;
+    left: 41%;
+    top: 61.5%;
+}
+
+#junam_en_mesa_quieta{
+    width: 18%;
+    height: auto;
+    left: 60%;
+    top: 56.5%;
+}
+
+
+#junajpu_acostado_E5 {
+    width: 40%;
+    height: auto;
+    left: 39%;
+    top: 15%;
+}
+
+
+#junam_habalndo_E5 {
+    width: 95%;
+    left: 22%;
+    top: -6.5%;
+}
+
+#ixkin_hablando_E5 {
+    width: 85%;
+    left: 7.5%;
+    top: 3.5%;
+}
+
+
+#junajpu_hablando_E5 {
+    width: 38%;
+    left: 40%;
+    top: 9%;
+}
+
+/* -------------- gifs E5 ----------------- */ 
+
+/* -------------- mensajes E5 ---------------- */
+
+
+#mensaje_junam_a_ixcehel {
+    top: 58%;
+    left: 76%;
+}
+
+#mensaje_ixkin_a_ixcehel {
+    top: 58%;
+    left: 40%;
+}
+
+#mensaje_ixchel_a_sus_a_junajpu {
+    top: 22%;
+    left: 20%;
+}
+
+#mensaje_junajpu_despues_de_desicion{
+    top: 12%;
+    left: 65%;
+}
+
+
+
+/* -------------- mensajes E5 ---------------- */
+
 
 /* -------------- mensajes de respuestas ---------------*/
 
@@ -949,7 +1061,6 @@ header img {
     border-radius: 10px;
     width: 4.5%;
     height: 62%;
-
 }
 
 .vida {
@@ -1100,7 +1211,9 @@ header img {
 /* Estilos para pantallas grandes */
 @media (max-width: 1280px ) {
 
-   
+    .siguiente-mensaje {
+        left: 78%;
+    }
 .nivel{
     font-size: 30px;
     font-weight: bold;
@@ -1169,35 +1282,51 @@ header img {
     max-width: 950px;
     margin: auto;
     border: 5px solid rgb(70, 15, 15);
-    border-radius: 50px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
-    top:27%;
+    top:28%;
 }
 header {
-    position: relative;
+
     top: 0%;
     position: absolute;
-    width: 50%;
-    height: 25%;
+    width: 100%;
+    height: 12%;
+    background-color: #fff;
+    
 }
 
 header img {
-    width: 100%;
-    height: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+    height: 100%;
     display: block;
+}
+
+.continuar{
+    left: 67%;
+    top: 81%;
 }
 
 #vidas {
     font-size: 2em;
     margin-bottom: 20px;
     position: absolute;
-    top: 20%;
-    left: 64%;
+    top: 21%;
+    left: 19%;
+    background: #e8e4e1;
+    border-radius: 10px;
+    width: 62%;
+    height: 6%;
+    justify-content: flex-end;
 }
 
 .vida {
-    margin-right: 10px;
+    margin-right: 20px; /* Espacio entre cada vida */
 }
 
 
@@ -1289,64 +1418,6 @@ header img {
     top: 79%;
 }
 
-.button::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-    filter: blur(15px);
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-.button:active {
-    transform: scale(0.9) rotate(3deg);
-    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-    transition: 0.5s;
-}
-
-
-a.btn-salir {
-    display: inline-block;
-    width: 100%;
-    max-width: 950px;
-    height: 62px;
-    cursor: pointer;
-    color: #fff;
-    font-size: 17px;
-    border-radius: 1rem;
-    border: none;
-    position: absolute;
-    background: #100720;
-    transition: 0.1s;
-    text-align: center;
-    line-height: 62px;
-    text-decoration: none;
-    margin: 20px auto;
-    left: 18.9%;
-    top: 88%;
-}
-
-a.btn-salir::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-    filter: blur(15px);
-    z-index: -1;
-    position: absolute;
-    left: 0;
-    top: 0;
-}
-
-a.btn-salir:active {
-    transform: scale(0.9) rotate(3deg);
-    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-    transition: 0.5s;
-}
-
 
 
 
@@ -1357,256 +1428,6 @@ a.btn-salir:active {
 
 
 /* Estilos para tablet */
-
-@media  (max-width: 1024px) and (max-height: 600px){
-
-    .nivel{
-        font-size: 30px;
-        font-weight: bold;
-        position: absolute;
-        display: block;
-        top: 12%;
-        left: 14%;
-      }
-      
-      .barra {
-        position: absolute;
-        justify-content: center;
-        top: 20%;
-        border: none;
-      }
-      
-      .barra {
-        width: 75%;
-        top: 15%;
-        height: 20px; /* Altura del contenedor de la barra de progreso */
-        background-color: #f3f3f3; /* Color de fondo del contenedor */
-        border-radius: 25px;
-        overflow: hidden;
-        margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
-      }
-      
-      /* Estilo para el contenedor interno de la barra de progreso */
-      .progress {
-        width: 100%;
-        height: 100%;
-      }
-      
-      /* Estilo para la barra de progreso */
-      .progress-barra {
-        width: 100%;
-        height: 100%;
-        -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
-        appearance: none; /* Eliminar el estilo predeterminado */
-      }
-      
-      /* Estilo para la barra de progreso en navegadores WebKit */
-      .progress-barra::-webkit-progress-bar {
-        background-color: #eeae87; /* Color de fondo del contenedor */
-        border-radius: 25px;
-      }
-      
-      .progress-barra::-webkit-progress-value {
-        background-color: #a41d23; /* Color de la barra de llenado */
-        border-radius: 25px;
-      }
-      
-      /* Estilo para la barra de progreso en navegadores Mozilla */
-      .progress-barra::-moz-progress-bar {
-        background-color: #a41d23; /* Color de la barra de llenado */
-        border-radius: 25px;
-      }
-    
-    .container {
-        position: absolute;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 35%;
-        max-height: 950px;
-        width: 70%;
-        max-width: 950px;
-        margin: auto;
-        border: 5px solid rgb(70, 15, 15);
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        top:25%;
-    }
-    header {
-        top: 0%;
-        position: absolute;
-        width: 80%;
-        height: 40%;
-    }
-    
-    header img {
-        width: 100%;
-        height: 20%;
-        display: block;
-    }
-    
-    #vidas {
-        font-size: 2em;
-        margin-bottom: 20px;
-        position: absolute;
-        top: 20%;
-        left: 64%;
-    }
-    
-    .vida {
-        margin-right: 10px;
-    }
-    
-    
-    .opcion {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #eeae87; /* Color de fondo */
-        color: #fff; /* Color del texto */
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        border: none;
-        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
-        position: relative;
-        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
-        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
-    }
-    
-    .opcion::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 20px;
-        width: 15px;
-        height: 15px;
-        background-color: #eeae87;
-        border-radius: 50%;
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
-        transform: rotate(45deg);
-        transition: background-color 0.3s; /* Transición suave */
-    }
-    
-    .opcion:hover {
-        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
-    }
-    
-    .opcion:hover::after {
-        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
-    }
-    
-    .opcion:active {
-        transform: scale(0.95); /* Efecto de presionado al hacer clic */
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
-    }
-    
-    
-    
-    
-    #respuestas{
-        position: absolute;
-        top: 30%;
-        left: 27%;          
-        display: none;
-        flex-direction: column;
-        align-items: flex-start; /* Para alinear los botones al inicio del contenedor */
-        gap: 20px; /* Espacio entre los botones */
-        padding: 20px;
-    }
-    
-    .container-fluid{
-        border-bottom: 1px solid rgb(224, 217, 217);
-        max-height: 400px;
-        height: 50%;
-    }
-    .body-nivel2 {
-        background-color: rgb(72, 160, 204);
-    }
-    .button {
-        /*display: inline-block*/
-        display: none;
-        width: 100%;
-        max-width: 950px;
-        height: 62px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 17px;
-        border-radius: 1rem;
-        border: none;
-        position: absolute;
-        background: #100720;
-        transition: 0.1s;
-        text-align: center;
-        line-height: 62px;
-        text-decoration: none;
-        margin: 20px auto;
-        left: 18.9%;
-        top: 79%;
-    }
-    
-    .button::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        filter: blur(15px);
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    .button:active {
-        transform: scale(0.9) rotate(3deg);
-        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        transition: 0.5s;
-    }
-    
-    
-    a.btn-salir {
-        display: inline-block;
-        width: 100%;
-        max-width: 950px;
-        height: 62px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 17px;
-        border-radius: 1rem;
-        border: none;
-        position: absolute;
-        background: #100720;
-        transition: 0.1s;
-        text-align: center;
-        line-height: 62px;
-        text-decoration: none;
-        margin: 20px auto;
-        left: 18.9%;
-        top: 88%;
-    }
-    
-    a.btn-salir::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        filter: blur(15px);
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    a.btn-salir:active {
-        transform: scale(0.9) rotate(3deg);
-        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        transition: 0.5s;
-    }
-    
-    
-}
 
 @media (max-width: 1024px) {
 
@@ -1678,37 +1499,63 @@ a.btn-salir:active {
         max-width: 950px;
         margin: auto;
         border: 5px solid rgb(70, 15, 15);
-        border-radius: 50px;
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         top:25%;
     }
     header {
+        
         top: 0%;
         position: absolute;
-        width: 80%;
-        height: 40%;
+        width: 100%;
+        height: 5%;
+        background-color: #fff;
+        
     }
     
     header img {
-        width: 100%;
-        height: 20%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 45%;
+        height: 100%;
         display: block;
     }
     
+    .continuar {
+        left: 68%;
+        top: 56%;
+    }
+
     #vidas {
-        font-size: 2em;
+        font-size: 2.9rem;
         margin-bottom: 20px;
         position: absolute;
-        top: 20%;
-        left: 64%;
+        top: 19%;
+        left: 15%;
+        background: #e8e4e1;
+        border-radius: 10px;
+        width: 70%;
+        height: 5.5%;
+        justify-content: flex-end;
     }
+    
     
     .vida {
         margin-right: 10px;
     }
     
-    
+    .mensajes_personajes_derecha{
+        font-size: 12px;
+    }
+
+    .mensajes_personajes_izquierda{
+        font-size: 12px;
+    }
+
+
     .opcion {
         display: inline-block;
         padding: 10px 20px;
@@ -1917,48 +1764,11 @@ a.btn-salir:active {
         border-radius: 25px;
       }
     
+
+
     .container {
-        position: absolute;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 35%;
-        max-height: 950px;
         width: 80%;
-        max-width: 950px;
-        margin: auto;
-        border: 5px solid rgb(70, 15, 15);
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        top:25%;
     }
-    header {
-        top: 0%;
-        position: absolute;
-        width: 80%;
-        height: 40%;
-    }
-    
-    header img {
-        width: 100%;
-        height: 20%;
-        display: block;
-    }
-    
-    #vidas {
-        font-size: 2em;
-        margin-bottom: 20px;
-        position: absolute;
-        top: 20%;
-        left: 64%;
-    }
-    
-    .vida {
-        margin-right: 10px;
-    }
-    
-    
     .opcion {
         display: inline-block;
         padding: 10px 20px;
@@ -2118,6 +1928,12 @@ a.btn-salir:active {
         left: 14%;
       }
       
+      
+    .container {
+        width: 70%;
+    }
+
+
       .barra {
         position: absolute;
         justify-content: center;
@@ -2166,46 +1982,9 @@ a.btn-salir:active {
         border-radius: 25px;
       }
     
-    .container {
-        position: absolute;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 35%;
-        max-height: 950px;
-        width: 80%;
-        max-width: 950px;
-        margin: auto;
-        border: 5px solid rgb(70, 15, 15);
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        top:25%;
-    }
-    header {
-        top: 0%;
-        position: absolute;
-        width: 80%;
-        height: 40%;
-    }
+
     
-    header img {
-        width: 100%;
-        height: 20%;
-        display: block;
-    }
-    
-    #vidas {
-        font-size: 2em;
-        margin-bottom: 20px;
-        position: absolute;
-        top: 20%;
-        left: 64%;
-    }
-    
-    .vida {
-        margin-right: 10px;
-    }
+
     
     
     .opcion {
@@ -2419,43 +2198,6 @@ a.btn-salir:active {
         border-radius: 25px;
       }
     
-    .container {
-        position: absolute;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 37%;
-        max-height: 950px;
-        width: 80%;
-        max-width: 950px;
-        margin: auto;
-        border: 5px solid rgb(70, 15, 15);
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        top:25%;
-    }
-    header {
-        top: 0%;
-        position: absolute;
-        width: 80%;
-        height: 40%;
-    }
-    
-    header img {
-        width: 100%;
-        height: 20%;
-        display: block;
-    }
-    
-    #vidas {
-        font-size: 2em;
-        margin-bottom: 20px;
-        position: absolute;
-        top: 20%;
-        left: 64%;
-    }
-    
     .vida {
         margin-right: 10px;
     }
@@ -2506,7 +2248,10 @@ a.btn-salir:active {
     }
     
     
-    
+    .siguiente-mensaje {
+        left: 75%;
+        top: 85%;
+    }
     
     #respuestas{
         position: absolute;
@@ -2518,7 +2263,9 @@ a.btn-salir:active {
         gap: 20px; /* Espacio entre los botones */
         padding: 20px;
     }
-    
+    .container {
+        width: 75%;
+    }
     .container-fluid{
         border-bottom: 1px solid rgb(224, 217, 217);
         max-height: 400px;
@@ -2671,46 +2418,8 @@ a.btn-salir:active {
         border-radius: 25px;
       }
     
-    .container {
-        position: absolute;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 40%;
-        max-height: 950px;
-        width: 80%;
-        max-width: 950px;
-        margin: auto;
-        border: 5px solid rgb(70, 15, 15);
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        top:25%;
-    }
-    header {
-        top: 0%;
-        position: absolute;
-        width: 80%;
-        height: 40%;
-    }
-    
-    header img {
-        width: 100%;
-        height: 20%;
-        display: block;
-    }
-    
-    #vidas {
-        font-size: 2em;
-        margin-bottom: 20px;
-        position: absolute;
-        top: 20%;
-        left: 64%;
-    }
-    
-    .vida {
-        margin-right: 10px;
-    }
+
+
     
     
     .opcion {
@@ -2757,8 +2466,42 @@ a.btn-salir:active {
         box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
     }
     
-    
-    
+    .siguiente-mensaje {
+        left: 80%;
+        top: 85%;
+        padding: 4px 6px;
+        width: 100px;
+        font-size: 13px;
+    }
+    .mensajes_de_respuestas {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+        max-width: 500px;
+        margin: auto;
+        border-radius: 10px;
+        justify-content: center;
+        top: 50%;
+        }
+
+        .opciones_mensajes_botones {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 20px;
+            max-width: 150px;
+            word-wrap: break-word;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            cursor: pointer;
+            z-index: 203;
+        }
     
     #respuestas{
         position: absolute;
@@ -2771,95 +2514,23 @@ a.btn-salir:active {
         padding: 20px;
     }
     
+    .container {
+        height: 37%;
+    }
+
+
+    .continuar {
+        left: 67%;
+        top: 57%;
+    }
+
     .container-fluid{
         border-bottom: 1px solid rgb(224, 217, 217);
         max-height: 400px;
         height: 50%;
     }
-    .body-nivel2 {
-        background-color: rgb(72, 160, 204);
-    }
-    .button {
-        /*display: inline-block*/
-        display: none;
-        width: 100%;
-        max-width: 950px;
-        height: 62px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 17px;
-        border-radius: 1rem;
-        border: none;
-        position: absolute;
-        background: #100720;
-        transition: 0.1s;
-        text-align: center;
-        line-height: 62px;
-        text-decoration: none;
-        margin: 20px auto;
-        left: 18.9%;
-        top: 79%;
-    }
-    
-    .button::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        filter: blur(15px);
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    .button:active {
-        transform: scale(0.9) rotate(3deg);
-        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        transition: 0.5s;
-    }
-    
-    
-    a.btn-salir {
-        display: inline-block;
-        width: 100%;
-        max-width: 950px;
-        height: 62px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 17px;
-        border-radius: 1rem;
-        border: none;
-        position: absolute;
-        background: #100720;
-        transition: 0.1s;
-        text-align: center;
-        line-height: 62px;
-        text-decoration: none;
-        margin: 20px auto;
-        left: 18.9%;
-        top: 88%;
-    }
-    
-    a.btn-salir::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        filter: blur(15px);
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    a.btn-salir:active {
-        transform: scale(0.9) rotate(3deg);
-        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        transition: 0.5s;
-    }
-    
-    
+
+
     /* Estilos para pantallas grandes */  
 }
 
@@ -2879,9 +2550,11 @@ a.btn-salir:active {
         top: 20%;
         border: none;
       }
-      
+      .siguiente-mensaje {
+        left: 78%;
+    }
       .barra {
-        width: 78%;
+        width: 90%;
         top: 15%;
         height: 20px; /* Altura del contenedor de la barra de progreso */
         background-color: #f3f3f3; /* Color de fondo del contenedor */
@@ -2895,11 +2568,31 @@ a.btn-salir:active {
         width: 100%;
         height: 100%;
       }
-      
+        .continuar {
+            left: 66%;
+            top: 68%;
+        }
+
+
+        #mensaje_ixchel_a_junajpu {
+            left: 70%;
+            top: 12%;
+            }
+            .siguiente-mensaje {
+
+                font-size: 10px;
+            }
+        .mensajes_personajes_derecha {
+            font-size: 10px;
+        }
+
+        .mensajes_personajes_izquierda {
+            font-size: 10px;
+        }
       /* Estilo para la barra de progreso */
       .progress-barra {
         width: 100%;
-        height: 100%;
+        height: 80%;
         -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
         appearance: none; /* Eliminar el estilo predeterminado */
       }
@@ -2921,95 +2614,54 @@ a.btn-salir:active {
         border-radius: 25px;
       }
     
-    .container {
+      .container {
         position: absolute;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 42%;
+        height: 45%;
         max-height: 950px;
-        width: 80%;
+        width: 90%;
         max-width: 950px;
         margin: auto;
         border: 3px solid rgb(70, 15, 15);
-        border-radius: 50px;
+        border-radius: 5px;
         display: flex;
         justify-content: center;
-        top:30%;
+        top: 30%;
     }
-    header {
-        top: 0%;
+
+    .opciones_mensajes_botones {
+        max-width: 150px;
+        font-size: 10px;
+    }
+
+
+    .mensajes_de_respuestas {
         position: absolute;
-        width: 80%;
-        height: 40%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.5);
+        max-width: 80%;
+        margin: auto;
+        border-radius: 10px;
+        justify-content: center;
+        top: 50%;
     }
-    
-    header img {
-        width: 100%;
-        height: 20%;
-        display: block;
-    }
-    
     #vidas {
-        font-size: 2em;
+        font-size: 1.7rem;
         margin-bottom: 20px;
         position: absolute;
         top: 22%;
-        left: 60%;
+        left: 10%;
+        background: #e8e4e1;
+        border-radius: 10px;
+        width: 80%;
+        height: 6%;
+        justify-content: flex-end;
     }
-    
-    .vida {
-        margin-right: 10px;
-    }
-    
-    
-    .opcion {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #eeae87; /* Color de fondo */
-        color: #fff; /* Color del texto */
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        border: none;
-        border-radius: 30px 30px 30px 0; /* Forma de la burbuja */
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra */
-        position: relative;
-        white-space: nowrap; /* Para evitar que el texto se divida en múltiples líneas */
-        transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
-    }
-    
-    .opcion::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 20px;
-        width: 15px;
-        height: 15px;
-        background-color: #eeae87;
-        border-radius: 50%;
-        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra del triángulo */
-        transform: rotate(45deg);
-        transition: background-color 0.3s; /* Transición suave */
-    }
-    
-    .opcion:hover {
-        background-color: #ff7f00; /* Color de fondo al pasar el ratón */
-    }
-    
-    .opcion:hover::after {
-        background-color: #ff7f00; /* Color del triángulo al pasar el ratón */
-    }
-    
-    .opcion:active {
-        transform: scale(0.95); /* Efecto de presionado al hacer clic */
-        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Reducción de sombra al presionar */
-    }
-    
-    
-    
-    
     #respuestas{
         position: absolute;
         top: 30%;
@@ -3028,196 +2680,19 @@ a.btn-salir:active {
     }
     .body-nivel2 {
         background-color: rgb(72, 160, 204);
-    }
-    .gif-mama-1 {
-        width: 75%;
-        max-width: 500px;
-        height: auto;
-        position: absolute;
-        animation: move_gif_mama 6s infinite alternate;
-        z-index: 4;
-        top: 7%;
-    }
-    .gif-mama-2 {
-        display: none;
-        width: 70%;
-        max-width: 500px;
-        height: auto;
-        position: absolute;
-        animation: move_gif_mama_re 4s infinite alternate;
-        z-index: 4;
-        top: 19%;
-    }
-    .gif-mama-3 {
-        display: none;
-        width: 70%;
-        max-width: 40px;
-        height: auto;
-        position: absolute;
-        animation: move_gif_mama 4s infinite alternate;
-        z-index: 4;
-        top: 4.5%;
-    }
-    
-    @keyframes move_gif_mama_re_2 {
-        0% {
-            left: 45%;
-        }
-        100% {
-            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }
-    
-    @keyframes move_gif_mama_re {
-        0% {
-            left: 34%;
-        }
-        100% {
-            left: calc(48% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }
-    @keyframes move_gif_mama {
-        0% {
-            left: 40%;
-        }
-        100% {
-            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }  
-    
-    .button {
-        /*display: inline-block*/
-        display: none;
-        width: 100%;
-        max-width: 950px;
-        height: 62px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 17px;
-        border-radius: 1rem;
-        border: none;
-        position: absolute;
-        background: #100720;
-        transition: 0.1s;
-        text-align: center;
-        line-height: 62px;
-        text-decoration: none;
-        margin: 20px auto;
-        left: 18.9%;
-        top: 79%;
-    }
-    
-    .button::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        filter: blur(15px);
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    .button:active {
-        transform: scale(0.9) rotate(3deg);
-        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        transition: 0.5s;
-    }
-    
-    
-    a.btn-salir {
-        display: inline-block;
-        width: 100%;
-        max-width: 950px;
-        height: 62px;
-        cursor: pointer;
-        color: #fff;
-        font-size: 17px;
-        border-radius: 1rem;
-        border: none;
-        position: absolute;
-        background: #100720;
-        transition: 0.1s;
-        text-align: center;
-        line-height: 62px;
-        text-decoration: none;
-        margin: 20px auto;
-        left: 18.9%;
-        top: 88%;
-    }
-    
-    a.btn-salir::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        filter: blur(15px);
-        z-index: -1;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    
-    a.btn-salir:active {
-        transform: scale(0.9) rotate(3deg);
-        background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
-        transition: 0.5s;
-    }
-    
-    
 
-    @keyframes move_gif_mama_re_2 {
-        0% {
-            left: 45%;
-        }
-        100% {
-            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }
-
-    @keyframes move_gif_mama_re {
-        0% {
-            left: 30%;
-        }
-        100% {
-            left: calc(45% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }
-    @keyframes move_gif_mama {
-        0% {
-            left: 50%;
-        }
-        100% {
-            left: calc(30% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }        
-
-
-    @keyframes move_gif_hijo  {
-        0% {
-            left: 35%;
-        }
-        100% {
-            left: 35% /* Ajusta según el ancho de tu GIF */
-        }
-    }
-
+}
 }
 /* movil mas pequeño*/
 @media (max-width: 450px) {
-    header {
-        top: 0%;
-        position: absolute;
-        width: 85%;
-        height: 40%;
+    .continuar {
+        left: 6%;
+        top: 68%;
     }
-    
-    header img {
-        width: 100%;
-        height: 17%;
-        display: block;
-    }
+
+        header {
+            height: 4%;
+        }
         .container{
             width: 60%;
             max-width: 400px;
@@ -3226,7 +2701,18 @@ a.btn-salir:active {
             top: 25%;
             left: 1.7%;
             }
-
+            #vidas {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+                position: absolute;
+                top: 21%;
+                left: 10%;
+                background: #e8e4e1;
+                border-radius: 10px;
+                width: 80%;
+                height: 5%;;
+                justify-content: flex-end;
+            }
     
         .button{
             height: 90px;
@@ -3242,32 +2728,6 @@ a.btn-salir:active {
         font-size: 12px;
     }
 }
-    
-    @keyframes move_gif_mama_re_2 {
-        0% {
-            left: 45%;
-        }
-        100% {
-            left: calc(55% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }
-    
-    @keyframes move_gif_mama_re {
-        0% {
-            left: 20%;
-        }
-        100% {
-            left: calc(40% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }
-    @keyframes move_gif_mama {
-        0% {
-            left: 38%;
-        }
-        100% {
-            left: calc(20% - 1px); /* Ajusta según el ancho de tu GIF */
-        }
-    }  
 
 
 @media (max-width: 431px) {
@@ -3279,30 +2739,31 @@ a.btn-salir:active {
         top: 27%;
         left: 0%;
         }
-    a.btn-salir{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 3%;
-        top: 60%;
-    }
-
-    .button{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 50.5%;
-        top: 60%;
+        .mensajes_de_respuestas {
+            position: absolute;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            max-width: 80%;
+            margin: auto;
+            border-radius: 10px;
+            justify-content: center;
+            top: 35%;
         
-    }
-
-.textos-mensajes{
-    font-size: 12px;
+        }
+    
+        .opciones_mensajes_botones {
+            max-width: 100px;
+            font-size: 7px;
+        }
 }
-}
-
 
 @media (max-width: 415px) {
+    header {
+        height: 3%;
+    }
     .container{
         width: 98%;
         max-width: 400px;
@@ -3312,41 +2773,10 @@ a.btn-salir:active {
         justify-content: center;
 
         }
-
-        header {
-            top: 0%;
-            position: absolute;
-            width: 85%;
-            height: 40%;
+        .siguiente-mensaje {
+            top: 80%;
+            left: 72%;
         }
-        
-        header img {
-            width: 100%;
-            height: 17%;
-            display: block;
-        }
-
-    a.btn-salir{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 1.5%;
-        top: 60%;
-    }
-
-    .button{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 50.5%;
-        top: 60%;
-        
-    }
-
-  
-.opcion{
-    font-size: 10px;
-}
 }
 @media (max-width: 414px) {
     .container{
@@ -3359,40 +2789,6 @@ a.btn-salir:active {
 
         }
 
-        header {
-            top: 0%;
-            position: absolute;
-            width: 85%;
-            height: 40%;
-        }
-        
-        header img {
-            width: 100%;
-            height: 17%;
-            display: block;
-        }
-    a.btn-salir{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 1.5%;
-        top: 60%;
-    }
-
-    .button{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 50.5%;
-        top: 60%;
-        
-    }
-
-
-
-.opcion{
-    font-size: 10px;
-}
 
 .textos-mensajes{
     font-size: 12px;
@@ -3410,45 +2806,16 @@ a.btn-salir:active {
 
         }
 
-        header {
-            top: 0%;
-            position: absolute;
-            width: 85%;
-            height: 40%;
-        }
-        
-        header img {
-            width: 100%;
-            height: 17%;
-            display: block;
-        }
-
-    a.btn-salir{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 1.5%;
-        top: 60%;
-    }
-
-    .button{
-        height: 90px;
-        width: 75%;
-        max-width: 200px;
-        left: 50.5%;
-        top: 60%;
-        
-    }
-
-.opcion{
-    font-size: 10px;
-}
-
 .textos-mensajes{
     font-size: 12px;
 }
 }
 @media (max-width: 391px) {
+    .siguiente-mensaje {
+        top: 80%;
+        left: 72%;
+    }
+
     .container{
         width: 98%;
         max-width: 400px;
@@ -3458,39 +2825,6 @@ a.btn-salir:active {
         justify-content: center;
 
         }
-
-
-        #vidas {
-            font-size: 25px;
-        }
-        header {
-            top: 0%;
-            position: absolute;
-            width: 85%;
-            height: 40%;
-        }
-        
-        header img {
-            width: 100%;
-            height: 17%;
-            display: block;
-        }
-    a.btn-salir{
-        height: 90px;
-        width: 100%;
-        max-width: 160px;
-        left: 8%;
-        top: 60%;
-    }
-
-    .button{
-        height: 90px;
-        width: 100%;
-        max-width: 160px;
-        left: 52%;
-        top: 60%;
-        
-    }
 
     
 .textos-mensajes{
@@ -3502,6 +2836,7 @@ a.btn-salir:active {
 
 
 @media (max-width: 376px) {
+
     .container{
         width: 95%;
         height: 230px;
@@ -3547,35 +2882,19 @@ a.btn-salir:active {
         left: 0%;
         }
 
-    .opcion{
-        font-size: 8;
-    }
-    a.btn-salir{
-        height: 90px;
-        width: 100%;
-        max-width: 160px;
-        left: 3%;
-        top: 55%;
-    }
-
-    .button{
-        height: 90px;
-        width: 100%;
-        max-width: 160px;
-        left: 52%;
-        top: 55%;
-        
-    }
-
-
-.textos-mensajes{
-    font-size: 10px;
-}
  
+        .siguiente-mensaje {
+            left: 68%;
+            top: 78%;
+        }
 }
 
 @media (max-width: 345px) {
-    
+    .opciones_mensajes_botones {
+        max-width: 80px;
+        font-size: 9px;
+    }
+
     .container{
         width: 95%;
         height: 230px;
@@ -3584,22 +2903,9 @@ a.btn-salir:active {
         top: 25%;
         left: 1%;
     }
-
-    a.btn-salir{
-        height: 90px;
-        width: 100%;
-        max-width: 160px;
-        left: 3%;
-        top: 50%;
-    }
-
-    .button{
-        height: 90px;
-        width: 100%;
-        max-width: 160px;
-        left: 52%;
-        top: 50%;
-        
+    .opciones_mensajes_botones {
+        max-width: 100px;
+        font-size: 7px;
     }
 .textos-mensajes{
     font-size: 10px;
