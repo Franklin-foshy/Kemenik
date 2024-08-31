@@ -306,7 +306,7 @@ $.ajax({
 
             // Aplica la misma imagen a todas las piezas
             piezas.forEach(function (pieza) {
-                pieza.style.backgroundImage = url("${escojer_imagen_rompecabezas}");
+                pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
             });
         } else {
             console.error("No se encontraron rompecabezas en la respuesta.");

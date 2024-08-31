@@ -68,13 +68,20 @@
 
             var fondo_campo_E4 = "{{ asset('imgs/nivel2/E4/BACKGROUND_04_02.png') }}";
 
+            var fondo_cama_E7 = "{{ asset('imgs/nivel2/E7/BACKGROUND_E7_2.png') }}";
+
             var imagenes_fondo = [
             "{{ asset('imgs/nivel2/E1/BACKGROUND-E1.png') }}",
             "{{ asset('imgs/nivel2/E2/BACKGROUND_E2_1.png') }}",
             "{{ asset('imgs/nivel2/E3/BACKGROUND_03.png') }}",
             "{{ asset('imgs/nivel2/E4/BACKGROUND_04.png') }}", 
             "{{ asset('imgs/nivel2/E5/BACKGROUND_05.png') }}", 
+            "{{ asset('imgs/nivel2/E6/BACKGROUND_06.png') }}", 
+            "{{ asset('imgs/nivel2/E7/BACKGROUND_E7_1.png') }}", 
+            "{{ asset('imgs/nivel2/E8/BACKGROUND_08.png') }}", 
         ];
+
+
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>

@@ -1,3 +1,4 @@
+
 const modal_niveles = document.querySelector('.modal_niveles');
 const contenedor_mensajes = document.getElementById('mensajes_de_respuestas')
 
@@ -173,8 +174,13 @@ function verificarRespuesta(respuestaSeleccionada) {
             respuesta_correcta_E4()
         }else if (contador === 4) {
             respuesta_correcta_E5()
+        }else if (contador === 5){
+            respuesta_correcta_E6()
+        }else if (contador === 6){
+            respuesta_correcta_E7()
+        }else if (contador === 7){
+            respuesta_correcta_E8()
         }
-
         launchConfetti();
         contenedor_mensajes.style.display = "none";
         seguiente_memsaje.style.display = "none";
@@ -221,6 +227,8 @@ function verificarRespuesta(respuestaSeleccionada) {
             equivocacion_E2()
         }else if (contador === 3 ) {
             repuesta_erronear_E4()
+        }else if (contador === 5){
+            respuesta_incorrecta_E6()
         }
 
         vidas--;
@@ -801,14 +809,292 @@ function respuesta_correcta_E5 () {
 // ------------------- Escena 5 ---------------------------------
 
 
+// ------------------- Escena 6 ---------------------------------
+
+function escena6 () {
+    seguiente_memsaje.style.display = "flex";
+    seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('mensaje_ixchel_a_sus_a_junajpu'))
+    disguise(document.getElementById('ixcehl_barriendo_E5'))
+    disguise(document.getElementById('mensaje_junajpu_despues_de_desicion'))
+    disguise(document.getElementById('junajpu_acostado_E5'))
+    disguise(document.getElementById('ixkin_en_mesa_quieta'))
+    disguise(document.getElementById('junam_en_mesa_quieta'))
+    show(document.getElementById('junam_enfermo'))
+    show(document.getElementById('ixchel_acostada_quieta'))
+    show(document.getElementById('junajpu_acostado_quieto'))
+    seguiente_memsaje.addEventListener('click', junam_esta_enfermo);
+}
+
+function junam_esta_enfermo() {
+    seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('mensaje_de_junam_enfermo_E6_pregunta'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_de_junam_enfermo_E6'))
+    setTimeout(() => {       
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', junam_esta_enfermo);
+        seguiente_memsaje.addEventListener('click', ixchel_responde_a_junam );
+    }, 2000);
+}
+
+function ixchel_responde_a_junam () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('mensaje_de_junam_enfermo_E6'))
+    change_message(document.getElementById('mensaje_de_ixchel_E6_pregunta'), array_opciones[contador][0].correcta)
+    show(document.getElementById('mensaje_de_ixchel_E6'))
+    setTimeout(() => {       
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', ixchel_responde_a_junam);
+        seguiente_memsaje.addEventListener('click',  junajpu_a_responde_a_ixchel);
+    }, 2000);
+}
+
+
+function junajpu_a_responde_a_ixchel () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('mensaje_de_ixchel_E6'))
+    disguise(document.getElementById('junajpu_acostado_quieto'))
+    show(document.getElementById('junajpu_habalndo_acostado_E6'))
+    change_message(document.getElementById('mensaje_de_junajpu_E6_pregunta'), array_opciones[contador][1].pregunta)
+    show(document.getElementById('mensaje_de_junajpu_E6'))
+    setTimeout(() => {       
+        show(document.getElementById('junajpu_acostado_quieto'))
+        disguise(document.getElementById('junajpu_habalndo_acostado_E6'))
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', junajpu_a_responde_a_ixchel);
+        seguiente_memsaje.addEventListener('click',  respuestas_de_junajpu_junam_enfermo);
+    }, 4000);
+}
+
+function respuestas_de_junajpu_junam_enfermo (){
+    seguiente_memsaje.style.display = "none";
+    setTimeout(() => {
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', respuestas_de_junajpu_junam_enfermo);
+    }, 500);
+}
+
+function respuesta_incorrecta_E6 () {
+    disguise(document.getElementById('junajpu_acostado_quieto'))
+    disguise(document.getElementById('ixchel_acostada_quieta'))
+    show(document.getElementById('ixchel_enferma_quieta'))
+    show(document.getElementById('junajpu_acostandose'))
+    setTimeout(() => {       
+        show(document.getElementById('junajpu_acostado_quieto'))
+        disguise(document.getElementById('junajpu_acostandose'))
+    }, 2000);
+}
+
+function respuesta_correcta_E6 () {
+    disguise(document.getElementById('mensaje_de_junajpu_E6'))
+    disguise(document.getElementById('ixchel_acostada_quieta'))
+    disguise(document.getElementById('ixchel_enferma_quieta'))
+    disguise(document.getElementById('junajpu_acostado_quieto'))
+    show(document.getElementById('ixchel_moviendose_acostarse'))
+    show(document.getElementById('junajpu_levantandose'))
+    setTimeout(() => {       
+        show(document.getElementById('ixchel_acostada_quieta'))
+        disguise(document.getElementById('ixchel_moviendose_acostarse'))
+    }, 2000);
+}
+// ------------------- Escena 6 ---------------------------------
+
+// ------------------- Escena 7 ---------------------------------
+
+
+function escena7(){
+    seguiente_memsaje.style.display = "flex";
+    seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('junajpu_levantandose'))
+    disguise(document.getElementById('ixchel_acostada_quieta'))
+    disguise(document.getElementById('junam_enfermo'))
+    show(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    seguiente_memsaje.addEventListener('click', hija_pidiendo_ayuda);
+}
+
+function hija_pidiendo_ayuda () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    cambiar_fondo(contendor,fondo_cama_E7)
+    disguise(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    show(document.getElementById('junamnoj_E7'))
+    show(document.getElementById('junajpu_acostado_quieto_E7'))
+    show(document.getElementById('ixkin_sentada_llorando'))
+    setTimeout(() => {       
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', hija_pidiendo_ayuda);
+        seguiente_memsaje.addEventListener('click',  hija_habla_a_mama);
+    }, 2000);
+}
+
+function  hija_habla_a_mama () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('mensaje_ixkin_E7_pregunta'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_ixkin_E7'))
+    setTimeout(() => {       
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', hija_habla_a_mama);
+        seguiente_memsaje.addEventListener('click',  respusta_ixchel_a_ixkin);
+    }, 2000);
+}
+
+function respusta_ixchel_a_ixkin () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('junamnoj_E7'))
+    disguise(document.getElementById('junajpu_acostado_quieto_E7'))
+    disguise(document.getElementById('ixkin_sentada_llorando'))
+    disguise(document.getElementById('mensaje_ixkin_E7'))
+    cambiar_fondo(contendor,imagenes_fondo[contador])
+    show(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    setTimeout(() => {       
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', respusta_ixchel_a_ixkin);
+        seguiente_memsaje.addEventListener('click',  repuesta_mama);
+    }, 2000);
+}
+
+function repuesta_mama () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    change_message(document.getElementById('mensaje_ixchel_E7_pregunta'), array_opciones[contador][0].correcta)
+    show(document.getElementById('mensaje_ixchel_E7'))
+    show(document.getElementById('ixchel_hablando_en_la_cocina_E7'))
+    setTimeout(() => {       
+        disguise(document.getElementById('ixchel_hablando_en_la_cocina_E7'))
+        show(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', repuesta_mama);
+        seguiente_memsaje.addEventListener('click',  ixchel_pregunta_a_junajpu);
+    }, 3000);
+}
+
+function ixchel_pregunta_a_junajpu  () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    show(document.getElementById('ixchel_hablando_en_la_cocina2_E7'))
+    change_message(document.getElementById('mensaje_ixchel_E7_pregunta'), array_opciones[contador][1].pregunta)
+    setTimeout(() => {       
+        disguise(document.getElementById('ixchel_hablando_en_la_cocina2_E7'))
+        show(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', ixchel_pregunta_a_junajpu);
+        seguiente_memsaje.addEventListener('click',respuestas_de_junajpu_E7  );
+    }, 3000);
+}
+
+
+function respuestas_de_junajpu_E7 () {
+    disguise(document.getElementById('mensaje_ixchel_E7'))
+    disguise(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    cambiar_fondo(contendor,fondo_cama_E7)
+    show(document.getElementById('junamnoj_E7'))
+    show(document.getElementById('junajpu_acostado_quieto_E7'))
+    show(document.getElementById('ixkin_sentada_llorando'))
+    seguiente_memsaje.style.display = "none";
+    setTimeout(() => {
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', respuestas_de_junajpu_E7);
+    }, 500);
+}
+
+
+function respuesta_correcta_E7 () {
+    disguise(document.getElementById('junamnoj_E7'))
+    disguise(document.getElementById('junajpu_acostado_quieto_E7'))
+    disguise(document.getElementById('ixkin_sentada_llorando'))
+    show(document.getElementById('ixkin_sentada_quieta'))
+    show(document.getElementById('junamnoj_junajpu_E7'))
+}
+// ------------------- Escena 7 ---------------------------------
+
+// ------------------- Escena 8 ---------------------------------
+
+function escena8(){
+    seguiente_memsaje.style.display = "flex";
+    seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('ixkin_sentada_quieta'))
+    disguise(document.getElementById('junamnoj_junajpu_E7'))
+    show(document.getElementById('batz_caminando_E8'))
+    show(document.getElementById('ixchel_lavando_E8'))
+    show(document.getElementById('junajpu_quieto'))
+    setTimeout(() => {       
+        disguise(document.getElementById('batz_caminando_E8'))
+
+    }, 4000);
+    seguiente_memsaje.addEventListener('click', saludos_de_junajpu_a_ixcehl);
+}
+
+
+function saludos_de_junajpu_a_ixcehl () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    show(document.getElementById('junajpu_hablando_E8'))
+    disguise(document.getElementById('junajpu_quieto'))
+    change_message(document.getElementById('mensaje_ixkin_E8_pregunta'), array_opciones[contador][0].pregunta)
+    show(document.getElementById('mensaje_junajpu_E8'))
+    setTimeout(() => {       
+        disguise(document.getElementById('junajpu_hablando_E8'))
+        show(document.getElementById('junajpu_quieto'))
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', saludos_de_junajpu_a_ixcehl);
+        seguiente_memsaje.addEventListener('click', saludos_de_ixchel_a_junajpu );
+    }, 3000);
+}
+
+
+function saludos_de_ixchel_a_junajpu (){
+    seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('mensaje_junajpu_E8'))
+    change_message(document.getElementById('mensaje_ixchel_E8_pregunta'), array_opciones[contador][0].correcta)
+    show(document.getElementById('mensaje_ixchel_E8'))
+    show(document.getElementById('ixchel_hablando_E8'))
+    disguise(document.getElementById('ixchel_lavando_E8'))
+    setTimeout(() => {       
+        disguise(document.getElementById('ixchel_hablando_E8'))
+        show(document.getElementById('ixchel_lavando_E8'))
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', saludos_de_ixchel_a_junajpu);
+        seguiente_memsaje.addEventListener('click',  preguta_de_ixchel_a_junajpu);
+    }, 3000);
+}
+
+function preguta_de_ixchel_a_junajpu () {
+    seguiente_memsaje.style.pointerEvents = "none";
+    change_message(document.getElementById('mensaje_ixchel_E8_pregunta'), array_opciones[contador][1].pregunta)
+    disguise(document.getElementById('ixchel_lavando_E8'))
+    show(document.getElementById('ixchel_hablando2_E8'))
+    setTimeout(() => {       
+        disguise(document.getElementById('ixchel_hablando2_E8'))
+        show(document.getElementById('ixchel_quieta_E8'))
+        seguiente_memsaje.style.pointerEvents = "auto";
+        seguiente_memsaje.removeEventListener('click', preguta_de_ixchel_a_junajpu);
+        seguiente_memsaje.addEventListener('click',  respuestas_junajpu_E8);
+    }, 3000);
+}
+
+
+function respuestas_junajpu_E8 () {
+    seguiente_memsaje.style.display = "none";
+    setTimeout(() => {
+        contenedor_mensajes.style.display = "flex";
+        generarHTMLPorId(contador)
+        seguiente_memsaje.removeEventListener('click', respuestas_junajpu_E8);
+    }, 500);
+}
+
+
+function respuesta_correcta_E8 () {
+    disguise(document.getElementById('junajpu_quieto'))
+    show(document.getElementById('junajpu_lavando_E8'))
+    disguise(document.getElementById('ixchel_quieta_E8'))
+    show(document.getElementById('ixchel_lavando_E8'))
+
+}
+// ------------------- Escena 8 ---------------------------------
 
 
 
-
-
-
-
-var escenas_ = [escena_1,escena2,escena3,escena4,escena5]
+var escenas_ = [escena_1,escena2,escena3,escena4,escena5,escena6,escena7,escena8]
 
 document.querySelector('.close-btn').addEventListener('click', function() {
     modal_niveles.style.opacity = '0';
