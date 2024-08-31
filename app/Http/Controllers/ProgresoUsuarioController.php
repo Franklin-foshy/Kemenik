@@ -12,10 +12,7 @@ class ProgresoUsuarioController extends Controller
     {
         if (kvfj(Auth::user()->rol->permissions, 'get_progresoUsuario')) {
             $progresoUsuarios = ProgresoUsuario::get();
-            $data = [
-                'progresoUsuarios' => $progresoUsuarios
-            ];
-            return view('registrados.progresoUsuarios.progresouno', $data);
+            return view('registrados.progresoUsuarios.progresouno', compact('progresoUsuarios'));
         } else {
             return redirect()->route('home');
         }
