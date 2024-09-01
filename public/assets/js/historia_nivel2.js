@@ -21,8 +21,8 @@ let array_opciones = [];
 
 // Cargar las escenas del API
 $.ajax({
-    //url: `http://127.0.0.1:8000/api/escenas/`,
-    url: `https://junamnoj.foxint.tech/api/escenas/`,
+    url: `http://127.0.0.1:8000/api/escenas/`,
+    //url: `https://junamnoj.foxint.tech/api/escenas/`,
     type: 'GET',
     dataType: 'json',
     success: function(sceneResponse) {
@@ -31,8 +31,8 @@ $.ajax({
                 let todo = [] ;
                 // Cargar las preguntas relacionadas con la escena
                 $.ajax({
-                    //url: `http://127.0.0.1:8000/api/ppreguntas/`,
-                    url: `https://junamnoj.foxint.tech/api/ppreguntas/`,
+                    url: `http://127.0.0.1:8000/api/ppreguntas/`,
+                    //url: `https://junamnoj.foxint.tech/api/ppreguntas/`,
                     type: 'GET',
                     dataType: 'json',
                     success: function(questionResponse) {
@@ -45,8 +45,8 @@ $.ajax({
 
                                     // Cargar las respuestas para la pregunta actual
                                     $.ajax({
-                                        //url: `http://127.0.0.1:8000/api/prespuestas/`,
-                                        url: `https://junamnoj.foxint.tech/api/prespuestas/`,
+                                        url: `http://127.0.0.1:8000/api/prespuestas/`,
+                                        //url: `https://junamnoj.foxint.tech/api/prespuestas/`,
                                         type: 'GET',
                                         dataType: 'json',
                                         success: function(response) {
@@ -92,9 +92,28 @@ $.ajax({
         console.error('Error en la solicitud de escenas:', textStatus, errorThrown);
     }
 });
+/*
+const data = {
+    usuario_id: 3,
+    completado: 1,
+    intentos: 1,
+    puntuacion: 100,
+    estado_proceso: 1,
+    texto_respuesta_preguntas: "Berlin",
+    texto_respuesta_respuestas: "Berlin",
+    status: 1,
+    nivel_id_pregunta: 1,
+    status_final_respuesta: true
+};
 
-
-
+fetch('http://127.0.0.1:8000/api/progreso-usuario', {
+    method: 'POST', // Método HTTP
+    headers: {
+        'Content-Type': 'application/json', // El tipo de contenido es JSON
+    },
+    body: JSON.stringify(data) // Convierte el objeto `data` a una cadena JSON
+})
+*/
 
 function generarHTMLPorId(idPregunta) {
     let contenedorMensajes = document.getElementById('mensajes_de_respuestas');
@@ -170,6 +189,8 @@ function verificarRespuesta(respuestaSeleccionada) {
         // Respuesta correcta
         if (contador === 1){
             acierto_E2()
+        }else if (contador === 2) {
+            respuesta_correcta_E3()
         }else if (contador ===  3){
             respuesta_correcta_E4()
         }else if (contador === 4) {
@@ -430,7 +451,6 @@ function escena2() {
     disguise(document.getElementById('ixkin_quieta_E1'))
     disguise(document.getElementById('batz_quieto'))
     disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
-    show(document.getElementById('plato_de_sopa'))
     show(document.getElementById('ixchel_quieta'))
     show(document.getElementById('junajpu_sentado'))
     show(document.getElementById('ixkin_sentada'))
@@ -510,6 +530,7 @@ function equivocacion_E2 () {
 }
 
 function acierto_E2 () {
+    show(document.getElementById('plato_de_sopa'))
     show(document.getElementById('ixchel_quieta'))
     show(document.getElementById('junajpu_sentado'))
     show(document.getElementById('ixkin_sentada'))
@@ -596,6 +617,12 @@ function respuestas_de_junajpu_a_ixchel () {
     }, 500);
 }
 
+function respuesta_correcta_E3 () {
+    show(document.getElementById('plato_de_huevo_E3')) 
+    show(document.getElementById('plato_de_sopa_E3')) 
+
+}
+
 // ------------------- Escena 3 ---------------------------------
 
 // ------------------- Escena 4 ---------------------------------
@@ -603,6 +630,8 @@ function respuestas_de_junajpu_a_ixchel () {
 function escena4() {
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('plato_de_sopa_E3'))
+    disguise(document.getElementById('plato_de_huevo_E3'))
     disguise(document.getElementById('junam_sentado'))
     disguise(document.getElementById('ixkin_sentada_E3'))
     disguise(document.getElementById('junajpu_hablando_telefono_quieto'))

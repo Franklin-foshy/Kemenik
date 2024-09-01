@@ -35,7 +35,7 @@
 
 <img id = "ixchel_triste" src="{{ asset('imgs/nivel2/E2/IXCHEL_FRONTAL_TRISTE_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
 
-<img id = "plato_de_sopa" src="{{ asset('imgs/nivel2/E2/PLATO_SOPA_PASTA_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+<img id = "plato_de_sopa" src="{{ asset('imgs/nivel2/E2/PLATO_DESAYUNO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
 
 <img id = "junajpu_hablando_E2" src="{{ asset('imgs/nivel2/E2/JUANJPU_FRONTAL_HABLANDO_MEDIO_PLANO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena">
 
@@ -64,6 +64,10 @@
 <img id = "ixchel_hablando2_telefono" src="{{ asset('imgs/nivel2/E3/IXCHEL_FRONTAL_HABLANDO_TELEFONO_BURBUJA.gif')}}" alt="GIF animado" class="gif_amimado_escena">
 
 <img id = "ixchel_hablando_quieta" src="{{ asset('imgs/nivel2/E3/IXCHEL_FRONTAL_HABLANDO_BURBUJA_E3.png')}}" alt="GIF animado" class="imagen_escena_3">
+
+<img id = "plato_de_sopa_E3" src="{{ asset('imgs/nivel2/E3/PLATO_DESAYUNO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
+
+<img id = "plato_de_huevo_E3" src="{{ asset('imgs/nivel2/E3/PLATO_DESAYUNO_E2.png')}}" alt="GIF animado" class="imagen_escena_2">
 
 
 
