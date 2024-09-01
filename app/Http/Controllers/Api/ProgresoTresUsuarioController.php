@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pregunta;
+use App\Models\ProgresoTresUsuario;
 use Illuminate\Http\Request;
-use App\Models\ProgresoUsuario;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProgresoUsuarioController extends Controller
+
+class ProgresoTresUsuarioController extends Controller
 {
     // FUNCIÓN PARA CREAR UN NUEVO REGISTRO DE AVANCES
     public function store(Request $request)
@@ -60,7 +61,7 @@ class ProgresoUsuarioController extends Controller
             $validated['status_final_respuesta'] = $validated['texto_respuesta_preguntas'] === $validated['texto_respuesta_respuestas'];
 
             // Crear un nuevo registro en la base de datos
-            $progresoUsuario = ProgresoUsuario::create($validated);
+            $progresoUsuario = ProgresoTresUsuario::create($validated);
 
             // Retornar la respuesta
             return response()->json([
@@ -82,7 +83,7 @@ class ProgresoUsuarioController extends Controller
     {
         try {
             // Consultar el registro con las relaciones de usuario y nivel
-            $progresoUsuario = ProgresoUsuario::with(['usuario','pregunta'])->findOrFail($id);
+            $progresoUsuario = ProgresoTresUsuario::with(['usuario','pregunta'])->findOrFail($id);
 
             // Retornar la respuesta con la data
             return response()->json([
@@ -103,7 +104,7 @@ class ProgresoUsuarioController extends Controller
     public function getByUserId($usuario_id)
     {
         // Obtener todos los registros asociados a usuario_id
-        $progresosUsuario = ProgresoUsuario::with(['usuario','pregunta'])
+        $progresosUsuario = ProgresoTresUsuario::with(['usuario','pregunta'])
             ->where('usuario_id', $usuario_id)
             ->get();
 

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pregunta;
+use App\Models\PPregunta;
+use App\Models\ProgresoDosUsuario;
 use Illuminate\Http\Request;
-use App\Models\ProgresoUsuario;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProgresoUsuarioController extends Controller
+class ProgresoDosUsuarioController extends Controller
 {
     // FUNCIÓN PARA CREAR UN NUEVO REGISTRO DE AVANCES
     public function store(Request $request)
@@ -18,8 +18,8 @@ class ProgresoUsuarioController extends Controller
         $messages = [
             'usuario_id.required' => 'El campo usuario es obligatorio.',
             'usuario_id.exists' => 'El usuario seleccionado no es válido.',
-            'pregunta_id.required' => 'El campo pregunta es obligatorio.',
-            'pregunta_id.exists' => 'La pregunta seleccionada no es válida.',
+            'personaje_pregunta_id.required' => 'El campo pregunta es obligatorio.',
+            'personaje_pregunta_id.exists' => 'La pregunta seleccionada no es válida.',
             'completado.required' => 'El campo completado es obligatorio.',
             'completado.boolean' => 'El valor de completado debe ser 0 o 1.',
             'intentos.required' => 'El campo intentos es obligatorio.',
@@ -42,7 +42,7 @@ class ProgresoUsuarioController extends Controller
             // Validar los datos recibidos con mensajes personalizados
             $validated = $request->validate([
                 'usuario_id' => 'required|exists:users,id',
-                'pregunta_id' => 'required|exists:preguntas,id',
+                'personaje_pregunta_id' => 'required|exists:p_preguntas,id',
                 'completado' => 'required|boolean',
                 'intentos' => 'required|integer|min:0|max:3',
                 'puntuacion' => 'required|integer|min:0|max:100',
@@ -53,18 +53,21 @@ class ProgresoUsuarioController extends Controller
             ], $messages);
 
             // Obtener la pregunta y su nivel_id
-            $pregunta = Pregunta::findOrFail($validated['pregunta_id']);
-            $validated['nivel_id_pregunta'] = $pregunta->nivel_id; // Asignar nivel_id a la columna
+            $personaje_pregunta = PPregunta::findOrFail($validated['personaje_pregunta_id']);
+            $validated['nivel_id_pregunta'] = $personaje_pregunta->nivel_id; // Asignar nivel_id a la columna
+
+            // Obtener el escena_id de la pregunta y asignarlo
+            $validated['escena_id_pregunta'] = $personaje_pregunta->escena_id; // Asignar escena_id a la columna
 
             // Determinar el estado final de la respuesta
             $validated['status_final_respuesta'] = $validated['texto_respuesta_preguntas'] === $validated['texto_respuesta_respuestas'];
 
             // Crear un nuevo registro en la base de datos
-            $progresoUsuario = ProgresoUsuario::create($validated);
+            $progresoDosUsuario = ProgresoDosUsuario::create($validated);
 
             // Retornar la respuesta
             return response()->json([
-                'data' => $progresoUsuario,
+                'data' => $progresoDosUsuario,
                 'message' => 'Progreso del usuario creado exitosamente',
                 'status_code' => 200
             ], 200);
@@ -82,11 +85,11 @@ class ProgresoUsuarioController extends Controller
     {
         try {
             // Consultar el registro con las relaciones de usuario y nivel
-            $progresoUsuario = ProgresoUsuario::with(['usuario','pregunta'])->findOrFail($id);
+            $progresoDosUsuario = ProgresoDosUsuario::with(['usuario','ppregunta'])->findOrFail($id);
 
             // Retornar la respuesta con la data
             return response()->json([
-                'data' => $progresoUsuario,
+                'data' => $progresoDosUsuario,
                 'message' => 'Progreso obtenido exitosamente',
                 'status_code' => 200
             ], 200);
@@ -103,12 +106,12 @@ class ProgresoUsuarioController extends Controller
     public function getByUserId($usuario_id)
     {
         // Obtener todos los registros asociados a usuario_id
-        $progresosUsuario = ProgresoUsuario::with(['usuario','pregunta'])
+        $progresosDosUsuario = ProgresoDosUsuario::with(['usuario','ppregunta'])
             ->where('usuario_id', $usuario_id)
             ->get();
 
         // Verificar si se encontraron registros
-        if ($progresosUsuario->isEmpty()) {
+        if ($progresosDosUsuario->isEmpty()) {
             return response()->json([
                 'message' => 'No se encontraron registros para el usuario especificado',
                 'status_code' => 404
@@ -117,7 +120,7 @@ class ProgresoUsuarioController extends Controller
 
         // Retornar la respuesta con los registros encontrados
         return response()->json([
-            'data' => $progresosUsuario,
+            'data' => $progresosDosUsuario,
             'message' => 'Registros del progreso del usuario obtenidos exitosamente',
             'status_code' => 200
         ], 200);

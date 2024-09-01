@@ -22,9 +22,13 @@ class Pregunta extends Model
         return $this->hasMany(Respuesta::class);
     }
 
-    // Relación con el modelo ProgresoUsuario
-    public function progresos()
+    public function progresousuario()
     {
-        return $this->hasMany(ProgresoUsuario::class, 'nivel_id_pregunta');
+        return $this->hasMany(ProgresoUsuario::class);
+    }
+
+    public function progresotresusuario()
+    {
+        return $this->hasMany(ProgresoTresUsuario::class);
     }
 }

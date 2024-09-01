@@ -11,7 +11,7 @@
 
                 <div class="row justify-content-between mb-3">
                     <div class="col-auto">
-                        <h5 class="mt-2">PROGRESO USUARIOS NIVEL UNO</h5>
+                        <h5 class="mt-2">PROGRESO USUARIOS NIVEL DOS</h5>
                     </div>
                 </div>
 
@@ -32,6 +32,7 @@
                                         <th>Nombre usuario</th>
                                         <th>Teléfono usuario</th>
                                         <th>Nivel</th>
+                                        <th>Escena</th>
                                         <th>Pregunta</th>
                                         <th>Respuesta</th>
                                         <th>Correcto / Incorrecto</th>
@@ -43,38 +44,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($progresoUsuarios as $progresoUsuario)
+                                    @foreach ($progresoDosUsuarios as $progresoDosUsuario)
                                     <tr class="align-middle">
-                                        <td>{{ $progresoUsuario->id }}</td>
-                                        <td>{{ $progresoUsuario->usuario->name }}</td>
-                                        <td>{{ $progresoUsuario->usuario->telefono }}</td>
-                                        <td>{{ $progresoUsuario->nivel_id_pregunta }}</td>
-                                        <td>{{ $progresoUsuario->texto_respuesta_preguntas }}</td>
-                                        <td>{{ $progresoUsuario->texto_respuesta_respuestas }}</td>
+                                        <td>{{ $progresoDosUsuario->id }}</td>
+                                        <td>{{ $progresoDosUsuario->usuario->name }}</td>
+                                        <td>{{ $progresoDosUsuario->usuario->telefono }}</td>
+                                        <td>{{ $progresoDosUsuario->nivel_id_pregunta }}</td>
+                                        <td>{{ $progresoDosUsuario->escena_id_pregunta }}</td>
+                                        <td>{{ $progresoDosUsuario->texto_respuesta_preguntas }}</td>
+                                        <td>{{ $progresoDosUsuario->texto_respuesta_respuestas }}</td>
                                         <td>
-                                            @if ($progresoUsuario->status_final_respuesta == 1)
+                                            @if ($progresoDosUsuario->status_final_respuesta == 1)
                                             <span class="badge bg-success">Correcto</span>
                                             @else
                                             <span class="badge bg-danger">Incorrecto</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($progresoUsuario->estado_proceso == 1)
+                                            @if ($progresoDosUsuario->estado_proceso == 1)
                                             <span class="badge bg-success">Aprobado</span>
                                             @else
                                             <span class="badge bg-danger">Reprobado</span>
                                             @endif
                                         </td>
-                                        <td>{{ $progresoUsuario->puntuacion }}</td>
-                                        <td>{{ $progresoUsuario->intentos }}</td>
+                                        <td>{{ $progresoDosUsuario->puntuacion }}</td>
+                                        <td>{{ $progresoDosUsuario->intentos }}</td>
                                         <td>
-                                            @if ($progresoUsuario->completado == 1)
+                                            @if ($progresoDosUsuario->completado == 1)
                                             <span class="badge bg-success">SI</span>
                                             @else
                                             <span class="badge bg-danger">NO</span>
                                             @endif
                                         </td>
-                                        <td>{{ $progresoUsuario->created_at }}</td>
+                                        <td>{{ $progresoDosUsuario->created_at }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

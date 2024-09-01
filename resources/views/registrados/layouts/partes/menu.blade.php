@@ -46,13 +46,13 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             @if(kvfj(Auth::user()->rol->permissions, 'get_escenas'))
-                            <a href="{{ route('mispreguntas') }}" class="dropdown-item" key="t-default">ESCENAS</a>
+                            <a href="{{ route('escenas') }}" class="dropdown-item" key="t-default">ESCENAS</a>
                             @endif
                             @if(kvfj(Auth::user()->rol->permissions, 'get_ppreguntas'))
-                            <a href="{{ route('misrespuestas') }}" class="dropdown-item" key="t-default">PERSONAJE PREGUNTAS</a>
+                            <a href="{{ route('ppreguntas') }}" class="dropdown-item" key="t-default">PERSONAJE PREGUNTAS</a>
                             @endif
                             @if(kvfj(Auth::user()->rol->permissions, 'get_prespuestas'))
-                            <a href="{{ route('misrompecabezas') }}" class="dropdown-item" key="t-default">PERSONAJE RESPUESTAS</a>
+                            <a href="{{ route('prespuestas') }}" class="dropdown-item" key="t-default">PERSONAJE RESPUESTAS</a>
                             @endif
                         </div>
                     </li>
@@ -64,6 +64,8 @@
                         @if(kvfj(Auth::user()->rol->permissions, 'get_progresoUsuario'))
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="{{ route('progresousuariouno') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL UNO</a>
+                            <a href="{{ route('progresousuariodos') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL DOS</a>
+                            <a href="{{ route('progresousuariotres') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL TRES</a>
                         </div>
                         @endif
                     </li>

@@ -7,6 +7,8 @@ use App\Models\Nivel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Models\ProgresoUsuario;
+use App\Models\ProgresoDosUsuario;
+use App\Models\ProgresoTresUsuario;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
@@ -89,13 +91,13 @@ class NivelController extends Controller
             ->count('usuario_id');
 
         // Contar registros únicos por usuario_id, nivel_id_pregunta y estado_proceso = 1 para nivel 2
-        $nivelDosFin = ProgresoUsuario::where('nivel_id_pregunta', 2)
+        $nivelDosFin = ProgresoDosUsuario::where('nivel_id_pregunta', 2)
             ->where('estado_proceso', 1)
             ->distinct('usuario_id')
             ->count('usuario_id');
 
         // Contar registros únicos por usuario_id, nivel_id_pregunta y estado_proceso = 1 para nivel 3
-        $nivelTresFin = ProgresoUsuario::where('nivel_id_pregunta', 3)
+        $nivelTresFin = ProgresoTresUsuario::where('nivel_id_pregunta', 3)
             ->where('estado_proceso', 1)
             ->distinct('usuario_id')
             ->count('usuario_id');
@@ -107,10 +109,10 @@ class NivelController extends Controller
         $nivelUnoGen = ProgresoUsuario::where('nivel_id_pregunta', 1)
             ->count();
 
-        $nivelDosGen = ProgresoUsuario::where('nivel_id_pregunta', 2)
+        $nivelDosGen = ProgresoDosUsuario::where('nivel_id_pregunta', 2)
             ->count();
 
-        $nivelTresGen = ProgresoUsuario::where('nivel_id_pregunta', 3)
+        $nivelTresGen = ProgresoTresUsuario::where('nivel_id_pregunta', 3)
             ->count();
 
 

@@ -11,7 +11,7 @@
 
                 <div class="row justify-content-between mb-3">
                     <div class="col-auto">
-                        <h5 class="mt-2">PROGRESO USUARIOS NIVEL UNO</h5>
+                        <h5 class="mt-2">PROGRESO USUARIOS NIVEL TRES</h5>
                     </div>
                 </div>
 
@@ -43,38 +43,38 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($progresoUsuarios as $progresoUsuario)
+                                    @foreach ($progresoTresUsuarios as $progresoTresUsuario)
                                     <tr class="align-middle">
-                                        <td>{{ $progresoUsuario->id }}</td>
-                                        <td>{{ $progresoUsuario->usuario->name }}</td>
-                                        <td>{{ $progresoUsuario->usuario->telefono }}</td>
-                                        <td>{{ $progresoUsuario->nivel_id_pregunta }}</td>
-                                        <td>{{ $progresoUsuario->texto_respuesta_preguntas }}</td>
-                                        <td>{{ $progresoUsuario->texto_respuesta_respuestas }}</td>
+                                        <td>{{ $progresoTresUsuario->id }}</td>
+                                        <td>{{ $progresoTresUsuario->usuario->name }}</td>
+                                        <td>{{ $progresoTresUsuario->usuario->telefono }}</td>
+                                        <td>{{ $progresoTresUsuario->nivel_id_pregunta }}</td>
+                                        <td>{{ $progresoTresUsuario->texto_respuesta_preguntas }}</td>
+                                        <td>{{ $progresoTresUsuario->texto_respuesta_respuestas }}</td>
                                         <td>
-                                            @if ($progresoUsuario->status_final_respuesta == 1)
+                                            @if ($progresoTresUsuario->status_final_respuesta == 1)
                                             <span class="badge bg-success">Correcto</span>
                                             @else
                                             <span class="badge bg-danger">Incorrecto</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($progresoUsuario->estado_proceso == 1)
+                                            @if ($progresoTresUsuario->estado_proceso == 1)
                                             <span class="badge bg-success">Aprobado</span>
                                             @else
                                             <span class="badge bg-danger">Reprobado</span>
                                             @endif
                                         </td>
-                                        <td>{{ $progresoUsuario->puntuacion }}</td>
-                                        <td>{{ $progresoUsuario->intentos }}</td>
+                                        <td>{{ $progresoTresUsuario->puntuacion }}</td>
+                                        <td>{{ $progresoTresUsuario->intentos }}</td>
                                         <td>
-                                            @if ($progresoUsuario->completado == 1)
+                                            @if ($progresoTresUsuario->completado == 1)
                                             <span class="badge bg-success">SI</span>
                                             @else
                                             <span class="badge bg-danger">NO</span>
                                             @endif
                                         </td>
-                                        <td>{{ $progresoUsuario->created_at }}</td>
+                                        <td>{{ $progresoTresUsuario->created_at }}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
