@@ -65,6 +65,7 @@
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="{{ route('progresousuariouno') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL UNO</a>
                             <a href="{{ route('progresousuariodos') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL DOS</a>
+                            <a href="{{ route('progresousuariotres') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL TRES</a>
                         </div>
                         @endif
                     </li>

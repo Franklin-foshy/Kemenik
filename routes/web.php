@@ -91,6 +91,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/progresoUsuarioUno', [ProgresoUsuarioController::class, 'getProgresoUsuarioUno'])->name('progresousuariouno');
     Route::get('/progresoUsuarioDos', [ProgresoUsuarioController::class, 'getProgresoUsuarioDos'])->name('progresousuariodos');
+    Route::get('/progresoUsuarioTres', [ProgresoUsuarioController::class, 'getProgresoUsuarioTres'])->name('progresousuariotres');
 
     // RUTA COMPARTIDA, DEBE DE ORDENARSE (TAREA DE RONALD)
     Route::get('/home', [NivelController::class, 'ResultadoNiveles'])->name('misniveles');

@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\PRespuestasController;
 use App\Http\Controllers\Api\ProgresoUsuarioController;
 use App\Http\Controllers\Api\ProgresoDosUsuarioController;
+use App\Http\Controllers\Api\ProgresoTresUsuarioController;
 use App\Http\Controllers\Api\RespuestaController;
 use App\Http\Controllers\Api\RompecabezaController;
 
@@ -80,3 +81,8 @@ Route::get('/progreso-usuario/{usuario_id}', [ProgresoUsuarioController::class, 
 Route::get('progreso-dos/{id}', [ProgresoDosUsuarioController::class, 'show']);
 Route::post('/progreso-dos-usuario', [ProgresoDosUsuarioController::class, 'store']);
 Route::get('/progreso-dos-usuario/{usuario_id}', [ProgresoDosUsuarioController::class, 'getByUserId']);
+
+// PROGRESO TRES DE USUARIO
+Route::get('progreso-tres/{id}', [ProgresoTresUsuarioController::class, 'show']);
+Route::post('/progreso-tres-usuario', [ProgresoTresUsuarioController::class, 'store']);
+Route::get('/progreso-tres-usuario/{usuario_id}', [ProgresoTresUsuarioController::class, 'getByUserId']);
