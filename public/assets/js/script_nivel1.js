@@ -282,25 +282,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ---------------- Añadiendo rompecabezas -----------------------
 
-let rompecabezas_random = [];
+/*let rompecabezas_random = [];
 
 $.ajax({
     url: `https://junamnoj.foxint.tech/api/rompecabezas/1`,
     type: "GET",
     dataType: "json",
     success: function (response) {
-        if (response.rompecabezas && response.rompecabezas.length > 0) {
-            // Llena el array con las URLs de las imágenes obtenidas del servidor
-            response.rompecabezas.forEach(function (rompecabezas_ran) {
-                rompecabezas_random.push(rompecabezas_ran.imagen);
-            });
+        if (response.rompecabeza && response.rompecabeza.imagen) {
+
 
             // Selecciona una imagen aleatoria de la lista
-            let escojer_imagen_rompecabezas =
-                rompecabezas_random[
-                    Math.floor(Math.random() * rompecabezas_random.length)
-                ];
-
+            let escojer_imagen_rompecabezas = response.rompecabeza.imagen;
             // Selecciona todas las piezas
             const piezas = document.querySelectorAll(".pieza");
 
@@ -315,7 +308,44 @@ $.ajax({
     error: function (jqXHR, textStatus, errorThrown) {
         console.error("Error en la solicitud:", textStatus, errorThrown);
     },
+});*/
+let rompecabezas_random = [];
+
+$.ajax({
+    url: `https://junamnoj.foxint.tech/api/rompecabezas/`,
+    type: "GET",
+    dataType: "json",
+    success: function (response) {
+        if (response.rompecabezas && response.rompecabezas.length > 0) {
+            // Almacena los rompecabezas en la lista
+            rompecabezas_random = response.rompecabezas;
+
+            // Selecciona un rompecabezas aleatorio
+            let rompecabezas_aleatorio = rompecabezas_random[Math.floor(Math.random() * rompecabezas_random.length)];
+
+            if (rompecabezas_aleatorio.imagen) {
+                // Selecciona la imagen del rompecabezas aleatorio
+                let escojer_imagen_rompecabezas = rompecabezas_aleatorio.imagen;
+
+                // Selecciona todas las piezas
+                const piezas = document.querySelectorAll(".pieza");
+
+                // Aplica la misma imagen a todas las piezas
+                piezas.forEach(function (pieza) {
+                    pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
+                });
+            } else {
+                console.error("El rompecabezas seleccionado no tiene una imagen.");
+            }
+        } else {
+            console.error("No se encontraron rompecabezas en la respuesta.");
+        }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+        console.error("Error en la solicitud:", textStatus, errorThrown);
+    },
 });
+
 
 // ---------------- IMPLEMENTACION DEL BACKEND --------------------
 let preguntas = [];
