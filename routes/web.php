@@ -90,6 +90,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/PRespuestas/Eliminar/PRespuestas/{id}', [PRespuestaController::class, 'deletePRespuesta'])->name('prespuesta-delete');
 
     Route::get('/progresoUsuarioUno', [ProgresoUsuarioController::class, 'getProgresoUsuarioUno'])->name('progresousuariouno');
+    Route::get('/progresoUsuarioDos', [ProgresoUsuarioController::class, 'getProgresoUsuarioDos'])->name('progresousuariodos');
 
     // RUTA COMPARTIDA, DEBE DE ORDENARSE (TAREA DE RONALD)
     Route::get('/home', [NivelController::class, 'ResultadoNiveles'])->name('misniveles');

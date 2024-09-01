@@ -64,6 +64,7 @@
                         @if(kvfj(Auth::user()->rol->permissions, 'get_progresoUsuario'))
                         <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                             <a href="{{ route('progresousuariouno') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL UNO</a>
+                            <a href="{{ route('progresousuariodos') }}" class="dropdown-item" key="t-default">PROGRESO NIVEL DOS</a>
                         </div>
                         @endif
                     </li>

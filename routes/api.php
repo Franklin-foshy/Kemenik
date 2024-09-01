@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\PPreguntasController;
 use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\PRespuestasController;
 use App\Http\Controllers\Api\ProgresoUsuarioController;
+use App\Http\Controllers\Api\ProgresoDosUsuarioController;
 use App\Http\Controllers\Api\RespuestaController;
 use App\Http\Controllers\Api\RompecabezaController;
 
@@ -70,8 +71,12 @@ Route::put('/prespuestas/{id}', [PRespuestasController::class, 'putEditPRespuest
 Route::delete('/prespuestas/{id}', [PRespuestasController::class, 'deletePRespuestaAPI']);
 Route::get('/respuestas_por_ppreguntas/{ppregunta_id}', [PRespuestasController::class, 'getRespuestasPorPPregunta']);
 
-// PROGRESO DE USUARIO
+// PROGRESO UNO DE USUARIO
 Route::get('progreso/{id}', [ProgresoUsuarioController::class, 'show']);
 Route::post('/progreso-usuario', [ProgresoUsuarioController::class, 'store']);
 Route::get('/progreso-usuario/{usuario_id}', [ProgresoUsuarioController::class, 'getByUserId']);
-Route::delete('/progreso-usuario/{usuario_id}/registro/{id}', [ProgresoUsuarioController::class, 'deleteByUserId']);
+
+// PROGRESO DOS DE USUARIO
+Route::get('progreso-dos/{id}', [ProgresoDosUsuarioController::class, 'show']);
+Route::post('/progreso-dos-usuario', [ProgresoDosUsuarioController::class, 'store']);
+Route::get('/progreso-dos-usuario/{usuario_id}', [ProgresoDosUsuarioController::class, 'getByUserId']);
