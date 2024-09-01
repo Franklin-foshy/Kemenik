@@ -26,4 +26,9 @@ class PPregunta extends Model
     {
         return $this->hasMany(PRespuesta::class);
     }
+
+    public function progresodosusuario()
+    {
+        return $this->hasMany(ProgresoDosUsuario::class);
+    }
 }

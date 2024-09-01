@@ -15,6 +15,7 @@ class ProgresoDosUsuario extends Model
     // Campos que se pueden llenar de manera masiva
     protected $fillable = [
         'usuario_id',
+        'personaje_pregunta_id',
         'completado',
         'intentos',
         'puntuacion',
@@ -31,5 +32,11 @@ class ProgresoDosUsuario extends Model
     public function usuario()
     {
         return $this->belongsTo(User::class, 'usuario_id');
+    }
+
+    // Relación con el modelo PPregunta
+    public function ppregunta()
+    {
+        return $this->belongsTo(PPregunta::class, 'personaje_pregunta_id');
     }
 }

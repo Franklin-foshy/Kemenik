@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('usuario_id');
             $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('personaje_pregunta_id');
+            $table->foreign('personaje_pregunta_id')->references('id')->on('p_preguntas')->onDelete('cascade');
             $table->boolean('completado')->default(0)->comment('0: No, 1: Sí');
             $table->tinyInteger('intentos')->default(0)->unsigned()->comment('Hasta 3 intentos permitidos');
             $table->tinyInteger('puntuacion')->default(0)->unsigned()->comment('Puntuación máxima de 100');

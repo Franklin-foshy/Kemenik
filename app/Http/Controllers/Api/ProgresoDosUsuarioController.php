@@ -85,7 +85,7 @@ class ProgresoDosUsuarioController extends Controller
     {
         try {
             // Consultar el registro con las relaciones de usuario y nivel
-            $progresoDosUsuario = ProgresoDosUsuario::with(['usuario'])->findOrFail($id);
+            $progresoDosUsuario = ProgresoDosUsuario::with(['usuario','ppregunta'])->findOrFail($id);
 
             // Retornar la respuesta con la data
             return response()->json([
@@ -106,7 +106,7 @@ class ProgresoDosUsuarioController extends Controller
     public function getByUserId($usuario_id)
     {
         // Obtener todos los registros asociados a usuario_id
-        $progresosDosUsuario = ProgresoDosUsuario::with(['usuario'])
+        $progresosDosUsuario = ProgresoDosUsuario::with(['usuario','ppregunta'])
             ->where('usuario_id', $usuario_id)
             ->get();
 

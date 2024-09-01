@@ -21,4 +21,14 @@ class Pregunta extends Model
     {
         return $this->hasMany(Respuesta::class);
     }
+
+    public function progresousuario()
+    {
+        return $this->hasMany(ProgresoUsuario::class);
+    }
+
+    public function progresotresusuario()
+    {
+        return $this->hasMany(ProgresoTresUsuario::class);
+    }
 }
