@@ -1,4 +1,90 @@
 
+
+// ---------------------- recuperar el id -------------------
+const userId = localStorage.getItem('userId');
+
+// ---------------------- recuperar el id -------------------
+
+
+// ------------------- intentos --------------------
+
+let intentos_2 = localStorage.getItem('intentos_2');
+if (intentos_2 === null) {
+    intentos_2 = 0;
+} else {
+    intentos_2 = parseInt(intentos_2, 10); // Asegúrate de convertirlo a número
+}
+
+
+intentos_2 += 1;
+
+localStorage.setItem('intentos_2', intentos_2);
+
+console.log(intentos_2)
+// ------------------- intentos --------------------
+
+
+// ------------------------ completar nivel --------------------
+let contador_nivel_2 = 0 ;
+
+
+let nivel_completado_2 = localStorage.getItem('nivel_completado_2');
+if (nivel_completado_2 === null) {
+    nivel_completado_2 = 0;
+} else {
+    nivel_completado_2 = parseInt(nivel_completado_2, 10); // Asegúrate de convertirlo a número
+}
+
+
+
+console.log(nivel_completado_2)
+
+// ------------------------ completar nivel --------------------
+
+
+
+// ----------------------- envio de informacion -----------------------------
+function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion, estado_proceso, texto_respuesta_preguntas, texto_respuesta_respuestas, status) {
+    // Crear el objeto de datos a enviar
+    const data = {
+        usuario_id: usuario_id,
+        personaje_pregunta_id: pregunta_id,
+        completado: completado,
+        intentos: intentos,
+        puntuacion: puntuacion,
+        estado_proceso: estado_proceso,
+        texto_respuesta_preguntas: texto_respuesta_preguntas,
+        texto_respuesta_respuestas: texto_respuesta_respuestas,
+        status: status
+    };
+
+    // Opciones para la solicitud fetch
+    const options = {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(data) // Convertir el objeto a una cadena JSON
+    };
+
+    // Realizar la solicitud
+    fetch('https://junamnoj.foxint.tech/api/progreso-dos-usuario', options)
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Procesar la respuesta como JSON
+        })
+        .then(data => {
+        console.log('Success:', data); // Manejar los datos de la respuesta
+        })
+        .catch(error => {
+        console.error('Error:', error); // Manejar errores
+        });
+    }
+// ----------------------- envio de informacion -----------------------------
+
+
 const modal_niveles = document.querySelector('.modal_niveles');
 const contenedor_mensajes = document.getElementById('mensajes_de_respuestas')
 
@@ -60,6 +146,7 @@ $.ajax({
                                                 });
 
                                                 let preguntaDiccionario = {
+                                                    id: pregunta.id,
                                                     pregunta: pregunta.texto_pregunta,
                                                     opciones: respuestas,
                                                     correcta: pregunta.texto_respuesta
@@ -92,28 +179,7 @@ $.ajax({
         console.error('Error en la solicitud de escenas:', textStatus, errorThrown);
     }
 });
-/*
-const data = {
-    usuario_id: 3,
-    completado: 1,
-    intentos: 1,
-    puntuacion: 100,
-    estado_proceso: 1,
-    texto_respuesta_preguntas: "Berlin",
-    texto_respuesta_respuestas: "Berlin",
-    status: 1,
-    nivel_id_pregunta: 1,
-    status_final_respuesta: true
-};
 
-fetch('http://127.0.0.1:8000/api/progreso-usuario', {
-    method: 'POST', // Método HTTP
-    headers: {
-        'Content-Type': 'application/json', // El tipo de contenido es JSON
-    },
-    body: JSON.stringify(data) // Convierte el objeto `data` a una cadena JSON
-})
-*/
 
 function generarHTMLPorId(idPregunta) {
     let contenedorMensajes = document.getElementById('mensajes_de_respuestas');
@@ -177,7 +243,28 @@ var cerrar_modal = document.getElementById('cerrar_modal');
 
 function verificarRespuesta(respuestaSeleccionada) {
     let respuestaCorrecta = array_opciones[contador][array_opciones[contador].length - 1].correcta ;
+    let id_pre = array_opciones[contador][array_opciones[contador].length - 1].id ;
+    console.log(id_pre)
     //window.alert('llego a la verificacion')
+    contador_nivel_2 ++;
+    if (contador_nivel_2 === array_opciones.length){
+        nivel_completado_2 = 1;
+
+        localStorage.setItem('nivel_completado_2', nivel_completado_2);
+    }
+    if (intentos_2 <= 3){
+    sendDataToApi(
+        userId,              // usuario_id
+        id_pre,              // pregunta_id
+        nivel_completado_2,              // completado
+        intentos_2,              // intentos
+        12,            // puntuacion
+        nivel_completado_2,              // estado_proceso
+        respuestaCorrecta,      // texto_respuesta_preguntas
+        respuestaSeleccionada,      // texto_respuesta_respuestas
+        1               // status
+        );
+        }
     if (respuestaSeleccionada === respuestaCorrecta) {
         audio_correcto.play();
         setTimeout(() => {

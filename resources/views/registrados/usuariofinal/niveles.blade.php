@@ -75,6 +75,10 @@
   <!-- Cerrar Configuración colores -->
   
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script>
+      window.userId = {{ Auth::user()->id }};
+      console.log("User ID desde Blade:", window.userId);
+    </script>
     <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0')}}"></script>
     <script src="{{ asset('assets/js/script_index.js') }}"></script>
   </body>

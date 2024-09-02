@@ -1,3 +1,134 @@
+// ---------------------- recuperar el id -------------------
+const userId = localStorage.getItem('userId');
+
+// ---------------------- recuperar el id -------------------
+
+
+// ------------------- intentos --------------------
+
+let intentos = localStorage.getItem('intentos');
+if (intentos === null) {
+    intentos = 0;
+} else {
+    intentos = parseInt(intentos, 10); // Asegúrate de convertirlo a número
+}
+
+
+intentos += 1;
+
+localStorage.setItem('intentos', intentos);
+
+console.log(intentos)
+// ------------------- intentos --------------------
+
+
+// ------------------------ completar nivel --------------------
+let contador_nivel = 0 ;
+
+
+let nivel_completado = localStorage.getItem('nivel_completado');
+if (nivel_completado === null) {
+    nivel_completado = 0;
+} else {
+    nivel_completado = parseInt(nivel_completado, 10); // Asegúrate de convertirlo a número
+}
+
+
+
+console.log(nivel_completado)
+// ------------------------ completar nivel --------------------
+
+// ------------------- intentos --------------------
+
+/*
+const data = {
+    usuario_id: 3,
+    pregunta_id: 2,
+    completado: 1,
+    intentos: 1,
+    puntuacion: 100,
+    estado_proceso: 1,
+    texto_respuesta_preguntas: "perejil",
+    texto_respuesta_respuestas: "perejil",
+    status: 1
+};
+
+
+    const options = {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+    };
+    
+
+    fetch('http://127.0.0.1:8000/api/progreso-tres-usuario', options)
+    .then(response => {
+        if (!response.ok) {
+        throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+    })
+    .then(data => {
+        console.log('Success:', data); 
+    })
+    .catch(error => {
+        console.error('Error:', error); 
+    });
+
+*/
+
+
+
+
+// ----------------------- envio de informacion -----------------------------
+function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion, estado_proceso, texto_respuesta_preguntas, texto_respuesta_respuestas, status) {
+    // Crear el objeto de datos a enviar
+    const data = {
+        usuario_id: usuario_id,
+        pregunta_id: pregunta_id,
+        completado: completado,
+        intentos: intentos,
+        puntuacion: puntuacion,
+        estado_proceso: estado_proceso,
+        texto_respuesta_preguntas: texto_respuesta_preguntas,
+        texto_respuesta_respuestas: texto_respuesta_respuestas,
+        status: status
+    };
+
+    // Opciones para la solicitud fetch
+    const options = {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(data) // Convertir el objeto a una cadena JSON
+    };
+
+    // Realizar la solicitud
+    fetch('https://junamnoj.foxint.tech/api/progreso-tres-usuario', options)
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Procesar la respuesta como JSON
+        })
+        .then(data => {
+        console.log('Success:', data); // Manejar los datos de la respuesta
+        })
+        .catch(error => {
+        console.error('Error:', error); // Manejar errores
+        });
+    }
+// ----------------------- envio de informacion -----------------------------
+
+
+
+
+
+
+
 let questions = [];
 
 // Cargar las preguntas del API
@@ -23,6 +154,7 @@ $.ajax({
                             });
 
                             let preguntaDiccionario = {
+                                id: pregunta.id,
                                 text: `¿${pregunta.texto_pregunta}?`,
                                 images: imagene,
                                 descrip: respuestas,
@@ -171,7 +303,25 @@ function checkAnswer(selectedIndex) {
     const images = document.querySelectorAll(".image");
     const img_correcta = question.descrip[selectedIndex];
     const correctIndex = question.descrip.indexOf(question.correct);
+    contador_nivel ++;
+    if (contador_nivel === questions.length){
+        nivel_completado = 1;
 
+        localStorage.setItem('nivel_completado', nivel_completado);
+    }
+    if (intentos <= 3){
+    sendDataToApi(
+        userId,              // usuario_id
+        question.id,              // pregunta_id
+        nivel_completado,              // completado
+        intentos,              // intentos
+        tamaño,            // puntuacion
+        nivel_completado,              // estado_proceso
+        question.correct,      // texto_respuesta_preguntas
+        img_correcta,      // texto_respuesta_respuestas
+        1               // status
+      );
+      }
     if (img_correcta === question.correct) {
         images[selectedIndex].classList.add("correct");
         document.getElementById("feedback").textContent = "Correcto";
@@ -247,6 +397,7 @@ function nextQuestion() {
         showResult();
     }
 }
+
 
 function showResult() {
     document.getElementById("game").style.display = "block";

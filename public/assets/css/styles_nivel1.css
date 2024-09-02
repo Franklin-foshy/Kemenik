@@ -1343,25 +1343,25 @@ header img {
     --transition: transform .3s;
   }
   
-  .modal_cont{
+  .modal_cont {
     display: flex;
     position: relative;
     flex-direction: row;
     gap: 1rem;
     align-items: center;
     margin: auto;
-    width: 75%;
+    width: 90%;
     max-width: 600px;
     margin: auto;
     max-height: 90%;
     background: linear-gradient(to right, #eeae87, #ffffff);
     border-radius: 30px;
-    padding: 3rem 2.5rem;
+    padding: 1rem 1rem;
     transform: var(--transform);
     transition: var(--transition);
     flex-wrap: wrap;
     justify-content: center;
-  }
+}
   
   
   .modal_cont h2{
@@ -1677,25 +1677,25 @@ header img {
       --transition: transform .3s;
     }
     
-    .modal_cont{
+    .modal_cont {
       display: flex;
       position: relative;
       flex-direction: row;
       gap: 1rem;
       align-items: center;
       margin: auto;
-      width: 75%;
+      width: 90%;
       max-width: 600px;
       margin: auto;
       max-height: 90%;
       background: linear-gradient(to right, #eeae87, #ffffff);
       border-radius: 30px;
-      padding: 3rem 2.5rem;
+      padding: 1rem 1rem;
       transform: var(--transform);
       transition: var(--transition);
       flex-wrap: wrap;
       justify-content: center;
-    }
+  }
     
     .modal_cont h2{
       font-size: 1rem;

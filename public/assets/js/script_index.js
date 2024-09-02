@@ -11,7 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof window.userId !== 'undefined') {
+      console.log('User ID desde script_index.js:', window.userId);
+      localStorage.setItem('userId', window.userId); // Guarda en localStorage
+    } else {
+      console.error('User ID no definido');
+    }
+  });
 
 
 

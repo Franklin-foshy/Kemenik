@@ -1,4 +1,102 @@
 
+// ---------------------- recuperar el id -------------------
+const userId = localStorage.getItem('userId');
+
+console.log(userId)
+
+// ---------------------- recuperar el id -------------------
+
+
+// ------------------- intentos --------------------
+
+let intentos_1 = localStorage.getItem('intentos_1');
+if (intentos_1 === null) {
+    intentos_1 = 0;
+} else {
+    intentos_1 = parseInt(intentos_1, 10); // Asegúrate de convertirlo a número
+}
+
+
+intentos_1 += 1;
+
+localStorage.setItem('intentos_1', intentos_1);
+
+console.log(intentos_1)
+// ------------------- intentos --------------------
+
+
+// ------------------------ completar nivel --------------------
+let contador_nivel_1 = 0 ;
+
+
+let nivel_completado_1 = localStorage.getItem('nivel_completado_1');
+if (nivel_completado_1 === null) {
+    nivel_completado_1 = 0;
+} else {
+    nivel_completado_1 = parseInt(nivel_completado_1, 10); // Asegúrate de convertirlo a número
+}
+
+
+
+console.log(nivel_completado_1)
+// ------------------------ completar nivel --------------------
+
+
+
+
+
+
+
+// ----------------------- envio de informacion -----------------------------
+
+
+// ----------------------- envio de informacion -----------------------------
+function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion, estado_proceso, texto_respuesta_preguntas, texto_respuesta_respuestas, status) {
+    // Crear el objeto de datos a enviar
+    const data = {
+        usuario_id: usuario_id,
+        pregunta_id: pregunta_id,
+        completado: completado,
+        intentos: intentos,
+        puntuacion: puntuacion,
+        estado_proceso: estado_proceso,
+        texto_respuesta_preguntas: texto_respuesta_preguntas,
+        texto_respuesta_respuestas: texto_respuesta_respuestas,
+        status: status
+    };
+
+    // Opciones para la solicitud fetch
+    const options = {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+      body: JSON.stringify(data) // Convertir el objeto a una cadena JSON
+    };
+
+    // Realizar la solicitud
+    fetch('https://junamnoj.foxint.tech/api/progreso-usuario/', options)
+        .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json(); // Procesar la respuesta como JSON
+        })
+        .then(data => {
+        console.log('Success:', data); // Manejar los datos de la respuesta
+        })
+        .catch(error => {
+        console.error('Error:', error); // Manejar errores
+        });
+    }
+// ----------------------- envio de informacion -----------------------------
+// ----------------------- envio de informacion -----------------------------
+
+
+
+
+
+
 // --------------------------- Pantalla de carga ------------------------------
 const cargando = document.getElementById("cargando");
 const header = document.getElementById("header");
@@ -377,6 +475,7 @@ $.ajax({
                     },
                 });
                 let preguntaDiccionario = {
+                    id: pregunta.id,
                     pregunta: `¿${pregunta.texto_pregunta}?`,
                     images: imagenes,
                     respuestas: respuestas,
@@ -447,16 +546,33 @@ function mostrarContenidoPorId(id) {
 function verificarRespuesta(imagenIndex, preguntaId) {
     let preguntaDiccionario = preguntas[preguntaId - 1];
     let respuestaCorrecta = preguntaDiccionario.correcta;
+    let tamaño_2 =  100 / 6;
+    contador_nivel_1 ++;
+    if (contador_nivel_1 === preguntas.length){
+        nivel_completado_1 = 1;
 
-   if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
-        alert("¡Correcto!");
+        localStorage.setItem('nivel_completado_1', nivel_completado_1);
+    }
+    if (intentos_1 <= 3){
+    sendDataToApi(
+        userId,              // usuario_id
+        preguntaDiccionario.id,              // pregunta_id
+        nivel_completado_1,              // completado
+        intentos_1,              // intentos
+        16,            // puntuacion
+        nivel_completado_1,              // estado_proceso
+        respuestaCorrecta,      // texto_respuesta_preguntas
+        preguntaDiccionario.respuestas[imagenIndex],      // texto_respuesta_respuestas
+        1               // status
+      );
+      }
+   /*if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+        //alert("¡Correcto!");
         // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
     } else {
-        alert(
-            `Incorrecto. Intenta de nuevo. la respuesta era: ${respuestaCorrecta}`
-        );
+        //alert(`Incorrecto. Intenta de nuevo. la respuesta era: ${respuestaCorrecta}`);
         // Aquí puedes añadir cualquier otra acción en caso de respuesta incorrecta
-    }
+    }*/
 
     // Cierre del modal
     modal.classList.remove("modal_show");

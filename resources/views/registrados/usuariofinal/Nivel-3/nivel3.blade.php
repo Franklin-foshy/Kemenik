@@ -14,7 +14,6 @@
 <audio  id="quiz3" src="{{ asset('music/sonido_quiz3.mp3')}}"></audio>
 <audio  id="fuegos_artificiales" src="{{ asset('music/fuegos_artificiales.mp3')}}"></audio>
 
-
     <!-- modal -->
 
     @include ('registrados.usuariofinal.Nivel-3.componentes_c.modal')
