@@ -86,6 +86,8 @@ function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion
 
 
 const modal_niveles = document.querySelector('.modal_niveles');
+let modal_text = document.getElementById('modal-text');
+let modal_title = document.getElementById('modal-title');
 const contenedor_mensajes = document.getElementById('mensajes_de_respuestas')
 
 
@@ -146,6 +148,7 @@ $.ajax({
                                                 });
 
                                                 let preguntaDiccionario = {
+                                                    escena_actual: escena.descripcion,
                                                     id: pregunta.id,
                                                     pregunta: pregunta.texto_pregunta,
                                                     opciones: respuestas,
@@ -318,6 +321,8 @@ function verificarRespuesta(respuestaSeleccionada) {
                 cambiar_fondo(contendor,imagenes_fondo[contador])
                 cargar_barra(); // Llama a la función que necesitas
                 //window.alert('paso a la funcion')
+                modal_text.textContent =  array_opciones[contador][0].escena_actual
+                modal_title.textContent = `Bienvenido a la escena ${contador+1}`
                 modal_niveles.style.opacity = '1';
                 modal_niveles.style.visibility = 'visible';
             }
@@ -496,7 +501,6 @@ function saludo_de_junajpu_a_batz (){
         disguise(document.getElementById('junajpu_hablando'))
         seguiente_memsaje.removeEventListener('click', saludo_de_junajpu_a_batz);
         seguiente_memsaje.addEventListener('click', pregunta_de_batz_E1);
-        resetGif(document.getElementById('batz_hablando_E1'))
     }, 3000);
 }
 
@@ -1226,9 +1230,9 @@ function deshabilitarOpciones() {
         });
     }
 
-
-
 time_teminar = setTimeout(function(){
+        modal_text.textContent =  array_opciones[contador][0].escena_actual
+        modal_title.textContent = `Bienvenido a la escena ${contador+1}`
         document.getElementById('header_principal').style.display = 'block'
         document.getElementById('barra_id').style.display = 'block'
         document.getElementById('nivel').style.display = 'block'

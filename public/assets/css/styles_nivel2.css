@@ -243,7 +243,7 @@ body {
 
 #batz_caimando_E1 {
     width: 90%;
-    right: 0%;
+    right: -10%;
     z-index: 5;
     display: none;
     top: 22%;
@@ -281,7 +281,7 @@ body {
 }
 
 #junajpu_hablando{
-    left: -2%;
+    left: 0%;
     z-index: 0;
     display: none;
     top: 22%;
@@ -292,7 +292,7 @@ body {
 
 
 #batz_quieto{
-    left: 45%;
+    left: 52%;
     width: 27%;
     top: 16%;
     display: none;
@@ -303,7 +303,7 @@ body {
     width: 90%;
     top: 22%;
     display: none;
-    left: 18%;
+    left: 20%;
     z-index: 0;
 }
 
@@ -311,7 +311,7 @@ body {
     width: 90%;
     top: 22%;
     display: none;
-    left: 18%;
+    left: 20%;
     z-index: 0;
 }
 
@@ -3033,6 +3033,11 @@ header img {
 }
     /* ajustes escenas */
 
+.siguiente-mensaje{
+    left: 40%;
+    top: 110%;
+}
+
         header {
             height: 4%;
         }
@@ -3042,7 +3047,7 @@ header img {
             height: 35%;
             border: 5px solid rgb(70, 15, 15);
             top: 25%;
-            left: 1.7%;
+
             }
             #vidas {
                 font-size: 1.4rem;
@@ -3074,14 +3079,13 @@ header img {
 
 
 @media (max-width: 431px) {
-    .container{
-        width: 100%;
+    .container {
+        width: 98%;
         max-width: 460px;
         height: 30%;
-        border: 5px solid rgb(70, 15, 15);
+        border: 3px solid rgb(70, 15, 15);
         top: 27%;
-        left: 0%;
-        }
+    }
         .mensajes_de_respuestas {
             position: absolute;
             display: flex;
@@ -3103,7 +3107,7 @@ header img {
         }
 }
 
-@media (max-width: 415px) {
+@media (max-width: 416px) {
 
 /* ajustes escenas */
     #ixkin_hablando_E5 {
@@ -3142,15 +3146,15 @@ header img {
 
         }
         .siguiente-mensaje {
-            top: 80%;
-            left: 72%;
+            left: 40%;
+            top: 110%;
         }
 }
-@media (max-width: 414px) {
+@media (max-width: 415px) {
     .container{
+        height: 30%;
         width: 98%;
         max-width: 400px;
-        height: 35%;
         border: 5px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
@@ -3167,8 +3171,7 @@ header img {
     .container{
         width: 98%;
         max-width: 400px;
-        height: 30%;
-        border: 5px solid rgb(70, 15, 15);
+        border: 3px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
 
@@ -3180,8 +3183,8 @@ header img {
 }
 @media (max-width: 391px) {
     .siguiente-mensaje {
-        top: 80%;
-        left: 72%;
+        left: 40%;
+        top: 110%;
     }
 
     .container{
@@ -3210,7 +3213,7 @@ header img {
         height: 230px;
         border: 5px solid rgb(70, 15, 15);
         top: 28%;
-        left: 0%;
+
         }
 
     .opcion{
@@ -3245,15 +3248,15 @@ header img {
     .container{
         width: 95%;
         height: 230px;
-        border: 5px solid rgb(70, 15, 15);
+        border: 3px solid rgb(70, 15, 15);
         top: 29%;
-        left: 0%;
+
         }
 
  
         .siguiente-mensaje {
-            left: 68%;
-            top: 78%;
+            left: 40%;
+            top: 110%;
         }
 }
 
@@ -3264,12 +3267,9 @@ header img {
     }
 
     .container{
-        width: 95%;
-        height: 230px;
-        max-width: px;
         position: absolute;
         top: 25%;
-        left: 1%;
+
     }
     .opciones_mensajes_botones {
         max-width: 100px;
