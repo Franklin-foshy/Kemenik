@@ -3107,7 +3107,7 @@ header img {
         }
 }
 
-@media (max-width: 416px) {
+@media (max-width: 415px) {
 
 /* ajustes escenas */
     #ixkin_hablando_E5 {
@@ -3150,7 +3150,7 @@ header img {
             top: 110%;
         }
 }
-@media (max-width: 415px) {
+@media (max-width: 414px) {
     .container{
         height: 30%;
         width: 98%;
