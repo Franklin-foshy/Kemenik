@@ -267,7 +267,7 @@ body {
 }
 #junajpu_quieto_E1 {
     width: 27%;
-    left: 28%;
+    left: 30%;
     display: none;
     top: 16%;
 }
@@ -292,9 +292,9 @@ body {
 
 
 #batz_quieto{
-    left: 52%;
+    left: 45%;
     width: 27%;
-    top: 16%;
+    top: 18%;
     display: none;
 }
 
@@ -2149,7 +2149,6 @@ header img {
 
 }
 @media (max-width: 912px) {
-
     .nivel{
         font-size: 30px;
         font-weight: bold;
@@ -3108,7 +3107,7 @@ header img {
         }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 418px) {
 
 /* ajustes escenas */
     #ixkin_hablando_E5 {
@@ -3152,14 +3151,15 @@ header img {
         }
 }
 @media (max-width: 414px) {
-    .container {
+    .container{
         width: 98%;
         max-width: 400px;
-        height: 30%;
         border: 5px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
-    }
+
+        }
+
 
 .textos-mensajes{
     font-size: 12px;
@@ -3170,7 +3170,7 @@ header img {
     .container{
         width: 98%;
         max-width: 400px;
-        border: 3px solid rgb(70, 15, 15);
+        border: 5px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
 
