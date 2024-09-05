@@ -63,11 +63,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/Preguntas/Nuevo', [PreguntaController::class, 'postPregunta'])->name('pregunta-post');
     Route::post('/Preguntas/Editar/Pregunta/{id}', [PreguntaController::class, 'postEditPregunta'])->name('pregunta-edit-post');
     Route::post('/Preguntas/Eliminar/Pregunta/{id}', [PreguntaController::class, 'deletePregunta'])->name('pregunta-delete');
+    Route::delete('/Preguntas/EliminarTotal/Pregunta/{id}', [PreguntaController::class, 'deletePreguntaTotal'])->name('pregunta-delete-total');
 
     Route::get('/MisRespuestas', [RespuestaController::class, 'getMisRespuestas'])->name('misrespuestas');
     Route::post('/Respuestas/Nuevo', [RespuestaController::class, 'postRespuesta'])->name('respuesta-post');
     Route::post('/Respuestas/Editar/Respuesta/{id}', [RespuestaController::class, 'postEditRespuesta'])->name('respuesta-edit-post');
     Route::post('/Respuestas/Eliminar/Respuesta/{id}', [RespuestaController::class, 'deleteRespuesta'])->name('respuesta-delete');
+    Route::delete('/Respuestas/EliminarTotal/Respuesta/{id}', [RespuestaController::class, 'deleteRespuestaTotal'])->name('respuesta-delete-total');
 
     Route::get('/MisRompecabezas', [RompecabezaController::class, 'getMisRompecabezas'])->name('misrompecabezas');
     Route::post('/Rompecabezas/Nuevo', [RompecabezaController::class, 'postRompecabeza'])->name('rompecabeza-post');

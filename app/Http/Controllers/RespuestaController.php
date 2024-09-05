@@ -72,4 +72,11 @@ class RespuestaController extends Controller
         $r->save();
         return back()->with('message', $message)->with('icon', 'success');
     }
+
+    public function deleteRespuestaTotal($id)
+    {
+        $r = Respuesta::findOrFail($id);
+        $r->delete();
+        return back()->with('message', 'Respuesta eliminada satisfactoriamente')->with('icon', 'success');
+    }
 }

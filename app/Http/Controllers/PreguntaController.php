@@ -52,4 +52,11 @@ class PreguntaController extends Controller
         $p->save();
         return back()->with('message', $message)->with('icon', 'success');
     }
+
+    public function deletePreguntaTotal($id)
+    {
+        $p = Pregunta::findOrFail($id);
+        $p->delete();
+        return back()->with('message', 'Pregunta eliminada satisfactoriamente')->with('icon', 'success');
+    }
 }

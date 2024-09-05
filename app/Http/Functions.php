@@ -47,7 +47,7 @@ function permissionsUser()
                 'get_niveles' => 'Ver niveles',
                 'post_niveles' => 'Crear niveles',
                 'edit_niveles' => 'Editar niveles',
-                'delete_niveles' => 'Eliminar niveles',
+                'delete_niveles' => 'Habilitar/Desabilitar niveles',
             ]
         ],
         'preguntas' => [
@@ -56,7 +56,8 @@ function permissionsUser()
                 'get_preguntas' => 'Ver preguntas',
                 'post_preguntas' => 'Crear preguntas',
                 'edit_preguntas' => 'Editar preguntas',
-                'delete_preguntas' => 'Eliminar preguntas',
+                'delete_preguntas' => 'Habilitar/Desabilitar preguntas',
+                'delete_preguntas_total' => 'Eliminar preguntas',
             ]
         ],
         'respuestas' => [
@@ -65,6 +66,7 @@ function permissionsUser()
                 'get_respuestas' => 'Ver respuestas',
                 'post_respuestas' => 'Crear respuestas',
                 'edit_respuestas' => 'Editar respuestas',
+                'delete_respuestas' => 'Habilitar/Desabilitar respuestas',
                 'delete_respuestas' => 'Eliminar respuestas',
             ]
         ],
@@ -74,7 +76,7 @@ function permissionsUser()
                 'get_rompecabezas' => 'Ver rompecabezas',
                 'post_rompecabezas' => 'Crear rompecabezas',
                 'edit_rompecabezas' => 'Editar rompecabezas',
-                'delete_rompecabezas' => 'Eliminar rompecabezas',
+                'delete_rompecabezas' => 'Habilitar/Desabilitar rompecabezas',
             ]
         ],
         'escenas' => [
@@ -83,7 +85,7 @@ function permissionsUser()
                 'get_escenas' => 'Ver escenas',
                 'post_escenas' => 'Crear escenas',
                 'edit_escenas' => 'Editar escenas',
-                'delete_escenas' => 'Eliminar escenas',
+                'delete_escenas' => 'Habilitar/Desabilitar escenas',
             ]
         ],
         'personaje preguntas' => [
@@ -92,7 +94,7 @@ function permissionsUser()
                 'ppreguntas' => 'Ver personaje preguntas',
                 'ppreguntas' => 'Crear personaje preguntas',
                 'ppreguntas' => 'Editar personaje preguntas',
-                'ppreguntas' => 'Eliminar personaje preguntas',
+                'ppreguntas' => 'Habilitar/Desabilitar personaje preguntas',
             ]
         ],
         'personaje respuestas' => [
@@ -101,7 +103,7 @@ function permissionsUser()
                 'prespuestas' => 'Ver personaje respuestas',
                 'prespuestas' => 'Crear personaje respuestas',
                 'prespuestas' => 'Editar personaje respuestas',
-                'prespuestas' => 'Eliminar personaje respuestas',
+                'prespuestas' => 'Habilitar/Desabilitar personaje respuestas',
             ]
         ],
         'Progreso usuarios' => [

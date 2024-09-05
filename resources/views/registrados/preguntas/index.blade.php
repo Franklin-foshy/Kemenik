@@ -95,6 +95,17 @@
                                                         </form>
                                                     </li>
                                                     @endif
+                                                    @if(kvfj(Auth::user()->rol->permissions, 'delete_preguntas_total'))
+                                                    <li>
+                                                        <form action="{{ route('pregunta-delete-total', $pregunta->id) }}" method="post" autocomplete="off" id="delete_form_total{{ $pregunta->id }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="dropdown-item pointer btn-sm" type="button" onclick="confirmDeleteTotal({{ $pregunta->id }})">
+                                                                <i class="fas fa-trash"></i>&nbsp; Eliminar
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </td>

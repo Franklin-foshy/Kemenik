@@ -12,6 +12,7 @@ function toggle(key) {
   }
 }
 
+/* Función para habilitar o desabilitar */
 function confirmDelete(id, status, module) {
   var action = (status === 0) ? 'habilitar' : 'inhabilitar';
   Swal.fire({
@@ -25,6 +26,23 @@ function confirmDelete(id, status, module) {
   }).then((result) => {
     if (result.isConfirmed) {
       document.getElementById("delete_form_" + id).submit();
+    }
+  })
+}
+
+/* Función para eliminar completamente el registro y sus relacionados */
+function confirmDeleteTotal(id, module) {
+  Swal.fire({
+    text: '¿Está seguro que desea eliminar permanentemente',
+    icon: 'warning',
+    showCancelButton: true,
+    cancelButtonColor: '#d33',
+    confirmButtonColor: '#696cff',
+    cancelButtonText: 'No',
+    confirmButtonText: 'Sí',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.getElementById("delete_form_total" + id).submit();
     }
   })
 }
