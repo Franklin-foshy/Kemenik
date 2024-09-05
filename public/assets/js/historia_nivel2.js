@@ -322,7 +322,7 @@ function verificarRespuesta(respuestaSeleccionada) {
                 cargar_barra(); // Llama a la función que necesitas
                 //window.alert('paso a la funcion')
                 modal_text.textContent =  array_opciones[contador][0].escena_actual
-                modal_title.textContent = `Bienvenido a la escena ${contador+1}`
+                modal_title.textContent = `¡Explora la historia y construye un futuro de equidad! ${contador+1}`
                 modal_niveles.style.opacity = '1';
                 modal_niveles.style.visibility = 'visible';
             }
@@ -546,7 +546,7 @@ function escena2() {
     disguise(document.getElementById('ixkin_quieta_E1'))
     disguise(document.getElementById('batz_quieto'))
     disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
-    show(document.getElementById('ixchel_quieta'))
+    show(document.getElementById('ixchel_cocinando_E2'))
     show(document.getElementById('junajpu_sentado'))
     show(document.getElementById('ixkin_sentada'))
     setTimeout(() => {
@@ -574,9 +574,10 @@ function Junajpu_preguinta_a_inchel(){
 
 function respuesta_ixchel_a_junajpu () {
     seguiente_memsaje.style.pointerEvents = "none";
+    disguise(document.getElementById('mensaje_junajpu_a_ixchel'))
     change_message(document.getElementById('mensaje_ixchel_a_junajpu_E1_pregregunta'), array_opciones[contador][0].correcta)
     show(document.getElementById('mensaje_ixchel_a_junajpu'))
-    disguise(document.getElementById('ixchel_quieta'))
+    disguise(document.getElementById('ixchel_cocinando_E2'))
     show(document.getElementById('ixchel_hablando_E2'))
     setTimeout(() => {
         show(document.getElementById('ixchel_quieta'))
@@ -607,6 +608,7 @@ function preguta_ixchel_a_junajpu () {
 
 function opciones_para_respuesta_junajpu_E2() {
     seguiente_memsaje.style.display = "none";
+    disguise(document.getElementById('mensaje_ixchel_a_junajpu'))
     setTimeout(() => {
         //toped(contenedor_mensajes,'80')
         contenedor_mensajes.style.display = "flex";
@@ -1236,7 +1238,7 @@ function deshabilitarOpciones() {
 
 time_teminar = setTimeout(function(){
         modal_text.textContent =  array_opciones[contador][0].escena_actual
-        modal_title.textContent = `Bienvenido a la escena ${contador+1}`
+        modal_title.textContent = `¡Explora la historia y construye un futuro de equidad! ${contador+1}`
         document.getElementById('header_principal').style.display = 'block'
         document.getElementById('barra_id').style.display = 'block'
         document.getElementById('nivel').style.display = 'block'

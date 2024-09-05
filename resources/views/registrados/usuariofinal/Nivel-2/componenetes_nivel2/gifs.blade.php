@@ -15,7 +15,7 @@
 
 <img id = "batz_hablando_E1" src="{{ asset('imgs/nivel2/E1/BATZ_PERFIL_HABLANDO_E1.gif')}}" alt="GIF animado" class="gif_amimado_escena">
 
-<img id = "batz_quieto" src="{{ asset('imgs/nivel2/E1/BATZ_FRENTE_E1.png')}}" alt="GIF animado" class="imagen_escena_1">
+<img id = "batz_quieto" src="{{ asset('imgs/nivel2/E1/BATZ_QUIETO_FRONTAL.png')}}" alt="GIF animado" class="imagen_escena_1">
 
 <img id = "batz_hablando2_E1" src="{{ asset('imgs/nivel2/E1/BATZ_PERFIL_HABLANDO_E1.gif')}}" alt="GIF animado" class="gif_amimado_escena">
 
@@ -42,6 +42,12 @@
 <img id = "ixchel_hablando_E2" src="{{ asset('imgs/nivel2/E2/IXCHEL_FRONTAL_HABLANDO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena">
 
 <img id = "ixchel_hablando2_E2" src="{{ asset('imgs/nivel2/E2/IXCHEL_FRONTAL_HABLANDO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena">
+
+<img id = "ixchel_cocinando_E2" src="{{ asset('imgs/nivel2/E2/IXCHEL_PERFIL_COCINANDO_E2.gif')}}" alt="GIF animado" class="gif_amimado_escena">
+
+
+
+
 
 
 

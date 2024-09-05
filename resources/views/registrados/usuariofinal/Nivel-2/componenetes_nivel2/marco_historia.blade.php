@@ -13,7 +13,15 @@
 
 <!------------------------------ botones respuestas ------------------------------------>
     
+<!------------------------------ Burbujas -------------------------------->
     @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.mensajes')
+
+<!------------------------------ Burbujas -------------------------------->
+
+
+<!------------------------------ Burbujas -------------------------------->
+
+
 
 
     <button class="siguiente-mensaje" id="siguiente_mensaje">
