@@ -490,6 +490,7 @@ function saludos_de_batz_a_junajpu () {
 }
 
 function saludo_de_junajpu_a_batz (){
+    disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
     seguiente_memsaje.style.pointerEvents = "none";
     change_message(document.getElementById('menaje_junajpu_a_batz_E1_respuesta'), array_opciones[contador][0].correcta)
     show(document.getElementById('junajpu_hablando'))
@@ -505,8 +506,10 @@ function saludo_de_junajpu_a_batz (){
 }
 
 function pregunta_de_batz_E1() {
+    disguise(document.getElementById('menaje_junajpu_a_batz'))
     seguiente_memsaje.style.pointerEvents = "none";
     change_message(document.getElementById('mensaje_batz_a_junajpu_E1_pregregunta'), array_opciones[0][1].pregunta)
+    show(document.getElementById('mensaje_batz_a_junajpu_E1'))
     disguise(document.getElementById('batz_quieto'))
     disguise(document.getElementById('menaje_junajpu_a_batz'))
     show(document.getElementById('batz_hablando2_E1'))
@@ -523,6 +526,7 @@ function pregunta_de_batz_E1() {
 
 
 function opciones_para_respuesta_junajpu_E1() {
+    disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
     seguiente_memsaje.style.display = "none";
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";

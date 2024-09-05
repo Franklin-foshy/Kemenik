@@ -285,6 +285,7 @@ header img {
   padding: 0;
   border: 0;
   z-index: 1;
+  margin: 2%;
 }
 
 #image-container {
@@ -299,12 +300,12 @@ header img {
   width: 100%;
   max-width: 300px;
   max-height: 300px;
-  height: 60%;
+  height: 80%;
   cursor: pointer;
   border: 8px solid #EEAE87;
   border-radius: 10px;
   transition: transform 0.2s;
-  margin-top: 0px; /* Reducir el espacio superior */
+  margin-top: 0px;
 }
 
 .image:hover {
@@ -645,6 +646,7 @@ header img {
     top: 40%;
     width: 100%;
     height: 60%;
+    margin: 2%;
   }
 }
 
@@ -663,10 +665,10 @@ header img {
   #image-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 5px;
     flex-wrap: wrap;
-    margin-top: 2px; /* Reducir el espacio superior */
-  }
+    margin-top: 2px;
+}
   .nivel{
     left: 13%;
   }
@@ -822,6 +824,7 @@ header img {
     top: 35%;
     width: 100%;
     height: 55%;
+    margin: 2%;
   }
 
   .pregunta_gif {
@@ -870,9 +873,10 @@ header img {
       font-size: 10px;
     }
 
-    .pregunta_{
+    .pregunta_ {
       font-size: 15px;
-    }
+      margin: 15px;
+  }
 
     .continuar {
       position: absolute;
@@ -1026,10 +1030,10 @@ header img {
   .descripccion {
     font-size: 12px;
   }
-.continuar{
-  position: relative;
-  top: 48%;
-  left: 25%;
+  .continuar {
+    position: relative;
+    top: 42%;
+    left: 25%;
 }
 
 .correct {
