@@ -50,7 +50,7 @@
                                         <i class="bx bxs-bolt-circle"></i>
                                     </span>
                                 </div>
-                                <h5 class="font-size-14 mb-0">Nivel 1</h5>
+                                <h5 class="font-size-14 mb-0">Personas que finalizaron - Nivel 1</h5>
                             </div>
                             <div class="text-muted mt-4">
                                 <h4>{{ $nivelUnoFin }}<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
@@ -70,7 +70,7 @@
                                         <i class="bx bxs-bolt-circle"></i>
                                     </span>
                                 </div>
-                                <h5 class="font-size-14 mb-0">Nivel 2</h5>
+                                <h5 class="font-size-14 mb-0">Personas que finalizaron - Nivel 2</h5>
                             </div>
                             <div class="text-muted mt-4">
                                 <h4>{{ $nivelDosFin }}<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
@@ -90,11 +90,10 @@
                                         <i class="bx bxs-bolt-circle"></i>
                                     </span>
                                 </div>
-                                <h5 class="font-size-14 mb-0">Nivel 3</h5>
+                                <h5 class="font-size-14 mb-0">Personas que finalizaron - Nivel 3</h5>
                             </div>
                             <div class="text-muted mt-4">
                                 <h4>{{ $nivelTresFin }}<i class="mdi mdi-chevron-up ms-1 text-success"></i></h4>
-
                                 <div class="d-flex">
                                     <span class="badge badge-soft-success font-size-12">100%</span> <span class="ms-2 text-truncate">Terminado</span>
                                 </div>
@@ -105,20 +104,22 @@
             </div>
             <!-- end row -->
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-3">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Usuarios registrados por departamento</h4>
-
                     <div class="text-center">
                         <div class="mb-4">
-                            <i class="bx bx-map display-4"></i>
+                            <i class="bx bx-user display-4"></i>
                         </div>
+                        <h3>Usuarios registrados</h3>
                         <h3>{{ $totalUsuarios }}</h3>
-                        <p>Usuarios registrados en Kemenik</p>
                     </div>
-
+                    <hr>
+                    <h4 class="card-title mb-4 pt-4 text-center">Usuarios registrados por departamento</h4>
                     <div class="table-responsive mt-4">
+                        @if($usuariosPorDepartamento->isEmpty())
+                        <p class="text-center">No hay registros para mostrar.</p>
+                        @else
                         <table class="table align-middle table-nowrap">
                             <tbody>
                                 @foreach($usuariosPorDepartamento as $registro)
@@ -138,19 +139,104 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-xl-9">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Nivel 1 </h4><span>Usuarios por departamento que terminaron al </span><span class="badge badge-soft-success font-size-12">100%</span></p>
+                            <div class="table-responsive mt-4">
+                                @if($nivelUnoFinPorDepartamento->isEmpty())
+                                <p class="text-center">No hay registros para mostrar.</p>
+                                @else
+                                <table class="table align-middle table-nowrap">
+                                    <tbody>
+                                        @foreach($nivelUnoFinPorDepartamento as $item)
+                                        <tr>
+                                            <td style="width: 30%">
+                                                <p class="mb-0">{{ $item->departamento }}</p>
+                                            </td>
+                                            <td style="width: 25%">
+                                                <h5 class="mb-0">{{ $item->total_usuarios }}</h5>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Nivel 2 </h4><span>Usuarios por departamento que terminaron al </span><span class="badge badge-soft-success font-size-12">100%</span></p>
+                            <div class="table-responsive mt-4">
+                                @if($nivelDosFinPorDepartamento->isEmpty())
+                                <p class="text-center">No hay registros para mostrar.</p>
+                                @else
+                                <table class="table align-middle table-nowrap">
+                                    <tbody>
+                                        @foreach($nivelDosFinPorDepartamento as $item)
+                                        <tr>
+                                            <td style="width: 30%">
+                                                <p class="mb-0">{{ $item->departamento }}</p>
+                                            </td>
+                                            <td style="width: 25%">
+                                                <h5 class="mb-0">{{ $item->total_usuarios }}</h5>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4>Nivel 3 </h4><span>Usuarios por departamento que terminaron al </span><span class="badge badge-soft-success font-size-12">100%</span></p>
+                            <div class="table-responsive mt-4">
+                                @if($nivelTresFinPorDepartamento->isEmpty())
+                                <p class="text-center">No hay registros para mostrar.</p>
+                                @else
+                                <table class="table align-middle table-nowrap">
+                                    <tbody>
+                                        @foreach($nivelTresFinPorDepartamento as $item)
+                                        <tr>
+                                            <td style="width: 30%">
+                                                <p class="mb-0">{{ $item->departamento }}</p>
+                                            </td>
+                                            <td style="width: 25%">
+                                                <h5 class="mb-0">{{ $item->total_usuarios }}</h5>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
         </div>
         <div class="col-xl-4">
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title mb-4">Ingreso general a niveles</h4>
-
                     <div>
                         <div id="donut-chart" data-colors='["--bs-primary", "--bs-success", "--bs-danger"]' class="apex-charts"></div>
                     </div>
-
                     <div class="text-center text-muted">
                         <div class="row">
                             <div class="col-4">
@@ -175,12 +261,13 @@
                     </div>
                 </div>
             </div>
-            <!-- apexcharts -->
-            <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
-            <!-- Saas dashboard init -->
-            <script src="assets/js/pages/saas-dashboard.init.js"></script>
         </div>
     </div>
+
+    <!-- apexcharts -->
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <!-- Saas dashboard init -->
+    <script src="assets/js/pages/saas-dashboard.init.js"></script>
     <!-- end row -->
     @endif
 

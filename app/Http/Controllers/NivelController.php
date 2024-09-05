@@ -127,7 +127,33 @@ class NivelController extends Controller
             ->with('departamento:id,name') // Cargar el nombre del departamento
             ->get();
 
+
+
+        #USUARIOS QUE HAN FINALIZADO NIVEL UNO POR DEPARTAMENTO
+        $nivelUnoFinPorDepartamento = ProgresoUsuario::join('users', 'progreso_usuarios.usuario_id', '=', 'users.id')
+            ->join('departamentos', 'users.departamento_id', '=', 'departamentos.id')
+            ->where('progreso_usuarios.estado_proceso', 1)
+            ->select('departamentos.name as departamento', DB::raw('count(distinct progreso_usuarios.usuario_id) as total_usuarios'))
+            ->groupBy('departamentos.id', 'departamentos.name')
+            ->get();
+
+        #USUARIOS QUE HAN FINALIZADO NIVEL DOS POR DEPARTAMENTO
+        $nivelDosFinPorDepartamento = ProgresoDosUsuario::join('users', 'progreso_dos_usuarios.usuario_id', '=', 'users.id')
+            ->join('departamentos', 'users.departamento_id', '=', 'departamentos.id')
+            ->where('progreso_dos_usuarios.estado_proceso', 1)
+            ->select('departamentos.name as departamento', DB::raw('count(distinct progreso_dos_usuarios.usuario_id) as total_usuarios'))
+            ->groupBy('departamentos.id', 'departamentos.name')
+            ->get();
+
+        #USUARIOS QUE HAN FINALIZADO NIVEL TRES POR DEPARTAMENTO
+        $nivelTresFinPorDepartamento = ProgresoTresUsuario::join('users', 'progreso_tres_usuarios.usuario_id', '=', 'users.id')
+            ->join('departamentos', 'users.departamento_id', '=', 'departamentos.id')
+            ->where('progreso_tres_usuarios.estado_proceso', 1)
+            ->select('departamentos.name as departamento', DB::raw('count(distinct progreso_tres_usuarios.usuario_id) as total_usuarios'))
+            ->groupBy('departamentos.id', 'departamentos.name')
+            ->get();
+
         // Retornar los contadores a la vista
-        return view('registrados.index', compact('niveles', 'nivelUnoFin', 'nivelDosFin', 'nivelTresFin', 'nivelUnoGen', 'nivelDosGen', 'nivelTresGen', 'totalUsuarios', 'usuariosPorDepartamento'));
+        return view('registrados.index', compact('niveles', 'nivelUnoFin', 'nivelDosFin', 'nivelTresFin', 'nivelUnoGen', 'nivelDosGen', 'nivelTresGen', 'totalUsuarios', 'usuariosPorDepartamento', 'nivelUnoFinPorDepartamento', 'nivelDosFinPorDepartamento', 'nivelTresFinPorDepartamento'));
     }
 }
