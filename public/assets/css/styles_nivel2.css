@@ -228,25 +228,24 @@ body {
 
 
 /* --------------- bubujas -----------------*/ 
-
+/* Contenedor principal que se adapta al tamaño del contenedor padre */
 .bubble-container {
     position: absolute;
-    width: 100px;
-    height: 100px;
-    margin: 50px auto;
-    left: 25%;
-    top: 4%;
+    width: 10%;
+    height: 10%;
+    margin: 0 auto;
 }
+
+/* Estilos generales para las burbujas */
 .bubble {
-    width: 20px;
-    height: 20px;
     background-color: rgba(249, 245, 245, 0.948);
     border-radius: 50%;
     position: absolute;
 }
 
+/* Tamaños y posiciones relativos a bubble-container */
 .bubble1 {
-    bottom: 20px;
+    bottom: 20%;
     left: 80%;
     transform: translateX(-50%);
     width: 25%;
@@ -254,7 +253,7 @@ body {
 }
 
 .bubble2 {
-    bottom: 40px;
+    bottom: 40%;
     left: 55%;
     transform: translateX(-50%);
     width: 14%;
@@ -262,13 +261,61 @@ body {
 }
 
 .bubble3 {
-    bottom: 60px;
+    bottom: 60%;
     left: 40%;
     transform: translateX(-50%);
     width: 10%;
     height: 10%;
 }
 
+#burbujas_escena1{
+    left: 28%;
+    top: 25%;
+    display: none;
+}
+
+#burbujas_escena2{
+    left: 20%;
+    top: 40%;
+    display: none;
+}
+
+#burbujas_escena3{
+    left: 30%;
+    top: 20%;
+    display: none;
+}
+
+#burbujas_escena4{
+    left: 55%;
+    top: 20%;
+    display: none;
+}
+
+#burbujas_escena5{
+    left: 55%;
+    top: 10%;
+    display: none;
+}
+
+
+#burbujas_escena6{
+    left: 40%;
+    top: 25%;
+    display: none;
+}
+
+#burbujas_escena7{
+    left: 40%;
+    top: 25%;
+    display: none;
+}
+
+#burbujas_escena8{
+    left: 70%;
+    top: 25%;
+    display: none;
+}
 
 /* -------------- gifs  E1 ---------------- */
 
@@ -603,7 +650,7 @@ body {
 #ixkin_cuerpo_completo_E4_hablando {
     width: 75%;
     left: -5%;
-    top: 16%;
+    top: 25%;
 }
 
 #junam_cuerpo_completo_E4_hablando{
@@ -614,9 +661,8 @@ body {
 
 #junajpu_cuerpo_completo_E4_hablando{
     width: 68%;
-    left: 28%;
-    top: 22%;
-
+    left: 36%;
+    top: 30%;
 }
 
 
@@ -630,16 +676,15 @@ body {
 #ixkin_cuerpo_completo_E4_llorando{
     width: 75%;
     left: -5%;
-    top: 16%;
+    top: 25%;
 
 }
 
 #junajpu_sonriendo_E4_quieto {
     width: 20%;
     height: auto;
-    left: 52%;
-    top: 16.7%;
-
+    left: 60%;
+    top: 25%;
 }
 
 .imagen_escena_4 {
@@ -655,7 +700,7 @@ body {
     width: 15.5%;
     height: auto;
     left: 25%;
-    top: 41.2%;
+    top: 50%;
 
 }
 
@@ -670,7 +715,7 @@ body {
 #ixkin_cuerpo_completo_E4_hablando2 {
     width: 75%;
     left: -5%;
-    top: 16%;
+    top: 25%;
 
 }
 
@@ -711,15 +756,43 @@ body {
     left: 1.1%;
     top: 20.5%;
 }
+
+
+
+#junam_sentandose {
+    width: 70%;
+    left: 0%;
+    top: 9%;
+    z-index: 3;
+}
+
+#junajpu_sentandose_E4 {
+    width: 60%;
+    left: -1%;
+    top: 18%;
+    z-index: 2;
+}
+
+#ixkin_sentandose{
+    width: 70%;
+    left: -1%;
+    top: 3%;
+    z-index: 1;
+}
+
+#niños_jugando_pelota{
+    width: 50%;
+    left: 50%;
+    top: 10%;
+}
 /* -------------- gifs E4 ----------------- */ 
 
 /* -------------- mensajes E4 ---------------- */
 
 #mensaje_pregunta_ixkina_a_junajpu {
     left: 39%;
-    top: 37%;
+    top: 45%;
     z-index: 200;
-
 }
 
 #mensaje_pregunta_junam_a_junajpu{
@@ -729,8 +802,8 @@ body {
 
 }
 #mensaje_pregunta_junajpu_respuestas_hijos{
-    left: 55%;
-    top: 19%;
+    left: 62%;
+    top: 22%;
     z-index: 200;
 
 }
@@ -788,10 +861,10 @@ body {
 
 
 #junajpu_acostado_E5 {
-    width: 40%;
+    width: 15%;
     height: auto;
-    left: 39%;
-    top: 15%;
+    left: 61%;
+    top: 2%;
 }
 
 
@@ -809,9 +882,27 @@ body {
 
 
 #junajpu_hablando_E5 {
-    width: 38%;
+    width: 55%;
+    left: 55%;
+    top: 2%;
+}
+
+
+#libro_uno{
+    width: 20%;
+    left: 59%;
+    top: 82%;
+}
+#libro_dos{
+    width: 20%;
     left: 40%;
-    top: 9%;
+    top: 82%;
+}
+
+#ixchel_hablando_barriendo{
+    width: 75%;
+    left: -25%;
+    top: 22%;
 }
 
 /* -------------- gifs E5 ----------------- */ 
@@ -835,7 +926,7 @@ body {
 }
 
 #mensaje_junajpu_despues_de_desicion{
-    top: 12%;
+    top: 1%;
     left: 65%;
 }
 
@@ -1029,7 +1120,7 @@ body {
 
 #junamnoj_E7{
     width: 35%;
-    left: 47%;
+    left: 52%;
     top: 33%;
     z-index: 2;
 }
@@ -1173,15 +1264,14 @@ body {
 .mensajes_de_respuestas {
     position: absolute;
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5);;
+    padding: 2px;
     max-width: 600px;
     margin: auto;
     border-radius: 10px;
-    justify-content: center;
-    top: 55%;
+    flex-direction: column;
+    left: 0%;
+    top: 0%;
 }
 /*
 .mensajes_de_respuestas {
@@ -1731,7 +1821,7 @@ header img {
 
 #junamnoj_E7 {
     width: 35%;
-    left: 50%;
+    left: 52%;
     top: 35%;
     z-index: 2;
 }
@@ -1998,10 +2088,25 @@ header img {
 
 
 /* ajustes de escenas*/
+#ixkin_cuerpo_completo_E4_hablando {
+    width: 75%;
+    left: -5%;
+    top: 28%;
+}
+#ixkin_cuerpo_completo_E4_hablando2 {
+    width: 75%;
+    left: -5%;
+    top: 28%;
+}
 #ixchel_cocinando_E2 {
     width: 69%;
     left: 46%;
-    top: 12%;
+    top: 14%;
+}
+#ixkin_cuerpo_completo_E4_llorando {
+    width: 75%;
+    left: -5%;
+    top: 28%;
 }
 #batz_quieto {
     left: 50%;
@@ -2019,7 +2124,7 @@ header img {
         top: 5%;
     }
     #ixkin_quieta_E4 {
-        top: 40%;
+        top: 50%;
     }
     #junam_quieto_E4 {
     top: 31%;
@@ -2035,10 +2140,10 @@ header img {
     }
 
     #junajpu_acostado_E5 {
-        top: 20%;
+        top: 10%;
     }
     #junajpu_hablando_E5 {
-    top: 15%;
+    top: 10%;
 }
 .mensajes_personajes_derecha {
     font-size: 15px;
@@ -2846,15 +2951,10 @@ header img {
     .mensajes_de_respuestas {
         position: absolute;
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.5);
         max-width: 500px;
         margin: auto;
         border-radius: 10px;
-        justify-content: center;
-        top: 50%;
         }
 
         .opciones_mensajes_botones {
@@ -3024,15 +3124,10 @@ header img {
     .mensajes_de_respuestas {
         position: absolute;
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.5);
         max-width: 80%;
         margin: auto;
         border-radius: 10px;
-        justify-content: center;
-        top: 50%;
     }
     #vidas {
         font-size: 1.7rem;
@@ -3095,7 +3190,7 @@ header img {
         left: 30%;
     }
     #mensaje_junajpu_despues_de_desicion {
-    top: 10%;
+    top: 1%;
     left: 65%;
 }
 #mensaje_de_junam_enfermo_E6 {
@@ -3160,15 +3255,10 @@ header img {
         .mensajes_de_respuestas {
             position: absolute;
             display: flex;
-            flex-wrap: wrap;
             gap: 10px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
             max-width: 80%;
             margin: auto;
             border-radius: 10px;
-            justify-content: center;
-            top: 35%;
         
         }
     

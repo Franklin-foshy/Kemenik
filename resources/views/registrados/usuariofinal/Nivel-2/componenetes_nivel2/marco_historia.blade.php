@@ -18,6 +18,7 @@
 
 <!------------------------------ Burbujas -------------------------------->
 
+@include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.burbujas_texto')
 
 <!------------------------------ Burbujas -------------------------------->
 

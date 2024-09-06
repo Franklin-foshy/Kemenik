@@ -113,6 +113,13 @@
 
 <img id = "junajpu_cuerpo_completo_E4_hablando2" src="{{ asset('imgs/nivel2/E4/JUNAJPU_FRONTAL_HABLANDO_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
 
+<img id = "junajpu_sentandose_E4" src="{{ asset('imgs/nivel2/E4/JUNAJPU_PERFIL_CAMINANDO_SENTANDOSE_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "junam_sentandose" src="{{ asset('imgs/nivel2/E4/JUNAM_PERFIL_CAMINANDO_SENTANDOSE_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "ixkin_sentandose" src="{{ asset('imgs/nivel2/E4/IXKIK_PERFIL_CAMINANDO_SENTANDOSE_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
+
+<img id = "niños_jugando_pelota" src="{{ asset('imgs/nivel2/E4/PERSONAJES_JUGANDO_FUTBOL_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
 
 
 <!------------------------------ Escena 4 --------------------------------->
@@ -126,13 +133,19 @@
 
 <img id = "junam_en_mesa_quieta" src="{{ asset('imgs/nivel2/E5/JUNAM_FRONTAL_MEDIO_PLANO_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
 
-<img id = "junajpu_acostado_E5" src="{{ asset('imgs/nivel2/E5/JUNAJPU_PERFIL_ACOSTADO_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
+<img id = "junajpu_acostado_E5" src="{{ asset('imgs/nivel2/E5/JUNAJPU_FRONTAL_SENTADO_HABLANDO_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
 
 <img id = "ixkin_hablando_E5" src="{{ asset('imgs/nivel2/E5/IXKIK_FRONTAL_HABLANDO_MEDIO_PLANO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
 
 <img id = "junam_habalndo_E5" src="{{ asset('imgs/nivel2/E5/JUNAM_FRONTAL_HABLANDO_MEDIO_PLANO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
 
-<img id = "junajpu_hablando_E5" src="{{ asset('imgs/nivel2/E5/JUNAJPU_PERFIL_ACOSTADO_HABLANDO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
+<img id = "junajpu_hablando_E5" src="{{ asset('imgs/nivel2/E5/JUNAJPU_FRONTAL_SENTADO_HABLANDO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
+
+<img id = "libro_uno" src="{{ asset('imgs/nivel2/E5/LIBRO_DOS_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
+
+<img id = "libro_dos" src="{{ asset('imgs/nivel2/E5/LIBRO_DOS_E5.png')}}" alt="GIF animado" class="imagen_escena_5">
+
+<img id = "ixchel_hablando_barriendo" src="{{ asset('imgs/nivel2/E5/IXCHEL_FRENTE_BARRIENDO_HABLANDO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_5">
 
 
 
@@ -142,17 +155,17 @@
 <!------------------------------ Escena 6 --------------------------------->
 
 
-<img id = "ixchel_acostada_quieta" src="{{ asset('imgs/nivel2/E6/IXCHEL_PERFIL_ACOSTADA_E6.png')}}" alt="GIF animado" class="imagen_escena_6">
+<img id = "ixchel_acostada_quieta" src="{{ asset('imgs/nivel2/E6/IXCHEL_PERFIL_ACOSTADA_E6_0209.png')}}" alt="GIF animado" class="imagen_escena_6">
 
-<img id = "ixchel_moviendose_acostarse" src="{{ asset('imgs/nivel2/E6/IXCHEL_PERFIL_ACOSTANDOSE_E6.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
+<img id = "ixchel_moviendose_acostarse" src="{{ asset('imgs/nivel2/E6/IXCHEL_PERFIL_ACOSTADA_E6.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
 
-<img id = "ixchel_enferma_quieta" src="{{ asset('imgs/nivel2/E6/IXCHEL_PERFIL_ENFERMA_E6.png')}}" alt="GIF animado" class="imagen_escena_6">
+<img id = "ixchel_enferma_quieta" src="{{ asset('imgs/nivel2/E6/IXCHEL_PERFIL_ACOSTADA_ENFERMA_E6_2902.png')}}" alt="GIF animado" class="imagen_escena_6">
 
-<img id = "junam_enfermo" src="{{ asset('imgs/nivel2/E6/JUNAM_PERFIL_ACOTADO_ENFERMO_E6.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
+<img id = "junam_enfermo" src="{{ asset('imgs/nivel2/E6/JUNAM_PERFIL_ACOSTADO_ENFERMO_E6.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
 
 <img id = "junajpu_levantandose" src="{{ asset('imgs/nivel2/E6/JUNAJPU_FRONTAL_LEVANTANDOSE_MEDICIAN.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
 
-<img id = "junajpu_acostandose" src="{{ asset('imgs/nivel2/E6/JUNAJPU_PERFIL_ACOSTANDOSE_E6.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
+<img id = "junajpu_acostandose" src="{{ asset('imgs/nivel2/E6/JUNAJPU_PERFIL_ACOSTADO_E6.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
 
 <img id = "junajpu_habalndo_acostado_E6" src="{{ asset('imgs/nivel2/E6/JUNAJPU_PERFIL_ACOSTADO_HABLANDO_E5.gif')}}" alt="GIF animado" class="gif_amimado_escena_6">
 

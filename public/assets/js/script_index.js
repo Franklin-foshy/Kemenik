@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', function() {
     if (typeof window.userId !== 'undefined') {
       console.log('User ID desde script_index.js:', window.userId);
-      localStorage.setItem('userId', window.userId); // Guarda en localStorage
+      localStorage.setItem('userId', window.userId); 
     } else {
       console.error('User ID no definido');
     }
@@ -26,11 +26,25 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
     const nivel4Button = document.getElementById('nivel2');
     const nivel3button = document.getElementById('nivel3');
-    let completadas = parseInt(localStorage.getItem('completadas')) || 0;
-    
+    let completadas_nivel2 = localStorage.getItem('nivel_completado_2');
+
+    let completadas = localStorage.getItem('nivel_completado_1');
+    if (completadas === null) {
+        completadas = 0;
+    } else {
+        completadas = parseInt(completadas, 10); 
+    }
+
+    if (completadas_nivel2 === null) {
+        completadas_nivel2 = 0;
+    } else {
+        completadas_nivel2 = parseInt(completadas_nivel2, 10); 
+    }
+
+
     // Función para actualizar la accesibilidad del botón Nivel 2
     function updateCorrectAnswers(count) {
-        if (count >= 6) { // Número mínimo de respuestas correctas para desbloquear Nivel 2
+        if (count === 1) { // Número mínimo de respuestas correctas para desbloquear Nivel 2
             nivel4Button.style.pointerEvents = 'auto';
             
             nivel4Button.style.opacity = 1; // Opcional: hacer que el botón se vea activo
@@ -43,11 +57,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para actualizar la accesibilidad del botón Nivel 3
     function updatecoerrec2(count) {
         let contador = count ;
-        // Habilitar el botón de Nivel 3 si se cumplen las condiciones
-        if (contador >= 3) {
-            nivel3button.style.pointerEvents = 'auto'; // Habilitar clics
+        if (contador === 1) {
+            nivel3button.style.pointerEvents = 'auto'; 
         } else {
-            nivel3button.style.pointerEvents = 'none'; // Deshabilitar clics
+            nivel3button.style.pointerEvents = 'none';
+            nivel3button.style.opacity = 0.5; 
         };
     };
 
@@ -70,10 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Llamar a la función para actualizar el botón Nivel 2 al cargar la página
 
     updateCorrectAnswers(completadas);
-
-
-    // Llamar a la función para actualizar el botón Nivel 3 al cargar la página
     
+    
+    // Llamar a la función para actualizar el botón Nivel 3 al cargar la página
+    updatecoerrec2(completadas_nivel2);
     
 
 });

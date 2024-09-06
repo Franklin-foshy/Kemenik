@@ -1,5 +1,4 @@
 
-
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem('userId');
 
@@ -269,6 +268,13 @@ function verificarRespuesta(respuestaSeleccionada) {
         );
         }
     if (respuestaSeleccionada === respuestaCorrecta) {
+        // Selecciona todos los elementos con la clase 'gif_animado_escena'
+        var elementos = document.querySelectorAll('.bubble-container');
+
+        // Recorre todos los elementos seleccionados y aplica 'display: none'
+        elementos.forEach(function(elemento) {
+            elemento.style.display = 'none';
+        });
         audio_correcto.play();
         setTimeout(() => {
             audio_correcto.pause();
@@ -321,8 +327,8 @@ function verificarRespuesta(respuestaSeleccionada) {
                 cambiar_fondo(contendor,imagenes_fondo[contador])
                 cargar_barra(); // Llama a la función que necesitas
                 //window.alert('paso a la funcion')
-                modal_text.textContent =  array_opciones[contador][0].escena_actual
-                modal_title.textContent = `¡Explora la historia y construye un futuro de equidad! ${contador+1}`
+                modal_text.style.display = 'none'
+                modal_title.textContent = array_opciones[contador][0].escena_actual
                 modal_niveles.style.opacity = '1';
                 modal_niveles.style.visibility = 'visible';
             }
@@ -429,6 +435,15 @@ let correcto = 0;
     function toped(contendor, value) {
         contendor.style.top = value + '%';
     }
+
+    // Function left 
+    function lefted(contendor, value) {
+        contendor.style.left = value + '%';
+    }
+    // Function direccion 
+    function direccion(contendor, value) {
+        contendor.style.flexDirection = value;
+    }
     // Funcion para cambia contenido de un parrafo
     function change_message(variable, text_new) {
         variable.textContent = text_new;
@@ -458,6 +473,7 @@ cambiar_fondo(contendor,imagenes_fondo[contador])
 
 function escena_1() {
     //cambiar_fondo(contendor, 'imgs/nivel2/E1/IXKIK_PERFIL_E1.png');
+    
     show(document.getElementById('junajpu_quieto_E1'))
     show(document.getElementById('ixkin_quieta_E1'))
     show(document.getElementById('batz_caimando_E1'))
@@ -528,6 +544,7 @@ function pregunta_de_batz_E1() {
 function opciones_para_respuesta_junajpu_E1() {
     disguise(document.getElementById('mensaje_batz_a_junajpu_E1'))
     seguiente_memsaje.style.display = "none";
+    show(document.getElementById('burbujas_escena1'))
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
@@ -609,6 +626,7 @@ function preguta_ixchel_a_junajpu () {
 function opciones_para_respuesta_junajpu_E2() {
     seguiente_memsaje.style.display = "none";
     disguise(document.getElementById('mensaje_ixchel_a_junajpu'))
+    show(document.getElementById('burbujas_escena2'))
     setTimeout(() => {
         //toped(contenedor_mensajes,'80')
         contenedor_mensajes.style.display = "flex";
@@ -707,6 +725,9 @@ function pregunta_de_ixchel_a_junajpu () {
 
 function respuestas_de_junajpu_a_ixchel () {
     seguiente_memsaje.style.display = "none";
+    show(document.getElementById('mensaje_repuesta_ixchel_a_junajpu_telefono'))
+    show(document.getElementById('burbujas_escena3'))
+
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
@@ -725,6 +746,9 @@ function respuesta_correcta_E3 () {
 // ------------------- Escena 4 ---------------------------------
 
 function escena4() {
+    lefted(document.getElementById('mensajes_de_respuestas'),'30')
+    toped(document.getElementById('mensajes_de_respuestas'),'80')
+    direccion(document.getElementById('mensajes_de_respuestas'),'row')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('plato_de_sopa_E3'))
@@ -800,6 +824,9 @@ function niños_le_preguntan_si_pueden_ir () {
 
 function desisicion_junajpu_a_sus_hijos () {
     seguiente_memsaje.style.display = "none";
+    disguise(document.getElementById('mensaje_pregunta_junam_a_junajpu')) 
+    disguise(document.getElementById('mensaje_pregunta_ixkina_a_junajpu')) 
+    show(document.getElementById('burbujas_escena4'))
     setTimeout(() => {
         //toped(contenedor_mensajes,'55')
         contenedor_mensajes.style.display = "flex";
@@ -832,25 +859,19 @@ function respuesta_correcta_E4 () {
     disguise(document.getElementById('junam_cuerpo_completo_E4_llorando'))
     disguise(document.getElementById('junajpu_sonriendo_E4_quieto')) 
     cambiar_fondo(contendor,fondo_campo_E4)
-    setTimeout(() => {
-        show(document.getElementById('todos_van_caminando_al_campo'))
         setTimeout(() => {
-            disguise(document.getElementById('todos_van_caminando_al_campo'))
-            show(document.getElementById('ixkin_quieta_E42'))
-            show(document.getElementById('junam_quieto_E42'))
-            show(document.getElementById('junajpu_sonriendo_E4_quieto2'))
+            show(document.getElementById('junam_sentandose')) 
+            show(document.getElementById('junajpu_sentandose_E4')) 
+            show(document.getElementById('ixkin_sentandose')) 
+            show(document.getElementById('niños_jugando_pelota')) 
+
             setTimeout(() => {
-        change_message(document.getElementById('mensaje_pensamiento_junajpu_repuesta'), array_opciones[contador][1].correcta)
-                show(document.getElementById('mensaje_pensamiento_junajpu'))
-                disguise(document.getElementById('junajpu_sonriendo_E4_quieto2'))
-                show(document.getElementById('junajpu_cuerpo_completo_E4_hablando2'))
                 setTimeout(() => {
-                    disguise(document.getElementById('junajpu_cuerpo_completo_E4_hablando2'))
-                    show(document.getElementById('junajpu_sonriendo_E4_quieto2'))
-                }, 3000);
-            }, 1500);
-        }, 4500);
-    }, 1500);
+                    change_message(document.getElementById('mensaje_pensamiento_junajpu_repuesta'), array_opciones[contador][1].correcta)
+                    show(document.getElementById('mensaje_pensamiento_junajpu'))
+                }, 1000);
+            }, 200);
+        },1000);
 
 
     
@@ -859,9 +880,15 @@ function respuesta_correcta_E4 () {
 
 // ------------------- Escena 5 ---------------------------------
 
-function escena5(){        
+function escena5(){            
+    lefted(document.getElementById('mensajes_de_respuestas'),'0')
+    toped(document.getElementById('mensajes_de_respuestas'),'5')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('junam_sentandose')) 
+    disguise(document.getElementById('junajpu_sentandose_E4')) 
+    disguise(document.getElementById('ixkin_sentandose')) 
+    disguise(document.getElementById('niños_jugando_pelota')) 
     disguise(document.getElementById('junajpu_sonriendo_E4_quieto2'))
     disguise(document.getElementById('mensaje_pensamiento_junajpu'))
     disguise(document.getElementById('ixkin_quieta_E42'))
@@ -870,6 +897,8 @@ function escena5(){
     show(document.getElementById('ixkin_en_mesa_quieta'))
     show(document.getElementById('junam_en_mesa_quieta'))
     show(document.getElementById('junajpu_acostado_E5'))
+    show(document.getElementById('libro_uno'))
+    show(document.getElementById('libro_dos'))
     seguiente_memsaje.addEventListener('click', hijos_preguntan_a_ixchel);
 }
 
@@ -899,10 +928,14 @@ function ixchel_responde_y_pregunta_a_junajpu () {
     seguiente_memsaje.style.pointerEvents = "none";
     disguise(document.getElementById('mensaje_ixkin_a_ixcehel'))
     disguise(document.getElementById('mensaje_junam_a_ixcehel'))
+    disguise(document.getElementById('ixcehl_barriendo_E5'))
     change_message(document.getElementById('mensaje_ixchel_a_sus_a_junajpu_pregunta'), array_opciones[contador][0].correcta)
     show(document.getElementById('mensaje_ixchel_a_sus_a_junajpu'))
+    show(document.getElementById('ixchel_hablando_barriendo'))
     setTimeout(() => {       
         change_message(document.getElementById('mensaje_ixchel_a_sus_a_junajpu_pregunta'), array_opciones[contador][1].pregunta)
+        disguise(document.getElementById('ixchel_hablando_barriendo'))
+        show(document.getElementById('ixcehl_barriendo_E5'))
         seguiente_memsaje.style.display = "flex";
         seguiente_memsaje.style.pointerEvents = "auto";
         seguiente_memsaje.removeEventListener('click', ixchel_responde_y_pregunta_a_junajpu);
@@ -912,6 +945,8 @@ function ixchel_responde_y_pregunta_a_junajpu () {
 
 function desicion_de_junajpu_de_ixchel () {
     seguiente_memsaje.style.display = "none";
+    disguise(document.getElementById('mensaje_ixchel_a_sus_a_junajpu'))
+    show(document.getElementById('burbujas_escena5'))
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
@@ -938,6 +973,10 @@ function respuesta_correcta_E5 () {
 // ------------------- Escena 6 ---------------------------------
 
 function escena6 () {
+    lefted(document.getElementById('mensajes_de_respuestas'),'20')
+    toped(document.getElementById('mensajes_de_respuestas'),'5')
+    direccion(document.getElementById('mensajes_de_respuestas'),'row')
+
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('mensaje_ixchel_a_sus_a_junajpu'))
@@ -946,6 +985,8 @@ function escena6 () {
     disguise(document.getElementById('junajpu_acostado_E5'))
     disguise(document.getElementById('ixkin_en_mesa_quieta'))
     disguise(document.getElementById('junam_en_mesa_quieta'))
+    disguise(document.getElementById('libro_uno'))
+    disguise(document.getElementById('libro_dos'))
     show(document.getElementById('junam_enfermo'))
     show(document.getElementById('ixchel_acostada_quieta'))
     show(document.getElementById('junajpu_acostado_quieto'))
@@ -994,6 +1035,9 @@ function junajpu_a_responde_a_ixchel () {
 
 function respuestas_de_junajpu_junam_enfermo (){
     seguiente_memsaje.style.display = "none";
+    disguise(document.getElementById('mensaje_de_junajpu_E6'))
+    show(document.getElementById('burbujas_escena6'))
+
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
@@ -1030,6 +1074,8 @@ function respuesta_correcta_E6 () {
 
 
 function escena7(){
+    disguise(document.getElementById('junajpu_acostado_quieto'))
+    lefted(document.getElementById('mensajes_de_respuestas'),'5')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('junajpu_levantandose'))
@@ -1112,6 +1158,7 @@ function ixchel_pregunta_a_junajpu  () {
 function respuestas_de_junajpu_E7 () {
     disguise(document.getElementById('mensaje_ixchel_E7'))
     disguise(document.getElementById('ixchel_quieta_en_la_cocina_E7'))
+    show(document.getElementById('burbujas_escena7'))
     cambiar_fondo(contendor,fondo_cama_E7)
     show(document.getElementById('junamnoj_E7'))
     show(document.getElementById('junajpu_acostado_quieto_E7'))
@@ -1137,6 +1184,9 @@ function respuesta_correcta_E7 () {
 // ------------------- Escena 8 ---------------------------------
 
 function escena8(){
+    lefted(document.getElementById('mensajes_de_respuestas'),'25')
+    toped(document.getElementById('mensajes_de_respuestas'),'10')
+    direccion(document.getElementById('mensajes_de_respuestas'),'row')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('ixkin_sentada_quieta'))
@@ -1201,6 +1251,8 @@ function preguta_de_ixchel_a_junajpu () {
 
 function respuestas_junajpu_E8 () {
     seguiente_memsaje.style.display = "none";
+    disguise(document.getElementById('mensaje_ixchel_E8'))
+    show(document.getElementById('burbujas_escena8'))
     setTimeout(() => {
         contenedor_mensajes.style.display = "flex";
         generarHTMLPorId(contador)
@@ -1238,7 +1290,7 @@ function deshabilitarOpciones() {
 
 time_teminar = setTimeout(function(){
         modal_text.textContent =  array_opciones[contador][0].escena_actual
-        modal_title.textContent = `¡Explora la historia y construye un futuro de equidad! ${contador+1}`
+        modal_title.textContent = `¡Explora la historia y construye un futuro de equidad!`
         document.getElementById('header_principal').style.display = 'block'
         document.getElementById('barra_id').style.display = 'block'
         document.getElementById('nivel').style.display = 'block'

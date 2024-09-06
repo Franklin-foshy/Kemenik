@@ -405,6 +405,10 @@ header img {
 }
 
 .modal_cont p{
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: keep-all;
+  hyphens: auto;
   margin-bottom: 10px;
 }
 
@@ -444,8 +448,6 @@ header img {
 
 .contenedor_de_preguntas_respuestas p {
   width: 90%;  /* El texto ocupa todo el ancho disponible */
-  word-wrap: break-word;  /* Permite que las palabras largas se dividan */
-  word-break: break-all;  /* Fuerza el texto a romperse si es necesario */
   text-align: justify;  /* Justifica el texto */
   margin: 10px 0 0 0;  /* Añade un margen superior para separar la imagen del texto */
   padding: 0 5px;  /* Un poco de padding para que no esté pegado a los bordes */
@@ -563,8 +565,6 @@ header img {
 
 .contenedor_de_preguntas_respuestas p {
   width: 90%; 
-  word-wrap: break-word;  
-  word-break: break-all; 
   text-align: justify; 
   margin: 10px 0 0 0; 
   padding: 0 5px; 

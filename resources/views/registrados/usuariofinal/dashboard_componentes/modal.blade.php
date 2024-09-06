@@ -29,7 +29,7 @@
     <div class="modal-content">
       <div class="modal-body text-center">
         <div class="modal-icon">
-          <img src="{{ asset('imgs/index/JUNAM_FRONTAL_MEDIO_PLANO_E3.png') }}" class="respuesta" id="imagen1">
+          <img src="{{ asset('imgs/index/niña_hola.gif') }}" class="respuesta" id="imagen1">
         </div>
         <h3 class="title">{{ __('Hola Bienvenido ') . \Auth::user()->name}}</h3>
         <p class="description">Aprende en JunamNoj'</p>
