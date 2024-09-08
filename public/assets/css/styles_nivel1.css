@@ -8,7 +8,100 @@ body {
   margin: 0;
 }
 
+/* ----------- modal instrucciones ---------------- */
 
+  /* Contenedor del fondo oscuro que cubre toda la pantalla */
+  .desplegable-visible {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asegura que esté por encima de todo */
+}
+.encabezado-desplegable{
+  display: flex;
+  justify-content: flex-start;
+}
+
+
+/* Contenido del modal */
+.contenido-desplegable {
+    width: 40%;
+    height: auto;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    max-width: 90%;
+    max-height: 80%;
+    overflow-y: auto; /* Permite desplazamiento interno si el contenido es muy largo */
+}
+
+/* Estilos de los elementos internos del modal */
+.encabezado-desplegable h5 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.imagen-desplegable {
+    width: 32%;
+    height: auto;
+    max-width: 400px; /* Tamaño máximo de la imagen */
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.texto-instrucciones {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.boton-cerrar {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+}
+
+.pie-desplegable{
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Oculta el modal por defecto */
+.desplegable {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+.imagen-desplegable {
+  width: 60%;
+}
+
+.contenido-desplegable {
+  width: 65%;
+}
+.encabezado-desplegable h5 {
+  font-size: 30px;
+}
+}
+@media (max-width: 540px) {
+  .encabezado-desplegable h5 {
+    font-size: 20px;
+}
+}
+
+/* ----------- modal instrucciones ---------------- */
 
 /* From Uiverse.io by Sourcesketch */ 
 .cargando {

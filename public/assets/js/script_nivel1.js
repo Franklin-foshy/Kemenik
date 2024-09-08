@@ -1,4 +1,46 @@
 
+console.log(listaImagenes)
+function mostrarDesplegable() {
+    document.getElementById('desplegableInstrucciones').style.display = 'flex'
+    
+    document.body.classList.add('modal-visible');  // Añade clase al body para evitar scroll
+    document.getElementById('desplegableInstrucciones').classList.add('desplegable-visible'); // Muestra el modal
+}
+
+function cerrarDesplegable() {
+    document.getElementById('desplegableInstrucciones').style.display = 'none'
+
+    document.body.classList.remove('modal-visible');  // Remueve clase del body
+    document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
+}
+
+const botonSiguienteInstruccion = document.getElementById('botonSiguienteInstruccion');
+const botonVamos = document.getElementById('botonVamos');
+const imagenes = document.getElementById('imagenInstruccion');
+const textoInstruccion = document.getElementById('textoInstruccion');
+
+const texto1 = 'Mueve las piezas del rompecabezas hasta los espacios vacíos. Si los espacios están llenos, puedes mover una pieza en un espacio lleno y la pieza regresará a su posición inicial.';
+const texto2 = 'Cuando coloques la pieza en un espacio correcto, se desplegará una pregunta junto con las respuestas. Debes escoger la respuesta que más creas conveniente. No hay respuestas buenas ni malas.';
+const texto3 = 'Al terminar el rompecabezas podrás ver la imagen escondida y así avanzar al siguiente nivel.';
+
+const listaDescripcion = [texto1, texto2, texto3];
+let contadorSiguienteImagen = 0;
+
+function cambiarImagen() {
+    if (contadorSiguienteImagen >= listaImagenes.length ) {
+        botonSiguienteInstruccion.style.display = 'none';
+        botonVamos.style.display = 'block';
+    } else {
+        imagenes.src = listaImagenes[contadorSiguienteImagen];
+        textoInstruccion.textContent = listaDescripcion[contadorSiguienteImagen];
+        contadorSiguienteImagen++;
+    }
+}
+
+cambiarImagen();
+
+
+
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem('userId');
 
@@ -112,6 +154,7 @@ const espacioss = document.getElementById("targetContainer");
 const boton_regresar = document.getElementById("regresar");
 
 time_teminar = setTimeout(function () {
+    mostrarDesplegable()
     header.style.display = "block";
     nivel.style.display = "block";
     barra_id.style.display = "block";
@@ -252,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         draggedPiece.setAttribute("draggable", "false");
                         draggedPiece.style.pointerEvents = "none";
                         mostrarPregunta(piezaIndex);
-                        mostrarModal();
+                        //mostrarModal();
                     } else {
                         audio_incorrecto.play();
                         setTimeout(() => {
@@ -336,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     pieza.setAttribute("draggable", "false"); // se le coloca en false el draggable para que ya no se mueva la pieza
                     pieza.style.pointerEvents = "none"; // se le quita el pointer para que no se pueda clikear
                     mostrarPregunta(piezaIndex); // se hace el cambio a la pregunta y a las segun el id de la pieza
-                    mostrarModal(); // se muestra el modal con los cambios de la pregunta y de las respuestas
+                    //smostrarModal(); // se muestra el modal con los cambios de la pregunta y de las respuestas
                     setTimeout(() => {
                         audio_correcto.pause(); // pausar el audio
                         audio_correcto.currentTime = 0; // reiniciar el audio

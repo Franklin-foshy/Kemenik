@@ -33,24 +33,20 @@
         </div>
         <h3 class="title">{{ __('Hola Bienvenido ') . \Auth::user()->name}}</h3>
         <p class="description">Aprende en JunamNoj'</p>
-        <button class="btn" data-dismiss="modal">¡Ve y aprende!</button>
+        <button class="btn" id="closeModalButton">¡Ve y aprende!</button>
       </div>
     </div>
   </div>
 </div>
 
-  
 <script type="text/javascript">
+  document.getElementById('closeModalButton').addEventListener('click', function() {
+    $('#welcomeModal').modal('hide');
+  });
+
   $(document).ready(function () {
-    // Verifica si el modal ya se ha mostrado
-    if (!localStorage.getItem('modalShown')) {
-      // Muestra el modal
-      $("#welcomeModal").modal("show");
-      // Marca el modal como mostrado
-      localStorage.setItem('modalShown', 'true');
-     
-    }
-    localStorage.removeItem('modalShown');
+    // Muestra el modal al cargar la página
+    $("#welcomeModal").modal("show");
   });
 </script>
 <!-------------------------------------- modal --------------------------------------------->

@@ -279,8 +279,7 @@ function verificarRespuesta(respuestaSeleccionada) {
         setTimeout(() => {
             audio_correcto.pause();
             audio_correcto.currentTime = 0 ;
-            
-            },1000);
+            },2000);
         //window.alert('entro al if')
         // Respuesta correcta
         if (contador === 1){
@@ -339,8 +338,7 @@ function verificarRespuesta(respuestaSeleccionada) {
         setTimeout(() => {
             audio_incorrecto.pause();
             audio_incorrecto.currentTime = 0 ;
-            
-            },1000);
+            },2000);
         // Respuesta incorrecta
         if (contador === 1){
             equivocacion_E2()
@@ -746,9 +744,9 @@ function respuesta_correcta_E3 () {
 // ------------------- Escena 4 ---------------------------------
 
 function escena4() {
-    lefted(document.getElementById('mensajes_de_respuestas'),'30')
-    toped(document.getElementById('mensajes_de_respuestas'),'80')
-    direccion(document.getElementById('mensajes_de_respuestas'),'row')
+    lefted(document.getElementById('mensajes_de_respuestas'),'80')
+    toped(document.getElementById('mensajes_de_respuestas'),'5')
+    direccion(document.getElementById('mensajes_de_respuestas'),'column')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('plato_de_sopa_E3'))
@@ -883,6 +881,7 @@ function respuesta_correcta_E4 () {
 function escena5(){            
     lefted(document.getElementById('mensajes_de_respuestas'),'0')
     toped(document.getElementById('mensajes_de_respuestas'),'5')
+    direccion(document.getElementById('mensajes_de_respuestas'),'row')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
     disguise(document.getElementById('junam_sentandose')) 

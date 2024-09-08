@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/styles_nivel1.css')}}">
+
     <title>{{_('Puzzle')}}</title>
 </head>
 <body>
@@ -13,6 +14,11 @@
 <audio id="audio_correcto" src="{{ asset('music/correcto.mp3')}}"></audio>
 <audio id="audio_incorrecto" src="{{ asset('music/incorrecto.mp3')}}"></audio>
 <audio id="aplausos" src="{{ asset('music/aplausos.mp3')}}"></audio>
+
+
+
+
+@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.modal_instrucciones')
 
 
 <!-------------------------- Pantalla de carga ------------------------>
@@ -67,6 +73,9 @@
 <!-------------------------------------- boton_continuar --------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var listaImagenes = ["{{ asset('imgs/nivel1/nivel_1_1.jpeg') }}","{{ asset('imgs/nivel1/nivel_1_2.jpeg') }}","{{ asset('imgs/nivel1/nivel_1_3.jpeg') }}"];
+    </script>
     <script src="{{ asset('assets/js/script_nivel1.js') }}"></script>
 </body>
 </html>
