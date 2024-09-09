@@ -11,6 +11,7 @@
 <audio id="audio_correcto" src="{{ asset('music/correcto.mp3')}}"></audio>
 <audio id="audio_incorrecto" src="{{ asset('music/incorrecto.mp3')}}"></audio>
 <audio id="aplausos" src="{{ asset('music/aplausos.mp3')}}"></audio>
+<audio id="nivel2" src="{{ asset('music/nivel_2.mp3')}}"></audio>
 
 
 @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.modal_instrucciones')

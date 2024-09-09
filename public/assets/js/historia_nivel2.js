@@ -9,7 +9,7 @@ function mostrarDesplegable() {
 
 function cerrarDesplegable() {
     document.getElementById('desplegableInstrucciones').style.display = 'none'
-
+    ambiente.play()
     document.body.classList.remove('modal-visible');  // Remueve clase del body
     document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
     modal_niveles.style.opacity = '1';
@@ -147,6 +147,7 @@ const modal_niveles = document.querySelector('.modal_niveles');
 let modal_text = document.getElementById('modal-text');
 let modal_title = document.getElementById('modal-title');
 const contenedor_mensajes = document.getElementById('mensajes_de_respuestas')
+const ambiente = document.getElementById('nivel2')
 
 
 // ---------------------------------- Audio ------------------------------------
@@ -333,12 +334,17 @@ function verificarRespuesta(respuestaSeleccionada) {
         );
         }
     if (respuestaSeleccionada === respuestaCorrecta) {
+        cargar_barra();
         // Selecciona todos los elementos con la clase 'gif_animado_escena'
         var elementos = document.querySelectorAll('.bubble-container');
+        var elementos2 = document.querySelectorAll('.bubble-container2');
 
         // Recorre todos los elementos seleccionados y aplica 'display: none'
         elementos.forEach(function(elemento) {
             elemento.style.display = 'none';
+        });
+        elementos2.forEach(function(elementos2) {
+            elementos2.style.display = 'none';
         });
         audio_correcto.play();
         setTimeout(() => {
@@ -377,7 +383,7 @@ function verificarRespuesta(respuestaSeleccionada) {
                 setTimeout(() => {
                     siguiente_escena.style.display = "block";
                     siguiente_escena.style.pointerEvents = "auto";
-                    },7000);
+                    },5000);
             }else {
             siguiente_escena.style.display = "block";
             siguiente_escena.style.pointerEvents = "auto";
@@ -389,7 +395,7 @@ function verificarRespuesta(respuestaSeleccionada) {
                 contador ++;
                 //window.alert('llego a la funcion')
                 cambiar_fondo(contendor,imagenes_fondo[contador])
-                cargar_barra(); // Llama a la función que necesitas
+                // Llama a la función que necesitas
                 //window.alert('paso a la funcion')
                 modal_text.style.display = 'none'
                 modal_title.textContent = array_opciones[contador][0].escena_actual
@@ -1394,5 +1400,7 @@ modalContent.addEventListener('click', (e) => {
 
 function goHome() {
     window.location.href = '/home';
+    ambiente.pause()
+
 }
 

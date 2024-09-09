@@ -347,7 +347,7 @@ header img {
   justify-content: center; /* Centra horizontalmente */
   align-items: center;     /* Centra verticalmente */
   top: 8%;
-  width: 100%;
+  width: 90%;
   height: 60%;
   margin-top: 0px;
 }
@@ -438,10 +438,6 @@ header img {
   border:8px solid rgb(22, 146, 22);
   border-radius: 10px;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 300px;
-  max-height: 300px;
-  height: 60%;
   cursor: pointer;
   border-radius: 10px;
   transition: transform 0.2s;
@@ -452,10 +448,6 @@ header img {
   border: 8px solid #a41d23;
   border-radius: 10px;
   transition: all 0.3s ease;
-  width: 100%;
-  max-width: 300px;
-  max-height: 300px;
-  height: 60%;
   cursor: pointer;
   border-radius: 10px;
   transition: transform 0.2s;

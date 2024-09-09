@@ -9,6 +9,7 @@ function mostrarDesplegable() {
 
 function cerrarDesplegable() {
     document.getElementById('desplegableInstrucciones').style.display = 'none'
+    musica.play();
 
     document.body.classList.remove('modal-visible');  // Remueve clase del body
     document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
@@ -169,7 +170,6 @@ time_teminar = setTimeout(function () {
     cargando.style.display = "none";
     boton_regresar.style.display = "block";
     contador.style.display = "block";
-    musica.play();
 }, 5000);
 
 // ---------------------------------- Audio ------------------------------------

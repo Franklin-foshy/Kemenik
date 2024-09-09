@@ -1,6 +1,57 @@
 
 
 
+let mostrar_enlace = localStorage.getItem('mostrar_enlace');
+if (mostrar_enlace === null) {
+    mostrar_enlace = 0;
+} else {
+    mostrar_enlace = parseInt(mostrar_enlace, 10); 
+}
+
+
+
+        // Obtener elementos del DOM
+        var enlaceMContenedor = document.getElementById("enlaceMContenedor");
+        var cerrarEnlaceMSpan = document.getElementsByClassName("cerrar")[0];
+        var copiarEnlaceMBtn = document.getElementById("copiarEnlaceMBtn");
+        var enlaceACopiar = document.getElementById("enlaceACopiar").textContent;
+
+        // Abrir el enlace_m al hacer clic en el botón
+        function abrir_enlace() {
+            enlaceMContenedor.style.display = "flex";
+        }
+
+        // Cerrar el enlace_m al hacer clic en la 'x'
+        cerrarEnlaceMSpan.onclick = function() {
+            enlaceMContenedor.style.display = "none";
+        }
+
+        // Cerrar el enlace_m al hacer clic fuera del contenido
+        window.onclick = function(event) {
+            if (event.target == enlaceMContenedor) {
+                enlaceMContenedor.style.display = "none";
+            }
+        }
+
+        // Copiar el enlace al portapapeles
+        copiarEnlaceMBtn.onclick = function() {
+            var elementoTemporal = document.createElement("textarea");
+            elementoTemporal.value = enlaceACopiar;
+            document.body.appendChild(elementoTemporal);
+            elementoTemporal.select();
+            document.execCommand("copy");
+            document.body.removeChild(elementoTemporal);
+
+            alert("Enlace copiado: " + enlaceACopiar);
+        }
+
+if (mostrar_enlace === 1){
+    abrir_enlace()
+    mostrar_enlace = 2
+    localStorage.setItem('mostrar_enlace', mostrar_enlace);
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('modal');
     const cerrarModal = document.getElementById('close-modal');

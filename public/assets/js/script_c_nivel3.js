@@ -10,7 +10,7 @@ function mostrarDesplegable() {
 
 function cerrarDesplegable() {
     document.getElementById('desplegableInstrucciones').style.display = 'none'
-
+    quiz3.play();
     document.body.classList.remove('modal-visible');  // Remueve clase del body
     document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
     modal_niveles.style.opacity = '1';
@@ -322,7 +322,7 @@ time_teminar = setTimeout(function () {
     gif_pregunta.style.display = "flex";
     text_nivel.style.display = "block";
     tamaño = 100 / questions.length;
-    quiz3.play();
+
 }, 5000);
 
 function cargar_barra() {
@@ -359,6 +359,9 @@ function checkAnswer(selectedIndex) {
     contador_nivel ++;
     if (contador_nivel === questions.length){
         nivel_completado = 1;
+        mostrar_enlace = 1;
+
+        localStorage.setItem('mostrar_enlace', mostrar_enlace);
 
         localStorage.setItem('nivel_completado', nivel_completado);
     }

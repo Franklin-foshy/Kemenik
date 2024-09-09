@@ -36,6 +36,9 @@
 <body class="g-sidenav-show bg-gray-200">
   
   <!-- modal -->
+  @include('registrados.usuariofinal.dashboard_componentes.modal_enlace')
+
+
   @include('registrados.usuariofinal.dashboard_componentes.modal')
 
   <!-- Menu -->

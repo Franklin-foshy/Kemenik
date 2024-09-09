@@ -375,6 +375,45 @@ body {
     height: 10%;
 }
 
+.bubble-container2 {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    margin: 0 auto;
+}
+
+/* Estilos generales para las burbujas */
+.bubble2 {
+    background-color: rgba(249, 245, 245, 0.948);
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Tamaños y posiciones relativos a bubble-container */
+.bubble4 {
+    bottom: 20%;
+    left: 45%;
+    transform: translateX(-50%);
+    width: 25%;
+    height: 25%;
+}
+
+.bubble5 {
+    bottom: 40%;
+    left: 65%;
+    transform: translateX(-50%);
+    width: 14%;
+    height: 14%;
+}
+
+.bubble6 {
+    bottom: 60%;
+    left: 80%;
+    transform: translateX(-50%);
+    width: 10%;
+    height: 10%;
+}
+
 #burbujas_escena1{
     left: 28%;
     top: 25%;
@@ -394,7 +433,7 @@ body {
 }
 
 #burbujas_escena4{
-    left: 55%;
+    left: 70%;
     top: 20%;
     display: none;
 }
