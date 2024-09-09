@@ -15,6 +15,7 @@
 <audio  id="fuegos_artificiales" src="{{ asset('music/fuegos_artificiales.mp3')}}"></audio>
 
     <!-- modal -->
+    @include ('registrados.usuariofinal.Nivel-3.componentes_c.modal_instrucciones')
 
     @include ('registrados.usuariofinal.Nivel-3.componentes_c.modal')
 
@@ -50,7 +51,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
-
+    <script>
+        var listaImagenes3 = [
+        "{{ asset('imgs/nivel3/nivel_3_1.jpeg') }}",
+        "{{ asset('imgs/nivel3/nivel_3_2.jpeg') }}",
+        "{{ asset('imgs/nivel3/nivel_3_3.jpeg') }}",
+        "{{ asset('imgs/nivel3/nivel_3_4.jpeg') }}"];
+    </script>
     <!-- Script JavaScript para nivel1.html -->
     <script src="{{ asset('assets/js/script_c_nivel3.js')}}"></script>
 </body>

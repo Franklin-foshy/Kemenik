@@ -13,6 +13,10 @@
 <audio id="aplausos" src="{{ asset('music/aplausos.mp3')}}"></audio>
 
 
+@include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.modal_instrucciones')
+
+
+
 @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.modal_niveles_escenas')
 
 
@@ -85,7 +89,13 @@
 
 </script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
+<script>
+    var listaImagenes2 = [
+    "{{ asset('imgs/nivel2/nivel_2_1.jpeg') }}",
+    "{{ asset('imgs/nivel2/nivel_2_2.jpeg') }}",
+    "{{ asset('imgs/nivel2/nivel_2_3.jpeg') }}",
+    "{{ asset('imgs/nivel2/nivel_2_4.jpeg') }}"];
+</script>
     <script src="{{ asset('assets/js/historia_nivel2.js')}}"></script>
 </body>
 

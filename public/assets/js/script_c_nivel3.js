@@ -1,3 +1,55 @@
+
+
+console.log(listaImagenes3)
+function mostrarDesplegable() {
+    document.getElementById('desplegableInstrucciones').style.display = 'flex'
+    
+    document.body.classList.add('modal-visible');  // Añade clase al body para evitar scroll
+    document.getElementById('desplegableInstrucciones').classList.add('desplegable-visible'); // Muestra el modal
+}
+
+function cerrarDesplegable() {
+    document.getElementById('desplegableInstrucciones').style.display = 'none'
+
+    document.body.classList.remove('modal-visible');  // Remueve clase del body
+    document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
+    modal_niveles.style.opacity = '1';
+    modal_niveles.style.visibility = 'visible'; 
+}
+''
+const botonSiguienteInstruccion = document.getElementById('botonSiguienteInstruccion');
+const botonVamos = document.getElementById('botonVamos');
+const imagenes = document.getElementById('imagenInstruccion');
+const textoInstruccion = document.getElementById('textoInstruccion');
+
+const texto1 = 'En este nivel pondremos en practica lo aprendido durante los niveles anteriores, pon mucha atencion a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
+const texto2 = 'Si responde erroneamente se te dira cual era la respuesta correcta para que podamos entender de mejor forma, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
+const texto3 = 'Si escojes una respuesta correcta te daremos fuegos artificiales, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
+const texto4 = 'Cuando llegues al final del nivel podras ver tu puntacion, si quieres mejorar tu puntuacion puedes intentar de nuevo.';
+
+const listaDescripcion = [texto1, texto2, texto3,texto4];
+
+let contadorSiguienteImagen = 0;
+
+function cambiarImagen() {
+    if (contadorSiguienteImagen >= listaImagenes3.length ) {
+        botonSiguienteInstruccion.style.display = 'none';
+        botonVamos.style.display = 'block';
+    } else {
+        imagenes.src = listaImagenes3[contadorSiguienteImagen];
+        textoInstruccion.textContent = listaDescripcion[contadorSiguienteImagen];
+        contadorSiguienteImagen++;
+    }
+}
+
+cambiarImagen();
+
+
+
+
+
+
+
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem('userId');
 
@@ -261,6 +313,7 @@ time_pantalla_carga = setTimeout(function () {
 });
 
 time_teminar = setTimeout(function () {
+    mostrarDesplegable()
     game_cont.style.display = "flex";
     boton_continuar.style.display = "block";
     barra.style.display = "block";

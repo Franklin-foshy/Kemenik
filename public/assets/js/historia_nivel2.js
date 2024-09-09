@@ -1,4 +1,55 @@
 
+console.log(listaImagenes2)
+function mostrarDesplegable() {
+    document.getElementById('desplegableInstrucciones').style.display = 'flex'
+    
+    document.body.classList.add('modal-visible');  // Añade clase al body para evitar scroll
+    document.getElementById('desplegableInstrucciones').classList.add('desplegable-visible'); // Muestra el modal
+}
+
+function cerrarDesplegable() {
+    document.getElementById('desplegableInstrucciones').style.display = 'none'
+
+    document.body.classList.remove('modal-visible');  // Remueve clase del body
+    document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
+    modal_niveles.style.opacity = '1';
+    modal_niveles.style.visibility = 'visible'; 
+}
+''
+const botonSiguienteInstruccion = document.getElementById('botonSiguienteInstruccion');
+const botonVamos = document.getElementById('botonVamos');
+const imagenes = document.getElementById('imagenInstruccion');
+const textoInstruccion = document.getElementById('textoInstruccion');
+
+const texto1 = 'En este nivel tendras que leer los dialogos de los personajes para entender el contexto de la historia y saber como responder mas adelante.';
+const texto2 = 'Cuando llegues al final de la escena aparecerean las posibles respuestas de acuerdo a la situacion que se este experimentando, se paciente cuando respondas.';
+const texto3 = 'Si escojes una respuesta erronea perderas una vida y provocaras una mala reaccion en la situacion en la que te encuentres.(si pierdes todas tus vidas regresaras hasta la escena 1)';
+const texto4 = 'Si respondes correctamente haras que el mundo cambie y podras avanzar a la siguiente escena hasta terminar el nivel, luego podras avanzar al siguiente nivel.';
+
+const listaDescripcion = [texto1, texto2, texto3,texto4];
+
+let contadorSiguienteImagen = 0;
+
+function cambiarImagen() {
+    if (contadorSiguienteImagen >= listaImagenes2.length ) {
+        botonSiguienteInstruccion.style.display = 'none';
+        botonVamos.style.display = 'block';
+    } else {
+        imagenes.src = listaImagenes2[contadorSiguienteImagen];
+        textoInstruccion.textContent = listaDescripcion[contadorSiguienteImagen];
+        contadorSiguienteImagen++;
+    }
+}
+
+cambiarImagen();
+
+
+
+
+
+
+
+
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem('userId');
 
@@ -1288,6 +1339,7 @@ function deshabilitarOpciones() {
     }
 
 time_teminar = setTimeout(function(){
+        mostrarDesplegable()
         modal_text.textContent =  array_opciones[contador][0].escena_actual
         modal_title.textContent = `¡Explora la historia y construye un futuro de equidad!`
         document.getElementById('header_principal').style.display = 'block'
@@ -1295,8 +1347,6 @@ time_teminar = setTimeout(function(){
         document.getElementById('nivel').style.display = 'block'
         document.getElementById('contenedor').style.display = 'flex'
         document.getElementById('vidas').style.display = 'block'
-        modal_niveles.style.opacity = '1';
-        modal_niveles.style.visibility = 'visible'; 
         cargando.style.display = 'none'
         tamaño = 100/array_opciones.length;
         
