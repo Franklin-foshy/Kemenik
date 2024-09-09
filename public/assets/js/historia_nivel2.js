@@ -49,6 +49,14 @@ cambiarImagen();
 
 
 
+//  ---------------------- lista colores ------------------
+
+var paleta_colores = ['#f8ef8d', '#a1daf6', '#f8a1b1', '#acf8b5', '#fac899'];
+
+
+
+//  ---------------------- lista colores ------------------
+
 
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem('userId');
@@ -247,11 +255,17 @@ function generarHTMLPorId(idPregunta) {
             contenedorMensajes.removeChild(elemento);
         });
         
+        // Mezclar la paleta de colores
+        let coloresMezclados = paleta_colores.sort(() => Math.random() - 0.5);
+
         // Crear los divs para las respuestas
-        preguntaDiccionario.opciones.forEach(function(respuesta) {
+        preguntaDiccionario.opciones.forEach(function(respuesta, index) {
             let divRespuesta = document.createElement('div');
             divRespuesta.className = 'respuesta opciones_mensajes_botones';
             divRespuesta.textContent = respuesta;
+
+            // Asigna un color aleatorio sin repetición
+            divRespuesta.style.backgroundColor = coloresMezclados[index];
 
             divRespuesta.onclick = function() {
                 verificarRespuesta(respuesta);

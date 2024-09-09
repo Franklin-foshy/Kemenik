@@ -49,6 +49,16 @@ body {
     margin-bottom: 20px;
 }
 
+.colores {
+    color: #000;
+    display: block;
+    left: 50%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+}
+
+
 .imagen-desplegable {
     width: 32%;
     height: auto;
@@ -1390,7 +1400,7 @@ body {
 
 .opciones_mensajes_botones {
     display: inline-block;
-    background-color: #f0f0f0;
+    /*background-color: #f0f0f0;*/
     color: #333;
     padding: 10px 15px;
     border-radius: 20px;
@@ -3056,7 +3066,7 @@ header img {
 
         .opciones_mensajes_botones {
             display: inline-block;
-            background-color: #f0f0f0;
+            /*background-color: #f0f0f0;*/
             color: #333;
             padding: 10px 15px;
             border-radius: 20px;
@@ -3064,7 +3074,7 @@ header img {
             word-wrap: break-word;
             font-family: Arial, sans-serif;
             font-size: 12px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             transition: transform 0.1s ease, box-shadow 0.1s ease;
             cursor: pointer;
             z-index: 203;
