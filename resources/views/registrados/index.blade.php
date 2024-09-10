@@ -125,7 +125,7 @@
                                 @foreach($usuariosPorDepartamento as $registro)
                                 <tr>
                                     <td style="width: 30%">
-                                        <p class="mb-0">{{ $registro->departamento->name }}</p>
+                                        <p class="mb-0">{{ $registro->departamento?->name ?? 'Extranjero' }}</p>
                                     </td>
                                     <td style="width: 25%">
                                         <h5 class="mb-0">{{ $registro->total }}</h5>
