@@ -23,9 +23,9 @@ const imagenes = document.getElementById('imagenInstruccion');
 const textoInstruccion = document.getElementById('textoInstruccion');
 
 const texto1 = 'En este nivel pondremos en practica lo aprendido durante los niveles anteriores, pon mucha atencion a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
-const texto2 = 'Si responde erroneamente se te dira cual era la respuesta correcta para que podamos entender de mejor forma, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
-const texto3 = 'Si escojes una respuesta correcta te daremos fuegos artificiales, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
-const texto4 = 'Cuando llegues al final del nivel podras ver tu puntacion, si quieres mejorar tu puntuacion puedes intentar de nuevo.';
+const texto2 = 'Si responde erroneamente se te dira cual era la respuesta correcta, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
+const texto3 = 'Si escojes una respuesta correcta avanzas a la siguiente escena, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
+const texto4 = 'Cuando llegues al final del nivel podras ver la cantidad de respuestas acertadas, si quieres mejorar tu puntuacion puedes intentar de nuevo.';
 
 const listaDescripcion = [texto1, texto2, texto3,texto4];
 
