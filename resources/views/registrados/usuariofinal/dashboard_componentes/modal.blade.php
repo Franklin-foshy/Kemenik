@@ -40,13 +40,31 @@
 </div>
 
 <script type="text/javascript">
-  document.getElementById('closeModalButton').addEventListener('click', function() {
-    $('#welcomeModal').modal('hide');
-  });
 
-  $(document).ready(function () {
+  let modal_1 = localStorage.getItem('modal_1');
+  if (modal_1 === null) {
+      modal_1 = 0;
+  } else {
+    modal_1 = parseInt(modal_1, 10); // Asegúrate de convertirlo a número
+  }
+  
+    document.getElementById('closeModalButton').addEventListener('click', function() {
+      $('#welcomeModal').modal('hide');
+      document.querySelector('.modal-backdrop.show').style.display ='none'
+      modal_1 = 0
+      localStorage.setItem('modal_1', modal_1);
+    });
+  
+  if (modal_1 === 1){
+    $(document).ready(function () {
     // Muestra el modal al cargar la página
     $("#welcomeModal").modal("show");
   });
-</script>
+      $("#welcomeModal").modal("show");
+    }else {
+      $('#welcomeModal').modal('hide');
+    }
+  </script>
 <!-------------------------------------- modal --------------------------------------------->
+
+

@@ -121,6 +121,11 @@
 
 <img id = "niños_jugando_pelota" src="{{ asset('imgs/nivel2/E4/PERSONAJES_JUGANDO_FUTBOL_E4.gif')}}" alt="GIF animado" class="gif_amimado_escena_4">
 
+<img id = "ixkik_sentada_E4" src="{{ asset('imgs/nivel2/E4/IXKIK_PERFIL_SENTADO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "juhajpu_sentado_E4" src="{{ asset('imgs/nivel2/E4/JUNAJPU_PERFIL_SENTADO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
+
+<img id = "junam_sentado_E4" src="{{ asset('imgs/nivel2/E4/JUNAM_PERFIL_SENTADO_E4.png')}}" alt="GIF animado" class="imagen_escena_4">
 
 <!------------------------------ Escena 4 --------------------------------->
 

@@ -383,7 +383,7 @@ function verificarRespuesta(respuestaSeleccionada) {
                 setTimeout(() => {
                     siguiente_escena.style.display = "block";
                     siguiente_escena.style.pointerEvents = "auto";
-                    },5000);
+                    },7000);
             }else {
             siguiente_escena.style.display = "block";
             siguiente_escena.style.pointerEvents = "auto";
@@ -935,11 +935,18 @@ function respuesta_correcta_E4 () {
             show(document.getElementById('niños_jugando_pelota')) 
 
             setTimeout(() => {
+                disguise(document.getElementById('junam_sentandose')) 
+                disguise(document.getElementById('junajpu_sentandose_E4')) 
+                disguise(document.getElementById('ixkin_sentandose'))
+                show(document.getElementById('ixkik_sentada_E4')) 
+                show(document.getElementById('juhajpu_sentado_E4')) 
+                show(document.getElementById('junam_sentado_E4')) 
+
                 setTimeout(() => {
                     change_message(document.getElementById('mensaje_pensamiento_junajpu_repuesta'), array_opciones[contador][1].correcta)
                     show(document.getElementById('mensaje_pensamiento_junajpu'))
                 }, 1000);
-            }, 200);
+            }, 7000);
         },1000);
 
 
@@ -955,6 +962,9 @@ function escena5(){
     direccion(document.getElementById('mensajes_de_respuestas'),'row')
     seguiente_memsaje.style.display = "flex";
     seguiente_memsaje.style.pointerEvents = "auto";
+    disguise(document.getElementById('ixkik_sentada_E4')) 
+    disguise(document.getElementById('juhajpu_sentado_E4')) 
+    disguise(document.getElementById('junam_sentado_E4')) 
     disguise(document.getElementById('junam_sentandose')) 
     disguise(document.getElementById('junajpu_sentandose_E4')) 
     disguise(document.getElementById('ixkin_sentandose')) 

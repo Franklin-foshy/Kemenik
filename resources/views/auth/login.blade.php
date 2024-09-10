@@ -71,4 +71,10 @@
     </div>
 </div>
 <script src="{{ asset('assets/js/validacion_modal.js') }}"></script>
+<script>
+
+var modal_1 = 1;
+
+localStorage.setItem('modal_1', modal_1);
+</script>
 @endsection
