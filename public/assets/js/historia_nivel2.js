@@ -294,7 +294,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 0;
+var contador = 5;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
@@ -1130,10 +1130,6 @@ function respuesta_incorrecta_E6 () {
     disguise(document.getElementById('ixchel_acostada_quieta'))
     show(document.getElementById('ixchel_enferma_quieta'))
     show(document.getElementById('junajpu_acostandose'))
-    setTimeout(() => {       
-        show(document.getElementById('junajpu_acostado_quieto'))
-        disguise(document.getElementById('junajpu_acostandose'))
-    }, 2000);
 }
 
 function respuesta_correcta_E6 () {
@@ -1142,10 +1138,16 @@ function respuesta_correcta_E6 () {
     disguise(document.getElementById('ixchel_enferma_quieta'))
     disguise(document.getElementById('junajpu_acostado_quieto'))
     show(document.getElementById('ixchel_moviendose_acostarse'))
+    disguise(document.getElementById('junajpu_acostandose'))
+    setTimeout(() => { 
+        disguise(document.getElementById('junajpu_acostandose'))
+    },500);
+
     show(document.getElementById('junajpu_levantandose'))
     setTimeout(() => {       
         show(document.getElementById('ixchel_acostada_quieta'))
         disguise(document.getElementById('ixchel_moviendose_acostarse'))
+        disguise(document.getElementById('junajpu_acostado_quieto'))
     }, 2000);
 }
 // ------------------- Escena 6 ---------------------------------
@@ -1370,7 +1372,7 @@ function deshabilitarOpciones() {
 
 time_teminar = setTimeout(function(){
         mostrarDesplegable()
-        modal_text.textContent =  array_opciones[contador][0].escena_actual
+        //modal_text.textContent =  array_opciones[contador][0].escena_actual
         modal_title.textContent = `¡Explora la historia y construye un futuro de equidad!`
         document.getElementById('header_principal').style.display = 'block'
         document.getElementById('barra_id').style.display = 'block'
