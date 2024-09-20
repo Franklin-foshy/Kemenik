@@ -294,7 +294,7 @@ function cambiar_fondo(elemento, nueva_ruta) {
 
 
 
-var contador = 5;
+var contador = 0;
 var contendor = document.getElementById('contenedor');
 var seguiente_memsaje = document.getElementById('siguiente_mensaje');
 var siguiente_escena = document.getElementById('siguiente_escena');
@@ -1372,7 +1372,7 @@ function deshabilitarOpciones() {
 
 time_teminar = setTimeout(function(){
         mostrarDesplegable()
-        //modal_text.textContent =  array_opciones[contador][0].escena_actual
+        modal_text.textContent =  array_opciones[contador][0].escena_actual
         modal_title.textContent = `¡Explora la historia y construye un futuro de equidad!`
         document.getElementById('header_principal').style.display = 'block'
         document.getElementById('barra_id').style.display = 'block'
