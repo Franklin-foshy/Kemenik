@@ -2539,10 +2539,6 @@ header img {
       }
     
 
-
-    .container {
-       
-    }
     .opcion {
         display: inline-block;
         padding: 10px 20px;
@@ -2711,9 +2707,7 @@ header img {
         top: 20%;
         left: 27%;
     }
-    .container {
-    
-    }
+
     #ixchel_acostada_quieta,#ixchel_enferma_quieta {
         width: 38%;
         left: 12%;
@@ -2979,9 +2973,6 @@ header img {
         gap: 20px; /* Espacio entre los botones */
         padding: 20px;
     }
-    .container {
-      
-    }
 
     .container-fluid{
         border-bottom: 1px solid rgb(224, 217, 217);
@@ -3023,9 +3014,7 @@ header img {
 
 @media (max-width: 768px) {
 
-    .container {
-        
-    }    #mensaje_pregunta_junajpu_respuestas_hijos {
+#mensaje_pregunta_junajpu_respuestas_hijos {
         left: 55%;
         top: 15%;
         z-index: 200;
@@ -3140,9 +3129,7 @@ header img {
         padding: 20px;
     }
     
-    .container {
-      
-    }
+
 
 
     .continuar {
