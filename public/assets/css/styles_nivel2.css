@@ -1667,10 +1667,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 75%;
-    max-height: 950px;
-    width: 82%;
-    max-width: 950px;
+    width: 950px;
+    height: 550px;
     margin: auto;
     border: 5px solid rgb(70, 15, 15);
     border-radius: 10px;
@@ -2092,10 +2090,8 @@ header img {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 60%;
-    max-height: 950px;
-    width: 60%;
-    max-width: 950px;
+    width: 700px;
+    height: 460px;
     margin: auto;
     border: 5px solid rgb(70, 15, 15);
     border-radius: 10px;
@@ -2390,10 +2386,7 @@ header img {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 35%;
-        max-height: 950px;
-        width: 70%;
-        max-width: 950px;
+    
         margin: auto;
         border: 5px solid rgb(70, 15, 15);
         border-radius: 10px;
@@ -2548,7 +2541,7 @@ header img {
 
 
     .container {
-        width: 80%;
+       
     }
     .opcion {
         display: inline-block;
@@ -2719,7 +2712,7 @@ header img {
         left: 27%;
     }
     .container {
-        width: 70%;
+    
     }
     #ixchel_acostada_quieta,#ixchel_enferma_quieta {
         width: 38%;
@@ -2987,7 +2980,7 @@ header img {
         padding: 20px;
     }
     .container {
-        width: 75%;
+      
     }
 
     .container-fluid{
@@ -3031,7 +3024,7 @@ header img {
 @media (max-width: 768px) {
 
     .container {
-        height: 38%;
+        
     }    #mensaje_pregunta_junajpu_respuestas_hijos {
         left: 55%;
         top: 15%;
@@ -3148,7 +3141,7 @@ header img {
     }
     
     .container {
-        height: 37%;
+      
     }
 
 
@@ -3266,10 +3259,8 @@ header img {
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 45%;
-        max-height: 950px;
-        width: 90%;
-        max-width: 950px;
+        width: 500px;
+        height: 330px;
         margin: auto;
         border: 3px solid rgb(70, 15, 15);
         border-radius: 5px;
@@ -3371,9 +3362,8 @@ header img {
             height: 4%;
         }
         .container{
-            width: 60%;
-            max-width: 400px;
-            height: 35%;
+            width: 400px;
+            height: 260px;
             border: 5px solid rgb(70, 15, 15);
             top: 25%;
 
@@ -3409,9 +3399,7 @@ header img {
 
 @media (max-width: 431px) {
     .container {
-        width: 98%;
-        max-width: 460px;
-        height: 30%;
+        
         border: 3px solid rgb(70, 15, 15);
         top: 27%;
     }
@@ -3460,15 +3448,6 @@ header img {
     header {
         height: 3%;
     }
-    .container{
-        width: 98%;
-        max-width: 400px;
-        height: 35%;
-        border: 5px solid rgb(70, 15, 15);
-        top: 28%;
-        justify-content: center;
-
-        }
         .siguiente-mensaje {
             left: 40%;
             top: 110%;
@@ -3476,8 +3455,7 @@ header img {
 }
 @media (max-width: 414px) {
     .container{
-        width: 98%;
-        max-width: 400px;
+       
         border: 5px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
@@ -3492,9 +3470,7 @@ header img {
 }
 @media (max-width: 412px) {
     .container {
-        width: 98%;
-        max-width: 400px;
-        height: 30%;
+     
         border: 3px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
@@ -3511,9 +3487,8 @@ header img {
     }
 
     .container{
-        width: 98%;
-        max-width: 400px;
-        height: 30%;
+        width: 370px;
+        height: 245px;
         border: 3px solid rgb(70, 15, 15);
         top: 28%;
         justify-content: center;
@@ -3532,9 +3507,8 @@ header img {
 @media (max-width: 376px) {
 
     .container{
-        width: 95%;
-        height: 230px;
-        border: 5px solid rgb(70, 15, 15);
+        width: 350px;
+        height: 235px;
         top: 28%;
 
         }
@@ -3569,9 +3543,6 @@ header img {
 
 @media (max-width: 360px) {
     .container{
-        width: 95%;
-        height: 230px;
-        border: 3px solid rgb(70, 15, 15);
         top: 29%;
 
         }
@@ -3591,8 +3562,8 @@ header img {
 
     .container{
         position: absolute;
-        top: 25%;
-
+            width: 340px;
+            height: 230px;
     }
     .opciones_mensajes_botones {
         max-width: 100px;
