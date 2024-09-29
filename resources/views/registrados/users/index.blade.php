@@ -46,6 +46,7 @@
                                         <th>País</th>
                                         <th>Departamento</th>
                                         <th>Município</th>
+                                        <th class="d-none">Comunidad</th> <!-- Ocultamos Comunidad -->
                                         <th>Estado</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
@@ -82,6 +83,13 @@
                                         <td>
                                             @if ($user->municipio_id)
                                             {{ $user->municipio->name }}
+                                            @else
+                                            <span class="badge bg-danger">Vacio</span>
+                                            @endif
+                                        </td>
+                                        <td class="d-none"> <!-- Ocultamos el campo Comunidad -->
+                                            @if ($user->comunidad)
+                                            {{ $user->comunidad }}
                                             @else
                                             <span class="badge bg-danger">Vacio</span>
                                             @endif
