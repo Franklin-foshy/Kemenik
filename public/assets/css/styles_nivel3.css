@@ -344,14 +344,14 @@ header img {
 .pregunta_gif {
   position: absolute;
   display: none;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center;     /* Centra verticalmente */
+  /* justify-content: center; */
+  align-items: center;
   top: 8%;
   width: 90%;
   height: 60%;
   margin-top: 0px;
+  left: -5%;
 }
-
 .gif_principal {
   position: absolute;
   left: 20%;
@@ -512,7 +512,7 @@ header img {
   cursor: pointer;
   pointer-events: none;
   transition: transform 0.1s;
-  left: 70%;
+  left: 80%;
   top: 90%;
   z-index: 200;
 }

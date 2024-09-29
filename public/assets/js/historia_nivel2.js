@@ -21,10 +21,10 @@ const botonVamos = document.getElementById('botonVamos');
 const imagenes = document.getElementById('imagenInstruccion');
 const textoInstruccion = document.getElementById('textoInstruccion');
 
-const texto1 = 'En este nivel tendras que leer los dialogos de los personajes para entender el contexto de la historia y saber como responder mas adelante.';
-const texto2 = 'Cuando llegues al final de la escena aparecerean las posibles respuestas de acuerdo a la situacion que se este experimentando, se paciente cuando respondas.';
-const texto3 = 'Si escojes una respuesta erronea perderas una vida y provocaras una mala reaccion en la situacion en la que te encuentres.(si pierdes todas tus vidas regresaras hasta la escena 1)';
-const texto4 = 'Si respondes correctamente haras que el mundo cambie y podras avanzar a la siguiente escena hasta terminar el nivel, luego podras avanzar al siguiente nivel.';
+const texto1 = 'En este nivel, tendrás que leer los diálogos de los personajes para entender el contexto de la historia y saber cómo responder más adelante.';
+const texto2 = 'Cuando llegues al final de la escena, aparecerán las posibles respuestas de acuerdo a la situación que se esté experimentando. Sé paciente al responder.';
+const texto3 = 'Si eliges una respuesta incorrecta, perderás una vida y causarás una mala reacción en la situación en la que te encuentres. Si pierdes todas tus vidas, regresarás a la escena 1';
+const texto4 = 'Si respondes correctamente, harás que el mundo cambie y podrás avanzar a la siguiente escena hasta completar el nivel. Luego, podrás pasar al siguiente nivel.';
 
 const listaDescripcion = [texto1, texto2, texto3,texto4];
 
@@ -1130,10 +1130,6 @@ function respuesta_incorrecta_E6 () {
     disguise(document.getElementById('ixchel_acostada_quieta'))
     show(document.getElementById('ixchel_enferma_quieta'))
     show(document.getElementById('junajpu_acostandose'))
-    setTimeout(() => {       
-        show(document.getElementById('junajpu_acostado_quieto'))
-        disguise(document.getElementById('junajpu_acostandose'))
-    }, 2000);
 }
 
 function respuesta_correcta_E6 () {
@@ -1142,10 +1138,16 @@ function respuesta_correcta_E6 () {
     disguise(document.getElementById('ixchel_enferma_quieta'))
     disguise(document.getElementById('junajpu_acostado_quieto'))
     show(document.getElementById('ixchel_moviendose_acostarse'))
+    disguise(document.getElementById('junajpu_acostandose'))
+    setTimeout(() => { 
+        disguise(document.getElementById('junajpu_acostandose'))
+    },500);
+
     show(document.getElementById('junajpu_levantandose'))
     setTimeout(() => {       
         show(document.getElementById('ixchel_acostada_quieta'))
         disguise(document.getElementById('ixchel_moviendose_acostarse'))
+        disguise(document.getElementById('junajpu_acostado_quieto'))
     }, 2000);
 }
 // ------------------- Escena 6 ---------------------------------
