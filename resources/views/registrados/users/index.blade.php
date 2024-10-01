@@ -35,10 +35,9 @@
                     <div class="card-body">
 
                         <div class="table-responsive mb-0" data-pattern="priority-columns">
-                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100">
+                            <table id="datatable-buttons" class="table table-bordered dt-responsive nowrap w-100" style="font-size: 12px;">
                                 <thead>
                                     <tr class="text-nowrap">
-                                        <th>No.</th>
                                         <th>Nombre y Apellidos</th>
                                         <th>Rol</th>
                                         <th>Teléfono</th>
@@ -46,7 +45,7 @@
                                         <th>País</th>
                                         <th>Departamento</th>
                                         <th>Município</th>
-                                        <th class="d-none">Comunidad</th> <!-- Ocultamos Comunidad -->
+                                        <th>Comunidad</th>
                                         <th>Estado</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
@@ -55,7 +54,6 @@
                                     @foreach ($users as $user)
                                     @include('registrados.users.modals.edit')
                                     <tr class="align-middle">
-                                        <td>{{ $user->id }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>
                                             @if ($user->rol->id == 1)
@@ -87,7 +85,7 @@
                                             <span class="badge bg-danger">Vacio</span>
                                             @endif
                                         </td>
-                                        <td class="d-none"> <!-- Ocultamos el campo Comunidad -->
+                                        <td>
                                             @if ($user->comunidad)
                                             {{ $user->comunidad }}
                                             @else

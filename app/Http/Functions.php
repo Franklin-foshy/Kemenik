@@ -91,19 +91,19 @@ function permissionsUser()
         'personaje preguntas' => [
             'title' => 'Módulo de personaje preguntas',
             'keys' => [
-                'ppreguntas' => 'Ver personaje preguntas',
-                'ppreguntas' => 'Crear personaje preguntas',
-                'ppreguntas' => 'Editar personaje preguntas',
-                'ppreguntas' => 'Habilitar/Desabilitar personaje preguntas',
+                'get_ppreguntas' => 'Ver personaje preguntas',
+                'get_ppreguntas' => 'Crear personaje preguntas',
+                'get_ppreguntas' => 'Editar personaje preguntas',
+                'get_ppreguntas' => 'Habilitar/Desabilitar personaje preguntas',
             ]
         ],
         'personaje respuestas' => [
             'title' => 'Módulo de personaje respuestas',
             'keys' => [
-                'prespuestas' => 'Ver personaje respuestas',
-                'prespuestas' => 'Crear personaje respuestas',
-                'prespuestas' => 'Editar personaje respuestas',
-                'prespuestas' => 'Habilitar/Desabilitar personaje respuestas',
+                'get_prespuestas' => 'Ver personaje respuestas',
+                'get_prespuestas' => 'Crear personaje respuestas',
+                'get_prespuestas' => 'Editar personaje respuestas',
+                'get_prespuestas' => 'Habilitar/Desabilitar personaje respuestas',
             ]
         ],
         'Progreso usuarios' => [
