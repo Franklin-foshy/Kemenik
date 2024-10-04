@@ -30,13 +30,11 @@
                                     <tr class="text-nowrap">
                                         <th>No.</th>
                                         <th>Nombre usuario</th>
-                                        <th>Teléfono usuario</th>
                                         <th>Nivel</th>
                                         <th>Escena</th>
                                         <th>Pregunta</th>
                                         <th>Respuesta</th>
                                         <th>Correcto / Incorrecto</th>
-                                        <th>Estado actual</th>
                                         <th>Puntuación</th>
                                         <th>Intentos</th>
                                         <th>¿Completado?</th>
@@ -48,23 +46,15 @@
                                     <tr class="align-middle">
                                         <td>{{ $progresoDosUsuario->id }}</td>
                                         <td>{{ $progresoDosUsuario->usuario->name }}</td>
-                                        <td>{{ $progresoDosUsuario->usuario->telefono }}</td>
                                         <td>{{ $progresoDosUsuario->nivel_id_pregunta }}</td>
                                         <td>{{ $progresoDosUsuario->escena_id_pregunta }}</td>
-                                        <td>{{ $progresoDosUsuario->texto_respuesta_preguntas }}</td>
+                                        <td>{{ $progresoDosUsuario->ppregunta->texto_pregunta }}</td>
                                         <td>{{ $progresoDosUsuario->texto_respuesta_respuestas }}</td>
                                         <td>
                                             @if ($progresoDosUsuario->status_final_respuesta == 1)
                                             <span class="badge bg-success">Correcto</span>
                                             @else
                                             <span class="badge bg-danger">Incorrecto</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($progresoDosUsuario->estado_proceso == 1)
-                                            <span class="badge bg-success">Aprobado</span>
-                                            @else
-                                            <span class="badge bg-danger">Reprobado</span>
                                             @endif
                                         </td>
                                         <td>{{ $progresoDosUsuario->puntuacion }}</td>

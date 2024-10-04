@@ -13,7 +13,8 @@ class ProgresoUsuarioController extends Controller
     public function getProgresoUsuarioUno()
     {
         if (kvfj(Auth::user()->rol->permissions, 'get_progresoUsuario')) {
-            $progresoUsuarios = ProgresoUsuario::get();
+            // Cargar la relación 'pregunta' para acceder a 'texto_pregunta'
+            $progresoUsuarios = ProgresoUsuario::with('pregunta')->get();
             return view('registrados.progresoUsuarios.progresouno', compact('progresoUsuarios'));
         } else {
             return redirect()->route('home');
@@ -23,7 +24,7 @@ class ProgresoUsuarioController extends Controller
     public function getProgresoUsuarioDos()
     {
         if (kvfj(Auth::user()->rol->permissions, 'get_progresoUsuario')) {
-            $progresoDosUsuarios = ProgresoDosUsuario::get();
+            $progresoDosUsuarios = ProgresoDosUsuario::with('ppregunta')->get();
             return view('registrados.progresoUsuarios.progresodos', compact('progresoDosUsuarios'));
         } else {
             return redirect()->route('home');
@@ -33,7 +34,7 @@ class ProgresoUsuarioController extends Controller
     public function getProgresoUsuarioTres()
     {
         if (kvfj(Auth::user()->rol->permissions, 'get_progresoUsuario')) {
-            $progresoTresUsuarios = ProgresoTresUsuario::get();
+            $progresoTresUsuarios = ProgresoTresUsuario::with('pregunta')->get();
             return view('registrados.progresoUsuarios.progresotres', compact('progresoTresUsuarios'));
         } else {
             return redirect()->route('home');

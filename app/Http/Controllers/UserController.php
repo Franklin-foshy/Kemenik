@@ -154,17 +154,6 @@ class UserController extends Controller
         return back()->with('message', 'Usuario actualizado satisfactoriamente')->with('icon', 'success');
     }
 
-    public function editUser($id)
-    {
-        $user = User::findOrFail($id);
-        $paises = Pais::all();
-        $departamentos = $user->pais_id == 185 ? Departamento::where('pais_id', 185)->get() : collect();
-        $municipios = $user->departamento_id ? Municipio::where('departamento_id', $user->departamento_id)->get() : collect();
-
-        // Ajuste de la ruta de la vista
-        return view('registrados.users.modals.edit', compact('user', 'paises', 'departamentos', 'municipios'));
-    }
-
     public function deleteUser($id)
     {
         $u = User::findOrFail($id);
