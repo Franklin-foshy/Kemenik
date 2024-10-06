@@ -49,6 +49,7 @@ getLastEstadoProceso(apiUrl)
 
 })
     .catch(error => {
+        estado_nivel2 = 0 ;
         console.error('Error:', error);
     });
 
@@ -62,6 +63,7 @@ let estado_nivel1 = 0 ;
     
 })
     .catch(error => {
+        estado_nivel1 = 0 ;
         console.error('Error:', error);
     });
     
