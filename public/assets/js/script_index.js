@@ -106,7 +106,7 @@ function getLastEstadoProceso(url) {
                     // Devolver el valor de "estado_proceso"
                     resolve(lastRecord.completado);
                 } else {
-                    reject(0);
+                    resolve(0);
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
