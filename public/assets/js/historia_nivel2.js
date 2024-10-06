@@ -174,8 +174,11 @@ $.ajax({
     dataType: 'json',
     success: function(sceneResponse) {
         if (sceneResponse.data && sceneResponse.data.length > 0) {
+            let escenasProcesadas = 0; // Contador de escenas procesadas
+
             sceneResponse.data.forEach(function(escena) {
-                let todo = [] ;
+                let todo = [];
+
                 // Cargar las preguntas relacionadas con la escena
                 $.ajax({
                     //url: `http://127.0.0.1:8000/api/ppreguntas/`,
@@ -184,8 +187,10 @@ $.ajax({
                     dataType: 'json',
                     success: function(questionResponse) {
                         if (questionResponse.ppreguntas && questionResponse.ppreguntas.length > 0) {
-                            questionResponse.ppreguntas.forEach(function(pregunta) {
+                            let preguntasProcesadas = 0; // Contador de preguntas procesadas
+                            let totalPreguntas = questionResponse.ppreguntas.filter(p => p.escena_id === escena.id).length;
 
+                            questionResponse.ppreguntas.forEach(function(pregunta) {
                                 // Evaluar si el id de la escena coincide con el id de la escena en la pregunta
                                 if (escena.id === pregunta.escena_id) {
                                     let respuestas = [];
@@ -199,7 +204,6 @@ $.ajax({
                                         success: function(response) {
                                             if (response.data && response.data.length > 0) {
                                                 response.data.forEach(function(respuesta) {
-                                                    
                                                     // Evaluar si el id de la pregunta coincide con el id de la pregunta en la respuesta
                                                     if (pregunta.id === respuesta.ppregunta_id) {
                                                         respuestas.push(respuesta.texto_respuesta);
@@ -216,6 +220,19 @@ $.ajax({
 
                                                 todo.push(preguntaDiccionario);
                                             }
+
+                                            preguntasProcesadas++;
+
+                                            // Si todas las preguntas para esta escena han sido procesadas
+                                            if (preguntasProcesadas === totalPreguntas) {
+                                                array_opciones.push(todo);
+                                                escenasProcesadas++;
+
+                                                // Si todas las escenas han sido procesadas
+                                                if (escenasProcesadas === sceneResponse.data.length) {
+                                                    comenzar(); // Llama a comenzar una vez que todo ha terminado
+                                                }
+                                            }
                                         },
                                         error: function(jqXHR, textStatus, errorThrown) {
                                             console.error('Error en la solicitud de respuestas:', textStatus, errorThrown);
@@ -224,16 +241,20 @@ $.ajax({
                                 }
                             });
                         } else {
-                            console.log('No hay preguntas disponibles para esta escena.');
+                            escenasProcesadas++;
+
+                            // Si no hay preguntas para esta escena, también contamos como procesada
+                            if (escenasProcesadas === sceneResponse.data.length) {
+                                comenzar(); // Llama a comenzar una vez que todo ha terminado
+                            }
                         }
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error('Error en la solicitud de preguntas:', textStatus, errorThrown);
                     }
                 });
-                array_opciones.push(todo);
             });
-
+        } else {
             console.log('No hay escenas disponibles.');
         }
     },
@@ -1362,15 +1383,9 @@ document.querySelector('.close-btn').addEventListener('click', function() {
     escenas_[contador]();
     
 });
-document.addEventListener("DOMContentLoaded", function() {
 
-function deshabilitarOpciones() {
-        document.querySelectorAll('.mensajes_de_respuestas').forEach(boton => {
-            boton.disabled = true;
-        });
-    }
-
-time_teminar = setTimeout(function(){
+function comenzar (){
+    time_teminar = setTimeout(function(){
         mostrarDesplegable()
         modal_text.textContent =  array_opciones[contador][0].escena_actual
         modal_title.textContent = `¡Explora la historia y construye un futuro de equidad!`
@@ -1382,7 +1397,17 @@ time_teminar = setTimeout(function(){
         cargando.style.display = 'none'
         tamaño = 100/array_opciones.length;
         
-}, 5000);
+}, 100);
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+
+function deshabilitarOpciones() {
+        document.querySelectorAll('.mensajes_de_respuestas').forEach(boton => {
+            boton.disabled = true;
+        });
+    }
+
 
 });
 

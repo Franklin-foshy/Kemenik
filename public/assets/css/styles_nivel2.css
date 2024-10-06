@@ -1706,7 +1706,7 @@ header img {
     background: #e8e4e1;
     border-radius: 10px;
     width: 4.5%;
-    height: 62%;
+    height: 560px;
 }
 
 .vida {
@@ -1855,8 +1855,14 @@ header img {
 
 /* ---- mensajes para la izquierda --------*/
 
+@media (max-width: 1463px ) {
+
+}
+
+
+
 /* Estilos para pantallas grandes */
-@media (max-width: 1280px ) {
+@media (max-width: 1350px ) {
 
 
 /* arreglos de escenas */
@@ -3147,7 +3153,7 @@ header img {
     /* Estilos para pantallas grandes */  
 }
 
-@media (max-width: 540px) {
+@media (max-width: 800px) {
 
 /* ajustes escenas */
     #mensaje_pensamiento_junajpu {

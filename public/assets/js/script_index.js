@@ -1,5 +1,31 @@
+/* recojer el proceso de cada nivel */
+function getLastEstadoProceso(url) {
+    return new Promise((resolve, reject) => {
+        // Realizar la solicitud GET
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+                    // Obtener el último registro del array
+                    let lastRecord = response.data[response.data.length - 1];
+                    // Devolver el valor de "estado_proceso"
+                    resolve(lastRecord.completado);
+                } else {
+                    reject('No se encontraron registros en la respuesta.');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                reject('Error en la solicitud: ' + textStatus + ', ' + errorThrown);
+            }
+        });
+    });
+}
 
 
+
+/* recojer el proceso de cada nivel */
 
 let mostrar_enlace = localStorage.getItem('mostrar_enlace');
 if (mostrar_enlace === null) {
@@ -72,6 +98,41 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 
+// ---------------------- recuperar el id -------------------
+const userId = localStorage.getItem('userId');
+
+
+// consultas de los niveles bloqueo 
+let apiUrl = `https://junamnoj.foxint.tech/api/progreso-dos-usuario/${userId}`;
+let estado_nivel2 = 0 ; 
+getLastEstadoProceso(apiUrl)
+.then(estadoProceso => {
+    console.log(estadoProceso)
+
+    estado_nivel2 = estadoProceso ;
+
+})
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+let apiUrl3 = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${userId}`;
+let estado_nivel3 = 0 ; 
+    getLastEstadoProceso(apiUrl3)
+    .then(estadoProceso2 => {
+    estado_nivel3 = estadoProceso2 ;
+    console.log(estadoProceso2)
+    
+})
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    
+    
+
+
+// consultas de los niveles bloqueo 
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -134,11 +195,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Llamar a la función para actualizar el botón Nivel 2 al cargar la página
 
-    updateCorrectAnswers(completadas);
+    updateCorrectAnswers(estado_nivel2);
     
     
     // Llamar a la función para actualizar el botón Nivel 3 al cargar la página
-    updatecoerrec2(completadas_nivel2);
+    updatecoerrec2(estado_nivel3);
     
 
 });
