@@ -39,6 +39,8 @@
                                 <thead>
                                     <tr class="text-nowrap">
                                         <th>Nombre y Apellidos</th>
+                                        <th hidden>Sexo</th>
+                                        <th hidden>Fecha de nacimiento</th>
                                         <th>Rol</th>
                                         <th>Teléfono</th>
                                         <th>Correo Electrónico</th>
@@ -46,6 +48,7 @@
                                         <th>Departamento</th>
                                         <th>Município</th>
                                         <th>Comunidad</th>
+                                        <th hidden>Etnia</th>
                                         <th>Estado</th>
                                         <th class="text-center">Acciones</th>
                                     </tr>
@@ -55,6 +58,8 @@
                                     @include('registrados.users.modals.edit')
                                     <tr class="align-middle">
                                         <td>{{ $user->name }}</td>
+                                        <td hidden>{{ $user->sexo }}</td>
+                                        <td hidden>{{ date('d/m/Y', strtotime($user->fecha_nacimiento)) }}</td>
                                         <td>
                                             @if ($user->rol->id == 1)
                                             <span class="badge bg-danger">Administrador</span>
@@ -88,6 +93,13 @@
                                         <td>
                                             @if ($user->comunidad)
                                             {{ $user->comunidad }}
+                                            @else
+                                            <span class="badge bg-danger">Vacio</span>
+                                            @endif
+                                        </td>
+                                        <td hidden>
+                                            @if ($user->etnia)
+                                            {{ $user->etnia }}
                                             @else
                                             <span class="badge bg-danger">Vacio</span>
                                             @endif
