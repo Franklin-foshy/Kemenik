@@ -112,7 +112,7 @@ function getLastEstadoProceso(url) {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                reject('Error en la solicitud: ' + textStatus + ', ' + errorThrown);
+                reject(0);
             }
         });
     });
