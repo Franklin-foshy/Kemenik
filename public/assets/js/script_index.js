@@ -116,12 +116,12 @@ getLastEstadoProceso(apiUrl)
         console.error('Error:', error);
     });
 
-let apiUrl3 = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${window.userId}`;
-let estado_nivel3 = 0 ; 
-    getLastEstadoProceso(apiUrl3)
-    .then(estadoProceso2 => {
-    estado_nivel3 = estadoProceso2 ;
-    console.log(estadoProceso2)
+let apiUrl1 = `https://junamnoj.foxint.tech/api/progreso-usuario/${window.userId}`;
+let estado_nivel1 = 0 ; 
+    getLastEstadoProceso(apiUrl1)
+    .then(estadoProceso1 => {
+        estado_nivel1 = estadoProceso1 ;
+    console.log(estado_nivel1)
     
 })
     .catch(error => {
@@ -195,11 +195,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Llamar a la función para actualizar el botón Nivel 2 al cargar la página
 
-    updateCorrectAnswers(estado_nivel2);
+    updateCorrectAnswers(estado_nivel1);
     
     
     // Llamar a la función para actualizar el botón Nivel 3 al cargar la página
-    updatecoerrec2(estado_nivel3);
+    updatecoerrec2(estado_nivel2);
     
 
 });
