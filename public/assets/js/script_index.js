@@ -99,11 +99,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // ---------------------- recuperar el id -------------------
-const userId = localStorage.getItem('userId');
+
 
 
 // consultas de los niveles bloqueo 
-let apiUrl = `https://junamnoj.foxint.tech/api/progreso-dos-usuario/${userId}`;
+let apiUrl = `https://junamnoj.foxint.tech/api/progreso-dos-usuario/${window.userId}`;
 let estado_nivel2 = 0 ; 
 getLastEstadoProceso(apiUrl)
 .then(estadoProceso => {
@@ -116,7 +116,7 @@ getLastEstadoProceso(apiUrl)
         console.error('Error:', error);
     });
 
-let apiUrl3 = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${userId}`;
+let apiUrl3 = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${window.userId}`;
 let estado_nivel3 = 0 ; 
     getLastEstadoProceso(apiUrl3)
     .then(estadoProceso2 => {
