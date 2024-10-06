@@ -112,7 +112,7 @@ function getLastEstadoProceso(url) {
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                reject(0);
+                resolve(0);
             }
         });
     });
