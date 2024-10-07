@@ -1,1 +1,1 @@
-<button class = "continuar" id="next-button"  style="display:none;">{{_('continuar')}}</button>
+<button class = "continuar" id="next-button"  style="display:none;">{{_('Continuar')}}</button>
