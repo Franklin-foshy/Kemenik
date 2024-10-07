@@ -81,11 +81,18 @@ let aprobado = 0 ;
 getLastEstadoProceso(url)
 
 .then(estadoProceso1 => {
+    if (estadoProceso1 === 0) {
+        intentos_1 = 1;
+        console.log(intentos_1,'aqui wntrei')
+        aprobado = 0;
+        console.log(aprobado,'aqui wntrei')
+    }else{
     intentos_1 = estadoProceso1.intentos + 1;
     aprobado = estadoProceso1.completado ;
+    console.log(intentos_1,'aqui wntrei')
+    console.log(aprobado,'aqui wntrei')
+}
 
-console.log(intentos_1,'aqui wntrei')
-console.log(aprobado,'aqui wntrei')
 
 
 
