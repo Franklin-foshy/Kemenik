@@ -22,8 +22,8 @@ const botonVamos = document.getElementById('botonVamos');
 const imagenes = document.getElementById('imagenInstruccion');
 const textoInstruccion = document.getElementById('textoInstruccion');
 
-const texto1 = 'En este nivel pondremos en practica lo aprendido durante los niveles anteriores, pon mucha atencion a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
-const texto2 = 'Si responde erroneamente se te dira cual era la respuesta correcta, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
+const texto1 = 'En este nivel pondremos en practica lo aprendido durante los niveles anteriores, pon mucha atención a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
+const texto2 = 'Si responde erróneamente se te dira cual era la respuesta correcta, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
 const texto3 = 'Si escojes una respuesta correcta avanzas a la siguiente escena, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
 const texto4 = 'Cuando llegues al final del nivel podras ver la cantidad de respuestas acertadas, si quieres mejorar tu puntuacion puedes intentar de nuevo.';
 
@@ -462,11 +462,11 @@ function showResult() {
     document.getElementById("image-container").style.display = "none";
     document.getElementById("feedback").style.display = "none";
     document.getElementById("question-clan").textContent =
-        "GRACIAS POR LLEGAR AL FINAL !";
+        "¡ GRACIAS POR LLEGAR AL FINAL !";
     game_cont.style.justifyItems = "center";
     document.getElementById(
         "result-text"
-    ).textContent = `REPUESTAS CORRECTAS ${correct3} DE ${questions.length}`;
+    ).textContent = `RESPUESTAS CORRECTAS ${correct3} DE ${questions.length}`;
     document.getElementById("home-button").style.display = "block";
     launchConfetti();
     fuegos_artificiales.play();
