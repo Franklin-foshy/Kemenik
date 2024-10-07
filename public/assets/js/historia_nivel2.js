@@ -104,7 +104,7 @@ getLastEstadoProceso(url)
 
 .then(estadoProceso1 => {
     if (estadoProceso1 === 0) {
-        intentos_2 = 0;
+        intentos_2 = 1;
         console.log(intentos_2,'aqui wntrei')
         completada = 0;
         console.log(completada,'aqui wntrei')
