@@ -103,11 +103,17 @@ let completada = 0 ;
 getLastEstadoProceso(url)
 
 .then(estadoProceso1 => {
+    if (estadoProceso1 === 0) {
+        intentos_2 = 0;
+        console.log(intentos_2,'aqui wntrei')
+        completada = 0;
+        console.log(completada,'aqui wntrei')
+    }else{
     intentos_2 = estadoProceso1.intentos + 1;
     console.log(intentos_2,'aqui wntrei')
     completada = estadoProceso1.completado;
     console.log(completada,'aqui wntrei')
-
+}
 
 })
 .catch(error => {
