@@ -1,4 +1,30 @@
 
+function getLastEstadoProceso(url) {
+    return new Promise((resolve, reject) => {
+        // Realizar la solicitud GET
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+                    // Obtener el último registro del array
+                    let lastRecord = response.data[response.data.length - 1];
+                    // Devolver el valor de "estado_proceso"
+                    resolve(lastRecord);
+                } else {
+                    resolve(0);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                resolve(0);
+            }
+        });
+    });
+}
+
+
+
 
 console.log(listaImagenes3)
 function mostrarDesplegable() {
@@ -53,24 +79,33 @@ cambiarImagen();
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem('userId');
 
+
+
+let url = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${userId}` ;
+let intentos = 0 ;
+let aprobado = 0 ;
+getLastEstadoProceso(url)
+
+.then(estadoProceso1 => {
+    intentos = estadoProceso1.intentos + 1;
+    aprobado = estadoProceso1.completado ;
+
+console.log(intentos,'aqui wntrei')
+console.log(aprobado,'aqui wntrei')
+
+
+
+})
+.catch(error => {
+    console.error('Error en la solicitud:', error);
+});
+
 // ---------------------- recuperar el id -------------------
 
 
 // ------------------- intentos --------------------
 
-let intentos = localStorage.getItem('intentos');
-if (intentos === null) {
-    intentos = 0;
-} else {
-    intentos = parseInt(intentos, 10); // Asegúrate de convertirlo a número
-}
 
-
-intentos += 1;
-
-localStorage.setItem('intentos', intentos);
-
-console.log(intentos)
 // ------------------- intentos --------------------
 
 
@@ -78,13 +113,7 @@ console.log(intentos)
 let contador_nivel = 0 ;
 
 
-let nivel_completado = localStorage.getItem('nivel_completado');
-if (nivel_completado === null) {
-    nivel_completado = 0;
-} else {
-    nivel_completado = parseInt(nivel_completado, 10); // Asegúrate de convertirlo a número
-}
-
+let nivel_completado = 0;
 
 
 console.log(nivel_completado)
@@ -228,6 +257,7 @@ $.ajax({
             // Esperar a que todas las solicitudes AJAX internas terminen
             $.when(...requests).then(function () {
                 // Ahora que todas las preguntas y respuestas están cargadas, generar el HTML
+                comenzar();
                 generateHTMLForCurrentQuestion();
             });
         } else {
@@ -312,7 +342,8 @@ time_pantalla_carga = setTimeout(function () {
     game_cont.style.display = "none";
 });
 
-time_teminar = setTimeout(function () {
+function comenzar (){
+    time_teminar = setTimeout(function(){
     mostrarDesplegable()
     game_cont.style.display = "flex";
     boton_continuar.style.display = "block";
@@ -323,8 +354,9 @@ time_teminar = setTimeout(function () {
     text_nivel.style.display = "block";
     tamaño = 100 / questions.length;
 
-}, 5000);
+}, 100);
 
+}
 function cargar_barra() {
     const barra = document.getElementById("barra");
     barra.value += tamaño;
@@ -365,7 +397,10 @@ function checkAnswer(selectedIndex) {
 
         localStorage.setItem('nivel_completado', nivel_completado);
     }
-    if (intentos <= 3){
+    if (intentos <= 3 || (nivel_completado === 1 && aprobado === 0)){
+        if (intentos > 3){
+            intentos = 3;
+        }
     sendDataToApi(
         userId,              // usuario_id
         question.id,              // pregunta_id

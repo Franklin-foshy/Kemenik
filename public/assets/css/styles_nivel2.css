@@ -1352,35 +1352,35 @@ body {
 
 #ixchel_hablando_E8{
     width: 100%;
-    left: -38%;
+    left: 11.5%;
     top: -14%;
     z-index: 5;
 }
 
 #ixchel_hablando2_E8{
     width: 100%;
-    left: -38%;
+    left: 11.6%;
     top: -14%;
     z-index: 5;
 }
 
 #ixchel_lavando_E8{
     width: 100%;
-    left: -40%;
+    left: 10%;
     top: 40%;
     z-index: 2;
 }
 
 #ixchel_quieta_E8{
     width: 25%;
-    left: -1%;
+    left: 50%;
     top: 41%;
     z-index: 2;
 }
 
 #junajpu_lavando_E8{
     width: 100%;
-    left: 15%;
+    left: -38%;
     top: 21%;
     z-index: 2;
 }
@@ -1413,7 +1413,7 @@ body {
 
 
 #mensaje_ixchel_E8{
-    left: 20%;
+    left: 50%;
     top: 33%;
     z-index: 3;
 
@@ -1999,7 +1999,7 @@ header img {
     z-index: 2;
 }
 #mensaje_ixchel_E8 {
-    left: 25%;
+    left: 50%;
     top: 33%;
     z-index: 3;
 }
@@ -2731,7 +2731,7 @@ header img {
     z-index: 2;
 }
         #mensaje_ixchel_E8 {
-        left: 29%;
+        left: 50%;
         top: 33%;
         z-index: 3;
     }
@@ -3432,7 +3432,7 @@ header img {
         left: 35%;
     }
         #mensaje_ixchel_E8 {
-        left: 35%;
+        left: 45%;
         top: 33%;
         z-index: 3;
     }

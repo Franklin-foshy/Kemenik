@@ -1,4 +1,32 @@
 
+function getLastEstadoProceso(url) {
+    return new Promise((resolve, reject) => {
+        // Realizar la solicitud GET
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+                    // Obtener el último registro del array
+                    let lastRecord = response.data[response.data.length - 1];
+                    // Devolver el valor de "estado_proceso"
+                    resolve(lastRecord);
+                } else {
+                    resolve(0);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                resolve(0);
+            }
+        });
+    });
+}
+
+
+
+
+
 console.log(listaImagenes2)
 function mostrarDesplegable() {
     document.getElementById('desplegableInstrucciones').style.display = 'flex'
@@ -66,19 +94,26 @@ const userId = localStorage.getItem('userId');
 
 // ------------------- intentos --------------------
 
-let intentos_2 = localStorage.getItem('intentos_2');
-if (intentos_2 === null) {
-    intentos_2 = 0;
-} else {
-    intentos_2 = parseInt(intentos_2, 10); // Asegúrate de convertirlo a número
-}
+console.log(userId)
 
 
-intentos_2 += 1;
+let url = `https://junamnoj.foxint.tech/api/progreso-dos-usuario/${userId}` ;
+let intentos_2 = 0 ;
+let completada = 0 ;
+getLastEstadoProceso(url)
 
-localStorage.setItem('intentos_2', intentos_2);
+.then(estadoProceso1 => {
+    intentos_2 = estadoProceso1.intentos + 1;
+    console.log(intentos_2,'aqui wntrei')
+    completada = estadoProceso1.completado;
+    console.log(completada,'aqui wntrei')
 
-console.log(intentos_2)
+
+})
+.catch(error => {
+    console.error('Error en la solicitud:', error);
+});
+
 // ------------------- intentos --------------------
 
 
@@ -86,12 +121,7 @@ console.log(intentos_2)
 let contador_nivel_2 = 0 ;
 
 
-let nivel_completado_2 = localStorage.getItem('nivel_completado_2');
-if (nivel_completado_2 === null) {
-    nivel_completado_2 = 0;
-} else {
-    nivel_completado_2 = parseInt(nivel_completado_2, 10); // Asegúrate de convertirlo a número
-}
+let nivel_completado_2 = 0;
 
 
 
@@ -338,10 +368,14 @@ function verificarRespuesta(respuestaSeleccionada) {
     contador_nivel_2 ++;
     if (contador_nivel_2 === array_opciones.length){
         nivel_completado_2 = 1;
+        console.log()
 
         localStorage.setItem('nivel_completado_2', nivel_completado_2);
     }
-    if (intentos_2 <= 3){
+    if (intentos_2 <= 3 || (nivel_completado_2 === 1 && completada === 0)){
+        if (intentos_2 > 3){
+            intentos_2 = 3
+        }
     sendDataToApi(
         userId,              // usuario_id
         id_pre,              // pregunta_id

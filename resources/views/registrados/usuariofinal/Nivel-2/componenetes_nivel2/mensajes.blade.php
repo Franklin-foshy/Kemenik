@@ -128,7 +128,7 @@
 </div>
 
 
-<div id = "mensaje_ixchel_E8" class="mensajes_personajes_izquierda">
+<div id = "mensaje_ixchel_E8" class="mensajes_personajes_derecha">
     <p class = "textos-mensajes" id = "mensaje_ixchel_E8_pregunta">{{_('ixchel')}}</p>
 </div>
 

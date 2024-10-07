@@ -76,6 +76,8 @@
     <script>
         var listaImagenes = ["{{ asset('imgs/nivel1/nivel_1_1.jpeg') }}","{{ asset('imgs/nivel1/nivel_1_2.jpeg') }}","{{ asset('imgs/nivel1/nivel_1_3.jpeg') }}"];
     </script>
-    <script src="{{ asset('assets/js/script_nivel1.js') }}"></script>
+
+    <script  src="{{ asset('assets/js/script_nivel1.js') }}"></script>
+    
 </body>
 </html>

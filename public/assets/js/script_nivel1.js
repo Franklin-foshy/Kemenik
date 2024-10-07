@@ -1,4 +1,31 @@
 
+function getLastEstadoProceso(url) {
+    return new Promise((resolve, reject) => {
+        // Realizar la solicitud GET
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+                    // Obtener el último registro del array
+                    let lastRecord = response.data[response.data.length - 1];
+                    // Devolver el valor de "estado_proceso"
+                    resolve(lastRecord);
+                } else {
+                    resolve(0);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                resolve(0);
+            }
+        });
+    });
+}
+
+
+
+
 console.log(listaImagenes)
 function mostrarDesplegable() {
     document.getElementById('desplegableInstrucciones').style.display = 'flex'
@@ -47,24 +74,36 @@ const userId = localStorage.getItem('userId');
 
 console.log(userId)
 
+
+let url = `https://junamnoj.foxint.tech/api/progreso-usuario/${userId}` ;
+let intentos_1 = 0 ;
+let aprobado = 0 ;
+getLastEstadoProceso(url)
+
+.then(estadoProceso1 => {
+    intentos_1 = estadoProceso1.intentos + 1;
+    aprobado = estadoProceso1.completado ;
+
+console.log(intentos_1,'aqui wntrei')
+console.log(aprobado,'aqui wntrei')
+
+
+
+})
+.catch(error => {
+    console.error('Error en la solicitud:', error);
+});
+
 // ---------------------- recuperar el id -------------------
 
 
 // ------------------- intentos --------------------
 
-let intentos_1 = localStorage.getItem('intentos_1');
-if (intentos_1 === null) {
-    intentos_1 = 0;
-} else {
-    intentos_1 = parseInt(intentos_1, 10); // Asegúrate de convertirlo a número
-}
 
 
-intentos_1 += 1;
 
-localStorage.setItem('intentos_1', intentos_1);
 
-console.log(intentos_1)
+
 // ------------------- intentos --------------------
 
 
@@ -72,13 +111,7 @@ console.log(intentos_1)
 let contador_nivel_1 = 0 ;
 
 
-let nivel_completado_1 = localStorage.getItem('nivel_completado_1');
-if (nivel_completado_1 === null) {
-    nivel_completado_1 = 0;
-} else {
-    nivel_completado_1 = parseInt(nivel_completado_1, 10); // Asegúrate de convertirlo a número
-}
-
+let nivel_completado_1 = 0;
 
 
 console.log(nivel_completado_1)
@@ -154,7 +187,8 @@ const piezasss6 = document.getElementById("casilla_6");
 const espacioss = document.getElementById("targetContainer");
 const boton_regresar = document.getElementById("regresar");
 
-time_teminar = setTimeout(function () {
+function comenzar (){
+    time_teminar = setTimeout(function(){
     mostrarDesplegable()
     header.style.display = "block";
     nivel.style.display = "block";
@@ -171,7 +205,7 @@ time_teminar = setTimeout(function () {
     boton_regresar.style.display = "block";
     contador.style.display = "block";
 }, 5000);
-
+}
 // ---------------------------------- Audio ------------------------------------
 
 var musica = document.getElementById("musica_fondo");
@@ -498,44 +532,47 @@ $.ajax({
     dataType: "json",
     success: function (response) {
         if (response.data && response.data.length > 0) {
-            response.data.forEach(function (pregunta) {
-                let imagenes = [];
-                let respuestas = [];
-                $.ajax({
+            let requests = response.data.map(function (pregunta) {
+                return $.ajax({
                     url: `https://junamnoj.foxint.tech/api/respuestas_por_pregunta/${pregunta.id}`,
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
+                        let imagenes = [];
+                        let respuestas = [];
+
                         if (response.data && response.data.length > 0) {
                             response.data.forEach(function (respuesta) {
-                                let img = respuesta.imagen;
-                                let res = respuesta.texto_respuesta;
-
-                                imagenes.push(img);
-                                respuestas.push(res);
+                                imagenes.push(respuesta.imagen);
+                                respuestas.push(respuesta.texto_respuesta);
                             });
                         }
+
+                        let preguntaDiccionario = {
+                            id: pregunta.id,
+                            pregunta: `¿${pregunta.texto_pregunta}?`,
+                            images: imagenes,
+                            respuestas: respuestas,
+                            correcta: pregunta.texto_respuesta,
+                        };
+
+                        preguntas_guardar.push(preguntaDiccionario);
                     },
                 });
-                let preguntaDiccionario = {
-                    id: pregunta.id,
-                    pregunta: `¿${pregunta.texto_pregunta}?`,
-                    images: imagenes,
-                    respuestas: respuestas,
-                    correcta: pregunta.texto_respuesta,
-                };
-
-                preguntas_guardar.push(preguntaDiccionario);
             });
 
-            for (let i = 0; i < 6; i++) {
-                let randomIndex = Math.floor(
-                    Math.random() * preguntas_guardar.length
-                );
+            // Esperar a que todas las solicitudes AJAX internas terminen
+            $.when(...requests).then(function () {
+                // Seleccionar 6 preguntas aleatorias
+                for (let i = 0; i < 6 && preguntas_guardar.length > 0; i++) {
+                    let randomIndex = Math.floor(Math.random() * preguntas_guardar.length);
+                    let seleccion = preguntas_guardar.splice(randomIndex, 1)[0];
+                    preguntas.push(seleccion);
+                }
 
-                let seleccion = preguntas_guardar.splice(randomIndex, 1)[0];
-                preguntas.push(seleccion);
-            }
+                // Llama a la función que deseas ejecutar después de cargar todo
+                comenzar();
+            });
         } else {
             console.log("No hay preguntas disponibles para este nivel.");
         }
@@ -596,7 +633,10 @@ function verificarRespuesta(imagenIndex, preguntaId) {
 
         localStorage.setItem('nivel_completado_1', nivel_completado_1);
     }
-    if (intentos_1 <= 3){
+    if (intentos_1 <= 3 || (nivel_completado_1 === 1 && aprobado === 0) ){
+        if (intentos_1 > 3) {
+            intentos_1 = 3
+        }
     sendDataToApi(
         userId,              // usuario_id
         preguntaDiccionario.id,              // pregunta_id
