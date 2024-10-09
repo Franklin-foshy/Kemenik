@@ -1701,7 +1701,7 @@ header img {
     margin-bottom: 20px;
     position: absolute;
     top: 23%;
-    left: 82%;
+    left: 85%;
     align-items: center;
     background: #e8e4e1;
     border-radius: 10px;
@@ -1854,9 +1854,33 @@ header img {
 }
 
 /* ---- mensajes para la izquierda --------*/
-
-@media (max-width: 1463px ) {
-
+@media (min-width: 1700px){
+    #vidas {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 23%;
+        left: 80%;
+        align-items: center;
+        background: #e8e4e1;
+        border-radius: 10px;
+        width: 4.5%;
+        height: 560px;
+    }
+}
+@media (max-width: 1550px){
+    #vidas {
+        font-size: 3em;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 23%;
+        left: 85%;
+        align-items: center;
+        background: #e8e4e1;
+        border-radius: 10px;
+        width: 4.5%;
+        height: 560px;
+    }
 }
 
 
@@ -3567,3 +3591,6 @@ header img {
 }
 
 }
+
+
+

@@ -510,13 +510,6 @@ header img {
 }
 
 
-/*
-.contenedor_de_preguntas_respuestas img {
-  max-width: 100%;  
-  height: auto; 
-  display: block;
-  margin: 4px; 
-}*/
 
 
 .contenedor_de_preguntas_respuestas {
@@ -545,25 +538,13 @@ header img {
 
 .contenedor_de_preguntas_respuestas p {
   width: 90%;  /* El texto ocupa todo el ancho disponible */
-  text-align: justify;  /* Justifica el texto */
+  /* Justifica el texto */
   margin: 10px 0 0 0;  /* Añade un margen superior para separar la imagen del texto */
-  padding: 0 5px;  /* Un poco de padding para que no esté pegado a los bordes */
-  font-size: 20px;
-}
-/*
-.contenedor_de_preguntas_respuestas {
-  width: 90%;  
-  max-width: 300px;  
-  height: auto;  
-  max-height: 300px; 
-  cursor: pointer;
-  overflow: hidden;  
-  text-align: center;  
-  margin: 10px auto; 
-  box-sizing: border-box;  
+  padding: 20px;  /* Un poco de padding para que no esté pegado a los bordes */
+  font-size: 15px;
+  word-spacing: 5px;
 }
 
-*/
 
 .cont_imagenes_modal{
   display: flex;
@@ -662,10 +643,9 @@ header img {
 
 .contenedor_de_preguntas_respuestas p {
   width: 90%; 
-  text-align: justify; 
   margin: 10px 0 0 0; 
-  padding: 0 5px; 
-  font-size: 20px;
+  padding: 20px; 
+  font-size: 15px;
 }
 
 
