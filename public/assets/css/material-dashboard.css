@@ -3058,6 +3058,12 @@ progress {
 }
 
 @media (max-width: 991.98px) {
+    .card-header {
+        width: 93%;
+        height: 500px;
+        overflow: hidden;
+        position: relative;
+    }
     .table-responsive-lg {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -3071,12 +3077,7 @@ progress {
 }
 
 @media (max-width: 855px) {
-    .card-header {
-        width: 90%;
-        height: 500px;
-        overflow: hidden;
-        position: relative;
-    }
+
 }
 @media (max-width: 767.98px) {
     .main-content {
@@ -7345,6 +7346,7 @@ fieldset:disabled .btn {
 }
 
 @media (max-width: 991.98px) {
+    }
     .modal-fullscreen-lg-down {
         width: 100vw;
         max-width: none;
