@@ -31,7 +31,7 @@
         <div class="modal-icon">
           <img src="{{ asset('imgs/index/niña_hola.gif') }}" class="respuesta" id="imagen1">
         </div>
-        <h3 class="title">{{ __('Hola Bienvenido ') . \Auth::user()->name}}</h3>
+        <h3 class="title">{{ __('Hola Bienvenido/a ') . \Auth::user()->name}}</h3>
         <p class="description">Aprende en JunamNoj</p>
         <button class="btn" id="closeModalButton">¡Ve y aprende!</button>
       </div>
