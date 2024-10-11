@@ -557,7 +557,7 @@ $.ajax({
 
                         let preguntaDiccionario = {
                             id: pregunta.id,
-                            pregunta: `¿${pregunta.texto_pregunta}?`,
+                            pregunta: `${pregunta.texto_pregunta}`,
                             images: imagenes,
                             respuestas: respuestas,
                             correcta: pregunta.texto_respuesta,
