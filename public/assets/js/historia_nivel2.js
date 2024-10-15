@@ -229,6 +229,7 @@ $.ajax({
                             questionResponse.ppreguntas.forEach(function(pregunta) {
                                 // Evaluar si el id de la escena coincide con el id de la escena en la pregunta
                                 if (escena.id === pregunta.escena_id) {
+                                    if (pregunta.status == 1) {
                                     let respuestas = [];
 
                                     // Cargar las respuestas para la pregunta actual
@@ -242,7 +243,9 @@ $.ajax({
                                                 response.data.forEach(function(respuesta) {
                                                     // Evaluar si el id de la pregunta coincide con el id de la pregunta en la respuesta
                                                     if (pregunta.id === respuesta.ppregunta_id) {
-                                                        respuestas.push(respuesta.texto_respuesta);
+                                                        if(respuesta.status == 1) {
+                                                            respuestas.push(respuesta.texto_respuesta);
+                                                        }
                                                     }
                                                 });
 
@@ -275,6 +278,7 @@ $.ajax({
                                         }
                                     });
                                 }
+                            }
                             });
                         } else {
                             escenasProcesadas++;

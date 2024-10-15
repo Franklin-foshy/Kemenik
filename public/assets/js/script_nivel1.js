@@ -550,8 +550,11 @@ $.ajax({
 
                         if (response.data && response.data.length > 0) {
                             response.data.forEach(function (respuesta) {
-                                imagenes.push(respuesta.imagen);
-                                respuestas.push(respuesta.texto_respuesta);
+                                if(response.status == 1) {
+                                    imagenes.push(respuesta.imagen);
+                                    respuestas.push(respuesta.texto_respuesta);
+                                }
+
                             });
                         }
 
