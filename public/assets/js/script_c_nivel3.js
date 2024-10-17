@@ -48,10 +48,10 @@ const botonVamos = document.getElementById('botonVamos');
 const imagenes = document.getElementById('imagenInstruccion');
 const textoInstruccion = document.getElementById('textoInstruccion');
 
-const texto1 = 'En este nivel pondremos en practica lo aprendido durante los niveles anteriores, pon mucha atención a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
-const texto2 = 'Si responde erróneamente se te dira cual era la respuesta correcta, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
-const texto3 = 'Si escojes una respuesta correcta avanzas a la siguiente escena, para avanzar preciona la "X" o el boton "cerrar" luego presiona continuar.';
-const texto4 = 'Cuando llegues al final del nivel podras ver la cantidad de respuestas acertadas, si quieres mejorar tu puntuacion puedes intentar de nuevo.';
+const texto1 = 'En este nivel pondremos en práctica lo aprendido durante los niveles anteriores, pon mucha atención a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
+const texto2 = 'Si responde erróneamente se te dirá cual era la respuesta correcta, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
+const texto3 = 'Si escojes una respuesta correcta avanzas a la siguiente escena, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
+const texto4 = 'Cuando llegues al final del nivel podrás ver la cantidad de respuestas acertadas, si quieres mejorar tu puntuación puedes intentar de nuevo.';
 
 const listaDescripcion = [texto1, texto2, texto3,texto4];
 
