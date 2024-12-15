@@ -1,13 +1,17 @@
-
 function getLastEstadoProceso(url) {
     return new Promise((resolve, reject) => {
         // Realizar la solicitud GET
         $.ajax({
             url: url,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (
+                    response &&
+                    response.data &&
+                    Array.isArray(response.data) &&
+                    response.data.length > 0
+                ) {
                     // Obtener el último registro del array
                     let lastRecord = response.data[response.data.length - 1];
                     // Devolver el valor de "estado_proceso"
@@ -16,114 +20,104 @@ function getLastEstadoProceso(url) {
                     resolve(0);
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 resolve(0);
-            }
+            },
         });
     });
 }
 
-
-
-
-console.log(listaImagenes3)
+console.log(listaImagenes3);
 function mostrarDesplegable() {
-    document.getElementById('desplegableInstrucciones').style.display = 'flex'
-    
-    document.body.classList.add('modal-visible');  // Añade clase al body para evitar scroll
-    document.getElementById('desplegableInstrucciones').classList.add('desplegable-visible'); // Muestra el modal
+    document.getElementById("desplegableInstrucciones").style.display = "flex";
+
+    document.body.classList.add("modal-visible"); // Añade clase al body para evitar scroll
+    document
+        .getElementById("desplegableInstrucciones")
+        .classList.add("desplegable-visible"); // Muestra el modal
 }
 
 function cerrarDesplegable() {
-    document.getElementById('desplegableInstrucciones').style.display = 'none'
+    document.getElementById("desplegableInstrucciones").style.display = "none";
     quiz3.play();
-    document.body.classList.remove('modal-visible');  // Remueve clase del body
-    document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
-    modal_niveles.style.opacity = '1';
-    modal_niveles.style.visibility = 'visible'; 
+    document.body.classList.remove("modal-visible"); // Remueve clase del body
+    document
+        .getElementById("desplegableInstrucciones")
+        .classList.remove("desplegable-visible"); // Oculta el modal
+    modal_niveles.style.opacity = "1";
+    modal_niveles.style.visibility = "visible";
 }
-''
-const botonSiguienteInstruccion = document.getElementById('botonSiguienteInstruccion');
-const botonVamos = document.getElementById('botonVamos');
-const imagenes = document.getElementById('imagenInstruccion');
-const textoInstruccion = document.getElementById('textoInstruccion');
+("");
+const botonSiguienteInstruccion = document.getElementById(
+    "botonSiguienteInstruccion"
+);
+const botonVamos = document.getElementById("botonVamos");
+const imagenes = document.getElementById("imagenInstruccion");
+const textoInstruccion = document.getElementById("textoInstruccion");
 
-const texto1 = 'En este nivel pondremos en práctica lo aprendido durante los niveles anteriores, pon mucha atención a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.';
-const texto2 = 'Si responde erróneamente se te dirá cual era la respuesta correcta, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
-const texto3 = 'Si escojes una respuesta correcta avanzas a la siguiente escena, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
-const texto4 = 'Cuando llegues al final del nivel podrás ver la cantidad de respuestas acertadas, si quieres mejorar tu puntuación puedes intentar de nuevo.';
+const texto1 =
+    "En este nivel pondremos en práctica lo aprendido durante los niveles anteriores, pon mucha atención a la pregunta y selecciona una de las respuestas que estan en la parte de abajo.";
+const texto2 =
+    'Si responde erróneamente se te dirá cual era la respuesta correcta, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
+const texto3 =
+    'Si escojes una respuesta correcta avanzas a la siguiente escena, para avanzar presiona la "X" o el botón "cerrar" luego presiona continuar.';
+const texto4 =
+    "Cuando llegues al final del nivel podrás ver la cantidad de respuestas acertadas, si quieres mejorar tu puntuación puedes intentar de nuevo.";
 
-const listaDescripcion = [texto1, texto2, texto3,texto4];
+const listaDescripcion = [texto1, texto2, texto3, texto4];
 
 let contadorSiguienteImagen = 0;
 
 function cambiarImagen() {
-    if (contadorSiguienteImagen >= listaImagenes3.length ) {
-        botonSiguienteInstruccion.style.display = 'none';
-        botonVamos.style.display = 'block';
+    if (contadorSiguienteImagen >= listaImagenes3.length) {
+        botonSiguienteInstruccion.style.display = "none";
+        botonVamos.style.display = "block";
     } else {
         imagenes.src = listaImagenes3[contadorSiguienteImagen];
-        textoInstruccion.textContent = listaDescripcion[contadorSiguienteImagen];
+        textoInstruccion.textContent =
+            listaDescripcion[contadorSiguienteImagen];
         contadorSiguienteImagen++;
     }
 }
 
 cambiarImagen();
 
-
-
-
-
-
-
 // ---------------------- recuperar el id -------------------
-const userId = localStorage.getItem('userId');
+const userId = localStorage.getItem("userId");
 
-
-
-let url = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${userId}` ;
-let intentos = 0 ;
-let aprobado = 0 ;
+let url = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${userId}`;
+let intentos = 0;
+let aprobado = 0;
 getLastEstadoProceso(url)
-
-.then(estadoProceso1 => {
-    if (estadoProceso1 === 0) {
-        intentos = 1;
-        console.log(intentos,'aqui wntrei')
-        aprobado = 0;
-        console.log(aprobado,'aqui wntrei')
-    }else{
-    intentos = estadoProceso1.intentos + 1;
-    aprobado = estadoProceso1.completado ;
-    console.log(intentos,'aqui wntrei')
-    console.log(aprobado,'aqui wntrei')
-}
-
-
-
-
-})
-.catch(error => {
-    console.error('Error en la solicitud:', error);
-});
+    .then((estadoProceso1) => {
+        if (estadoProceso1 === 0) {
+            intentos = 1;
+            console.log(intentos, "aqui wntrei");
+            aprobado = 0;
+            console.log(aprobado, "aqui wntrei");
+        } else {
+            intentos = estadoProceso1.intentos + 1;
+            aprobado = estadoProceso1.completado;
+            console.log(intentos, "aqui wntrei");
+            console.log(aprobado, "aqui wntrei");
+        }
+    })
+    .catch((error) => {
+        console.error("Error en la solicitud:", error);
+    });
 
 // ---------------------- recuperar el id -------------------
 
-
 // ------------------- intentos --------------------
 
-
 // ------------------- intentos --------------------
-
 
 // ------------------------ completar nivel --------------------
-let contador_nivel = 0 ;
-
+let contador_nivel = 0;
 
 let nivel_completado = 0;
 
-
-console.log(nivel_completado)
+console.log(nivel_completado);
 // ------------------------ completar nivel --------------------
 
 // ------------------- intentos --------------------
@@ -167,11 +161,18 @@ const data = {
 
 */
 
-
-
-
 // ----------------------- envio de informacion -----------------------------
-function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion, estado_proceso, texto_respuesta_preguntas, texto_respuesta_respuestas, status) {
+function sendDataToApi(
+    usuario_id,
+    pregunta_id,
+    completado,
+    intentos,
+    puntuacion,
+    estado_proceso,
+    texto_respuesta_preguntas,
+    texto_respuesta_respuestas,
+    status
+) {
     // Crear el objeto de datos a enviar
     const data = {
         usuario_id: usuario_id,
@@ -182,40 +183,34 @@ function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion
         estado_proceso: estado_proceso,
         texto_respuesta_preguntas: texto_respuesta_preguntas,
         texto_respuesta_respuestas: texto_respuesta_respuestas,
-        status: status
+        status: status,
     };
 
     // Opciones para la solicitud fetch
     const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-        'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
-      body: JSON.stringify(data) // Convertir el objeto a una cadena JSON
+        body: JSON.stringify(data), // Convertir el objeto a una cadena JSON
     };
 
     // Realizar la solicitud
-    fetch('https://junamnoj.foxint.tech/api/progreso-tres-usuario', options)
-        .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Procesar la respuesta como JSON
+    fetch("https://junamnoj.foxint.tech/api/progreso-tres-usuario", options)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json(); // Procesar la respuesta como JSON
         })
-        .then(data => {
-        console.log('Success:', data); // Manejar los datos de la respuesta
+        .then((data) => {
+            console.log("Success:", data); // Manejar los datos de la respuesta
         })
-        .catch(error => {
-        console.error('Error:', error); // Manejar errores
+        .catch((error) => {
+            console.error("Error:", error); // Manejar errores
         });
-    }
+}
 // ----------------------- envio de informacion -----------------------------
-
-
-
-
-
-
 
 let questions = [];
 
@@ -286,7 +281,7 @@ function generateHTMLForCurrentQuestion() {
     preguntaSeleccionada.images.forEach((image, index) => {
         // Crear el contenedor principal
         const div = document.createElement("div");
-        div.className = "imagenes-descrip";
+        div.className = "imagenes-descrip col-4 col-md-6 col-lg-4";
 
         // Crear la imagen
         const img = document.createElement("img");
@@ -349,20 +344,18 @@ time_pantalla_carga = setTimeout(function () {
     game_cont.style.display = "none";
 });
 
-function comenzar (){
-    time_teminar = setTimeout(function(){
-    mostrarDesplegable()
-    game_cont.style.display = "flex";
-    boton_continuar.style.display = "block";
-    barra.style.display = "block";
-    header.style.display = "block";
-    cargando.style.display = "none";
-    gif_pregunta.style.display = "flex";
-    text_nivel.style.display = "block";
-    tamaño = 100 / questions.length;
-
-}, 100);
-
+function comenzar() {
+    time_teminar = setTimeout(function () {
+        mostrarDesplegable();
+        game_cont.style.display = "flex";
+        boton_continuar.style.display = "block";
+        barra.style.display = "block";
+        header.style.display = "block";
+        cargando.style.display = "none";
+        gif_pregunta.style.display = "flex";
+        text_nivel.style.display = "block";
+        tamaño = 100 / questions.length;
+    }, 100);
 }
 function cargar_barra() {
     const barra = document.getElementById("barra");
@@ -395,31 +388,31 @@ function checkAnswer(selectedIndex) {
     const images = document.querySelectorAll(".image");
     const img_correcta = question.descrip[selectedIndex];
     const correctIndex = question.descrip.indexOf(question.correct);
-    contador_nivel ++;
-    if (contador_nivel === questions.length){
+    contador_nivel++;
+    if (contador_nivel === questions.length) {
         nivel_completado = 1;
         mostrar_enlace = 1;
 
-        localStorage.setItem('mostrar_enlace', mostrar_enlace);
+        localStorage.setItem("mostrar_enlace", mostrar_enlace);
 
-        localStorage.setItem('nivel_completado', nivel_completado);
+        localStorage.setItem("nivel_completado", nivel_completado);
     }
-    if (intentos <= 3 || (nivel_completado === 1 && aprobado === 0)){
-        if (intentos > 3){
+    if (intentos <= 3 || (nivel_completado === 1 && aprobado === 0)) {
+        if (intentos > 3) {
             intentos = 3;
         }
-    sendDataToApi(
-        userId,              // usuario_id
-        question.id,              // pregunta_id
-        nivel_completado,              // completado
-        intentos,              // intentos
-        tamaño,            // puntuacion
-        nivel_completado,              // estado_proceso
-        question.correct,      // texto_respuesta_preguntas
-        img_correcta,      // texto_respuesta_respuestas
-        1               // status
-      );
-      }
+        sendDataToApi(
+            userId, // usuario_id
+            question.id, // pregunta_id
+            nivel_completado, // completado
+            intentos, // intentos
+            tamaño, // puntuacion
+            nivel_completado, // estado_proceso
+            question.correct, // texto_respuesta_preguntas
+            img_correcta, // texto_respuesta_respuestas
+            1 // status
+        );
+    }
     if (img_correcta === question.correct) {
         images[selectedIndex].classList.add("correct");
         document.getElementById("feedback").textContent = "Correcto";
@@ -495,7 +488,6 @@ function nextQuestion() {
         showResult();
     }
 }
-
 
 function showResult() {
     document.getElementById("game").style.display = "block";

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{_('nivel 3')}}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/styles_nivel3.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class="body-nivel2" id="body-principal">
 
@@ -30,9 +31,9 @@
 
 
     <!-- Barra de progreso -->
-
-    @include ('registrados.usuariofinal.Nivel-3.componentes_c.barra_progreso')
-
+    <div class="container container-progress-bar col-12 col-xl-8 mt-5 mt-xl-0">
+        @include ('registrados.usuariofinal.Nivel-3.componentes_c.barra_progreso')
+    </div>
     <!-- gif pegunta -->
 
     @include ('registrados.usuariofinal.Nivel-3.componentes_c.pregunta_gif')
@@ -43,8 +44,10 @@
 
 
 <!-- Boton de continuar -->
-
-    @include ('registrados.usuariofinal.Nivel-3.componentes_c.boton_continuar')
+    <div class="container cointainer-btn">
+        @include ('registrados.usuariofinal.Nivel-3.componentes_c.boton_continuar')
+    </div>
+    
 
 
     <!-- Script JavaScript para el confeti -->

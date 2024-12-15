@@ -157,6 +157,14 @@ body {
     -webkit-overflow-scrolling: touch;
 }
 
+
+
+#cards-para-imagenes:hover{
+    transform: scale(1.1);
+    transition: transform 0.7s ease;
+}
+
+
 /*------modal-------*/
 * {
     margin: 0;
@@ -369,8 +377,8 @@ body {
 }
 
 .card-header {
-    width: 90%;
-    height: 200px;
+    
+    min-height: 200px;
     overflow: hidden;
     position: relative;
 }
@@ -383,6 +391,9 @@ body {
     position: relative;
     margin-top: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    display:flex; 
+    align-items: center;
+    justify-content: center;
 }
 
 .card-header img {
@@ -393,6 +404,21 @@ body {
     border-radius: inherit;
     transition: transform 0.3s ease-in-out;
     border-radius: 1rem;
+}
+
+
+
+#layout-wrapper {
+    min-width: 300px;
+}
+
+
+.allCenterImageCardLevel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
 }
 
 .card img:hover {
@@ -3127,7 +3153,7 @@ progress {
 @media (max-width: 540px) {
     .card-header {
         width: 90%;
-        height: 320px;
+        height: auto;
         overflow: hidden;
         position: relative;
     }
@@ -3146,7 +3172,6 @@ progress {
     }
     .card-header {
         width: 90%;
-        height: 250px;
         overflow: hidden;
         position: relative;
     }

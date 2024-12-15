@@ -1,7 +1,7 @@
 <!-------------------------------------- modal --------------------------------------------->
 
 
-<section class="modal" id="modal">
+<section class="modal_c" id="modal">
     <div class="modal_cont">
         <span class="close" style="display:none">&times;</span>
         <h2 id="pregunta">{{_('')}}</h2>

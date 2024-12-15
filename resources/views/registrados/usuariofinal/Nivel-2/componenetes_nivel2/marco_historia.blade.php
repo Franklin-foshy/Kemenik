@@ -1,6 +1,6 @@
 
 
-<div id = "contenedor" class="container" style="display: none">
+<div id = "contenedor" class="container_c" style="display: none">
     <!------------------------------------------ gifs  ---------------------------------------------->
     
     @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.gifs')

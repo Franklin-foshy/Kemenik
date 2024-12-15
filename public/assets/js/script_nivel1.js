@@ -1,13 +1,22 @@
+const arrayDominio = ["127.0.0.1:8000", "junamnoj.foxint.tech"];
+const dominio = arrayDominio[0];
+const arrayRute = ["http", "https"];
+const Rute = arrayRute[0];
 
 function getLastEstadoProceso(url) {
     return new Promise((resolve, reject) => {
         // Realizar la solicitud GET
         $.ajax({
             url: url,
-            type: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                if (response && response.data && Array.isArray(response.data) && response.data.length > 0) {
+            type: "GET",
+            dataType: "json",
+            success: function (response) {
+                if (
+                    response &&
+                    response.data &&
+                    Array.isArray(response.data) &&
+                    response.data.length > 0
+                ) {
                     // Obtener el último registro del array
                     let lastRecord = response.data[response.data.length - 1];
                     // Devolver el valor de "estado_proceso"
@@ -16,125 +25,118 @@ function getLastEstadoProceso(url) {
                     resolve(0);
                 }
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
                 resolve(0);
-            }
+            },
         });
     });
 }
 
-
-
-
-console.log(listaImagenes)
+console.log(listaImagenes);
 function mostrarDesplegable() {
-    document.getElementById('desplegableInstrucciones').style.display = 'flex'
-    
-    document.body.classList.add('modal-visible');  // Añade clase al body para evitar scroll
-    document.getElementById('desplegableInstrucciones').classList.add('desplegable-visible'); // Muestra el modal
+    document.getElementById("desplegableInstrucciones").style.display = "flex";
+
+    document.body.classList.add("modal-visible"); // Añade clase al body para evitar scroll
+    document
+        .getElementById("desplegableInstrucciones")
+        .classList.add("desplegable-visible"); // Muestra el modal
 }
 
 function cerrarDesplegable() {
-    document.getElementById('desplegableInstrucciones').style.display = 'none'
+    document.getElementById("desplegableInstrucciones").style.display = "none";
     musica.play();
 
-    document.body.classList.remove('modal-visible');  // Remueve clase del body
-    document.getElementById('desplegableInstrucciones').classList.remove('desplegable-visible'); // Oculta el modal
+    document.body.classList.remove("modal-visible"); // Remueve clase del body
+    document
+        .getElementById("desplegableInstrucciones")
+        .classList.remove("desplegable-visible"); // Oculta el modal
 }
 
-const botonSiguienteInstruccion = document.getElementById('botonSiguienteInstruccion');
-const botonVamos = document.getElementById('botonVamos');
-const imagenes = document.getElementById('imagenInstruccion');
-const textoInstruccion = document.getElementById('textoInstruccion');
+const botonSiguienteInstruccion = document.getElementById(
+    "botonSiguienteInstruccion"
+);
+const botonVamos = document.getElementById("botonVamos");
+const imagenes = document.getElementById("imagenInstruccion");
+const textoInstruccion = document.getElementById("textoInstruccion");
 
-const texto1 = 'Mueve las piezas del rompecabezas hasta los espacios vacíos. Si los espacios están llenos, puedes mover una pieza en un espacio lleno y la pieza regresará a su posición inicial.';
-const texto2 = 'Cuando coloques la pieza en un espacio correcto, se desplegará una pregunta junto con las respuestas. Debes escoger la respuesta que más creas conveniente. No hay respuestas buenas ni malas.';
-const texto3 = 'Al terminar el rompecabezas podrás ver la imagen escondida y así avanzar al siguiente nivel.';
+const texto1 =
+    "Mueve las piezas del rompecabezas hasta los espacios vacíos. Si los espacios están llenos, puedes mover una pieza en un espacio lleno y la pieza regresará a su posición inicial.";
+const texto2 =
+    "Cuando coloques la pieza en un espacio correcto, se desplegará una pregunta junto con las respuestas. Debes escoger la respuesta que más creas conveniente. No hay respuestas buenas ni malas.";
+const texto3 =
+    "Al terminar el rompecabezas podrás ver la imagen escondida y así avanzar al siguiente nivel.";
 
 const listaDescripcion = [texto1, texto2, texto3];
 let contadorSiguienteImagen = 0;
 
 function cambiarImagen() {
-    if (contadorSiguienteImagen >= listaImagenes.length ) {
-        botonSiguienteInstruccion.style.display = 'none';
-        botonVamos.style.display = 'block';
+    if (contadorSiguienteImagen >= listaImagenes.length) {
+        botonSiguienteInstruccion.style.display = "none";
+        botonVamos.style.display = "block";
     } else {
         imagenes.src = listaImagenes[contadorSiguienteImagen];
-        textoInstruccion.textContent = listaDescripcion[contadorSiguienteImagen];
+        textoInstruccion.textContent =
+            listaDescripcion[contadorSiguienteImagen];
         contadorSiguienteImagen++;
     }
 }
 
 cambiarImagen();
 
-
-
 // ---------------------- recuperar el id -------------------
-const userId = localStorage.getItem('userId');
+const userId = localStorage.getItem("userId");
 
-console.log(userId)
+console.log(userId);
 
-
-let url = `https://junamnoj.foxint.tech/api/progreso-usuario/${userId}` ;
-let intentos_1 = 0 ;
-let aprobado = 0 ;
+let url = `${Rute}://${dominio}/api/progreso-usuario/${userId}`;
+let intentos_1 = 0;
+let aprobado = 0;
 getLastEstadoProceso(url)
-
-.then(estadoProceso1 => {
-    if (estadoProceso1 === 0) {
-        intentos_1 = 1;
-        console.log(intentos_1,'aqui wntrei')
-        aprobado = 0;
-        console.log(aprobado,'aqui wntrei')
-    }else{
-    intentos_1 = estadoProceso1.intentos + 1;
-    aprobado = estadoProceso1.completado ;
-    console.log(intentos_1,'aqui wntrei')
-    console.log(aprobado,'aqui wntrei')
-}
-
-
-
-
-})
-.catch(error => {
-    console.error('Error en la solicitud:', error);
-});
+    .then((estadoProceso1) => {
+        if (estadoProceso1 === 0) {
+            intentos_1 = 1;
+            console.log(intentos_1, "aqui wntrei");
+            aprobado = 0;
+            console.log(aprobado, "aqui wntrei");
+        } else {
+            intentos_1 = estadoProceso1.intentos + 1;
+            aprobado = estadoProceso1.completado;
+            console.log(intentos_1, "aqui wntrei");
+            console.log(aprobado, "aqui wntrei");
+        }
+    })
+    .catch((error) => {
+        console.error("Error en la solicitud:", error);
+    });
 
 // ---------------------- recuperar el id -------------------
 
-
 // ------------------- intentos --------------------
 
-
-
-
-
-
 // ------------------- intentos --------------------
-
 
 // ------------------------ completar nivel --------------------
-let contador_nivel_1 = 0 ;
-
+let contador_nivel_1 = 0;
 
 let nivel_completado_1 = 0;
 
-
-console.log(nivel_completado_1)
+console.log(nivel_completado_1);
 // ------------------------ completar nivel --------------------
 
-
-
-
-
-
-
 // ----------------------- envio de informacion -----------------------------
 
-
 // ----------------------- envio de informacion -----------------------------
-function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion, estado_proceso, texto_respuesta_preguntas, texto_respuesta_respuestas, status) {
+function sendDataToApi(
+    usuario_id,
+    pregunta_id,
+    completado,
+    intentos,
+    puntuacion,
+    estado_proceso,
+    texto_respuesta_preguntas,
+    texto_respuesta_respuestas,
+    status
+) {
     // Crear el objeto de datos a enviar
     const data = {
         usuario_id: usuario_id,
@@ -145,40 +147,35 @@ function sendDataToApi(usuario_id, pregunta_id, completado, intentos, puntuacion
         estado_proceso: estado_proceso,
         texto_respuesta_preguntas: texto_respuesta_preguntas,
         texto_respuesta_respuestas: texto_respuesta_respuestas,
-        status: status
+        status: status,
     };
 
     // Opciones para la solicitud fetch
     const options = {
-        method: 'POST',
+        method: "POST",
         headers: {
-        'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
-      body: JSON.stringify(data) // Convertir el objeto a una cadena JSON
+        body: JSON.stringify(data), // Convertir el objeto a una cadena JSON
     };
 
     // Realizar la solicitud
-    fetch('https://junamnoj.foxint.tech/api/progreso-usuario', options)
-        .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json(); // Procesar la respuesta como JSON
+    fetch(`${Rute}://${dominio}/api/progreso-usuario`, options)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json(); // Procesar la respuesta como JSON
         })
-        .then(data => {
-        console.log('Success:', data); // Manejar los datos de la respuesta
+        .then((data) => {
+            console.log("Success:", data); // Manejar los datos de la respuesta
         })
-        .catch(error => {
-        console.error('Error:', error); // Manejar errores
+        .catch((error) => {
+            console.error("Error:", error); // Manejar errores
         });
-    }
+}
 // ----------------------- envio de informacion -----------------------------
 // ----------------------- envio de informacion -----------------------------
-
-
-
-
-
 
 // --------------------------- Pantalla de carga ------------------------------
 const cargando = document.getElementById("cargando");
@@ -194,24 +191,24 @@ const piezasss6 = document.getElementById("casilla_6");
 const espacioss = document.getElementById("targetContainer");
 const boton_regresar = document.getElementById("regresar");
 
-function comenzar (){
-    time_teminar = setTimeout(function(){
-    mostrarDesplegable()
-    header.style.display = "block";
-    nivel.style.display = "block";
-    barra_id.style.display = "block";
-    barra_id.style.display = "block";
-    piezasss1.style.display = "block";
-    piezasss2.style.display = "block";
-    piezasss3.style.display = "block";
-    piezasss4.style.display = "block";
-    piezasss5.style.display = "block";
-    piezasss6.style.display = "block";
-    espacioss.style.display = "grid";
-    cargando.style.display = "none";
-    boton_regresar.style.display = "block";
-    contador.style.display = "block";
-}, 5000);
+function comenzar() {
+    time_teminar = setTimeout(function () {
+        mostrarDesplegable();
+        header.style.display = "block";
+        nivel.style.display = "block";
+        barra_id.style.display = "block";
+        barra_id.style.display = "block";
+        piezasss1.style.display = "block";
+        piezasss2.style.display = "block";
+        piezasss3.style.display = "block";
+        piezasss4.style.display = "block";
+        piezasss5.style.display = "block";
+        piezasss6.style.display = "block";
+        espacioss.style.display = "grid";
+        cargando.style.display = "none";
+        boton_regresar.style.display = "block";
+        contador.style.display = "block";
+    }, 5000);
 }
 // ---------------------------------- Audio ------------------------------------
 
@@ -392,75 +389,76 @@ document.addEventListener("DOMContentLoaded", () => {
     // -------------------------------- Logica para loch ( Movil ) ---------------------------
 
     // -------------------------------- Logica para loch ( PC ) ------------------------------
-
-    // Funciones allowDrop y drop para pc
-    function allowDrop(event) {
-        event.preventDefault();
-    }
-
-    function drop(event) {
-        event.preventDefault();
-        let data = event.dataTransfer.getData("text");
-        let pieza = document.getElementById(data);
-        let piezaIndex = pieza.getAttribute("data-index"); // id de la pieza
-        let espacioIndex = event.target.getAttribute("data-index"); // id de del espacio
-        let existingPiece = event.target.querySelector(".pieza"); // Ya hay una pieza en ese espacio
-
-        // --------------------------------- Revisión de existencia de pieza en espacio ---------------------------------
-        if (event.target.classList.contains("espacio")) {
-            // ------------ Evaluacion de si el espacio esta vacio o es la misma pieza que se quiere colocar ------------
-            if (!existingPiece || existingPiece === pieza) {
-                // SI EL ESTA VACIO O SI LA PIEZA ES LA MISMA
-                event.target.appendChild(pieza);
-
-                // ------------- Revisión de si la pieza que se colocara tiene el mismo id que  el espacio  -------------
-                if (piezaIndex === espacioIndex) {
-                    // SI LA RESPUESTA ES CORRECTA
-                    audio_correcto.play(); // play a la musica de correcto
-                    pieza.setAttribute("draggable", "false"); // se le coloca en false el draggable para que ya no se mueva la pieza
-                    pieza.style.pointerEvents = "none"; // se le quita el pointer para que no se pueda clikear
-                    mostrarPregunta(piezaIndex); // se hace el cambio a la pregunta y a las segun el id de la pieza
-                    //smostrarModal(); // se muestra el modal con los cambios de la pregunta y de las respuestas
-                    setTimeout(() => {
-                        audio_correcto.pause(); // pausar el audio
-                        audio_correcto.currentTime = 0; // reiniciar el audio
-                    }, 800); // tiempo de 8 segundos en del audio de correcto
-                } else {
-                    // SI LA RESPUESTA ES INCORRECTA
-                    audio_incorrecto.play(); // play a la musica de incorrecto
-                    setTimeout(() => {
-                        audio_incorrecto.pause(); // pausar el audio
-                        audio_incorrecto.currentTime = 0; // reiniciar el audio
-                    }, 500); // tiempo de 5 segundo del audio incorrecto
-                }
-            } else {
-                // SI EL ESPACIO ESTA LLENO O LA PIEZA NO ES LA MISMA
-                let originalParent = document.getElementById(
-                    pieza.getAttribute("data-original-parent")
-                ); // Busca la posiscion inicial
-                originalParent.appendChild(pieza); // Se manda a su posicion inicial
-                pieza.style.position = "static"; // Se le deja estatico para que no se mueva
-                pieza.style.transform = "none"; // Hace que la pieza permanezca sin otro movimiento
-            }
-        } else {
-            let originalParent = document.getElementById(
-                pieza.getAttribute("data-original-parent")
-            );
-            originalParent.appendChild(pieza);
-            pieza.style.position = "static";
-            pieza.style.transform = "none";
-        }
-    }
-
-    // Eventos a los espacios para soporte de pc
-    espacios.forEach((espacio) => {
-        espacio.addEventListener("dragover", allowDrop, false);
-        espacio.addEventListener("drop", drop, false);
-    });
 });
 
 // -------------------------------- Logica para loch ( PC ) ------------------------------
 
+// Funciones allowDrop y drop para pc
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    let data = event.dataTransfer.getData("text");
+    let pieza = document.getElementById(data);
+    let piezaIndex = pieza.getAttribute("data-index"); // id de la pieza
+    let espacioIndex = event.target.getAttribute("data-index"); // id de del espacio
+    let existingPiece = event.target.querySelector(".pieza"); // Ya hay una pieza en ese espacio
+
+    // --------------------------------- Revisión de existencia de pieza en espacio ---------------------------------
+    if (event.target.classList.contains("espacio")) {
+        // ------------ Evaluacion de si el espacio esta vacio o es la misma pieza que se quiere colocar ------------
+        if (!existingPiece || existingPiece === pieza) {
+            // SI EL ESTA VACIO O SI LA PIEZA ES LA MISMA
+            event.target.appendChild(pieza);
+
+            // ------------- Revisión de si la pieza que se colocara tiene el mismo id que  el espacio  -------------
+            if (piezaIndex === espacioIndex) {
+                // SI LA RESPUESTA ES CORRECTA
+                audio_correcto.play(); // play a la musica de correcto
+                pieza.setAttribute("draggable", "false"); // se le coloca en false el draggable para que ya no se mueva la pieza
+                pieza.style.pointerEvents = "none"; // se le quita el pointer para que no se pueda clikear
+                mostrarPregunta(piezaIndex); // se hace el cambio a la pregunta y a las segun el id de la pieza
+                //smostrarModal(); // se muestra el modal con los cambios de la pregunta y de las respuestas
+                setTimeout(() => {
+                    audio_correcto.pause(); // pausar el audio
+                    audio_correcto.currentTime = 0; // reiniciar el audio
+                }, 800); // tiempo de 8 segundos en del audio de correcto
+            } else {
+                // SI LA RESPUESTA ES INCORRECTA
+                audio_incorrecto.play(); // play a la musica de incorrecto
+                setTimeout(() => {
+                    audio_incorrecto.pause(); // pausar el audio
+                    audio_incorrecto.currentTime = 0; // reiniciar el audio
+                }, 500); // tiempo de 5 segundo del audio incorrecto
+            }
+        } else {
+            // SI EL ESPACIO ESTA LLENO O LA PIEZA NO ES LA MISMA
+            let originalParent = document.getElementById(
+                pieza.getAttribute("data-original-parent")
+            ); // Busca la posiscion inicial
+            originalParent.appendChild(pieza); // Se manda a su posicion inicial
+            pieza.style.position = "static"; // Se le deja estatico para que no se mueva
+            pieza.style.transform = "none"; // Hace que la pieza permanezca sin otro movimiento
+        }
+    } else {
+        let originalParent = document.getElementById(
+            pieza.getAttribute("data-original-parent")
+        );
+        originalParent.appendChild(pieza);
+        pieza.style.position = "static";
+        pieza.style.transform = "none";
+    }
+}
+const espaci = document.querySelectorAll(".espacio");
+// Eventos a los espacios para soporte de pc
+espaci.forEach((espacio) => {
+    espacio.addEventListener("dragover", allowDrop, false);
+    espacio.addEventListener("drop", drop, false);
+});
+
+// -------------------------------- Logica para loch ( PC ) ------------------------------
 
 // ---------------- Añadiendo rompecabezas -----------------------
 
@@ -494,7 +492,7 @@ $.ajax({
 let rompecabezas_random = [];
 
 $.ajax({
-    url: `https://junamnoj.foxint.tech/api/rompecabezas/`,
+    url: `${Rute}://${dominio}/api/rompecabezas/`,
     type: "GET",
     dataType: "json",
     success: function (response) {
@@ -503,7 +501,10 @@ $.ajax({
             rompecabezas_random = response.rompecabezas;
 
             // Selecciona un rompecabezas aleatorio
-            let rompecabezas_aleatorio = rompecabezas_random[Math.floor(Math.random() * rompecabezas_random.length)];
+            let rompecabezas_aleatorio =
+                rompecabezas_random[
+                    Math.floor(Math.random() * rompecabezas_random.length)
+                ];
 
             if (rompecabezas_aleatorio.imagen) {
                 // Selecciona la imagen del rompecabezas aleatorio
@@ -517,7 +518,9 @@ $.ajax({
                     pieza.style.backgroundImage = `url("${escojer_imagen_rompecabezas}")`;
                 });
             } else {
-                console.error("El rompecabezas seleccionado no tiene una imagen.");
+                console.error(
+                    "El rompecabezas seleccionado no tiene una imagen."
+                );
             }
         } else {
             console.error("No se encontraron rompecabezas en la respuesta.");
@@ -528,20 +531,19 @@ $.ajax({
     },
 });
 
-
 // ---------------- IMPLEMENTACION DEL BACKEND --------------------
 let preguntas = [];
 let preguntas_guardar = [];
 
 $.ajax({
-    url: `https://junamnoj.foxint.tech/api/preguntas_por_nivel/1`,
+    url: `${Rute}://${dominio}/api/preguntas_por_nivel/1`,
     type: "GET",
     dataType: "json",
     success: function (response) {
         if (response.data && response.data.length > 0) {
             let requests = response.data.map(function (pregunta) {
                 return $.ajax({
-                    url: `https://junamnoj.foxint.tech/api/respuestas_por_pregunta/${pregunta.id}`,
+                    url: `${Rute}://${dominio}/api/respuestas_por_pregunta/${pregunta.id}`,
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
@@ -550,8 +552,8 @@ $.ajax({
 
                         if (response.data && response.data.length > 0) {
                             response.data.forEach(function (respuesta) {
-                                    imagenes.push(respuesta.imagen);
-                                    respuestas.push(respuesta.texto_respuesta);
+                                imagenes.push(respuesta.imagen);
+                                respuestas.push(respuesta.texto_respuesta);
                             });
                         }
 
@@ -572,7 +574,9 @@ $.ajax({
             $.when(...requests).then(function () {
                 // Seleccionar 6 preguntas aleatorias
                 for (let i = 0; i < 6 && preguntas_guardar.length > 0; i++) {
-                    let randomIndex = Math.floor(Math.random() * preguntas_guardar.length);
+                    let randomIndex = Math.floor(
+                        Math.random() * preguntas_guardar.length
+                    );
                     let seleccion = preguntas_guardar.splice(randomIndex, 1)[0];
                     preguntas.push(seleccion);
                 }
@@ -633,30 +637,30 @@ function mostrarContenidoPorId(id) {
 function verificarRespuesta(imagenIndex, preguntaId) {
     let preguntaDiccionario = preguntas[preguntaId - 1];
     let respuestaCorrecta = preguntaDiccionario.correcta;
-    let tamaño_2 =  100 / 6;
-    contador_nivel_1 ++;
-    if (contador_nivel_1 === preguntas.length){
+    let tamaño_2 = 100 / 6;
+    contador_nivel_1++;
+    if (contador_nivel_1 === preguntas.length) {
         nivel_completado_1 = 1;
 
-        localStorage.setItem('nivel_completado_1', nivel_completado_1);
+        localStorage.setItem("nivel_completado_1", nivel_completado_1);
     }
-    if (intentos_1 <= 3 || (nivel_completado_1 === 1 && aprobado === 0) ){
+    if (intentos_1 <= 3 || (nivel_completado_1 === 1 && aprobado === 0)) {
         if (intentos_1 > 3) {
-            intentos_1 = 3
+            intentos_1 = 3;
         }
-    sendDataToApi(
-        userId,              // usuario_id
-        preguntaDiccionario.id,              // pregunta_id
-        nivel_completado_1,              // completado
-        intentos_1,              // intentos
-        16,            // puntuacion
-        nivel_completado_1,              // estado_proceso
-        respuestaCorrecta,      // texto_respuesta_preguntas
-        preguntaDiccionario.respuestas[imagenIndex],      // texto_respuesta_respuestas
-        1               // status
-      );
-      }
-   /*if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
+        sendDataToApi(
+            userId, // usuario_id
+            preguntaDiccionario.id, // pregunta_id
+            nivel_completado_1, // completado
+            intentos_1, // intentos
+            16, // puntuacion
+            nivel_completado_1, // estado_proceso
+            respuestaCorrecta, // texto_respuesta_preguntas
+            preguntaDiccionario.respuestas[imagenIndex], // texto_respuesta_respuestas
+            1 // status
+        );
+    }
+    /*if (preguntaDiccionario.respuestas[imagenIndex] === respuestaCorrecta) {
         //alert("¡Correcto!");
         // Aquí puedes añadir cualquier otra acción en caso de respuesta correcta
     } else {
@@ -816,11 +820,6 @@ modal.addEventListener("click", (e) => {
     if (e.target === modal) {
         e.stopPropagation(); // Evita que el clic en el fondo cierre el modal
     }
-});
-
-// Evita que el modal se cierre al hacer clic en el contenido
-modalContent.addEventListener("click", (e) => {
-    e.stopPropagation(); // Evita que el clic en el contenido cierre el modal
 });
 
 function goHome() {

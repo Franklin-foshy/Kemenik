@@ -1,12 +1,15 @@
 body {
+  position: relative;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: flex-start;
+  min-height: 100vh;
+  min-width: 250px;
   margin: 0;
 }
+
 
 /* ----------- modal instrucciones ---------------- */
 
@@ -38,7 +41,7 @@ body {
     padding: 20px;
     text-align: center;
     max-width: 90%;
-    max-height: 80%;
+    max-height: 90%;
     overflow-y: auto; /* Permite desplazamiento interno si el contenido es muy largo */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 
@@ -232,12 +235,14 @@ body {
 header {
   position: relative;
   top: 0%;
-  position: absolute;
-  width: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header img {
-  width: 100%;
+  width: 60%;
   height: auto;
   display: block;
 }
@@ -248,21 +253,29 @@ header img {
 .nivel{
   font-size: 30px;
   font-weight: bold;
-  position: absolute;
-  top: 16%;
-  left: 22%;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
+.container-progress-bar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+}
 
 .barra {
-  position: absolute;
+  position: relative;
   align-items: center;
   border: none;
 }
 
 .barra {
-  width: 60%;
-  top: 22%;
+  width: 100%;
   height: 20px; /* Altura del contenedor de la barra de progreso */
   background-color: #f3f3f3; /* Color de fondo del contenedor */
   border-radius: 25px;
@@ -314,8 +327,6 @@ header img {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
-  width: 420px; 
-  height: 300px; 
 }
 
 .espacio {
@@ -323,6 +334,18 @@ header img {
   height: 200px;
   border: 2px dashed #ccc;
   background-color: #f9f9f9;
+}
+
+
+.marco-romp{
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 1rem;
+  min-height: 200px;
 }
 
 .quitar_borde {
@@ -392,11 +415,11 @@ header img {
 
 #contador {
   font-size: 24px;
-  position: absolute;
-  top: 90%;
+  position: relative;
+
 }
 
-.modal {
+.modal_c {
   display: none;
   position: fixed;
   z-index: 1;
@@ -458,7 +481,7 @@ header img {
   transition: all .3s ease;
 }
 
-.modal{
+.modal_c{
   z-index: 1000;
   position: fixed;
   top: 0;
@@ -584,20 +607,26 @@ header img {
 
 
 /*------modal-------*/
-
+.btn-continuar{
+  position: relative;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .continuar {
-  position: absolute;
   width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #03358a;
   border: 4px solid #A41D23;
   border-radius: 10px;
   color: white;
-  padding: 10px 20px;
   cursor: pointer;
   transition: transform 0.1s;
-  left: 75%;
-  top: 90%;
 }
 
 .gif_preguntas{
@@ -616,6 +645,9 @@ header img {
 
 @media (max-width: 1024px) {
 
+  .marco-romp{
+    height: 700px;
+  }
   
 .contenedor_de_preguntas_respuestas {
   width: 90%;
@@ -652,21 +684,15 @@ header img {
   .nivel{
     font-size: 30px;
     font-weight: bold;
-    position: absolute;
-    top: 16%;
-    left: 16%;
   }
   
   
   .barra {
-    position: absolute;
     align-items: center;
     border: none;
   }
   
   .barra {
-    width: 70%;
-    top: 22%;
     height: 20px; /* Altura del contenedor de la barra de progreso */
     background-color: #f3f3f3; /* Color de fondo del contenedor */
     border-radius: 25px;
@@ -675,37 +701,7 @@ header img {
    /* Espacio superior para separar la barra del contenido superior */
   }
   
-  /* Estilo para el contenedor interno de la barra de progreso */
-  .progress {
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Estilo para la barra de progreso */
-  .progress-barra {
-    width: 100%;
-    height: 100%;
-    -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
-    appearance: none; /* Eliminar el estilo predeterminado */
-  }
-  
-  /* Estilo para la barra de progreso en navegadores WebKit */
-  .progress-barra::-webkit-progress-bar {
-    background-color: #eeae87; /* Color de fondo del contenedor */
-    border-radius: 25px;
-  }
-  
-  .progress-barra::-webkit-progress-value {
-    background-color: #a41d23; /* Color de la barra de llenado */
-    border-radius: 25px;
-  }
-  
-  /* Estilo para la barra de progreso en navegadores Mozilla */
-  .progress-barra::-moz-progress-bar {
-    background-color: #a41d23; /* Color de la barra de llenado */
-    border-radius: 25px;
-  }
-  
+
   .modal-continuar{
     font-size: 40px;
     color: #0a295e;
@@ -714,13 +710,10 @@ header img {
   
   
   .rompecabezas_final {
-    position: absolute;
-    top: 28%;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 420px; 
-    height: 300px; 
+    gap: 10px; 
   }
   
   .espacio {
@@ -795,11 +788,9 @@ header img {
   
   #contador {
     font-size: 30px;
-    position: absolute;
-    top: 80%;
   }
   
-  .modal {
+  .modal_c {
     display: none;
     position: fixed;
     z-index: 1;
@@ -861,7 +852,7 @@ header img {
     transition: all .3s ease;
   }
   
-  .modal{
+  .modal_c{
     z-index: 1000;
     position: fixed;
     top: 0;
@@ -956,17 +947,12 @@ header img {
   
   
   .continuar {
-    position: absolute;
-    width: 150px;
     background-color: #03358a;
     border: 4px solid #A41D23;
     border-radius: 10px;
     color: white;
-    padding: 10px 20px;
     cursor: pointer;
     transition: transform 0.1s;
-    left: 70%;
-    top: 90%;
   }
   
   .gif_preguntas{
@@ -994,13 +980,9 @@ header img {
   
   
   .rompecabezas_final {
-    position: absolute;
-    top: 28%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    width: 420px; 
-    height: 300px; 
+    gap: 10px; 
   }
   
   .espacio {
@@ -1071,36 +1053,34 @@ header img {
 
 #contador {
   font-size: 30px;
-  position: absolute;
-  top: 80%;
 }
 .continuar {
-  position: absolute;
-  width: 150px;
   background-color: #03358a;
   border: 4px solid #A41D23;
   border-radius: 10px;
   color: white;
-  padding: 10px 20px;
   cursor: pointer;
   transition: transform 0.1s;
-  left: 70%;
-  top: 85%;
 }
 }
+@media (max-width: 768px) {
+
+  header img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+
 @media (max-width: 600px) { 
 
   .nivel{
     font-size: 30px;
     font-weight: bold;
-    position: absolute;
-    top: 16%;
-    left: 8%;
   }
 
   .barra {
-    width: 90%;
-    top: 22%;
     height: 20px; /* Altura del contenedor de la barra de progreso */
     background-color: #f3f3f3; /* Color de fondo del contenedor */
     border-radius: 25px;
@@ -1115,13 +1095,9 @@ header img {
   
   
   .rompecabezas_final {
-    position: absolute;
-    top: 28%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
-    width: 300px; 
-    height: 200px; 
   }
   
   .espacio {
@@ -1188,6 +1164,12 @@ header img {
   .pieza[data-index="4"] { background-position: 0 -100px; }
   .pieza[data-index="5"] { background-position: -100px -100px; }
   .pieza[data-index="6"] { background-position: -200px -100px; }
+
+
+
+  .marco-romp{
+    height: 600px;
+  }
 }
   
 
@@ -1197,58 +1179,6 @@ header img {
   .nivel{
     font-size: 30px;
     font-weight: bold;
-    position: absolute;
-    top: 17%;
-    left: 8%;
-  }
-  
-  
-  .barra {
-    position: absolute;
-    align-items: center;
-    border: none;
-  }
-  
-  .barra {
-    width: 90%;
-    top: 22%;
-    height: 20px; /* Altura del contenedor de la barra de progreso */
-    background-color: #f3f3f3; /* Color de fondo del contenedor */
-    border-radius: 25px;
-    overflow: hidden;
-  
-   /* Espacio superior para separar la barra del contenido superior */
-  }
-  
-  /* Estilo para el contenedor interno de la barra de progreso */
-  .progress {
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Estilo para la barra de progreso */
-  .progress-barra {
-    width: 100%;
-    height: 100%;
-    -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
-    appearance: none; /* Eliminar el estilo predeterminado */
-  }
-  
-  /* Estilo para la barra de progreso en navegadores WebKit */
-  .progress-barra::-webkit-progress-bar {
-    background-color: #eeae87; /* Color de fondo del contenedor */
-    border-radius: 25px;
-  }
-  
-  .progress-barra::-webkit-progress-value {
-    background-color: #a41d23; /* Color de la barra de llenado */
-    border-radius: 25px;
-  }
-  
-  /* Estilo para la barra de progreso en navegadores Mozilla */
-  .progress-barra::-moz-progress-bar {
-    background-color: #a41d23; /* Color de la barra de llenado */
-    border-radius: 25px;
   }
   
   .modal-continuar{
@@ -1259,13 +1189,9 @@ header img {
   
   
   .rompecabezas_final {
-    position: absolute;
-    top: 28%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 6px;
-    width: 300px; 
-    height: 200px; 
   }
   
   .espacio {
@@ -1337,12 +1263,9 @@ header img {
   
   #contador {
     font-size: 24px;
-    position: absolute;
-    left: 49%;
-    top:85%;
   }
   
-  .modal {
+  .modal_c {
     display: none;
     position: fixed;
     z-index: 1;
@@ -1404,7 +1327,7 @@ header img {
     transition: all .3s ease;
   }
   
-  .modal{
+  .modal_c{
     z-index: 1000;
     position: fixed;
     top: 0;
@@ -1499,17 +1422,12 @@ header img {
   
   
   .continuar {
-    position: absolute;
-    width: 150px;
     background-color: #03358a;
     border: 4px solid #A41D23;
     border-radius: 10px;
     color: white;
-    padding: 10px 20px;
     cursor: pointer;
     transition: transform 0.1s;
-    left: 55%;
-    top: 90%;
   }
   
   .gif_preguntas{
@@ -1528,60 +1446,8 @@ header img {
   @media (max-width: 360px) {
 
     .nivel{
-      font-size: 30px;
+      font-size: 25px;
       font-weight: bold;
-      position: absolute;
-      top: 17%;
-      left: 2%;
-    }
-    
-    
-    .barra {
-      position: absolute;
-      align-items: center;
-      border: none;
-    }
-    
-    .barra {
-      width: 98%;
-      top: 22%;
-      height: 20px; /* Altura del contenedor de la barra de progreso */
-      background-color: #f3f3f3; /* Color de fondo del contenedor */
-      border-radius: 25px;
-      overflow: hidden;
-    
-     /* Espacio superior para separar la barra del contenido superior */
-    }
-    
-    /* Estilo para el contenedor interno de la barra de progreso */
-    .progress {
-      width: 100%;
-      height: 100%;
-    }
-    
-    /* Estilo para la barra de progreso */
-    .progress-barra {
-      width: 100%;
-      height: 100%;
-      -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
-      appearance: none; /* Eliminar el estilo predeterminado */
-    }
-    
-    /* Estilo para la barra de progreso en navegadores WebKit */
-    .progress-barra::-webkit-progress-bar {
-      background-color: #eeae87; /* Color de fondo del contenedor */
-      border-radius: 25px;
-    }
-    
-    .progress-barra::-webkit-progress-value {
-      background-color: #a41d23; /* Color de la barra de llenado */
-      border-radius: 25px;
-    }
-    
-    /* Estilo para la barra de progreso en navegadores Mozilla */
-    .progress-barra::-moz-progress-bar {
-      background-color: #a41d23; /* Color de la barra de llenado */
-      border-radius: 25px;
     }
     
     .modal-continuar{
@@ -1590,15 +1456,10 @@ header img {
     }
     
     
-    
     .rompecabezas_final {
-      position: absolute;
-      top: 28%;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
-      width: 300px; 
-      height: 200px; 
     }
     
     .espacio {
@@ -1671,12 +1532,10 @@ header img {
     
     #contador {
       font-size: 24px;
-      position: absolute;
-      left: 49%;
-      top:85%;
+      position: relative;
     }
     
-    .modal {
+    .modal_c {
       display: none;
       position: fixed;
       z-index: 10000;
@@ -1738,7 +1597,7 @@ header img {
       transition: all .3s ease;
     }
     
-    .modal{
+    .modal_c{
       z-index: 1000;
       position: fixed;
       top: 0;
@@ -1832,17 +1691,12 @@ header img {
     
     
     .continuar {
-      position: absolute;
-      width: 150px;
       background-color: #03358a;
       border: 4px solid #A41D23;
       border-radius: 10px;
       color: white;
-      padding: 10px 20px;
       cursor: pointer;
       transition: transform 0.1s;
-      left: 55%;
-      top: 90%;
     }
     
     .gif_preguntas{

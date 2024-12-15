@@ -1,12 +1,23 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  min-width: 250px;
+  background-color: #fff;
+}
+
+.container-volver-btn{
+  width: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
-
+}
 
 
 /* ----------- modal instrucciones ---------------- */
@@ -110,12 +121,6 @@ body {
 /* ----------- modal instrucciones ---------------- */
 
 
-
-
-
-
-
-}
 #page-topbar {
 left: 50%;
 position: absolute;
@@ -145,15 +150,16 @@ position: absolute;
 header {
   position: relative;
   top: 0%;
-  position: absolute;
-  width: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header img {
-  width: 100%;
+  width: 50%;
   height: auto;
   display: block;
-
 }
 
 
@@ -276,28 +282,25 @@ header img {
 .nivel{
   font-size: 30px;
   font-weight: bold;
-  position: absolute;
+  position: relative;
+  width: 100%;
   display: none;
-  top: 17%;
-  left: 18%;
+  justify-content: flex-start;
 }
 
 .barra {
-  position: absolute;
-  justify-content: center;
-  top: 20%;
-  border: none;
+  position: relative;
 }
 
 .barra {
-  width: 65%;
-  top: 20%;
+  width: 100%;
   height: 20px; /* Altura del contenedor de la barra de progreso */
   background-color: #f3f3f3; /* Color de fondo del contenedor */
   border-radius: 25px;
   overflow: hidden;
   margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
 }
+
 
 /* Estilo para el contenedor interno de la barra de progreso */
 .progress {
@@ -332,32 +335,25 @@ header img {
 
 
 #game-container {
-  position: absolute;
+  position: relative;
   display: none;
   justify-content: center;
-  top: 45%;
   width: 100%;
-  height: 55%;
   z-index: 100;
 }
 
 .pregunta_gif {
-  position: absolute;
+  position: relative;
   display: none;
-  /* justify-content: center; */
+  justify-content: center; 
   align-items: center;
-  top: 8%;
-  width: 90%;
-  height: 60%;
-  margin-top: 0px;
-  left: -5%;
+  margin-top: 5px;
 }
 .gif_principal {
-  position: absolute;
-  left: 20%;
+  min-width: 150px;
+  position: relative;
   width: 200px;
   height: auto;
-  margin-right: 20px; /* Espacio entre el GIF y la pregunta */
 }
 
 .gif_principal img {
@@ -366,30 +362,35 @@ header img {
 }
 
 .pregunta_ {
-  position: absolute;
-  left: 35%;
-  font-family: 'Arial', sans-serif; /* Puedes cambiar esto a la fuente exacta que necesites */
-  font-size: 20px; /* Ajusta el tamaño según sea necesario */
-  font-weight: bold; /* Ajusta el peso según sea necesario */
-  color: #123456; /* Cambia esto al color exacto que necesitas */
+  max-width: 70%;
+  height: auto;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #123456; 
   align-items: center;
-  text-align: center; /* Opcional: centra el texto */
-  letter-spacing: 1px; /* Espaciado entre letras */
-  margin: 0; /* Elimina cualquier margen predeterminado */
+  text-align: center; 
+  letter-spacing: 1px; 
+  margin: 0;
+}
+
+.pregunta_ p{
+  font-size: 5vw;
+}
+
+#result-text{
+  position: relative;
 }
 
 #game {
-  background-color: rgba(0, 0, 0, 0); /* Fondo completamente transparente */
-  color: black; /* Color del texto */
-  border: none; /* Borde opcional */
+  position: relative;
+  background-color: rgba(0, 0, 0, 0); 
+  color: black;
+  border: none;
   padding: 0;
   border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0);
   text-align: center;
-  max-width: 1000px;
-  max-height: 1000px;
-  height: 60%;
-  width: 80%;
+  width: 100%;
   padding: 0;
   border: 0;
   z-index: 1;
@@ -397,18 +398,19 @@ header img {
 }
 
 #image-container {
+  position: relative;
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   margin-top: 2px; /* Reducir el espacio superior */
 }
 
 .image {
   width: 100%;
-  max-width: 300px;
-  max-height: 300px;
-  height: 80%;
+  max-width: 250px;
+  max-height: 250px;
+  height: auto;
   cursor: pointer;
   border: 8px solid #EEAE87;
   border-radius: 10px;
@@ -428,6 +430,10 @@ header img {
   max-width: 300px;
   height: auto;
   width: 25%;
+  position: relative;
+}
+.imagenes-descrip {
+  margin-top: 10px;
 }
 
 .descripccion {
@@ -497,12 +503,11 @@ header img {
 }
 
 .volver {
-    text-align: center;
     display: none;
 }
 
 .continuar {
-  position: absolute;
+  position: relative;
   width: 150px;
   background-color: #03358a;
   border: 4px solid #A41D23;
@@ -512,15 +517,18 @@ header img {
   cursor: pointer;
   pointer-events: none;
   transition: transform 0.1s;
-  left: 80%;
-  top: 90%;
   z-index: 200;
 }
 
+.cointainer-btn{
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .volver {
-  position: absolute;
-  width: 150px;
+  width: unset;
+  position: relative;
   background-color: #03358a;
   border: 4px solid #A41D23;
   border-radius: 10px;
@@ -528,15 +536,8 @@ header img {
   padding: 10px 20px;
   cursor: pointer;
   transition: transform 0.1s;
-  left: 45%;
-  top: 50%;
 }
 
-.volver:active {
-
-  width: 150px;
-
-}
 .cargando {
   width: 200px;
   height: 200px;
@@ -658,178 +659,28 @@ header img {
 /* Consultas de medios para hacer que el diseño sea más responsive */
 
 @media (max-width: 1200px) {
-    .image {
-        max-width: 250px;
-    }
 
 
 
 
-    .volver {
-      position: absolute;
-      width: 150px;
-      background-color: #03358a;
-      border: 4px solid #A41D23;
-      border-radius: 10px;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: transform 0.1s;
-      left: 45%;
-      top: 80%;
-    }
-    
-    .volver:active {
-    
-      width: 150px;
-    
-    }
 }
 @media (max-width: 1024px) {
 
-  .nivel{
-    left: 13%;
-  }
-
-  .barra {
-    width: 75%;
-    top: 20%;
-    height: 20px; /* Altura del contenedor de la barra de progreso */
-    background-color: #f3f3f3; /* Color de fondo del contenedor */
-    border-radius: 25px;
-    overflow: hidden;
-    margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
-  }
-  
-  .pregunta_gif {
-    position: absolute;
-    display: none;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;     /* Centra verticalmente */
-    top: 3%;
-    width: 90%;
-    height: 60%;
-    margin-top: 0px;
-  }
-
-  .gif_principal {
-    position: absolute;
-    left: 10%;
-    width: 200px;
-    height: auto;
-    margin-right: 20px; /* Espacio entre el GIF y la pregunta */
-  }
-  
-  .gif_principal img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .pregunta_ {
-    position: absolute;
-    left: 35%;
-    font-family: 'Arial', sans-serif; /* Puedes cambiar esto a la fuente exacta que necesites */
-    font-size: 30px; /* Ajusta el tamaño según sea necesario */
-    font-weight: bold; /* Ajusta el peso según sea necesario */
-    color: #123456; /* Cambia esto al color exacto que necesitas */
-    align-items: center;
-    text-align: center; /* Opcional: centra el texto */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    margin: 0; /* Elimina cualquier margen predeterminado */
-  }
-  
-
-  #game-container {
-    position: absolute;
-    display: none;
-    justify-content: center;
-    top: 40%;
-    width: 100%;
-    height: 60%;
-    margin: 2%;
-  }
 }
 
 
 @media (max-width: 900px) {
-  #image-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;  
-    flex-wrap: wrap;
-    margin-top: 2px; /* Reducir el espacio superior */
-  }
+
 }
 
 @media (max-width: 768px) {
-  #image-container {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-top: 2px;
-}
-  .nivel{
-    left: 13%;
-  }
-  .barra {
-    width: 75%;
-    top: 20%;
-    height: 20px; /* Altura del contenedor de la barra de progreso */
-    background-color: #f3f3f3; /* Color de fondo del contenedor */
-    border-radius: 25px;
-    overflow: hidden;
-    margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
+
+
+
+  header img {
+    width: 100%;
   }
   
-  #game-container {
-    position: absolute;
-    display: none;
-    justify-content: center;
-    top: 40%;
-    width: 100%;
-    height: 55%;
-  }
-
-  .pregunta_gif {
-    position: absolute;
-    display: none;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;     /* Centra verticalmente */
-    top: 3%;
-    width: 90%;
-    height: 60%;
-    margin-top: 0px;
-  }
-    .image {
-        max-width: 200px;
-    }
-
-    .gif_principal {
-      position: absolute;
-      left: 2%;
-      width: 150px;
-      height: auto;
-      margin-right: 20px; /* Espacio entre el GIF y la pregunta */
-    }
-    
-    .gif_principal img {
-      width: 100%;
-      height: 100%;
-    }
-    
-    .pregunta_ {
-      position: absolute;
-      left: 35%;
-      font-family: 'Arial', sans-serif; /* Puedes cambiar esto a la fuente exacta que necesites */
-      font-size: 20px; /* Ajusta el tamaño según sea necesario */
-      font-weight: bold; /* Ajusta el peso según sea necesario */
-      color: #123456; /* Cambia esto al color exacto que necesitas */
-      align-items: center;
-      text-align: center; /* Opcional: centra el texto */
-      letter-spacing: 1px; /* Espaciado entre letras */
-      margin: 0; /* Elimina cualquier margen predeterminado */
-    }
     
 
     #feedback {
@@ -848,98 +699,12 @@ header img {
       height: 50px;
         font-size: 14px;
     }
-
-
-
-    .volver {
-      position: absolute;
-      width: 150px;
-      background-color: #03358a;
-      border: 4px solid #A41D23;
-      border-radius: 10px;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: transform 0.1s;
-      left: 45%;
-      top: 80%;
-    }
-    
-    .volver:active {
-    
-      width: 150px;
-    
+    .nivel {
+      font-size: 20px;
     }
 }
 @media (max-width: 480px) {
-  .gif_principal {
-    position: absolute;
-    left: 2%;
-    width: 150px;
-    height: auto;
-    margin-right: 20px; /* Espacio entre el GIF y la pregunta */
-  }
-  
-  .gif_principal img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .pregunta_ {
-    position: absolute;
-    left: 35%;
-    font-family: 'Arial', sans-serif; /* Puedes cambiar esto a la fuente exacta que necesites */
-    font-size: 20px; /* Ajusta el tamaño según sea necesario */
-    font-weight: bold; /* Ajusta el peso según sea necesario */
-    color: #123456; /* Cambia esto al color exacto que necesitas */
-    align-items: center;
-    text-align: center; /* Opcional: centra el texto */
-    letter-spacing: 1px; /* Espaciado entre letras */
-    margin: 0; /* Elimina cualquier margen predeterminado */
-  }
-  
 
-
-
-
-  .nivel{
-    left: 12%;
-    top: 14%;
-    font-size: 25px;
-  }
-  .barra {
-    width: 75%;
-    top: 10%;
-    height: 20px; /* Altura del contenedor de la barra de progreso */
-    background-color: #f3f3f3; /* Color de fondo del contenedor */
-    border-radius: 25px;
-    overflow: hidden;
-    margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
-  }
-  
-  #game-container {
-    position: absolute;
-    display: none;
-    justify-content: center;
-    top: 35%;
-    width: 100%;
-    height: 55%;
-    margin: 2%;
-  }
-
-  .pregunta_gif {
-    position: absolute;
-    display: none;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center;     /* Centra verticalmente */
-    top: 0%;
-    width: 90%;
-    height: 60%;
-    margin-top: 0px;
-  }
-    .image {
-        max-width: 150px;
-    }
 
 
 
@@ -949,54 +714,9 @@ header img {
         font-size: 12px;
     }
 
-
-  .volver {
-    position: absolute;
-    width: 150px;
-    background-color: #03358a;
-    border: 4px solid #A41D23;
-    border-radius: 10px;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: transform 0.1s;
-    left: 35%;
-    top: 80%;
-  }
-  
-  .volver:active {
-  
-    width: 150px;
-  
-  }
     .descripccion{
       font-size: 10px;
     }
-
-    .pregunta_ {
-      font-size: 15px;
-      margin: 15px;
-  }
-
-    .continuar {
-      position: absolute;
-      width: 120px;
-      height: 45px;
-      background-color: #03358a;
-      border: 4px solid #A41D23;
-      border-radius: 10px;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      pointer-events: none;
-      transition: transform 0.1s;
-      justify-content: center;
-      left: 60%;
-      top: 85%;
-      font-size: 5px;
-    }
-    
-
     #feedback {
       position: absolute;
       left: 35%;
@@ -1022,55 +742,15 @@ header img {
     .descripccion {
       font-size: 12px;
     }
-  .barra {
-  position: absolute;
-  justify-content: center;
-  top: 20%;
-  border: none;
+}
+@media (max-width: 399px) {
+  .pregunta_ {
+    font-size: 12px;
+  }
 }
 
-.barra {
-  width: 80%;
-  top: 15%;
-  height: 20px; /* Altura del contenedor de la barra de progreso */
-  background-color: #f3f3f3; /* Color de fondo del contenedor */
-  border-radius: 25px;
-  overflow: hidden;
-  margin-top: 20px; /* Espacio superior para separar la barra del contenido superior */
-}
 
-/* Estilo para el contenedor interno de la barra de progreso */
-.progress {
-  width: 100%;
-  height: 100%;
-}
 
-/* Estilo para la barra de progreso */
-.progress-barra {
-  width: 100%;
-  height: 100%;
-  -webkit-appearance: none; /* Eliminar el estilo predeterminado de los navegadores WebKit */
-  appearance: none; /* Eliminar el estilo predeterminado */
-}
-
-/* Estilo para la barra de progreso en navegadores WebKit */
-.progress-barra::-webkit-progress-bar {
-  background-color: #eeae87; /* Color de fondo del contenedor */
-  border-radius: 25px;
-}
-
-.progress-barra::-webkit-progress-value {
-  background-color: #a41d23; /* Color de la barra de llenado */
-  border-radius: 25px;
-}
-
-/* Estilo para la barra de progreso en navegadores Mozilla */
-.progress-barra::-moz-progress-bar {
-  background-color: #a41d23; /* Color de la barra de llenado */
-  border-radius: 25px;
-}
-
-}
 
 @media (max-width: 376px) {
   #feedback {
@@ -1083,6 +763,7 @@ header img {
     font-family: 'Times New Roman', Times, serif;
     animation: majesty 1s ease-in-out;
   }
+  
 }
 
 @media (max-width: 360px) {
@@ -1098,18 +779,6 @@ header img {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     font-family: 'Times New Roman', Times, serif;
     animation: majesty 1s ease-in-out;
-  }
-  
-  .image {
-    width: 100%;
-    max-width: 300px;
-    max-height: 300px;
-    height: 60%;
-    cursor: pointer;
-    border: 8px solid #EEAE87;
-    border-radius: 10px;
-    transition: transform 0.2s;
-    margin-top: 0px; /* Reducir el espacio superior */
   }
   
   .image:hover {
@@ -1130,12 +799,6 @@ header img {
   .descripccion {
     font-size: 12px;
   }
-  .continuar {
-    position: relative;
-    top: 42%;
-    left: 25%;
-}
-
 .correct {
   border:8px solid rgb(22, 146, 22);
   border-radius: 10px;
@@ -1163,4 +826,12 @@ header img {
   transition: transform 0.2s;
   margin-top: 0px; /* Reducir el espacio superior */
 }
+}
+
+
+
+@media (max-width: 360px) {
+  .gif_principal {
+    min-width: 120px;
+  }
 }

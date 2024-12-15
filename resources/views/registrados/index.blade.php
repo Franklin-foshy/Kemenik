@@ -1,5 +1,6 @@
 @extends('registrados.layouts.master')
 
+
 @section('content')
 <div class="container-fluid">
     @php
@@ -275,7 +276,7 @@
 
     <!-- Valida que tenga el permiso 'usuariofinal' -->
     @if(kvfj(Auth::user()->rol->permissions, 'usuariofinal'))
-    @include('registrados.usuariofinal.niveles');
+    @include('registrados.usuariofinal.niveles')
     @endif
     <!-- Fin validación de permisos 'usuariofinal' -->
 

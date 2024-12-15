@@ -2,7 +2,7 @@
 <!-------------------------------------- Barra de progreso de nivel --------------------------------------------->
 
 <div class="nivel" id="nivel1" style="display:none;">
-    {{_('Nivel 1')}}
+    <p>{{_('Nivel 1')}}</p>
 </div>
 <div class="barra" style="display:none;" id = "barra_id"> 
         <div class="progress"  >

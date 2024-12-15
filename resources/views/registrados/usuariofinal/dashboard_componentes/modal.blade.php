@@ -45,7 +45,7 @@
   if (modal_1 === null) {
       modal_1 = 0;
   } else {
-    modal_1 = parseInt(modal_1, 10); // Asegúrate de convertirlo a número
+    modal_1 = parseInt(modal_1, 10); 
   }
   
     document.getElementById('closeModalButton').addEventListener('click', function() {

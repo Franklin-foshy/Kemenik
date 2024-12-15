@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/styles_nivel1.css')}}">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>{{_('Puzzle')}}</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
 
 <!-------------------------- Pantalla de carga ------------------------>
 
-@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.pantalla_carga')
+    @include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.pantalla_carga')
 
 <!-------------------------- Pantalla de carga ------------------------>
 
@@ -37,21 +37,21 @@
 <!-------------------------------------- Header de imagen ---------------------------------------------->
 
 <!-------------------------------------- Barra de progreso --------------------------------------------->
-
-@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.barra_progreso')
-
+<div class="container container-progress-bar col-12 col-xl-8 mt-5 mt-xl-0">
+    @include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.barra_progreso')
+</div>
 <!-------------------------------------- Barra de progreso --------------------------------------------->
 
 <!-------------------------------------- piezas --------------------------------------------->
-
+<div class="constainer-fluid marco-romp">
 @include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.piezas')
 
 <!-------------------------------------- piezas --------------------------------------------->
 
 <!-------------------------------------- cuadro rompecabezas --------------------------------------------->
 
-@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.cuadro_rompecabezas')
-
+    @include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.cuadro_rompecabezas')
+</div>
 <!-------------------------------------- cuadro rompecabezas --------------------------------------------->
 
 <!-------------------------------------- modal --------------------------------------------->
@@ -67,8 +67,9 @@
 <!-------------------------------------- contador --------------------------------------------->
 
 <!-------------------------------------- boton_continuar --------------------------------------------->
-
-@include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.boton_continuar')
+<div class="container btn-continuar col-12 col-xl-8">
+    @include ('registrados.usuariofinal.Nivel-1.componentes_nivel1.boton_continuar')
+</div>
 
 <!-------------------------------------- boton_continuar --------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script> 

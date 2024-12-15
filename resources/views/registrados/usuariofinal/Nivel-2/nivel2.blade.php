@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/css/styles_nivel2.css')}}">
     <title>{{_('Nivel 2')}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
 
@@ -25,7 +26,7 @@
 <!-------------------------------------- pantalla de carga --------------------------------------------->
 
 @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.pantalla_carga')
-
+</div>
 <!-------------------------------------- pantalla de carga --------------------------------------------->
 <!-------------------------------------- modal --------------------------------------------->
 
@@ -40,25 +41,35 @@
 <!---------------------- header ------------------------>
 
 <!---------------------- barra preogreso ------------------------>
-
+<div class="container container-progress-bar col-12 col-xl-8 mt-5 mt-xl-0">
 @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.barra_progreso')
-
+</div>
 <!---------------------- barra preogreso ------------------------>
 
 
 <!---------------------- vidas ------------------------>
+<div class="container-control-cuadro-vidas">
+    <div id="vidas" style="display: none" class="vidas-movil col-12 col-xl-8 container vidas">
+        <span class="vida"></span>
+    </div>
+        
+    <!---------------------- vidas ------------------------>
 
-<div id="vidas" style="display: none">
-    <span class="vida"></span>
+    <!------------------------------ marco historia ------------------------------------>
+    <div class="container-vidas-pc">
+        @include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.marco_historia')
+
+        <!------------------------------ marco historia ------------------------------------>
+        
+        <div id="vidas-2" style="display: none" class="vidas vidas-2">
+            <span class="vida">❤️</span>
+        </div>
+    </div>
+
+
 </div>
 
-<!---------------------- vidas ------------------------>
 
-<!------------------------------ marco historia ------------------------------------>
-
-@include('registrados.usuariofinal.Nivel-2.componenetes_nivel2.marco_historia')
-
-<!------------------------------ marco historia ------------------------------------>
 
 <!-------------------------------------- Boton salir --------------------------------------------->
 
