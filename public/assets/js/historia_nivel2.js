@@ -1,7 +1,7 @@
 const arrayDominio = ["127.0.0.1:8000", "junamnoj.foxint.tech"];
-const dominio = arrayDominio[0];
+const dominio = arrayDominio[1];
 const arrayRute = ["http", "https"];
-const Rute = arrayRute[0];
+const Rute = arrayRute[1];
 
 function getLastEstadoProceso(url) {
     return new Promise((resolve, reject) => {

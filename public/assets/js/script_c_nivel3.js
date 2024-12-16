@@ -1,3 +1,8 @@
+const arrayDominio = ["127.0.0.1:8000", "junamnoj.foxint.tech"];
+const dominio = arrayDominio[1];
+const arrayRute = ["http", "https"];
+const Rute = arrayRute[1];
+
 function getLastEstadoProceso(url) {
     return new Promise((resolve, reject) => {
         // Realizar la solicitud GET
@@ -85,7 +90,7 @@ cambiarImagen();
 // ---------------------- recuperar el id -------------------
 const userId = localStorage.getItem("userId");
 
-let url = `https://junamnoj.foxint.tech/api/progreso-tres-usuario/${userId}`;
+let url = `${Rute}://${dominio}/api/progreso-tres-usuario/${userId}`;
 let intentos = 0;
 let aprobado = 0;
 getLastEstadoProceso(url)
@@ -196,7 +201,7 @@ function sendDataToApi(
     };
 
     // Realizar la solicitud
-    fetch("https://junamnoj.foxint.tech/api/progreso-tres-usuario", options)
+    fetch(`${Rute}://${dominio}/api/progreso-tres-usuario`, options)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -216,14 +221,14 @@ let questions = [];
 
 // Cargar las preguntas del API
 $.ajax({
-    url: `https://junamnoj.foxint.tech/api/preguntas_por_nivel/3`,
+    url: `${Rute}://${dominio}/api/preguntas_por_nivel/3`,
     type: "GET",
     dataType: "json",
     success: function (response) {
         if (response.data && response.data.length > 0) {
             let requests = response.data.map(function (pregunta) {
                 return $.ajax({
-                    url: `https://junamnoj.foxint.tech/api/respuestas_por_pregunta/${pregunta.id}`,
+                    url: `${Rute}://${dominio}/api/respuestas_por_pregunta/${pregunta.id}`,
                     type: "GET",
                     dataType: "json",
                     success: function (response) {
