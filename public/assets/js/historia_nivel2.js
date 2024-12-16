@@ -653,7 +653,7 @@ function reiniciar_tiempos() {
 let execute = false;
 function verificarAnchoPantalla() {
     if (execute) {
-        if (window.innerWidth > 1024) {
+        if (window.innerWidth > 1200) {
             document.getElementById("vidas-2").style.display = "flex";
             document.getElementById("vidas").style.display = "none"; // Oculta vidas-2
         } else {
